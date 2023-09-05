@@ -3,13 +3,16 @@ import { Navbar } from './Navbar'
 import { AllRoutes } from './AllRoutes'
 import styled from "styled-components"
 import { Text } from '@chakra-ui/react'
+import { AdminHome } from '../Admin/AdminHome'
 
 export const Main = () => {
   return (
     <DIV>
-        <div style={{marginTop: "20px"}}>
+        {/* <div style={{marginTop: "20px"}}>
         <AllRoutes />
-        </div>
+        </div> */}
+
+        <AdminHome />
     </DIV>
   )
 }

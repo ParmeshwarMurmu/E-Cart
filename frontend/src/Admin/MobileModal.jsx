@@ -12,8 +12,6 @@ import {
     FormControl,
     FormLabel,
     Input,
-    Select,
-    SelectField,
     Textarea,
 } from '@chakra-ui/react'
 
