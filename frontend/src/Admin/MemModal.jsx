@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { useToast } from '@chakra-ui/react'
 import {
   Modal,
   ModalOverlay,
@@ -17,18 +18,18 @@ import {
 } from '@chakra-ui/react'
 
 import { useSelector, useDispatch } from "react-redux"
-import { addMenData, brandSuccess, categorySuccess, colorSuccess, imageSuccess, priceSuccess, resetMen, resetSuccess, sizeSuccess, titleSuccess } from '../Redux/adminMenReducer/action'
+import { addMenData, addMenDataSuccess, brandSuccess, categorySuccess, colorSuccess, imageSuccess, priceSuccess, resetMen, resetSuccess, sizeSuccess, titleSuccess } from '../Redux/adminMenReducer/action'
+import axios from 'axios'
 
 export const MemModal = () => {
 
-  const { isOpen, onOpen, onClose } = useDisclosure()
-  const initialRef = React.useRef(null)
-  const finalRef = React.useRef(null)
-  const selector = useSelector((store) => store.adminMenReducer)
-  console.log("selector", selector)
-  const dispatch = useDispatch()
+  const toast = useToast();
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const initialRef = React.useRef(null);
+  const finalRef = React.useRef(null);
+  const dispatch = useDispatch();
 
-  const {title, images, brand, color, price, category, size} = useSelector((store)=>{
+  const { title, images, brand, color, price, category, size } = useSelector((store) => {
     return {
       title: store.adminMenReducer.title,
       images: store.adminMenReducer.images,
@@ -46,29 +47,70 @@ export const MemModal = () => {
     images,
     brand,
     color,
-    price,
+    price: +price,
     category,
     size
   }
 
   const imageHandler = (e) => {
-    const image = e.target.value.split(" ")
+    const image = e.target.value.split(",")
     dispatch(imageSuccess(image))
   }
 
-  const sizeHandler = (e)=>{
-    const size = e.target.value.split(" ")
+  const sizeHandler = (e) => {
+    const size = e.target.value.split(",")
     dispatch(sizeSuccess(size))
   }
 
 
   const menHandlerSave = () => {
-    console.log(menObj)
-    dispatch(addMenData(menObj))
+    addMenData(menObj)
     dispatch(resetSuccess())
 
-
   }
+
+  const addMenData = (data) => {
+    
+
+      
+      axios.post('http://localhost:8080/admin/add/men', data)
+      .then((res)=>{
+        if (res.data.msg === "Men Item Added Successfully") {
+          toast({
+            title: 'Men Item.',
+            description: `${res.data.msg}`,
+            status: 'success',
+            duration: 4000,
+            isClosable: true,
+          })
+        }
+        else{
+          toast({
+            title: 'Men Item.',
+            description: `${res.data.msg}`,
+            status: 'warning',
+            duration: 4000,
+            isClosable: true,
+          })
+        }
+    
+        
+      })
+      .catch((err)=>{
+        toast({
+          title: 'Error Occured',
+          description: `Cannot Add men item`,
+          status: 'error',
+          duration: 4000,
+          isClosable: true,
+        })
+      })
+
+    
+   
+  }
+
+ 
 
   return (
     <>
@@ -122,7 +164,7 @@ export const MemModal = () => {
 
             <FormControl mt={4}>
               <FormLabel>Price</FormLabel>
-              <Input placeholder='Price' value={price}
+              <Input type='number' placeholder='Price' value={price}
                 onChange={(e) => {
                   dispatch(priceSuccess(e.target.value))
                 }}

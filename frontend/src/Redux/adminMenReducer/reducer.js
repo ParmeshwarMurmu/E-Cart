@@ -1,4 +1,4 @@
-import { menBrand, menCategory, menColor, menImages, menPrice, menSize, menTitle, resetMen } from "./action"
+import { addMendata, menBrand, menCategory, menColor, menImages, menPrice, menSize, menTitle, resetMen } from "./action"
 
 const initialState = {
     title: "",
@@ -56,10 +56,10 @@ export const reducer = (state = initialState, { type, payload }) => {
                 size: payload
             }
 
-            case resetMen:
-                return {
-                    ...initialState
-                }
+        case resetMen:
+            return {
+                ...initialState
+            }
 
         default:
             return state

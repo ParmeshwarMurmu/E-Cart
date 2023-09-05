@@ -1,9 +1,13 @@
 const mongoose = require('mongoose')
 
 const menSchema = mongoose.Schema({
-    name:String,
-    email: String,
-    password: String
+    title:String,
+    images: [String],
+    brand: String,
+    color: String,
+    price: Number,
+    category: String,
+    size: [String]
 })
 
 const MenModel = mongoose.model("men",menSchema)
