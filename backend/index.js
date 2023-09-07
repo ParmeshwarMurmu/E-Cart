@@ -3,11 +3,13 @@ const app = express();
 require('dotenv').config()
 const {connection} = require('./db')
 const {menRoutes} = require('./AllRoutes/menRoutes')
+const {womenRoutes} = require('./AllRoutes/womenRoutes')
 const cors = require('cors')
 app.use(express.json())
 app.use(cors())
-
-app.use('/admin', menRoutes)
+app.use('/uploads', express.static('uploads'));
+app.use('/adminMen', menRoutes)
+app.use('/adminWomen', womenRoutes)
 
 app.listen(process.env.PORT, async()=>{
 

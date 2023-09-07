@@ -1,9 +1,13 @@
 const mongoose = require('mongoose')
 
 const womenSchema = mongoose.Schema({
-    name:String,
-    email: String,
-    password: String
+    title:String,
+    images: [String],
+    brand: String,
+    color: String,
+    price: Number,
+    category: String,
+    size: [String]
 })
 
 const WomenModel = mongoose.model("women",womenSchema)

@@ -17,7 +17,7 @@ import {
   SelectField,
 } from '@chakra-ui/react'
 
-import { useSelector, useDispatch } from "react-redux"
+import { useSelector, useDispatch, shallowEqual } from "react-redux"
 import { addMenData, addMenDataSuccess, brandSuccess, categorySuccess, colorSuccess, imageSuccess, priceSuccess, resetMen, resetSuccess, sizeSuccess, titleSuccess } from '../Redux/adminMenReducer/action'
 import axios from 'axios'
 
@@ -40,7 +40,7 @@ export const MemModal = () => {
       size: store.adminMenReducer.size,
 
     }
-  })
+  }, shallowEqual)
 
   const menObj = {
     title,
@@ -73,7 +73,7 @@ export const MemModal = () => {
     
 
       
-      axios.post('http://localhost:8080/admin/add/men', data)
+      axios.post('http://localhost:8080/adminMen/add/men', data)
       .then((res)=>{
         if (res.data.msg === "Men Item Added Successfully") {
           toast({

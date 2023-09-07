@@ -6,32 +6,42 @@ import styled from "styled-components"
 import { AdminLogin } from './Admin/AdminLogin';
 import { Main } from './Routes/Main';
 import { Navbar } from './Routes/Navbar';
-import { Text } from '@chakra-ui/react';
+import { Input, Text } from '@chakra-ui/react';
 
 function App() {
   const inputRef = useRef(null)
 
-  useEffect(()=>{
+  useEffect(() => {
     // inputRef.current.focus()
   }, [])
 
   return (
     <DIV>
 
-<div className='nav'>
-         <Navbar />
-         </div>
-        
-        <div className='categoriesSection'>
-         <Text fontSize={'2xl'}>Categories</Text>
+      <div className='nav'>
+
+        <Navbar />
+
+        <div>
+          <Input h={8}  type='text' placeholder='Search'/>
         </div>
+
+        <div>
+          logo
+        </div>
+      </div>
+
+      {/* <div className='categoriesSection'>
+        <Text fontSize={'2xl'}>Categories</Text>
+      </div> */}
       {/* <AdminHome /> */}
 
-    
+
 
       {/* <AdminLogin /> */}
+
       <Main />
-      
+
 
     </DIV>
   );
@@ -49,11 +59,16 @@ padding: 0px;
 
 .nav{
     /* position: sticky; */
+    /* padding: 20px 0px 20px 0px; */
     position: fixed;
     width: 100%;
     top: 0px;
-    height: 45px;
-    /* background-color: #1ac1fe; */
+    /* height: 45px; */
+    /* z-index: 10; */
+    background-color: #1ac1fe;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .categoriesSection{

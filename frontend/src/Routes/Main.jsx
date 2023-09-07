@@ -4,6 +4,7 @@ import { AllRoutes } from './AllRoutes'
 import styled from "styled-components"
 import { Text } from '@chakra-ui/react'
 import { AdminHome } from '../Admin/AdminHome'
+import FileUploadForm from '../Components/FileUpload'
 
 export const Main = () => {
   return (
@@ -12,7 +13,8 @@ export const Main = () => {
         <AllRoutes />
         </div> */}
 
-        <AdminHome />
+        {/* <AdminHome /> */}
+        <FileUploadForm />
     </DIV>
   )
 }
