@@ -29,10 +29,12 @@ womenRoutes.post('/add/women', async(req, res)=>{
 })
 
 womenRoutes.post('/uploads', upload.array('photos', 5),  async(req, res)=>{
-    console.log("&&&&");
+    // console.log("&&&&");
 
     try {
+        console.log("++++++++++++++++++++++++++");
         const files = req.files;
+        console.log(req.body);
         console.log(files);
 
     // Move each file to the uploads directory
@@ -45,7 +47,11 @@ womenRoutes.post('/uploads', upload.array('photos', 5),  async(req, res)=>{
         return `${req.protocol}://${req.get('host')}/uploads/${file.filename}`;
       });
 
-    res.send(fileUrls);
+      req.body.images=fileUrls
+      const we = WomenModel(req.body)
+      await we.save()
+
+    res.send(req.body);
     } catch (error) {
         res.send(error)
     }

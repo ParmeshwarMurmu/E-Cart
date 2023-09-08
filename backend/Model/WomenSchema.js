@@ -7,7 +7,8 @@ const womenSchema = mongoose.Schema({
     color: String,
     price: Number,
     category: String,
-    size: [String]
+    size: [String],
+    
 })
 
 const WomenModel = mongoose.model("women",womenSchema)

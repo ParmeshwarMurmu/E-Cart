@@ -27,6 +27,7 @@ export const WomenModal = () => {
 
   const initialRef = React.useRef(null)
   const finalRef = React.useRef(null)
+  const fileInput = React.createRef();
   const dispatch = useDispatch();
 
   const { title, images, brand, color, price, category, size } = useSelector((store) => {
@@ -65,46 +66,60 @@ export const WomenModal = () => {
   }
 
 
-  const womenHandlerSave = ()=>{
-    addWomenData(womenObj)
+  const womenHandlerSave = (e) => {
+
+      const formData = new FormData();
+      formData.append('title', title);
+      formData.append('brand', brand);
+      formData.append('color', color);
+      formData.append('price', price);
+      formData.append('category', category);
+      formData.append('size', size);
+      formData.append('photos', fileInput.current.files[0]);
+      formData.append('photos', fileInput.current.files[1]);
+      formData.append('photos', fileInput.current.files[2]);
+      formData.append('photos', fileInput.current.files[3]);
+      formData.append('photos', fileInput.current.files[4]);
+    
+    addWomenData(formData)
     // console.log(womenObj)
     dispatch(womenresetSuccess())
   }
 
-  const addWomenData = (data)=>{
+  const addWomenData = (data) => {
 
-    axios.post('http://localhost:8080/adminWomen/add/women', data)
-    .then((res)=>{
-      // console.log(res)
-      if (res.data.msg === "Women Item Added Successfully") {
-            toast({
-              title: 'Women Item.',
-              description: `${res.data.msg}`,
-              status: 'success',
-              duration: 4000,
-              isClosable: true,
-            })
-          }
-          else{
-            toast({
-              title: 'Women Item.',
-              description: `${res.data.msg}`,
-              status: 'warning',
-              duration: 4000,
-              isClosable: true,
-            })
-          }
-
-    })
-    .catch((err)=>{
+    axios.post('http://localhost:8080/adminWomen/uploads', data)
+      .then((res) => {
+        console.log(res)
+        if (res.data.msg === "Women Item Added Successfully") {
           toast({
-            title: 'Error Occured',
-            description: `Cannot Add men item`,
-            status: 'error',
+            title: 'Women Item.',
+            description: `${res.data.msg}`,
+            status: 'success',
             duration: 4000,
             isClosable: true,
           })
+        }
+        else {
+          toast({
+            title: 'Women Item.',
+            description: `${res.data.msg}`,
+            status: 'warning',
+            duration: 4000,
+            isClosable: true,
+          })
+        }
+
+      })
+      .catch((err) => {
+        toast({
+          title: 'Error Occured',
+          description: `Cannot Add men item`,
+          status: 'error',
+          duration: 4000,
+          isClosable: true,
         })
+      })
 
   }
 
@@ -128,6 +143,8 @@ export const WomenModal = () => {
           <ModalHeader>Add Items</ModalHeader>
           <ModalCloseButton />
           <ModalBody pb={6}>
+
+          <form >
             <FormControl>
               <FormLabel>Title</FormLabel>
               <Input type='text' ref={initialRef} placeholder='Title' value={title}
@@ -137,18 +154,18 @@ export const WomenModal = () => {
               />
             </FormControl>
 
-            <FormControl mt={4}>
+            {/* <FormControl mt={4}>
               <FormLabel>Images</FormLabel>
               <Input type='text' placeholder='Images' value={images} onChange={imageHandler} />
-            </FormControl>
+            </FormControl> */}
 
             <FormControl mt={4} variant={'none'}>
               <FormLabel>Upload Images</FormLabel>
 
-              <form action="/images" method="post" enctype="multipart/form-data">
-              <Input type='file' placeholder='Images' name='avatar'  />
-              </form>
               
+                <Input type='file' placeholder='Images' name='photos'  ref={fileInput} multiple />
+
+
             </FormControl>
 
             <FormControl mt={4}>
@@ -204,19 +221,21 @@ export const WomenModal = () => {
               </FormControl>
             }
 
-          </ModalBody>
+          </form>
 
-          <ModalFooter>
-            <Button colorScheme='blue' mr={3} onClick={womenHandlerSave}>
-              Save
-            </Button>
-            <Button onClick={onClose}>Cancel</Button>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
+        </ModalBody>
+
+        <ModalFooter>
+          <Button  colorScheme='blue' mr={3} onClick={womenHandlerSave}>
+            Save
+          </Button>
+          <Button onClick={onClose}>Cancel</Button>
+        </ModalFooter>
+      </ModalContent>
+    </Modal>
 
 
 
-    </div>
+    </div >
   )
 }

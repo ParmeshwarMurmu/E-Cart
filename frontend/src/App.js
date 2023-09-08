@@ -6,7 +6,11 @@ import styled from "styled-components"
 import { AdminLogin } from './Admin/AdminLogin';
 import { Main } from './Routes/Main';
 import { Navbar } from './Routes/Navbar';
-import { Input, Text } from '@chakra-ui/react';
+import { Input, Text, border } from '@chakra-ui/react';
+import { Notification } from './Components/Home/Notification';
+import { Count } from './Components/Home/Count';
+import { LoginPopover } from './Components/Home/LoginPopover';
+import { SignInLogo } from './Components/Home/SignInLogo';
 
 function App() {
   const inputRef = useRef(null)
@@ -20,27 +24,46 @@ function App() {
 
       <div className='nav'>
 
-        <Navbar />
 
-        <div>
-          <Input h={8}  type='text' placeholder='Search'/>
+        <div style={{border: "2px solid red"}}>
+          <Navbar />
+        </div>
+
+        
+
+        <div className='loginSection' style={{ border: "2px solid red" }}>
+          <div>
+           <Notification />
         </div>
 
         <div>
-          logo
+          <Count/>
+        </div>
+
+        <div>
+          <LoginPopover/>
+        </div>
+
+        
+
         </div>
       </div>
 
-      {/* <div className='categoriesSection'>
-        <Text fontSize={'2xl'}>Categories</Text>
-      </div> */}
-      {/* <AdminHome /> */}
+{/*     
+      <div className='searchBar' style={{ border: "2px solid red"}}>
+          <Input h={8} type='text' placeholder='Search' ref={inputRef} p={4} bg={'white'} />
+       
+        </div> */}
+      
+
+      
 
 
 
       {/* <AdminLogin /> */}
 
       <Main />
+      
 
 
     </DIV>
@@ -51,30 +74,36 @@ export default App;
 
 const DIV = styled.div`
 
-background-color: bisque;
+/* background-color: bisque; */
 margin: 0px;
 padding: 0px;
 
 /* height: 400px; */
 
 .nav{
-    /* position: sticky; */
-    /* padding: 20px 0px 20px 0px; */
+    
     position: fixed;
     width: 100%;
     top: 0px;
-    /* height: 45px; */
-    /* z-index: 10; */
     background-color: #1ac1fe;
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
 
-.categoriesSection{
-  border: 2px solid black;
-  position: sticky;
-  top: 45px;
+
+.searchBar{
+  position: fixed;
+    width: 30%;
+    /* left: 500px; */
+    right: 10px;
+    top: 60px;
+}
+
+.loginSection{
+  display: flex;
+  width: 20%;
+  justify-content: space-between;
 }
 
 

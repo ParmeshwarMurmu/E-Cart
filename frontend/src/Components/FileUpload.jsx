@@ -27,13 +27,13 @@ function FileUploadForm() {
       // const data = new FormData()
 
       const formData = new FormData();
-      formData.append('name', name);
+      formData.append('OPOPO', name);
       formData.append('price', price);
       formData.append('photos', fileInput.current.files[0]);
       formData.append('photos', fileInput.current.files[1]);
       formData.append('photos', fileInput.current.files[2]);
 
-      
+      console.log(fileInput.current.files[0].name);
 
       
 
@@ -43,7 +43,7 @@ function FileUploadForm() {
           .then((res) => console.log(res))
           .catch((err) => console.log(err));
 
-      alert(`Selected file - ${fileInput.current.files[0].name} ${fileInput.current.files[1].name} ${fileInput.current.files[2].name}`);
+    //   alert(`Selected file - ${fileInput.current.files[0].name} ${fileInput.current.files[1].name} ${fileInput.current.files[2].name}`);
       // console.log(fileInput.current.files[0]);
   };
 

@@ -5,22 +5,24 @@ import styled from "styled-components"
 import { Text } from '@chakra-ui/react'
 import { AdminHome } from '../Admin/AdminHome'
 import FileUploadForm from '../Components/FileUpload'
+import { SignInLogo } from '../Components/Home/SignInLogo'
 
 export const Main = () => {
   return (
     <DIV>
-        {/* <div style={{marginTop: "20px"}}>
-        <AllRoutes />
-        </div> */}
+         <div style={{marginTop: "20px"}}>
+        {/* <AllRoutes /> */}
+        <SignInLogo />
+        </div> 
 
-        {/* <AdminHome /> */}
-        <FileUploadForm />
+        {/* <AdminHome />
+        <FileUploadForm /> */}
     </DIV>
   )
 }
 
 const DIV = styled.div`
-background-color: #0ce369;
+/* background-color: #0ce369; */
 margin-top: 0px;
 padding: 0px;
 margin-top: 100px;
