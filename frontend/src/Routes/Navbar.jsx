@@ -16,7 +16,7 @@ export const Navbar = () => {
               size='md'
               name='Prosper Otemuyiwa'
               src={ECart}
-            />{' '}
+            />
           </WrapItem>
           
         </Wrap>

@@ -1,9 +1,10 @@
 import React from 'react'
+import styled from "styled-components"
 
 export const Home = () => {
   return (
-    <div>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam ex dolorum reprehenderit nulla amet nostrum sunt tenetur explicabo illo, provident, inventore placeat omnis exercitationem sint vero pariatur suscipit at facere!
+    <DIV>
+      <p >Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam ex dolorum reprehenderit nulla amet nostrum sunt tenetur explicabo illo, provident, inventore placeat omnis exercitationem sint vero pariatur suscipit at facere!
       Molestias distinctio molestiae beatae illo aperiam odio ex magnam ipsum exercitationem voluptatibus fugit aspernatur dignissimos, tempora tempore, deserunt quis aut ipsam similique sunt adipisci corporis? Dicta earum minus cum magnam?
       Voluptates aperiam amet quibusdam. Ipsa, sunt. Eaque, labore cum! Ab, tempora quod dolorem illum accusamus assumenda eum delectus eligendi repellendus amet vitae, corrupti, mollitia architecto porro necessitatibus maxime adipisci perferendis!
       Illum provident quod molestiae dolorum, quos assumenda accusamus tenetur earum facilis exercitationem iure illo ullam asperiores vitae. Voluptatum beatae, neque sapiente fugiat laboriosam, aliquid architecto eum asperiores minus officia illo!
@@ -53,6 +54,12 @@ export const Home = () => {
       Delectus temporibus voluptatem, ullam vel at, fugiat dolorum animi beatae deserunt accusantium, quos qui! Consectetur, assumenda facilis! Qui laudantium molestiae veniam est, facere, magnam quod ea obcaecati beatae rem culpa?
       Corporis ut quam corrupti eos nihil voluptates quos tempore reiciendis laboriosam sapiente earum ipsum, magni inventore incidunt adipisci autem impedit et mollitia consequatur voluptate. Quod itaque voluptas facere in vero.
       Tempora, aperiam odio, necessitatibus exercitationem voluptatibus quod perferendis sit rerum, consequuntur natus magni. Odio at dolor aperiam cupiditate magnam, vero inventore minima rem quaerat commodi explicabo recusandae aspernatur incidunt iure?</p>
-    </div>
+    </DIV>
   )
 }
+
+const DIV = styled.div`
+p{
+ 
+}
+`

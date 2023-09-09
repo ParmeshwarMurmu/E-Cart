@@ -113,9 +113,9 @@ export const LoginPopover = () => {
             pb={4}
           >
 
-            <ButtonGroup size='sm' >
+            <ButtonGroup size='md' >
               {
-                state === 'login' ? <Button colorScheme='blue' >
+                state === 'login' ? <Button width={'100%'} colorScheme='blue' >
                 Login
               </Button>
                : <Button colorScheme='blue' >

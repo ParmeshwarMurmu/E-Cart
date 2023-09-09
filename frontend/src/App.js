@@ -11,6 +11,9 @@ import { Notification } from './Components/Home/Notification';
 import { Count } from './Components/Home/Count';
 import { LoginPopover } from './Components/Home/LoginPopover';
 import { SignInLogo } from './Components/Home/SignInLogo';
+import { AfterLogin } from './Components/Home/AfterLogin';
+import { MenuItemProfile } from './Components/Home/MenuItemProfile';
+import { theme } from './DefaultTheme';
 
 function App() {
   const inputRef = useRef(null)
@@ -20,10 +23,12 @@ function App() {
   }, [])
 
   return (
-    <DIV>
+    <DIV theme={theme}>
 
       <div className='nav'>
+      
 
+      <div style={{border: "2px solid white",width: "90%", margin: "auto", display: "flex", justifyContent: "space-between", alignItems: "center"}}>
 
         <div style={{border: "2px solid red"}}>
           <Navbar />
@@ -44,23 +49,22 @@ function App() {
           <LoginPopover/>
         </div>
 
-        
+        <div>
+          <MenuItemProfile />
+        </div>
+
+      
+        </div>
 
         </div>
+
+        
       </div>
 
-{/*     
-      <div className='searchBar' style={{ border: "2px solid red"}}>
-          <Input h={8} type='text' placeholder='Search' ref={inputRef} p={4} bg={'white'} />
-       
-        </div> */}
-      
+      <div style={{marginTop: "60px",border: "2px solid red"}} className='categories'>
+        PPDOAJOJJFDF
+      </div>
 
-      
-
-
-
-      {/* <AdminLogin /> */}
 
       <Main />
       
@@ -74,11 +78,9 @@ export default App;
 
 const DIV = styled.div`
 
-/* background-color: bisque; */
 margin: 0px;
 padding: 0px;
-
-/* height: 400px; */
+font-family: Verdana, Geneva, Tahoma, sans-serif;
 
 .nav{
     
@@ -86,16 +88,19 @@ padding: 0px;
     width: 100%;
     top: 0px;
     background-color: #1ac1fe;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+    border: 2px solid black;
+
+}
+
+.categories{
+  width: 80%;
+  margin: auto;
 }
 
 
 .searchBar{
   position: fixed;
     width: 30%;
-    /* left: 500px; */
     right: 10px;
     top: 60px;
 }
@@ -104,6 +109,7 @@ padding: 0px;
   display: flex;
   width: 20%;
   justify-content: space-between;
+  padding-top: 5px;
 }
 
 

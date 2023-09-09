@@ -10,7 +10,7 @@ export const theme = {
         900: "#171923",
       },
 
-      fontfamily: "Raleway"
+      fontfamily: "font-family: Verdana, Geneva, Tahoma, sans-serif"
       // ...
     },
   };
