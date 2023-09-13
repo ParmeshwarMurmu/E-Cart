@@ -1,17 +1,30 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import styled from "styled-components"
 import { Categories } from '../Components/Home/Categories'
 import { Box, Image, Text } from '@chakra-ui/react'
 import { Link, useSearchParams } from 'react-router-dom'
 import Slideshow from '../try/Try'
 import Mens from "../Images/Mens.jpg"
+import { appContent } from '../Context/ContextApi'
 
 export const Home = () => {
-  // const [params, setParams] = useSearchParams()
 
+  
+  const {handleClick, Params} = useContext(appContent)
+
+  // useEffect(()=>{
+
+  //   const params={
+  //     category: searchParams
+  //   }
+
+  //   setSearchParams(params)
+
+  // }, [searchParams])
 
 
   // console.log(params);
+  
   return (
     <DIV>
 
@@ -24,7 +37,7 @@ export const Home = () => {
             />
 
             <div className='title'>
-              <Link to={'/product'} ><Text>Mens</Text> </Link>
+              <Link to={'/product'} onClick={()=>{handleClick("mens")}}><Text>Mens</Text> </Link>
             </div>
           </div>
 
@@ -34,7 +47,7 @@ export const Home = () => {
             />
 
             <div className='title'>
-              <Link to={'/product'}><Text>Womens</Text> </Link>
+              <Link to={'/product'} onClick={()=>{handleClick("womens")}}><Text>Womens</Text> </Link>
             </div>
           </div>
 
@@ -43,7 +56,7 @@ export const Home = () => {
               alt='mobiles'
             />
             <div className='title'>
-              <Link to={'/product'}><Text>Mobiles</Text> </Link>
+              <Link to={'/product'} onClick={()=>{handleClick("mobiles")}}><Text>Mobiles</Text> </Link>
             </div>
           </div>
 
@@ -52,7 +65,7 @@ export const Home = () => {
               alt='shoes'
             />
             <div className='title'>
-              <Link to={'/product'}><Text>Shoes</Text> </Link>
+              <Link to={'/product'}  onClick={()=>{handleClick("shoes")}}><Text>Shoes</Text> </Link>
             </div>
           </div>
 
@@ -61,7 +74,7 @@ export const Home = () => {
               alt='watches'
             />
             <div className='title'>
-              <Link to={'/product'}><Text>Watches</Text> </Link>
+              <Link to={'/product'}  onClick={()=>{handleClick("watches")}}><Text>Watches</Text> </Link>
             </div>
           </div>
         </div>
