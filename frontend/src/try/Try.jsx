@@ -16,37 +16,25 @@ const Slideshow = () => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    afterChange: (index) => setCurrentSlide(index)
+    afterChange: (index) => setCurrentSlide(index),
+    variableWidth: true,
   };
 
   const prod = [
     {
       id: 1,
       name: "Product 1",
-      image: "https://rukminim2.flixcart.com/image/612/612/l51d30w0/shoe/z/w/c/10-mrj1914-10-aadi-white-black-red-original-imagft9k9hydnfjp.jpeg?q=70",
+      image: "https://rukminim2.flixcart.com/image/612/612/l3t2fm80/shirt/h/q/w/xxl-r-peacock-blue-stoneberg-original-imageum82pyz8c9q.jpeg?q=70",
       description: "Description for Product 1"
     },
 
     {
       id: 1,
       name: "Product 1",
-      image: "https://rukminim2.flixcart.com/image/612/612/l51d30w0/shoe/z/w/c/10-mrj1914-10-aadi-white-black-red-original-imagft9k9hydnfjp.jpeg?q=70",
+      image: "https://rukminim2.flixcart.com/image/612/612/xif0q/shirt/o/s/c/s-designer-shirts-blackcreek-original-imaghfagdm2xjuzt.jpeg?q=70",
       description: "Description for Product 1"
     },
 
-    {
-      id: 1,
-      name: "Product 1",
-      image: "https://rukminim2.flixcart.com/image/612/612/l51d30w0/shoe/z/w/c/10-mrj1914-10-aadi-white-black-red-original-imagft9k9hydnfjp.jpeg?q=70",
-      description: "Description for Product 1"
-    },
-
-    {
-      id: 1,
-      name: "Product 1",
-      image: "https://rukminim2.flixcart.com/image/612/612/l51d30w0/shoe/z/w/c/10-mrj1914-10-aadi-white-black-red-original-imagft9k9hydnfjp.jpeg?q=70",
-      description: "Description for Product 1"
-    },
   ]
 
   const products = [
@@ -58,16 +46,8 @@ const Slideshow = () => {
     },
     {
 
-    },
-    {
-
-    }, {},
-    {
-      id: 1,
-      name: "Product 1",
-      image: "https://rukminim2.flixcart.com/image/612/612/l51d30w0/shoe/z/w/c/10-mrj1914-10-aadi-white-black-red-original-imagft9k9hydnfjp.jpeg?q=70",
-      description: "Description for Product 1"
-    },
+    }
+   
 
     
     // Add more products here
@@ -77,18 +57,18 @@ const Slideshow = () => {
 
   return (
     <DIV className="slideshow-container">
-      <Slider {...settings}>
+      <Slider {...settings} className='slider'>
         {products.map((product) => (
           <div key={product.id}>
           <div className='main'>
 
             {
               prod.map((el)=>(
-                <div>
-              <img width="50px" height="50px" src={el.image} alt={el.name} />
+                <div style={{marginRight: "20px", height: "280px"}}>
+              <img width="280px"  src={el.image} alt={el.name} />
               <div className="product-info">
-                <h2>{el.name}</h2>
-                <p>{el.description}</p>
+                {/* <h2>{el.name}</h2>
+                <p>{el.description}</p> */}
               </div>
             </div>
 
@@ -130,9 +110,21 @@ const DIV = styled.div`
   .main{
     display: flex;
     justify-content: space-between;
-    background-color: red;
+    /* background-color: red; */
   }
+
+.slider{
+  width: 90%; /* Adjust the width as needed */
+  margin: 0 auto; /* Center the slider */
+  height: 300px;
+}
+
+--slider-arrow-color: #050505; /* Override the color to red */
   
+  .slick-prev::before,
+  .slick-next::before {
+    color: var(--slider-arrow-color);
+  }
   
 
 

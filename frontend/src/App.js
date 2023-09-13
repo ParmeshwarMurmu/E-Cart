@@ -79,11 +79,14 @@ export default App;
 
 const DIV = styled.div`
 
+
+
 margin: 0px;
 /* padding: 0px; */
 /* padding-top: 60px; */
 margin-top: 50px;
 font-family: Verdana, Geneva, Tahoma, sans-serif;
+
 
 .nav{
     

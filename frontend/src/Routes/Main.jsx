@@ -10,7 +10,7 @@ import { SignInLogo } from '../Components/Home/SignInLogo'
 export const Main = () => {
   return (
     <DIV>
-         <div style={{ width: "80%", margin: "auto"}}>
+         <div style={{ width: "90%", margin: "auto"}}>
         <AllRoutes />
         </div> 
 
