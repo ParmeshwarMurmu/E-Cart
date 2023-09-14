@@ -27,7 +27,7 @@ export const Home = () => {
   
   return (
     <DIV>
-
+{/* 
       <div className='allCategories'>
 
         <div className='categoriesSection'>
@@ -85,7 +85,7 @@ export const Home = () => {
         </div>
 
 
-      </div>
+      </div> */}
 
       {/* Mensection slideshow */}
       <div className='mens'>
@@ -109,7 +109,7 @@ const DIV = styled.div`
 display: flex;
 justify-content: flex-start; */
  
-.allCategories{
+/* .allCategories{
   display: flex;
   justify-content: space-between;
   border: 2px solid black;
@@ -125,13 +125,13 @@ justify-content: flex-start; */
 
 .searchBar{
   background-color: red;
-  /* width: 50%; */
-}
+  width: 50%; 
+ } 
 
 .title{
   display: flex;
   justify-content: center;
-}
+} */
 
 .mens {
   /* background-color: aliceblue; */

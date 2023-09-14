@@ -1,12 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
 import { AdminHome } from './Admin/AdminHome';
-import { useEffect, useRef } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import styled from "styled-components"
 import { AdminLogin } from './Admin/AdminLogin';
 import { Main } from './Routes/Main';
 import { Navbar } from './Routes/Navbar';
-import { Input, Text, border } from '@chakra-ui/react';
+import { Button, Input, Menu, MenuButton, MenuItem, MenuList, Text, border } from '@chakra-ui/react';
 import { Notification } from './Components/Home/Notification';
 import { Count } from './Components/Home/Count';
 import { LoginPopover } from './Components/Home/LoginPopover';
@@ -17,8 +17,14 @@ import { theme } from './DefaultTheme';
 import { Categories } from './Components/Home/Categories';
 import { Try } from './try/Try';
 import { Home } from './Routes/Home';
+import { appContent } from './Context/ContextApi';
+import { Link } from 'react-router-dom';
+import {ChevronDownIcon, ChevronUpIcon } from '@chakra-ui/icons'
 
 function App() {
+
+  const { handleClick, Params } = useContext(appContent)
+  const [icon, setIcon] = useState(1)
 
 
   return (
@@ -62,8 +68,96 @@ function App() {
         </div>
 
       </div>
-   
-     <hr />
+
+      <hr />
+
+      <div className='allCategories'>
+
+        <div className='categoriesSection'>
+          <div>
+            <Categories images='https://rukminim2.flixcart.com/image/832/832/xif0q/t-shirt/6/s/v/s-mt416-metronaut-original-imagmj8ndmbetfah.jpeg?q=70'
+              alt='mens'
+            />
+
+            <div className='title'>
+              {/* <Link to={'/product'} ><Text>Mens</Text> </Link> */}
+              <Menu>
+                <MenuButton onClick={()=>{setIcon((prev)=> prev + 1)}} variant={'none'} as={Button} p={0} m={0} rightIcon={ icon%2===0 ?  <ChevronUpIcon />  : <ChevronDownIcon />}>
+                  Mens
+                </MenuButton>
+                <MenuList>
+                  <MenuItem>T-Shirts</MenuItem>
+                  <MenuItem>Formal Shirts</MenuItem>
+                  <MenuItem>Casual-Shirts</MenuItem>
+                  <MenuItem>Jeans</MenuItem>
+                  <MenuItem>Formal Trousers</MenuItem>
+                  <MenuItem>Track Pants</MenuItem>
+                  <MenuItem>Shorts</MenuItem>
+                </MenuList>
+              </Menu>
+            </div>
+          </div>
+
+          <div>
+            <Categories images='https://rukminim2.flixcart.com/image/832/832/xif0q/kurta/s/k/4/l-913-jaffry-embroidery-original-imagsc36sh7khhfj.jpeg?q=70'
+              alt='women'
+            />
+
+            <div className='title'>
+              {/* <Link to={'/product'} onClick={() => { handleClick("womens") }}><Text>Womens</Text> </Link> */}
+
+              <Menu>
+                <MenuButton onClick={()=>{setIcon((prev)=> prev + 1)}} variant={'none'} as={Button} p={0} m={0} rightIcon={ icon%2===0 ?  <ChevronUpIcon />  : <ChevronDownIcon />}>
+                  Womens
+                </MenuButton>
+                <MenuList>
+                  <MenuItem>Saree</MenuItem>
+                  <MenuItem>Kurtas Kurtis</MenuItem>
+                  <MenuItem>Palazzos</MenuItem>
+                  <MenuItem>Blouse</MenuItem>
+                  <MenuItem>Salwars And Patialas</MenuItem>
+                  <MenuItem>Leggings And Churidars</MenuItem>
+                  <MenuItem>Lehenga Cholis</MenuItem>
+                </MenuList>
+              </Menu>
+            </div>
+          </div>
+
+          <div>
+            <Categories images='https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/k/w/k/-original-imagg2abzhxjckxu.jpeg?q=70'
+              alt='mobiles'
+            />
+            <div className='title'>
+              <Link to={'/product'} onClick={() => { handleClick("mobiles") }}><Text>Mobiles</Text> </Link>
+            </div>
+          </div>
+
+          <div>
+            <Categories images='https://rukminim2.flixcart.com/image/612/612/l51d30w0/shoe/z/w/c/10-mrj1914-10-aadi-white-black-red-original-imagft9k9hydnfjp.jpeg?q=70'
+              alt='shoes'
+            />
+            <div className='title'>
+              <Link to={'/product'} onClick={() => { handleClick("shoes") }}><Text>Shoes</Text> </Link>
+            </div>
+          </div>
+
+          <div>
+            <Categories images='https://rukminim2.flixcart.com/image/612/612/xif0q/watch/m/a/i/-original-imagrcjkpwzzbttr.jpeg?q=70'
+              alt='watches'
+            />
+            <div className='title'>
+              <Link to={'/product'} onClick={() => { handleClick("watches") }}><Text>Watches</Text> </Link>
+            </div>
+          </div>
+        </div>
+
+
+        <div className='searchBar'>
+          serach
+        </div>
+
+
+      </div>
 
 
       <div style={{ marginTop: "80px", }}>
@@ -136,6 +230,30 @@ font-family: Verdana, Geneva, Tahoma, sans-serif;
   width: 20%;
   justify-content: space-between;
   padding-top: 5px;
+}
+
+.allCategories{
+  display: flex;
+  justify-content: space-between;
+  border: 2px solid black;
+ 
+}
+
+.categoriesSection{
+  display: flex;
+  justify-content: space-between;
+  background-color: yellow;
+  width: 50%;
+}
+
+.searchBar{
+  background-color: red;
+  /* width: 50%; */
+}
+
+.title{
+  display: flex;
+  justify-content: center;
 }
 
 
