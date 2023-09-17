@@ -75,9 +75,12 @@ function App() {
 
         <div className='categoriesSection'>
           <div>
+            <Link to={'/product'}>
+
             <Categories images='https://rukminim2.flixcart.com/image/832/832/xif0q/t-shirt/6/s/v/s-mt416-metronaut-original-imagmj8ndmbetfah.jpeg?q=70'
               alt='mens'
             />
+            </Link>
 
             <div className='title'>
               {/* <Link to={'/product'} ><Text>Mens</Text> </Link> */}
@@ -188,6 +191,7 @@ font-family: Verdana, Geneva, Tahoma, sans-serif;
     width: 100%;
     top: 0px;
     background-color: #1ac1fe;
+    z-index: 3;
 
 }
 

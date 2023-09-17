@@ -1,6 +1,9 @@
 import React, { useContext, useEffect } from 'react'
 import { appContent } from '../Context/ContextApi'
 import { useSearchParams } from 'react-router-dom'
+import styled from "styled-components"
+import { SideBar } from '../Comp2/SideBar'
+import { ProductComp } from '../Comp2/ProductComp'
 
 export const Product = () => {
   
@@ -25,6 +28,27 @@ export const Product = () => {
 
 
   return (
-    <div>Product Page</div>
+    <DIV>
+
+      <div className='sideBar'>
+         <SideBar />
+      </div>
+
+
+      <div>
+        <ProductComp />
+      </div>
+
+    </DIV>
   )
 }
+
+
+const DIV = styled.div`
+border: 2px solid red;
+
+.sideBar{
+  width: 18%;
+}
+  
+`

@@ -135,6 +135,7 @@ const DIV = styled.div`
 .parent{
 
   width:60%;
+  z-index: 5;
   
  
 }

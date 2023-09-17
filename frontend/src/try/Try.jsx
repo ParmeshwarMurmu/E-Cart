@@ -64,8 +64,8 @@ const Slideshow = () => {
 
             {
               prod.map((el)=>(
-                <div style={{marginRight: "20px", height: "280px"}}>
-              <img width="280px"  src={el.image} alt={el.name} />
+                <div style={{marginRight: "20px", height: "250px"}}>
+              <img width="200px"  src={el.image} alt={el.name} />
               <div className="product-info">
                 {/* <h2>{el.name}</h2>
                 <p>{el.description}</p> */}
@@ -126,6 +126,10 @@ const DIV = styled.div`
     color: var(--slider-arrow-color);
   }
   
+
+  .slideshow-container{
+    z-index: -1;
+  }
 
 
 `

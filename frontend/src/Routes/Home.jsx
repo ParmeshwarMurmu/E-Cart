@@ -1,11 +1,15 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext,} from 'react'
 import styled from "styled-components"
-import { Categories } from '../Components/Home/Categories'
-import { Box, Image, Text } from '@chakra-ui/react'
-import { Link, useSearchParams } from 'react-router-dom'
+import { Box, Image, } from '@chakra-ui/react'
+import { useSearchParams } from 'react-router-dom'
 import Slideshow from '../try/Try'
 import Mens from "../Images/Mens.jpg"
 import { appContent } from '../Context/ContextApi'
+import { AutomaticSlider } from '../Components/Home/AutomaticSlider'
+import { WomenOffers } from '../Comp2/WomenOffers'
+
+
+
 
 export const Home = () => {
 
@@ -98,6 +102,14 @@ export const Home = () => {
         <div style = {{ width: "80%"}}>
           <Slideshow />
         </div>
+      </div>
+
+      <div>
+        <AutomaticSlider />
+      </div>
+
+      <div>
+        <WomenOffers />
       </div>
 
     </DIV>
