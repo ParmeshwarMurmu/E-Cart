@@ -10,19 +10,19 @@ export const WomenOffers = () => {
   return (
     <DIV>
 
-      <div>
+      <div className='womenLatest'>
         <Box>
           <Image src={womenLatest} alt='Mens' />
         </Box>
       </div>
 
-      <div >
+      <div className='sarees'>
         <Box>
           <Image src={Sarees} alt='Mens' />
         </Box>
       </div>
 
-      <div >
+      <div  className='mens'>
         <Box >
           <Image src={summerSale} alt='Mens' />
         </Box>
@@ -30,15 +30,38 @@ export const WomenOffers = () => {
 
       
 
+
+
+
     </DIV>
   )
 }
 
 
 const DIV = styled.div`
- grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 1fr); /* Add this line to define 2 rows */
-  gap: 10px; /* Adjust the gap as needed */
+
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+gap: 0px;
+
+
+.womenLatest{
+   border: 2px solid green;
+   width: 90%;
+   grid-area: 1/1/3/2;
+   
+}
+
+.mens{
+border: 2px solid red;
+width: 90%;
+}
+
+.sarees{
+border: 2px solid black ;
+width: 90%;
+}
+
 
 
 `

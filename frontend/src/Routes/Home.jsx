@@ -7,6 +7,8 @@ import Mens from "../Images/Mens.jpg"
 import { appContent } from '../Context/ContextApi'
 import { AutomaticSlider } from '../Components/Home/AutomaticSlider'
 import { WomenOffers } from '../Comp2/WomenOffers'
+import { Grid } from '../try/Grid'
+import { WomenSlideShow } from '../Comp2/WomenSlideShow'
 
 
 
@@ -108,42 +110,33 @@ export const Home = () => {
         <AutomaticSlider />
       </div>
 
-      <div>
+      <div className='womensOffers'>
+        <div style={{width: "50%"}}>
         <WomenOffers />
+
+        </div>
+
+          <div style={{width: "50%"}}>
+
+        <WomenSlideShow />
+
+        {/* <WomenSlideShow /> */}
+          </div>
       </div>
+
+      
 
     </DIV>
   )
 }
 
 const DIV = styled.div`
-/* 
-display: flex;
-justify-content: flex-start; */
- 
-/* .allCategories{
+
+.womensOffers{
+  border: 2px solid red;
+  /* width: 50%; */
   display: flex;
-  justify-content: space-between;
-  border: 2px solid black;
- 
 }
-
-.categoriesSection{
-  display: flex;
-  justify-content: space-between;
-  background-color: yellow;
-  width: 50%;
-}
-
-.searchBar{
-  background-color: red;
-  width: 50%; 
- } 
-
-.title{
-  display: flex;
-  justify-content: center;
-} */
 
 .mens {
   /* background-color: aliceblue; */
