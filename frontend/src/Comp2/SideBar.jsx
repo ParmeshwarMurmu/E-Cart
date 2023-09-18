@@ -73,7 +73,7 @@ export const SideBar = () => {
                             <label htmlFor="">John Miller</label>
                         </div>
 
-                        
+
                     </AccordionPanel>
                 </AccordionItem>
 
@@ -104,10 +104,40 @@ export const SideBar = () => {
                         </AccordionButton>
                     </h2>
                     <AccordionPanel pb={4}>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                        commodo consequat.
+                        <div>
+                            <input type="checkbox" value={"t-shirts"} />
+                            <label htmlFor="">T-Shirts</label>
+                        </div>
+
+                        <div>
+                            <input type="checkbox" value={"formal shirts"} />
+                            <label htmlFor="">Formal Shirts</label>
+                        </div>
+
+                        <div>
+                            <input type="checkbox" value={"casual shirts"} />
+                            <label htmlFor="">Casual-Shirts</label>
+                        </div>
+
+                        <div>
+                            <input type="checkbox" value={"jeans"} />
+                            <label htmlFor="">Jeans</label>
+                        </div>
+
+                        <div>
+                            <input type="checkbox" value={"formal trousers"} />
+                            <label htmlFor="">Formal RTrousers</label>
+                        </div>
+
+                        <div>
+                            <input type="checkbox" value={"track pants"} />
+                            <label htmlFor="">Track Pants</label>
+                        </div>
+
+                        <div>
+                            <input type="checkbox" value={"shorts"} />
+                            <label htmlFor="">Shorts</label>
+                        </div>
                     </AccordionPanel>
                 </AccordionItem>
 
@@ -121,10 +151,15 @@ export const SideBar = () => {
                         </AccordionButton>
                     </h2>
                     <AccordionPanel pb={4}>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                        commodo consequat.
+                        <div>
+                            <input type="checkbox" value={"asc"} name='order'/>
+                            <label htmlFor="">Low To High</label>
+                        </div>
+
+                        <div>
+                            <input type="checkbox" value={"asc"} name='order'/>
+                            <label htmlFor="">High To Low</label>
+                        </div>
                     </AccordionPanel>
                 </AccordionItem>
 

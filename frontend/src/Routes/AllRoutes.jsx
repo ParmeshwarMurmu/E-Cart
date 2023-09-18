@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom"
 import { Home } from './Home'
 import { Product } from './Product'
 import { appContent } from '../Context/ContextApi'
+import { SingleProduct } from './SingleProduct'
 
 export const AllRoutes = () => {
   const {handleClick, Params} = useContext(appContent)
@@ -11,6 +12,7 @@ export const AllRoutes = () => {
     <Routes >
         <Route path='/' element={<Home/>} />
         <Route path='/product' element={<Product/>} />
+        <Route path='/singleProduct' element={<SingleProduct/>} />
     </Routes>
   )
 }

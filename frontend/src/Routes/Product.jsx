@@ -35,7 +35,7 @@ export const Product = () => {
       </div>
 
 
-      <div>
+      <div className='productComp'>
         <ProductComp />
       </div>
 
@@ -46,9 +46,17 @@ export const Product = () => {
 
 const DIV = styled.div`
 border: 2px solid red;
+display: flex;
+
 
 .sideBar{
   width: 18%;
+  border: 2px solid black;
+}
+
+.productComp{
+  border: 2px solid green;
+  width: 100%;
 }
   
 `
