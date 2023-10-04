@@ -1,130 +1,176 @@
-import React, { useContext,} from 'react'
+import React, { useContext, } from 'react'
 import styled from "styled-components"
-import { Box, Image, } from '@chakra-ui/react'
+import { Box, Button, Image, Text, } from '@chakra-ui/react'
 import { useSearchParams } from 'react-router-dom'
 import Slideshow from '../try/Try'
 import Mens from "../Images/Mens.jpg"
 import { appContent } from '../Context/ContextApi'
-import { AutomaticSlider } from '../Components/Home/AutomaticSlider'
 import { WomenOffers } from '../Comp2/WomenOffers'
-import { Grid } from '../try/Grid'
 import { WomenSlideShow } from '../Comp2/WomenSlideShow'
+import { ShoesOffer } from '../Comp2/ShoesOffer'
+import { ShoesOfferSlideShow } from '../Comp2/ShoesOfferSlideShow'
+import mensNewArrivial from '../Images/mensNewArrivial.png'
+import { MenShoesOffer } from '../MenCompSlide/MenShoesOffer'
+import { MenShoweslideshow } from '../MenCompSlide/MenShoweslideshow'
+import { MenTrending } from '../SlideShows/MenTrending'
+import { AddItem } from '../Admin/AddItem'
+import { WomenTrending } from '../SlideShows/WomenTrending'
+import { WomenShoesTrending } from '../SlideShows/WomenShoesTrending'
+import {MenShoesTrending} from '../SlideShows/MenShoesTrending'
+import { MenSlideShow } from '../SlideShows/MenSlideShow'
+import { MenFormalSlideShow } from '../SlideShows/MenFormalSlideShow'
 
 
 
 
 export const Home = () => {
 
-  
-  const {handleClick, Params} = useContext(appContent)
 
-  // useEffect(()=>{
-
-  //   const params={
-  //     category: searchParams
-  //   }
-
-  //   setSearchParams(params)
-
-  // }, [searchParams])
-
-
-  // console.log(params);
-  
   return (
     <DIV>
-{/* 
-      <div className='allCategories'>
-
-        <div className='categoriesSection'>
-          <div>
-            <Categories images='https://rukminim2.flixcart.com/image/832/832/xif0q/t-shirt/6/s/v/s-mt416-metronaut-original-imagmj8ndmbetfah.jpeg?q=70'
-              alt='mens'
-            />
-
-            <div className='title'>
-              <Link to={'/product'} onClick={()=>{handleClick("mens")}}><Text>Mens</Text> </Link>
-            </div>
-          </div>
-
-          <div>
-            <Categories images='https://rukminim2.flixcart.com/image/832/832/xif0q/kurta/s/k/4/l-913-jaffry-embroidery-original-imagsc36sh7khhfj.jpeg?q=70'
-              alt='women'
-            />
-
-            <div className='title'>
-              <Link to={'/product'} onClick={()=>{handleClick("womens")}}><Text>Womens</Text> </Link>
-            </div>
-          </div>
-
-          <div>
-            <Categories images='https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/k/w/k/-original-imagg2abzhxjckxu.jpeg?q=70'
-              alt='mobiles'
-            />
-            <div className='title'>
-              <Link to={'/product'} onClick={()=>{handleClick("mobiles")}}><Text>Mobiles</Text> </Link>
-            </div>
-          </div>
-
-          <div>
-            <Categories images='https://rukminim2.flixcart.com/image/612/612/l51d30w0/shoe/z/w/c/10-mrj1914-10-aadi-white-black-red-original-imagft9k9hydnfjp.jpeg?q=70'
-              alt='shoes'
-            />
-            <div className='title'>
-              <Link to={'/product'}  onClick={()=>{handleClick("shoes")}}><Text>Shoes</Text> </Link>
-            </div>
-          </div>
-
-          <div>
-            <Categories images='https://rukminim2.flixcart.com/image/612/612/xif0q/watch/m/a/i/-original-imagrcjkpwzzbttr.jpeg?q=70'
-              alt='watches'
-            />
-            <div className='title'>
-              <Link to={'/product'}  onClick={()=>{handleClick("watches")}}><Text>Watches</Text> </Link>
-            </div>
-          </div>
-        </div>
-
-
-        <div className='searchBar'>
-          serach
-        </div>
-
-
-      </div> */}
 
       {/* Mensection slideshow */}
       <div className='mens'>
-        <div style = {{backgroundColor: "green"}}>
-          <Box boxSize='300px'>
-            <Image src={Mens} alt='Mens' />
+        <div style={{ backgroundColor: "green" }}>
+          <Box >
+            <Image src={mensNewArrivial} alt='Mens' />
           </Box>
         </div>
 
-        <div style = {{ width: "80%"}}>
-          <Slideshow />
+        <div style={{ width: "75%" }}>
+          <MenSlideShow />
+
+          <MenFormalSlideShow />
+        </div>
+
+        
+      </div>
+
+      {/* Men Trending */}
+
+      <div className='menTrending'>
+      
+      <div className='viewAll'>
+        <div>
+        <Text fontSize={'2xl'}>Trending</Text>
+        <Button colorScheme='blue'>View All</Button>
         </div>
       </div>
 
-      <div>
-        <AutomaticSlider />
+      <div style={{width: "95%"}}>
+      <MenTrending />
       </div>
 
-      <div className='womensOffers'>
-        <div style={{width: "50%"}}>
-        <WomenOffers />
-
-        </div>
-
-          <div style={{width: "50%"}}>
-
-        <WomenSlideShow />
-
-        {/* <WomenSlideShow /> */}
-          </div>
       </div>
 
       
+
+      {/* women offers and slidedjow */}
+
+      <div className='womensOffers'>
+        <div style={{ width: "50%" }}>
+          <WomenOffers />
+
+        </div>
+
+        <div style={{ width: "50%" }}>
+
+          <WomenSlideShow />
+
+          {/* <WomenSlideShow /> */}
+        </div>
+      </div>
+
+      {/* Women Trendings */}
+
+      <div className='menTrending'>
+      
+      <div className='viewAll'>
+        <div>
+        <Text fontSize={'2xl'}>Trending</Text>
+        <Button colorScheme='blue'>View All</Button>
+        </div>
+      </div>
+
+      <div style={{width: "95%"}}>
+      <WomenTrending />
+      </div>
+
+      </div>
+
+
+      {/* Women Shoes Offers */}
+
+      <div className='shoesOffers'>
+
+        <div style={{ width: "50%" }}>
+          <ShoesOffer />
+        </div>
+
+
+
+        <div style={{ width: "50%" }}>
+          <ShoesOfferSlideShow />
+        </div>
+
+      </div>
+
+      {/* Women Shoes Trending */}
+
+      <div className='menTrending'>
+      
+      <div className='viewAll'>
+        <div>
+        <Text fontSize={'2xl'}>Trending</Text>
+        <Button colorScheme='blue'>View All</Button>
+        </div>
+      </div>
+
+      <div style={{width: "95%"}}>
+      <WomenShoesTrending />
+      </div>
+
+      </div>
+
+
+      {/* Men Shoes Offer */}
+
+
+
+      <div className='menShoesOffers'>
+
+        <div style={{ width: "50%" }}>
+          <MenShoesOffer />
+        </div>
+
+
+
+        <div style={{ width: "50%" }}>
+          <MenShoweslideshow />
+        </div>
+
+      </div>
+
+      {/* Men Shoes Trending */}
+
+      <div className='menTrending'>
+      
+      <div className='viewAll'>
+        <div>
+        <Text fontSize={'2xl'}>Trending</Text>
+        <Button colorScheme='blue'>View All</Button>
+        </div>
+      </div>
+
+      <div style={{width: "95%"}}>
+      <MenShoesTrending />
+      </div>
+
+      </div>
+
+
+
+
 
     </DIV>
   )
@@ -132,9 +178,32 @@ export const Home = () => {
 
 const DIV = styled.div`
 
+.viewAll{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menTrending{
+  display: flex;
+  margin-top: 40px;
+}
+
+.menShoesOffers{
+
+  display: flex;
+}
+
 .womensOffers{
   border: 2px solid red;
+  margin-top: 40px;
   /* width: 50%; */
+  display: flex;
+  
+}
+
+.shoesOffers{
+
   display: flex;
 }
 

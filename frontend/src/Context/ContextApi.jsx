@@ -10,13 +10,13 @@ export const ContextApi = ({children}) => {
     const [Params, setParams] = useState("");
 
     const handleClick = (cat) => {
-        setParams(cat);
+        // setParams(cat);
       };
 
     
 
   return (
     
-    <appContent.Provider value={{handleClick, Params}}>{children}</appContent.Provider>
+    <appContent.Provider >{children}</appContent.Provider>
   )
 }

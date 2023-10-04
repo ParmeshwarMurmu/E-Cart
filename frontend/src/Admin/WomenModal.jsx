@@ -68,27 +68,27 @@ export const WomenModal = () => {
 
   const womenHandlerSave = (e) => {
 
-      const formData = new FormData();
-      formData.append('title', title);
-      formData.append('brand', brand);
-      formData.append('color', color);
-      formData.append('price', price);
-      formData.append('category', category);
-      formData.append('size', size);
-      formData.append('photos', fileInput.current.files[0]);
-      formData.append('photos', fileInput.current.files[1]);
-      formData.append('photos', fileInput.current.files[2]);
-      formData.append('photos', fileInput.current.files[3]);
-      formData.append('photos', fileInput.current.files[4]);
+      // const formData = new FormData();
+      // formData.append('title', title);
+      // formData.append('brand', brand);
+      // formData.append('color', color);
+      // formData.append('price', price);
+      // formData.append('category', category);
+      // formData.append('size', size);
+      // formData.append('photos', fileInput.current.files[0]);
+      // formData.append('photos', fileInput.current.files[1]);
+      // formData.append('photos', fileInput.current.files[2]);
+      // formData.append('photos', fileInput.current.files[3]);
+      // formData.append('photos', fileInput.current.files[4]);
     
-    addWomenData(formData)
+    addWomenData(womenObj)
     // console.log(womenObj)
     dispatch(womenresetSuccess())
   }
 
   const addWomenData = (data) => {
 
-    axios.post('http://localhost:8080/adminWomen/uploads', data)
+    axios.post('http://localhost:8080/adminWomen/add/women', data)
       .then((res) => {
         console.log(res)
         if (res.data.msg === "Women Item Added Successfully") {
@@ -154,19 +154,19 @@ export const WomenModal = () => {
               />
             </FormControl>
 
-            {/* <FormControl mt={4}>
+            <FormControl mt={4}>
               <FormLabel>Images</FormLabel>
               <Input type='text' placeholder='Images' value={images} onChange={imageHandler} />
-            </FormControl> */}
+            </FormControl>
 
-            <FormControl mt={4} variant={'none'}>
+            {/* <FormControl mt={4} variant={'none'}>
               <FormLabel>Upload Images</FormLabel>
 
               
                 <Input type='file' placeholder='Images' name='photos'  ref={fileInput} multiple />
 
 
-            </FormControl>
+            </FormControl> */}
 
             <FormControl mt={4}>
               <FormLabel>Brand</FormLabel>

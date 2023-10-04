@@ -3,7 +3,6 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { flexbox } from '@chakra-ui/react';
-// import './Slideshow.css'; // Add your own CSS for styling
 import styled from "styled-components"
 
 const Slideshow = () => {

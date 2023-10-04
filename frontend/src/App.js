@@ -23,12 +23,12 @@ import {ChevronDownIcon, ChevronUpIcon } from '@chakra-ui/icons'
 
 function App() {
 
-  const { handleClick, Params } = useContext(appContent)
   const [icon, setIcon] = useState(1)
 
 
   return (
     <DIV theme={theme}>
+    
 
       <div>
         <div className='nav'>
@@ -75,7 +75,7 @@ function App() {
 
         <div className='categoriesSection'>
           <div>
-            <Link to={'/product'}>
+            <Link to={'/product/mens'}>
 
             <Categories images='https://rukminim2.flixcart.com/image/832/832/xif0q/t-shirt/6/s/v/s-mt416-metronaut-original-imagmj8ndmbetfah.jpeg?q=70'
               alt='mens'
@@ -131,7 +131,7 @@ function App() {
               alt='mobiles'
             />
             <div className='title'>
-              <Link to={'/product'} onClick={() => { handleClick("mobiles") }}><Text>Mobiles</Text> </Link>
+              <Link to={'/product'} ><Text>Mobiles</Text> </Link>
             </div>
           </div>
 
@@ -140,7 +140,7 @@ function App() {
               alt='shoes'
             />
             <div className='title'>
-              <Link to={'/product'} onClick={() => { handleClick("shoes") }}><Text>Shoes</Text> </Link>
+              <Link to={'/product'}><Text>Shoes</Text> </Link>
             </div>
           </div>
 
@@ -149,7 +149,7 @@ function App() {
               alt='watches'
             />
             <div className='title'>
-              <Link to={'/product'} onClick={() => { handleClick("watches") }}><Text>Watches</Text> </Link>
+              <Link to={'/product'} ><Text>Watches</Text> </Link>
             </div>
           </div>
         </div>

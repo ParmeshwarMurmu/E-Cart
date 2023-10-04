@@ -7,7 +7,7 @@ export const ProductComp = () => {
     <div style={{display: "flex", flexWrap: "wrap", justifyContent: "space-around"}}>
       {
           data.map(()=>(
-            <div style={{marginBottom: "50px", border: "2px solid red", width: "19%"}}>
+            <div style={{display: "flex", flexWrap: "wrap", marginBottom: "50px", border: "2px solid red", width: "19%"}}>
               <ProductCard />
             </div>
           ))

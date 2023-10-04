@@ -3,9 +3,10 @@ import React, { useState } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import { flexbox } from '@chakra-ui/react';
 import styled from "styled-components"
 
-export const WomenSlideShow = () => {
+export const MenShoesTrending = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
     const [data, setData] = useState("");
 
@@ -87,10 +88,8 @@ export const WomenSlideShow = () => {
 
    
 
-    console.log(data);
-
-    return (
-        <DIV className="slideshow-container">
+  return (
+    <DIV className="slideshow-container">
             <Slider {...settings} className='slider'>
                 {products.map((product) => (
                     <div key={product.id}>
@@ -98,8 +97,8 @@ export const WomenSlideShow = () => {
 
                             {
                                 product.map((el) => (
-                                    <div style={{ marginRight: "20px", height: "250px" }}>
-                                        <img width="200px" src={el.image} alt={el.name} />
+                                    <div className='imgDiv' style={{ marginRight: "20px", height: "250px" }}>
+                                        <img className='sliderImage' src={el.image} alt={el.name} width = '200px' />
                                         <div className="product-info">
                                             {/* <h2>{el.name}</h2>
                   <p>{el.description}</p> */}
@@ -135,8 +134,9 @@ export const WomenSlideShow = () => {
                 ))}
             </div>
         </DIV>
-    );
+  )
 }
+
 
 
 const DIV = styled.div`
@@ -150,6 +150,7 @@ const DIV = styled.div`
 .slider{
   width: 90%; /* Adjust the width as needed */
   margin: 0 auto; /* Center the slider */
+  border: 2px solid red;
  
 }
 
@@ -165,5 +166,53 @@ const DIV = styled.div`
     z-index: -1;
   }
 
+  
+@media screen and (max-width: 768px) {
+      /* Your styles for large devices go here */
+
+      .imgDiv{
+          height: 170px;
+      }
+
+      .sliderImage{
+           width: 170px;
+      }
+
+      .slider{
+
+      }
+   
+      
+    }
+
+    @media screen and (max-width: 420px) {
+      /* Your styles for large devices go here */
+
+      .imgDiv{
+          height: 70px;
+      }
+
+      .sliderImage{
+           width: 150px;
+      }
+
+      .slider{
+        height: 225px;
+      }
+   
+      
+    }
+
+    @media screen and (max-width: 510px) {
+      /* Your styles for large devices go here */
+
+      .slider{
+        height: 245px;
+      }
+   
+      
+    }
+
 
 `
+

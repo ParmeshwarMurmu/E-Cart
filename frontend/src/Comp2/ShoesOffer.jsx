@@ -5,7 +5,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import styled from "styled-components"
 
-export const WomenSlideShow = () => {
+export const ShoesOffer = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
     const [data, setData] = useState("");
 
@@ -28,14 +28,14 @@ export const WomenSlideShow = () => {
             {
                 id: 1,
                 name: "Product 1",
-                image: "https://rukminim2.flixcart.com/image/612/612/xif0q/ethnic-set/y/d/t/xl-tr-bandhani-trahimam-original-imagg6gk5qtjhhjz.jpeg?q=70",
+                image: "https://rukminim2.flixcart.com/image/612/612/xif0q/sandal/4/3/0/3-b-38-miyoko-yellow-original-imagtgawuxvghxta.jpeg?q=70",
                 description: "Description for Product 1"
             },
 
             {
                 id: 1,
                 name: "Product 1",
-                image: "https://rukminim2.flixcart.com/image/612/612/xif0q/salwar-kurta-dupatta/r/m/9/l-red-har-48-hervastra-original-imaggjzgk4sjadrc.jpeg?q=70",
+                image: "https://rukminim2.flixcart.com/image/612/612/xif0q/sandal/8/s/p/6-a28pinkuk6-purplehunt-pink-original-imagtggghyhtkxwd.jpeg?q=70",
                 description: "Description for Product 1"
             },
           
@@ -46,14 +46,14 @@ export const WomenSlideShow = () => {
             {
                 id: 1,
                 name: "Product 1",
-                image: "https://rukminim2.flixcart.com/image/612/612/xif0q/ethnic-set/w/b/w/m-133-wine-kurta-pant-dupatta-set-ziva-fashion-original-imag892weuurbar2-bb.jpeg?q=70",
+                image: "https://rukminim2.flixcart.com/image/612/612/xif0q/sandal/6/1/s/7-a16greenuk7-purplehunt-green-original-imagtghh9gjwgzh2.jpeg?q=70",
                 description: "Description for Product 1"
             },
             
             {
                 id: 1,
                 name: "Product 1",
-                image: "https://rukminim2.flixcart.com/image/612/612/khdqnbk0/ethnic-set/u/f/j/xl-ie26kd9bk1857-indo-era-original-imafxeqkwr3nzxzd.jpeg?q=70",
+                image: "https://rukminim2.flixcart.com/image/612/612/xif0q/sandal/w/r/b/8-tr-h-hb11-triksy-yellow-original-imagt97wazwcfnkf.jpeg?q=70",
                 description: "Description for Product 1"
             },
             
@@ -66,14 +66,14 @@ export const WomenSlideShow = () => {
             {
                 id: 1,
                 name: "Product 1",
-                image: "https://rukminim2.flixcart.com/image/612/612/l2z26q80/ethnic-set/s/n/m/xxl-blue-indigoset-klosia-original-image7c4dckmy2tt.jpeg?q=70",
+                image: "https://rukminim2.flixcart.com/image/612/612/xif0q/sandal/n/7/a/3-women-s-and-girls-fancy-stylish-light-weight-block-heel-kiwaoo-original-imagnvwewutqfkc2.jpeg?q=70",
                 description: "Description for Product 1"
             },
             
             {
                 id: 1,
                 name: "Product 1",
-                image: "https://rukminim2.flixcart.com/image/612/612/xif0q/ethnic-set/k/6/a/s-chaaya-suit-klosia-original-imagkfwhm9gkyush.jpeg?q=70",
+                image: "https://rukminim2.flixcart.com/image/612/612/xif0q/sandal/q/c/c/7-criss-cross-babe-white-heels-gulmohar-fashion-white-original-imagt6urvuzeejhm.jpeg?q=70",
                 description: "Description for Product 1"
             },
           
@@ -139,6 +139,8 @@ export const WomenSlideShow = () => {
 }
 
 
+
+
 const DIV = styled.div`
   
   .main{
@@ -167,3 +169,6 @@ const DIV = styled.div`
 
 
 `
+
+
+

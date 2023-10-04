@@ -7,9 +7,9 @@ import { ProductComp } from '../Comp2/ProductComp'
 
 export const Product = () => {
   
-  const [searchParams, setSearchParams] = useSearchParams()
-  const initialCategory = searchParams.get('category')
-  const {handleClick, Params} = useContext(appContent)
+  // const [searchParams, setSearchParams] = useSearchParams()
+  // const initialCategory = searchParams.get('category')
+  // const {handleClick, Params} = useContext(appContent)
 
 
   // useEffect(()=>{
@@ -20,9 +20,9 @@ export const Product = () => {
   // }, [Params])
 
 
-  useEffect(() => {
-    setSearchParams({ category: Params || initialCategory });
-  }, [Params]);
+  // useEffect(() => {
+  //   setSearchParams({ category: Params || initialCategory });
+  // }, [Params]);
 
 
 

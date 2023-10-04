@@ -1,7 +1,6 @@
 import { Button, Image, Text } from '@chakra-ui/react'
 import React from 'react'
 import styled from "styled-components"
-import WomenImages from "../Images/WomenImages.jpg"
 import { MemModal } from './MemModal'
 import { WomenModal } from './WomenModal'
 import { ShoesModal } from './ShoesModal'
