@@ -1,4 +1,5 @@
 import axios from "axios"
+import { useDispatch } from "react-redux"
 
 export const SINGLE_PAGE_LOADING = 'SINGLE_PAGE_LOADING'
 export const SINGLE_PAGE_ERROR = 'SINGLE_PAGE_ERROR'
@@ -20,9 +21,16 @@ export const singlePageDataSuccessAction = (payload)=>{
     return {type: SINGLE_PAGE_DATA, payload: payload}
 }
 
-export const singlePageData = (id)=>()=>{
+export const singlePageData = (id, category)=>(dispatch)=>{
 
-    axios.get('http://localhost:8080/adminMen/add/men')
+    dispatch(singlePageLoadingAction())
+    axios.get(`http://localhost:8080/singleProduct/${category}/${id}`)
+    .then((res)=>{
+      dispatch(singlePageDataSuccessAction(res.data.msg))
+    })
+    .then((err)=>{
+      dispatch(singlePageErrorAction())
+    })
 
 }
 

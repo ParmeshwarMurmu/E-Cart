@@ -7,6 +7,7 @@ import axios from 'axios';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { trackPantsFailure, trackPantsLoading, trackPantsSuccess } from '../Redux/MenTrackPantsSlideShow/action';
 import { LoaderComp } from '../Comp2/LoaderComp';
+import { Link } from 'react-router-dom';
 
 export const MenFormalSlideShow = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -85,12 +86,14 @@ export const MenFormalSlideShow = () => {
 
                                 {
                                     isLoading ? <LoaderComp />   : product.map((el) => (
+                                        <Link to={`/singleProduct/men/${el._id}`}>
                                         <div  style={{ marginRight: "20px", height: "250px" }}>
                                             <img width="200px" src={el.images[0]} alt={el.title} />
                                             <div className="product-info">
 
                                             </div>
                                         </div>
+                                        </Link>
 
                                     ))
                                 }
