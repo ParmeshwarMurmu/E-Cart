@@ -21,16 +21,15 @@ export const Navbar = () => {
           
         </Wrap>
       </Link>
-      {/* <Link to={"/product"}>Product</Link> */}
+      
     </DIV>
   )
 }
 
 const DIV = styled.div`
-/* margin-top: 50px; */
-/* border: 2px solid red; */
+
 display: flex;
-/* justify-content: center; */
+
 align-items: center;
 justify-content: space-between;
 

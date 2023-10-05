@@ -5,6 +5,7 @@ import { Product } from './Product'
 import { appContent } from '../Context/ContextApi'
 import { SingleProduct } from './SingleProduct'
 import { AdminHome } from '../Admin/AdminHome'
+import { Si2 } from '../try/Si2'
 
 export const AllRoutes = () => {
   // const {handleClick, Params} = useContext(appContent)
@@ -14,6 +15,7 @@ export const AllRoutes = () => {
         <Route path='/' element={<Home/>} />
         <Route path='/product' element={<Product/>} />
         <Route path='/admin' element={<AdminHome/>} />
+        {/* <Route path='/singleProduct/:category/:id' element={<Si2 />} /> */}
         <Route path='/singleProduct/:category/:id' element={<SingleProduct/>} />
     </Routes>
   )
