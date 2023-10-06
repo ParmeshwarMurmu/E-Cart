@@ -6,8 +6,7 @@ const categoryRoute = express.Router()
 categoryRoute.get('/category', async(req, res)=>{
 
     const {category} = req.query;
-    // const category = 'jeans'
-    console.log("category", category)
+  
     try {
 
         const categoryData = await MenModel.find({category: category})

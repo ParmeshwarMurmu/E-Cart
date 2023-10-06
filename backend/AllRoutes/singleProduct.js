@@ -7,6 +7,7 @@ const singleProduct = expres.Router();
 singleProduct.get('/men/:id', async(req, res)=>{
 
     const {id} = req.params;
+    console.log("***");
 
     try {
         const menData = await MenModel.findOne({_id: id})

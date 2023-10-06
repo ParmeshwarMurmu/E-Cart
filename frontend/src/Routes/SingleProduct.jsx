@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import styled from 'styled-components'
@@ -10,6 +10,8 @@ import { FaRupeeSign } from 'react-icons/fa';
 import { MdLocalOffer } from 'react-icons/md';
 import { BiSolidOffer } from 'react-icons/bi';
 import { MdLocalShipping } from 'react-icons/md';
+import axios from 'axios'
+import { useEffect, useState } from 'react'
 
 export const SingleProduct = () => {
 
@@ -25,18 +27,19 @@ export const SingleProduct = () => {
       isLoading: store.singleProductPage.isLoading,
       isError: store.singleProductPage.isError,
       data: store.singleProductPage.data,
-      isData: store.singleProductPage.isData
+    
 
     }
   }, shallowEqual)
 
   console.log(data);
-  console.log(isData, "isData");
 
+  console.log(id, category);
+  console.log("+++++")
+  
 
-
-  useEffect(() => {
-    dispatch(singlePageData(id, category))
+  useEffect(()=>{
+    console.log("&&&&&&&&&&&");
   }, [])
 
 
