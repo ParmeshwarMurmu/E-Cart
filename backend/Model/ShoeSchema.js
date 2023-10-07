@@ -6,6 +6,7 @@ const shoeSchema = mongoose.Schema({
     brand: String,
     color: String,
     price: Number,
+    gender: String,
     category: String,
     size: [Number]
 })

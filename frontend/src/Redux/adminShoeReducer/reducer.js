@@ -1,9 +1,10 @@
-import { shoeImages, shoeTitle } from "./action"
+import { resetShoe, shoeBrand, shoeCategory, shoeColor, shoeGender, shoeImages, shoePrice, shoeSize, shoeTitle } from "./action"
 
 const initialState = {
     title: "",
     images: [],
     brand: "",
+    gender: "",
     color: "",
     price: "",
     category: "",
@@ -26,37 +27,43 @@ export const reducer = (state = initialState, { type, payload }) => {
                 images: payload
             }
 
-        case menBrand:
+        case shoeBrand:
             return {
                 ...state,
                 brand: payload
             }
 
-        case menColor:
+        case shoeColor:
             return {
                 ...state,
                 color: payload
             }
 
-        case menPrice:
+            case shoeGender:
+                return {
+                    ...state,
+                    gender: payload
+                }
+
+        case shoePrice:
             return {
                 ...state,
                 price: payload
             }
 
-        case menCategory:
+        case shoeCategory:
             return {
                 ...state,
                 category: payload
             }
 
-        case menSize:
+        case shoeSize:
             return {
                 ...state,
                 size: payload
             }
 
-        case resetMen:
+        case resetShoe:
             return {
                 ...initialState
             }

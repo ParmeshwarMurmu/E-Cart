@@ -1,4 +1,6 @@
 
+import axios from "axios"
+
 
 
 export const shoeTitle = 'Title'
@@ -8,6 +10,7 @@ export const shoeColor = 'Color'
 export const shoePrice = 'Price'
 export const shoeCategory = 'Category'
 export const shoeSize = 'Size'
+export const shoeGender = 'Gender'
 export const resetShoe = 'ResetShoe'
 
 
@@ -36,6 +39,12 @@ export const shoeCategorySuccessAction = (payload) => {
     return { type: shoeCategory, payload: payload }
 }
 
+
+export const shoeGenderSuccessAction = (payload) => {
+    return { type: shoeGender, payload: payload }
+}
+
+
 export const shoeSizeSuccessAction = (payload) => {
     return { type: shoeSize, payload: payload }
 }
@@ -44,7 +53,6 @@ export const shoeSizeSuccessAction = (payload) => {
 export const shoeResetSuccessAction = () => {
     return { type: resetShoe }
 }
-
 
 
 

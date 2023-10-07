@@ -53,7 +53,7 @@ export const WomenModal = () => {
     size
   }
 
-  console.log("WomenObj", womenObj)
+ 
 
   const imageHandler = (e) => {
     const image = e.target.value.split(",")
