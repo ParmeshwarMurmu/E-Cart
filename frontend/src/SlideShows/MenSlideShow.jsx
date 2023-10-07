@@ -43,7 +43,7 @@ export const MenSlideShow = () => {
         dispatch(trackPantsLoading())
         axios.get('http://localhost:8080/home/category?category=track pants')
             .then((res) => {
-                console.log(res);
+            
                 setTShirts(res.data.category)
                 dispatch(trackPantsSuccess(res.data.category))
                 setProd([

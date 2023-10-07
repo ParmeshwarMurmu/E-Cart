@@ -12,14 +12,13 @@ import { singlePageData } from '../Redux/SingleProductPage/action';
 import { SingleProductAddToCart } from '../Comp2/SingleProductAddToCart';
 import { RadioGroup } from '@headlessui/react'
 import { SingleProductWhilist } from '../Comp2/SingleProductWhilist';
-function classNames(...classes) {
-    return classes.filter(Boolean).join(' ')
-}
+
 
 export const SingleProductPage = () => {
 
     const [index, setIndex] = useState(0)
     const [sizeIndex, setSizeIndex] = useState(-1)
+
 
     const { category, id } = useParams()
     const dispatch = useDispatch()
@@ -30,21 +29,20 @@ export const SingleProductPage = () => {
             isLoading: store.singleProductPage.isLoading,
             isError: store.singleProductPage.isError,
             data: store.singleProductPage.data,
+            isData: store.singleProductPage.isData,
 
 
         }
     }, shallowEqual)
 
 
-    console.log(data);
-
-    console.log(id, category);
-    console.log("+++++")
 
     useEffect(() => {
-        console.log("SINGLEPRODUCT PAGE");
         dispatch(singlePageData(id, category))
     }, [])
+
+    console.log("isData", isData);
+    console.log(data);
 
 
     return (
@@ -52,13 +50,13 @@ export const SingleProductPage = () => {
 
             <div className='loader'>
                 {
-                    isLoading ? <SingleProductLoader /> : <div className='singleData'>
+                    isLoading ? <SingleProductLoader />  : isData ? ( <div className='singleData'>
                         <div style={{ display: "flex", justifyContent: "space-between" }}>
 
                             <div>
                                 <div>
                                     {/* <Box boxSize='sm'> */}
-                                    <Image boxSize={'lg'} objectFit='cover' src={data.images[index]} alt={data.title} />
+                                    <Image h={'500px'} src={data.images[index]} alt={data.title} />
                                     {/* </Box> */}
                                 </div>
 
@@ -126,14 +124,16 @@ export const SingleProductPage = () => {
 
                                 {/* Sizes */}
 
-                                <div>
+                                {
+                                    data.size.length>0 && <div>
                                     <Text fontSize='sm' style={{}}>Select Size</Text>
                                 </div>
+                                }
 
                                 <div style={{ display: 'flex' }}>
 
                                     {
-                                        data.size.map((el, sizeInd) => (
+                                       data.size.length>0 && data.size.map((el, sizeInd) => (
                                             <div key={sizeInd} style={{
                                                 margin: "10px", display: 'flex', padding: "5px",
                                                 border: sizeInd === sizeIndex ? '2px solid blue' : '1px solid grey',
@@ -214,8 +214,14 @@ export const SingleProductPage = () => {
 
                         </div>
                     </div>
+                    )
+                    : null
+                                
+
+                                
                 }
 
+                
             </div>
 
         </DIV>
