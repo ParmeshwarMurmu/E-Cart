@@ -8,6 +8,7 @@ import { reducer as womenTrendingReducer } from '../womenTrendingReducer/reducer
 import { reducer as womenKurtasKurtisReducer } from '../womenKurtasKurtisReducer/reducer';
 import { reducer as adminShoeReducer } from '../adminShoeReducer/reducer';
 import { reducer as womenFlatShoeReducer } from '../womenFlatShoeReducer/reducer';
+import { reducer as shoesHeelsTrendingReducer } from '../shoeHeelsTrendingReducer/reducer'
 
 import thunk from"redux-thunk"
 
@@ -20,7 +21,8 @@ const rootReducer = combineReducers({
     womenTrendingReducer,
     womenKurtasKurtisReducer,
     adminShoeReducer,
-    womenFlatShoeReducer
+    womenFlatShoeReducer,
+    shoesHeelsTrendingReducer
 
    
 

@@ -5,6 +5,9 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { flexbox } from '@chakra-ui/react';
 import styled from "styled-components"
+import { shallowEqual, useDispatch, useSelector } from 'react-redux';
+import { womenHeelsTrendingData } from '../Redux/shoeHeelsTrendingReducer/action';
+import { Link } from 'react-router-dom';
 
 export const WomenShoesTrending = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -20,90 +23,63 @@ export const WomenShoesTrending = () => {
         variableWidth: true,
     };
 
-    
-        
-         
-    const products = [
+    const dispatch = useDispatch();
+    let womenHeels;
 
-        [
-            {
-                id: 1,
-                name: "Product 1",
-                image: "https://rukminim2.flixcart.com/image/612/612/xif0q/ethnic-set/y/d/t/xl-tr-bandhani-trahimam-original-imagg6gk5qtjhhjz.jpeg?q=70",
-                description: "Description for Product 1"
-            },
+    const {heels, isLoading, isData, isError } = useSelector((store)=>{
 
-            {
-                id: 1,
-                name: "Product 1",
-                image: "https://rukminim2.flixcart.com/image/612/612/xif0q/salwar-kurta-dupatta/r/m/9/l-red-har-48-hervastra-original-imaggjzgk4sjadrc.jpeg?q=70",
-                description: "Description for Product 1"
-            },
-          
-        ],
+        return {
+           heels: store.shoesHeelsTrendingReducer.heels,
+           isLoading: store.shoesHeelsTrendingReducer.isLoading,
+           isData: store.shoesHeelsTrendingReducer.isData,
+           isError: store.shoesHeelsTrendingReducer.isError,
+        }
+    }, shallowEqual)
 
-        [
-            
-            {
-                id: 1,
-                name: "Product 1",
-                image: "https://rukminim2.flixcart.com/image/612/612/xif0q/ethnic-set/w/b/w/m-133-wine-kurta-pant-dupatta-set-ziva-fashion-original-imag892weuurbar2-bb.jpeg?q=70",
-                description: "Description for Product 1"
-            },
-            
-            {
-                id: 1,
-                name: "Product 1",
-                image: "https://rukminim2.flixcart.com/image/612/612/khdqnbk0/ethnic-set/u/f/j/xl-ie26kd9bk1857-indo-era-original-imafxeqkwr3nzxzd.jpeg?q=70",
-                description: "Description for Product 1"
-            },
-            
-
-            
-        ],
-
-        [
-            
-            {
-                id: 1,
-                name: "Product 1",
-                image: "https://rukminim2.flixcart.com/image/612/612/l2z26q80/ethnic-set/s/n/m/xxl-blue-indigoset-klosia-original-image7c4dckmy2tt.jpeg?q=70",
-                description: "Description for Product 1"
-            },
-            
-            {
-                id: 1,
-                name: "Product 1",
-                image: "https://rukminim2.flixcart.com/image/612/612/xif0q/ethnic-set/k/6/a/s-chaaya-suit-klosia-original-imagkfwhm9gkyush.jpeg?q=70",
-                description: "Description for Product 1"
-            },
-          
-
+    if(isData){
+        womenHeels = [
+            [
+                heels[14],
+                heels[13]
+            ],
+            [
+                heels[12],
+                heels[11]
+            ],
+            [
+                heels[10],
+                heels[9]
+            ],
+            [
+                heels[8],
+                heels[7]
+            ]
         ]
-       
+    }
 
 
-        // Add more products here
-    ];
+    useState(()=>{
+        dispatch(womenHeelsTrendingData())
+
+    },[])
 
    
 
   return (
     <DIV className="slideshow-container">
             <Slider {...settings} className='slider'>
-                {products.map((product) => (
+                {isData && womenHeels.map((product) => (
                     <div key={product.id}>
                         <div className='main'>
 
                             {
                                 product.map((el) => (
+                                    <Link to={`/singleProduct/shoes/${el._id}`}>
                                     <div className='imgDiv' style={{ marginRight: "20px", height: "250px" }}>
-                                        <img className='sliderImage' src={el.image} alt={el.name} width = '200px' />
-                                        <div className="product-info">
-                                            {/* <h2>{el.name}</h2>
-                  <p>{el.description}</p> */}
-                                        </div>
+                                        <img className='sliderImage' src={el.images[0]} alt={el.name} width = '200px' />
+                                        
                                     </div>
+                                    </Link>
 
                                 ))
                             }
@@ -118,7 +94,7 @@ export const WomenShoesTrending = () => {
                 ))}
             </Slider>
             <div className="dot-indicators custom-dots">
-                {products.map((_, index) => (
+                {isData && womenHeels.map((_, index) => (
                     <div >
                         <span
                             key={index}
@@ -150,7 +126,7 @@ const DIV = styled.div`
 .slider{
   width: 90%; /* Adjust the width as needed */
   margin: 0 auto; /* Center the slider */
-  border: 2px solid red;
+
  
 }
 

@@ -27,7 +27,6 @@ export const womenSareeData = ()=>(dispatch)=>{
     dispatch(womenSareeLoadingAction())
     axios.get(`http://localhost:8080/women/saree`)
     .then((res)=>{
-        console.log(res.data);
       dispatch(womenSareeSuccessAction(res.data.data))
     })
     .catch((err)=>{

@@ -57,7 +57,6 @@ export const ShoesOffer = () => {
         ]
     }
 
-    console.log("flatShoes", flatShoes);
 
 
     useEffect(()=>{

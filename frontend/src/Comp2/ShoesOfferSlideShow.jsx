@@ -43,19 +43,16 @@ gap: 0px;
 
 
 .womenLatest{
-   border: 2px solid green;
    width: 90%;
    grid-area: 1/1/3/2;
    
 }
 
 .mens{
-border: 2px solid red;
 width: 90%;
 }
 
 .sarees{
-border: 2px solid black ;
 width: 90%;
 }
 

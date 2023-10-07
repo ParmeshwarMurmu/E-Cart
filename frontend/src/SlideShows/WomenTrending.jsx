@@ -149,7 +149,7 @@ export const WomenTrending = () => {
 
 
 
-                            {/* Add more products here */}
+                        
 
 
                         </div>

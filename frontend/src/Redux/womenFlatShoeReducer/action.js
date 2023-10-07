@@ -27,8 +27,7 @@ export const womenFlatShoesData = ()=>(dispatch)=>{
     dispatch(womenFlatShoesLoadingAction())
     axios.get(`http://localhost:8080/shoes/female/flatShoes`)
     .then((res)=>{
-        console.log("***");
-        console.log(res.data);
+    
         dispatch(womenFlatShoesSuccessAction(res.data.flatShoes))
       
     })
