@@ -15,6 +15,8 @@ import {
     Select,
     SelectField,
 } from '@chakra-ui/react'
+import { useDispatch } from 'react-redux'
+import { shoeTitleSuccessAction } from '../Redux/adminShoeReducer/action'
 
 export const ShoesModal = () => {
     const { isOpen, onOpen, onClose } = useDisclosure()
@@ -22,8 +24,9 @@ export const ShoesModal = () => {
     const initialRef = React.useRef(null)
     const finalRef = React.useRef(null)
 
-    const [state, setState] = useState("")
-    const [image, setImage] = useState([])
+    const dispatch = useDispatch()
+
+
     return (
         <div>
             <Button onClick={onOpen} variant={'none'} p={0} m={0}>Add Items</Button>
@@ -42,16 +45,17 @@ export const ShoesModal = () => {
                     <ModalBody pb={6}>
                         <FormControl>
                             <FormLabel>Title</FormLabel>
-                            <Input ref={initialRef} placeholder='Title' />
+                            <Input ref={initialRef} placeholder='Title'
+                             onChange={(e) => {
+                                dispatch(shoeTitleSuccessAction(e.target.value))
+                              }}
+                             />
                         </FormControl>
 
                         <FormControl mt={4}>
                             <FormLabel>Images</FormLabel>
                             <Input type='text' placeholder='Images' onChange={(e) => {
-                                let data = e.target.value;
-                                console.log("data", data);
-                                let pic = data.split(",")
-                                // console.log(pic)
+                               
                             }} />
 
                         </FormControl>

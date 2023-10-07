@@ -19,6 +19,7 @@ import { WomenShoesTrending } from '../SlideShows/WomenShoesTrending'
 import {MenShoesTrending} from '../SlideShows/MenShoesTrending'
 import { MenSlideShow } from '../SlideShows/MenSlideShow'
 import { MenFormalSlideShow } from '../SlideShows/MenFormalSlideShow'
+import { WomenKuttasKutis } from '../SlideShows/WomenKuttasKutis'
 
 
 
@@ -76,8 +77,8 @@ export const Home = () => {
         <div style={{ width: "50%" }}>
 
           <WomenSlideShow />
-
-          {/* <WomenSlideShow /> */}
+       
+          <WomenKuttasKutis />
         </div>
       </div>
 
@@ -195,7 +196,7 @@ const DIV = styled.div`
 }
 
 .womensOffers{
-  border: 2px solid red;
+ 
   margin-top: 40px;
   /* width: 50%; */
   display: flex;

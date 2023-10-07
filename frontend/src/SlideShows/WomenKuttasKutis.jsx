@@ -5,21 +5,22 @@ import 'slick-carousel/slick/slick-theme.css';
 import { flexbox } from '@chakra-ui/react';
 import styled from "styled-components"
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
-import { womenTrendingBackend } from '../Redux/womenTrendingReducer/action';
 import { Link } from 'react-router-dom';
+import { womenKurtasKurtisBackend } from '../Redux/womenKurtasKurtisReducer/action';
 
-export const WomenTrending = () => {
+export const WomenKuttasKutis = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
     const [data, setData] = useState("");
-    let womenTrending;
+    let kurtasKurtis;
     const dispatch = useDispatch()
-    const {womenTrendingData, isLoading, isError, isData} = useSelector((store)=>{
+    const {womenKurtasKurtisData, isLoading, isError, isData} = useSelector((store)=>{
     
         return {
-            womenTrendingData: store.womenTrendingReducer.womenTrendingData,
-            isLoading: store.womenTrendingReducer.isLoading,
-            isError: store.womenTrendingReducer.isError,
-            isData: store.womenTrendingReducer.isData
+            womenKurtasKurtisData: store.womenKurtasKurtisReducer.womenKurtasKurtisData,
+            isLoading: store.womenKurtasKurtisReducer.isLoading,
+            isData: store.womenKurtasKurtisReducer.isData,
+            isError: store.womenKurtasKurtisReducer.isError
+          
         }
     }, shallowEqual)
 
@@ -35,105 +36,44 @@ export const WomenTrending = () => {
 
     
         
-         
-    const products = [
-
-        [
-            {
-                id: 1,
-                name: "Product 1",
-                image: "https://rukminim2.flixcart.com/image/612/612/xif0q/ethnic-set/y/d/t/xl-tr-bandhani-trahimam-original-imagg6gk5qtjhhjz.jpeg?q=70",
-                description: "Description for Product 1"
-            },
-
-            {
-                id: 1,
-                name: "Product 1",
-                image: "https://rukminim2.flixcart.com/image/612/612/xif0q/salwar-kurta-dupatta/r/m/9/l-red-har-48-hervastra-original-imaggjzgk4sjadrc.jpeg?q=70",
-                description: "Description for Product 1"
-            },
-          
-        ],
-
-        [
-            
-            {
-                id: 1,
-                name: "Product 1",
-                image: "https://rukminim2.flixcart.com/image/612/612/xif0q/ethnic-set/w/b/w/m-133-wine-kurta-pant-dupatta-set-ziva-fashion-original-imag892weuurbar2-bb.jpeg?q=70",
-                description: "Description for Product 1"
-            },
-            
-            {
-                id: 1,
-                name: "Product 1",
-                image: "https://rukminim2.flixcart.com/image/612/612/khdqnbk0/ethnic-set/u/f/j/xl-ie26kd9bk1857-indo-era-original-imafxeqkwr3nzxzd.jpeg?q=70",
-                description: "Description for Product 1"
-            },
-            
-
-            
-        ],
-
-        [
-            
-            {
-                id: 1,
-                name: "Product 1",
-                image: "https://rukminim2.flixcart.com/image/612/612/l2z26q80/ethnic-set/s/n/m/xxl-blue-indigoset-klosia-original-image7c4dckmy2tt.jpeg?q=70",
-                description: "Description for Product 1"
-            },
-            
-            {
-                id: 1,
-                name: "Product 1",
-                image: "https://rukminim2.flixcart.com/image/612/612/xif0q/ethnic-set/k/6/a/s-chaaya-suit-klosia-original-imagkfwhm9gkyush.jpeg?q=70",
-                description: "Description for Product 1"
-            },
-          
-
-        ]
-       
-
-
-        // Add more products here
-    ];
-
+    
     if(isData){
-        womenTrending = [
+        kurtasKurtis = [
             [
-                womenTrendingData[0],
-                womenTrendingData[1]
+                womenKurtasKurtisData[0],
+                womenKurtasKurtisData[1]
             ],
             [
-                womenTrendingData[2],
-                womenTrendingData[3]
+                womenKurtasKurtisData[2],
+                womenKurtasKurtisData[3]
             ],
             [
-                womenTrendingData[4],
-                womenTrendingData[5]
+                womenKurtasKurtisData[4],
+                womenKurtasKurtisData[5]
             ],
             [
-                womenTrendingData[6],
-                womenTrendingData[7]
+                womenKurtasKurtisData[6],
+                womenKurtasKurtisData[7]
             ]
         ]
     }
 
+    console.log(womenKurtasKurtisData);
+
 
     useEffect(()=>{
-        dispatch(womenTrendingBackend())
+        dispatch(womenKurtasKurtisBackend())
+        
     }, [])
    
-    console.log(womenTrendingData);
-    console.log(womenTrending);
+    
 
    
 
   return (
     <DIV className="slideshow-container">
             <Slider {...settings} className='slider'>
-                { isData && womenTrending.map((product) => (
+                { isData && kurtasKurtis.map((product) => (
                     <div key={product.id}>
                         <div className='main'>
 
@@ -159,7 +99,7 @@ export const WomenTrending = () => {
                 ))}
             </Slider>
             <div className="dot-indicators custom-dots">
-                {products.map((_, index) => (
+                {isData && kurtasKurtis.map((_, index) => (
                     <div >
                         <span
                             key={index}
@@ -180,8 +120,10 @@ export const WomenTrending = () => {
 
 
 
+
 const DIV = styled.div`
-  
+  margin-top: 30px;
+
   .main{
     display: flex;
     justify-content: space-between;
@@ -191,7 +133,6 @@ const DIV = styled.div`
 .slider{
   width: 90%; /* Adjust the width as needed */
   margin: 0 auto; /* Center the slider */
-
  
 }
 
@@ -256,4 +197,5 @@ const DIV = styled.div`
 
 
 `
+
 

@@ -1,8 +1,8 @@
-import { WOMEN_TRENDING_ERROR, WOMEN_TRENDING_LOADING, WOMEN_TRENDING_SUCCESS } from "./action"
+import { WOMEN_KURTAS_KURTIS_ERROR, WOMEN_KURTAS_KURTIS_SUCCESS, WOMEN_KURTAS_KURTIS_LOADING } from "./action"
 
 const initialState = {
     isLoading: false,
-    womenTrendingData: [],
+    womenKurtasKurtisData: [],
     isData: false,
     isError: false
 }
@@ -11,21 +11,21 @@ export const reducer = (state = initialState, {type, payload})=>{
 
     switch(type){
 
-        case WOMEN_TRENDING_LOADING:
+        case WOMEN_KURTAS_KURTIS_LOADING:
             return {
                 ...state,
                 isLoading: true,
             }
 
-            case WOMEN_TRENDING_SUCCESS:
+            case WOMEN_KURTAS_KURTIS_SUCCESS:
                 return {
                     ...state,
                     isLoading: false,
-                    womenTrendingData: payload,
+                    womenKurtasKurtisData: payload,
                     isData: true
                 }
 
-                case WOMEN_TRENDING_ERROR:
+                case WOMEN_KURTAS_KURTIS_ERROR:
                     return {
                         ...state,
                         isLoading: false,

@@ -85,10 +85,7 @@ export const WomenSlideShow = () => {
         // Add more products here
     ];
 
-    //  const saree = [
-
-
-    // ]
+    
 
     if (isData) {
         saree = [

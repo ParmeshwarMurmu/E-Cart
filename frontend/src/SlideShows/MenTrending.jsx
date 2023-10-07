@@ -43,7 +43,7 @@ export const MenTrending = () => {
     useEffect(() => {
         
         dispatch(trackPantsLoading())
-        axios.get('http://localhost:8080/home/category?category=casual shirts')
+        axios.get('http://localhost:8080/home/men/category?category=casual shirts')
             .then((res) => {
                 setTShirts(res.data.category)
                 dispatch(trackPantsSuccess(res.data.category))

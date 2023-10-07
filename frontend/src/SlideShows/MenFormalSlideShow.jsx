@@ -41,7 +41,7 @@ export const MenFormalSlideShow = () => {
     useEffect(() => {
         
         dispatch(trackPantsLoading())
-        axios.get('http://localhost:8080/home/category?category=formal shirts')
+        axios.get('http://localhost:8080/home/men/category?category=formal shirts')
             .then((res) => {
                 
                 setTShirts(res.data.category)

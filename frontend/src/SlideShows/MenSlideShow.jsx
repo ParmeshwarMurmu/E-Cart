@@ -41,7 +41,7 @@ export const MenSlideShow = () => {
     useEffect(() => {
         
         dispatch(trackPantsLoading())
-        axios.get('http://localhost:8080/home/category?category=track pants')
+        axios.get('http://localhost:8080/home/men/category?category=track pants')
             .then((res) => {
             
                 setTShirts(res.data.category)

@@ -1,35 +1,36 @@
 import axios from "axios"
 import { useDispatch } from "react-redux"
 
-export const SINGLE_PAGE_LOADING = 'SINGLE_PAGE_LOADING'
-export const SINGLE_PAGE_ERROR = 'SINGLE_PAGE_ERROR'
-export const SINGLE_PAGE_DATA = 'SINGLE_PAGE_DATA'
+export const WOMEN_TRENDING_LOADING = 'WOMEN_TRENDING_LOADING'
+export const WOMEN_TRENDING_SUCCESS = 'WOMEN_TRENDING_SUCCESS'
+export const WOMEN_TRENDING_ERROR = 'WOMEN_TRENDING_ERROR'
 
-export const singlePageLoadingAction = ()=>{
 
-    return {type: SINGLE_PAGE_LOADING}
+export const womenTrendingLoadingAction = ()=>{
+
+    return {type: WOMEN_TRENDING_LOADING}
 }
 
-export const singlePageErrorAction = ()=>{
+export const womenTrendingErrorAction = ()=>{
 
-    return {type: SINGLE_PAGE_ERROR}
+    return {type: WOMEN_TRENDING_ERROR}
 }
 
 
-export const singlePageDataSuccessAction = (payload)=>{
+export const womenTrendingSuccessAction = (payload)=>{
 
-    return {type: SINGLE_PAGE_DATA, payload: payload}
+    return {type: WOMEN_TRENDING_SUCCESS, payload: payload}
 }
 
-export const singlePageData = (id, category)=>(dispatch)=>{
+export const womenTrendingBackend = ()=>(dispatch)=>{
 
-    dispatch(singlePageLoadingAction())
-    axios.get(`http://localhost:8080/singleProduct/${category}/${id}`)
+    dispatch(womenTrendingLoadingAction())
+    axios.get(`http://localhost:8080/home/women/category?category=lehenga cholis`)
     .then((res)=>{
-      dispatch(singlePageDataSuccessAction(res.data.msg))
+      dispatch(womenTrendingSuccessAction(res.data.data))
     })
     .then((err)=>{
-      dispatch(singlePageErrorAction())
+      dispatch(womenTrendingErrorAction())
     })
 
 }
