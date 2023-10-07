@@ -6,6 +6,7 @@ import WomenShoes2 from '../Images/WomenShoes2.jpg'
 import womenSale from '../Images/womenSale.png'
 
 export const ShoesOfferSlideShow = () => {
+  
   return (
     <DIV>
       <div className='womenLatest'>

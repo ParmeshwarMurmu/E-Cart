@@ -37,12 +37,13 @@ export const SingleProductPage = () => {
 
 
 
+
+
     useEffect(() => {
         dispatch(singlePageData(id, category))
     }, [])
 
-    console.log("isData", isData);
-    console.log(data);
+   
 
 
     return (

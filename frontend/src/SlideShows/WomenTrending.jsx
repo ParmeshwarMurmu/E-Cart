@@ -125,9 +125,7 @@ export const WomenTrending = () => {
         dispatch(womenTrendingBackend())
     }, [])
    
-    console.log(womenTrendingData);
-    console.log(womenTrending);
-
+    
    
 
   return (

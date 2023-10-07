@@ -206,6 +206,7 @@ const DIV = styled.div`
 .shoesOffers{
 
   display: flex;
+  margin-top: 40px;
 }
 
 .mens {

@@ -1,13 +1,20 @@
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import styled from "styled-components"
+import { shallowEqual, useDispatch, useSelector } from 'react-redux';
+import { store } from '../Redux/Store/store';
+import { womenFlatShoesData } from '../Redux/womenFlatShoeReducer/action';
+import { Link } from 'react-router-dom';
 
 export const ShoesOffer = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
     const [data, setData] = useState("");
+
+    const dispatch = useDispatch();
+    let womenFlatShoes;
 
     const settings = {
         dots: true,
@@ -19,99 +26,140 @@ export const ShoesOffer = () => {
         variableWidth: true,
     };
 
+    const {flatShoes, isLoading, isData, isError} = useSelector((store)=>{
+
+        return {
+            flatShoes: store.womenFlatShoeReducer.flatShoes,
+            isLoading: store.womenFlatShoeReducer.isLoading,
+            isData: store.womenFlatShoeReducer.isData,
+            isError: store.womenFlatShoeReducer.isError
+        }
+    }, shallowEqual)
+
+    if(isData){
+        womenFlatShoes = [
+            [
+                flatShoes[0],
+                flatShoes[1]
+            ],
+            [
+                flatShoes[2],
+                flatShoes[3]
+            ],
+            [
+                flatShoes[4],
+                flatShoes[5]
+            ],
+            [
+                flatShoes[6],
+                flatShoes[7]
+            ]
+        ]
+    }
+
+    console.log("flatShoes", flatShoes);
+
+
+    useEffect(()=>{
+        dispatch(womenFlatShoesData())
+    },[])
+
+
+
     
         
          
-    const products = [
+    // const products = [
 
-        [
-            {
-                id: 1,
-                name: "Product 1",
-                image: "https://rukminim2.flixcart.com/image/612/612/xif0q/sandal/4/3/0/3-b-38-miyoko-yellow-original-imagtgawuxvghxta.jpeg?q=70",
-                description: "Description for Product 1"
-            },
+    //     [
+    //         {
+    //             id: 1,
+    //             name: "Product 1",
+    //             image: "https://rukminim2.flixcart.com/image/612/612/xif0q/sandal/4/3/0/3-b-38-miyoko-yellow-original-imagtgawuxvghxta.jpeg?q=70",
+    //             description: "Description for Product 1"
+    //         },
 
-            {
-                id: 1,
-                name: "Product 1",
-                image: "https://rukminim2.flixcart.com/image/612/612/xif0q/sandal/8/s/p/6-a28pinkuk6-purplehunt-pink-original-imagtggghyhtkxwd.jpeg?q=70",
-                description: "Description for Product 1"
-            },
+    //         {
+    //             id: 1,
+    //             name: "Product 1",
+    //             image: "https://rukminim2.flixcart.com/image/612/612/xif0q/sandal/8/s/p/6-a28pinkuk6-purplehunt-pink-original-imagtggghyhtkxwd.jpeg?q=70",
+    //             description: "Description for Product 1"
+    //         },
           
-        ],
+    //     ],
 
-        [
+    //     [
             
-            {
-                id: 1,
-                name: "Product 1",
-                image: "https://rukminim2.flixcart.com/image/612/612/xif0q/sandal/6/1/s/7-a16greenuk7-purplehunt-green-original-imagtghh9gjwgzh2.jpeg?q=70",
-                description: "Description for Product 1"
-            },
+    //         {
+    //             id: 1,
+    //             name: "Product 1",
+    //             image: "https://rukminim2.flixcart.com/image/612/612/xif0q/sandal/6/1/s/7-a16greenuk7-purplehunt-green-original-imagtghh9gjwgzh2.jpeg?q=70",
+    //             description: "Description for Product 1"
+    //         },
             
-            {
-                id: 1,
-                name: "Product 1",
-                image: "https://rukminim2.flixcart.com/image/612/612/xif0q/sandal/w/r/b/8-tr-h-hb11-triksy-yellow-original-imagt97wazwcfnkf.jpeg?q=70",
-                description: "Description for Product 1"
-            },
+    //         {
+    //             id: 1,
+    //             name: "Product 1",
+    //             image: "https://rukminim2.flixcart.com/image/612/612/xif0q/sandal/w/r/b/8-tr-h-hb11-triksy-yellow-original-imagt97wazwcfnkf.jpeg?q=70",
+    //             description: "Description for Product 1"
+    //         },
             
 
             
-        ],
+    //     ],
 
-        [
+    //     [
             
-            {
-                id: 1,
-                name: "Product 1",
-                image: "https://rukminim2.flixcart.com/image/612/612/xif0q/sandal/n/7/a/3-women-s-and-girls-fancy-stylish-light-weight-block-heel-kiwaoo-original-imagnvwewutqfkc2.jpeg?q=70",
-                description: "Description for Product 1"
-            },
+    //         {
+    //             id: 1,
+    //             name: "Product 1",
+    //             image: "https://rukminim2.flixcart.com/image/612/612/xif0q/sandal/n/7/a/3-women-s-and-girls-fancy-stylish-light-weight-block-heel-kiwaoo-original-imagnvwewutqfkc2.jpeg?q=70",
+    //             description: "Description for Product 1"
+    //         },
             
-            {
-                id: 1,
-                name: "Product 1",
-                image: "https://rukminim2.flixcart.com/image/612/612/xif0q/sandal/q/c/c/7-criss-cross-babe-white-heels-gulmohar-fashion-white-original-imagt6urvuzeejhm.jpeg?q=70",
-                description: "Description for Product 1"
-            },
+    //         {
+    //             id: 1,
+    //             name: "Product 1",
+    //             image: "https://rukminim2.flixcart.com/image/612/612/xif0q/sandal/q/c/c/7-criss-cross-babe-white-heels-gulmohar-fashion-white-original-imagt6urvuzeejhm.jpeg?q=70",
+    //             description: "Description for Product 1"
+    //         },
           
 
-        ]
+    //     ]
        
 
 
-        // Add more products here
-    ];
+    //     // Add more products here
+    // ];
+
+
 
    
 
-    console.log(data);
+    
 
     return (
         <DIV className="slideshow-container">
             <Slider {...settings} className='slider'>
-                {products.map((product) => (
+                {isData && womenFlatShoes.map((product) => (
                     <div key={product.id}>
                         <div className='main'>
 
                             {
-                                product.map((el) => (
-                                    <div style={{ marginRight: "20px", height: "250px" }}>
-                                        <img width="200px" src={el.image} alt={el.name} />
-                                        <div className="product-info">
-                                            {/* <h2>{el.name}</h2>
-                  <p>{el.description}</p> */}
-                                        </div>
+                                product.map((el, index) => (
+                                    <Link to={`/singleProduct/shoes/${el._id}`}>
+                                    <div key={index} style={{ marginRight: "20px", height: "250px" }}>
+                                        <img width="200px" src={el.images[0]} alt={el.name} />
+                                       
                                     </div>
+                                    </Link>
 
                                 ))
                             }
 
 
 
-                            {/* Add more products here */}
+                        
 
 
                         </div>
@@ -119,7 +167,7 @@ export const ShoesOffer = () => {
                 ))}
             </Slider>
             <div className="dot-indicators custom-dots">
-                {products.map((_, index) => (
+                {isData && womenFlatShoes.map((_, index) => (
                     <div >
                         <span
                             key={index}

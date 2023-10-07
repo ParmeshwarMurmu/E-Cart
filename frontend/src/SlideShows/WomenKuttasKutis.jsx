@@ -58,7 +58,7 @@ export const WomenKuttasKutis = () => {
         ]
     }
 
-    console.log(womenKurtasKurtisData);
+   
 
 
     useEffect(()=>{

@@ -8,6 +8,7 @@ const {categoryRoute} = require('./AllRoutes/categoryRoute')
 const { singleProduct} = require('./AllRoutes/singleProduct')
 const {womenCategoryRoute} = require('./AllRoutes/womenCategory')
 const {shoeRouter} = require('./AllRoutes/shoesRoutes')
+const {shoeCategoryRoute} = require('./AllRoutes/shoeCategoryRoute')
 const cors = require('cors')
 
 
@@ -21,6 +22,7 @@ app.use('/adminShoe', shoeRouter)
 app.use('/home', categoryRoute)
 app.use('/singleProduct', singleProduct)
 app.use('/women', womenCategoryRoute)
+app.use('/shoes', shoeCategoryRoute)
 
 
 app.listen(process.env.PORT, async()=>{
