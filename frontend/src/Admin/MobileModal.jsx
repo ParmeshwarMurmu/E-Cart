@@ -23,8 +23,7 @@ export const MobileModal = () => {
     const initialRef = React.useRef(null)
     const finalRef = React.useRef(null)
 
-    const [state, setState] = useState("")
-    const [image, setImage] = useState([])
+    
 
 
     return (

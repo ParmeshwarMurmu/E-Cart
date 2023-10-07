@@ -1,4 +1,4 @@
-import { Button, Image, Text } from '@chakra-ui/react'
+import { Button, Text } from '@chakra-ui/react'
 import React from 'react'
 import styled from "styled-components"
 import { MemModal } from './MemModal'
@@ -59,7 +59,7 @@ export const AddItem = () => {
                     <div className="container">
                         <Text fontSize={'2xl'} as={'b'} style={{ textAlign: "center" }}>Women</Text>
                     </div>
-                    {/* <p style={{textAlign: "center"}}>ddw</p> */}
+                    
 
 
                     <div className='btn' >
@@ -88,7 +88,7 @@ export const AddItem = () => {
                     <div className="container">
                         <Text fontSize={'2xl'} as={'b'} style={{ textAlign: "center" }}>Shoes</Text>
                     </div>
-                    {/* <p style={{textAlign: "center"}}>ddw</p> */}
+                    
 
 
                     <div className='btn' >
@@ -119,7 +119,7 @@ export const AddItem = () => {
                     <div className="container">
                         <Text fontSize={'2xl'} as={'b'} style={{ textAlign: "center" }}>Mobiles</Text>
                     </div>
-                    {/* <p style={{textAlign: "center"}}>ddw</p> */}
+                   
 
 
                     <div className='btn' >
@@ -150,7 +150,7 @@ export const AddItem = () => {
                     <div className="container">
                         <Text fontSize={'2xl'} as={'b'} >Watches</Text>
                     </div>
-                    {/* <p style={{textAlign: "center"}}>ddw</p> */}
+                    
 
 
                     <div className='btn' >

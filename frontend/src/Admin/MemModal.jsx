@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, {  } from 'react'
 import { useToast } from '@chakra-ui/react'
 import {
   Modal,
@@ -14,11 +14,10 @@ import {
   FormLabel,
   Input,
   Select,
-  SelectField,
 } from '@chakra-ui/react'
 
 import { useSelector, useDispatch, shallowEqual } from "react-redux"
-import { addMenData, addMenDataSuccess, brandSuccess, categorySuccess, colorSuccess, imageSuccess, priceSuccess, resetMen, resetSuccess, sizeSuccess, titleSuccess } from '../Redux/adminMenReducer/action'
+import {  brandSuccess, categorySuccess, colorSuccess, imageSuccess, priceSuccess, resetSuccess, sizeSuccess, titleSuccess } from '../Redux/adminMenReducer/action'
 import axios from 'axios'
 
 export const MemModal = () => {

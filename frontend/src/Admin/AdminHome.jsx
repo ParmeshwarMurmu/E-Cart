@@ -1,5 +1,5 @@
 import React from 'react'
-import { Tabs, TabList, TabPanels, Tab, TabPanel, background } from '@chakra-ui/react'
+import { Tabs, TabList, TabPanels, Tab, TabPanel} from '@chakra-ui/react'
 import styled from "styled-components";
 import { AddItem } from './AddItem';
 
