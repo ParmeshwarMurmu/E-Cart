@@ -43,7 +43,7 @@ export const SingleProductPage = () => {
         dispatch(singlePageData(id, category))
     }, [])
 
-   
+
 
 
     return (
@@ -51,14 +51,21 @@ export const SingleProductPage = () => {
 
             <div className='loader'>
                 {
-                    isLoading ? <SingleProductLoader />  : isData ? ( <div className='singleData'>
+                    isLoading ? <SingleProductLoader /> : isData ? (<div className='singleData'>
                         <div style={{ display: "flex", justifyContent: "space-between" }}>
 
                             <div>
-                                <div>
-                                    {/* <Box boxSize='sm'> */}
-                                    <Image h={'500px'} src={data.images[index]} alt={data.title} />
-                                    {/* </Box> */}
+                                {/* <div> */}
+                                {/* <Box boxSize='sm'> */}
+                                {/* <Image h={'500px'} src={data.images[index]} alt={data.title} /> */}
+                                {/* </Box> */}
+                                {/* </div> */}
+
+                                <div class="container">
+                                    <div class="card_box">
+                                        {/* <span></span> */}
+                                        <img className='singleImage'  src={data.images[index]} alt="da" />
+                                    </div>
                                 </div>
 
 
@@ -126,15 +133,15 @@ export const SingleProductPage = () => {
                                 {/* Sizes */}
 
                                 {
-                                    data.size.length>0 && <div>
-                                    <Text fontSize='sm' style={{}}>Select Size</Text>
-                                </div>
+                                    data.size.length > 0 && <div>
+                                        <Text fontSize='sm' style={{}}>Select Size</Text>
+                                    </div>
                                 }
 
                                 <div style={{ display: 'flex' }}>
 
                                     {
-                                       data.size.length>0 && data.size.map((el, sizeInd) => (
+                                        data.size.length > 0 && data.size.map((el, sizeInd) => (
                                             <div key={sizeInd} style={{
                                                 margin: "10px", display: 'flex', padding: "5px",
                                                 border: sizeInd === sizeIndex ? '2px solid blue' : '1px solid grey',
@@ -199,8 +206,8 @@ export const SingleProductPage = () => {
 
                                 {/* Add To Cart */}
 
-                                <div style={{ display: "flex", marginRight: "10px"}}>
-                                    <div style={{marginRight: "20px"}}>
+                                <div style={{ display: "flex", marginRight: "10px" }}>
+                                    <div style={{ marginRight: "20px" }}>
                                         <SingleProductAddToCart />
                                     </div>
 
@@ -216,13 +223,13 @@ export const SingleProductPage = () => {
                         </div>
                     </div>
                     )
-                    : null
-                                
+                        : null
 
-                                
+
+
                 }
 
-                
+
             </div>
 
         </DIV>
@@ -253,5 +260,73 @@ const DIV = styled.div`
 }
 
 
+/* Container uiverse */
+
+
+.container {
+  /* background-color: red; */
+  /* height: 400px; */
+}
+
+
+
+.singleImage{
+    height: 550px;
+}
+
+.card_box {
+  width: 410px;
+
+  position: relative;
+  background-color: inherit;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.55);
+  cursor: pointer;
+  transition: all .3s;
+}
+
+.card_box:hover {
+  transform: scale(0.9);
+}
+
+.card_box span {
+  position: absolute;
+  overflow: hidden;
+  width: 150px;
+  height: 150px;
+  top: -10px;
+  left: -10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card_box span::before {
+  content: 'Premium';
+  position: absolute;
+  width: 150%;
+  height: 40px;
+  background-image: linear-gradient(45deg, #ff6547 0%, #ffb144  51%, #ff7053  100%);
+  transform: rotate(-45deg) translateY(-20px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.23);
+}
+
+.card_box span::after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  bottom: 0;
+  left: 0;
+  height: 10px;
+  z-index: -1;
+  box-shadow: 140px -140px #cc3f47;
+  background-image: linear-gradient(45deg, #FF512F 0%, #F09819  51%, #FF512F  100%);
+}
 
 `

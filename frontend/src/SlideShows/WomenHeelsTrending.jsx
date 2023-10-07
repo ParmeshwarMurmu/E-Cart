@@ -6,10 +6,12 @@ import 'slick-carousel/slick/slick-theme.css';
 import { flexbox } from '@chakra-ui/react';
 import styled from "styled-components"
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
-import { womenHeelsTrendingData } from '../Redux/shoeHeelsTrendingReducer/action';
-import { Link } from 'react-router-dom';
 
-export const WomenShoesTrending = () => {
+import { Link } from 'react-router-dom';
+import { womenHeelsTrendingData } from '../Redux/shoeHeelsTrendingReducer/action';
+
+
+export const WomenHeelsTrending = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
     const [data, setData] = useState("");
 
@@ -39,20 +41,22 @@ export const WomenShoesTrending = () => {
     if(isData){
         womenHeels = [
             [
-                heels[14],
-                heels[6]
+                heels[3],
+                heels[4],
+
             ],
             [
-                heels[12],
-                heels[11]
+                heels[5],
+                heels[0],
+
             ],
             [
-                heels[10],
-                heels[9]
+                heels[1],
+                heels[2]
             ],
             [
-                heels[8],
-                heels[7]
+                heels[13],
+                heels[15]
             ]
         ]
     }
@@ -191,4 +195,5 @@ const DIV = styled.div`
 
 
 `
+
 
