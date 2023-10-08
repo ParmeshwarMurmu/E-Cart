@@ -23,6 +23,16 @@ shoeCategoryRoute.get('/female/heels', async(req, res)=>{
     }
 })
 
+shoeCategoryRoute.get('/male/formalShoes', async(req, res)=>{
+
+    try {
+        const shoesData = await ShoeModel.find({category: 'formal shoe'})
+        res.status(200).send({"formalShoes": shoesData})
+    } catch (error) {
+        res.status(400).send({"msg": error})
+    }
+})
+
 
 
 module.exports = {

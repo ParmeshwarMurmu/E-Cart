@@ -1,8 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import styled from "styled-components"
+import { useDispatch, useSelector } from 'react-redux';
+import { store } from '../Redux/Store/store';
+import { menFormalShoesData } from '../Redux/menFormalShoesReducer/action';
+import { Link } from 'react-router-dom';
 
 export const MenShoweslideshow = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -18,107 +22,77 @@ export const MenShoweslideshow = () => {
         variableWidth: true,
     };
 
+    const dispatch = useDispatch();
+    let formalShoes;
+    const {menFormalShoes, isLoading, isData, isError} = useSelector((store)=>{
+
+        return {
+            menFormalShoes: store.menFormalShoesReducer.menFormalShoes,
+            isLoading: store.menFormalShoesReducer.isLoading,
+            isData: store.menFormalShoesReducer.isData,
+            isError: store.menFormalShoesReducer.isError,
+        }
+    })
+
     
         
          
-    const products = [
-
-        [
-            {
-                id: 1,
-                name: "Product 1",
-                image: "https://rukminim2.flixcart.com/image/612/612/xif0q/sandal/4/3/0/3-b-38-miyoko-yellow-original-imagtgawuxvghxta.jpeg?q=70",
-                description: "Description for Product 1"
-            },
-
-            {
-                id: 1,
-                name: "Product 1",
-                image: "https://rukminim2.flixcart.com/image/612/612/xif0q/sandal/8/s/p/6-a28pinkuk6-purplehunt-pink-original-imagtggghyhtkxwd.jpeg?q=70",
-                description: "Description for Product 1"
-            },
-          
-        ],
-
-        [
-            
-            {
-                id: 1,
-                name: "Product 1",
-                image: "https://rukminim2.flixcart.com/image/612/612/xif0q/sandal/6/1/s/7-a16greenuk7-purplehunt-green-original-imagtghh9gjwgzh2.jpeg?q=70",
-                description: "Description for Product 1"
-            },
-            
-            {
-                id: 1,
-                name: "Product 1",
-                image: "https://rukminim2.flixcart.com/image/612/612/xif0q/sandal/w/r/b/8-tr-h-hb11-triksy-yellow-original-imagt97wazwcfnkf.jpeg?q=70",
-                description: "Description for Product 1"
-            },
-            
-
-            
-        ],
-
-        [
-            
-            {
-                id: 1,
-                name: "Product 1",
-                image: "https://rukminim2.flixcart.com/image/612/612/xif0q/sandal/n/7/a/3-women-s-and-girls-fancy-stylish-light-weight-block-heel-kiwaoo-original-imagnvwewutqfkc2.jpeg?q=70",
-                description: "Description for Product 1"
-            },
-            
-            {
-                id: 1,
-                name: "Product 1",
-                image: "https://rukminim2.flixcart.com/image/612/612/xif0q/sandal/q/c/c/7-criss-cross-babe-white-heels-gulmohar-fashion-white-original-imagt6urvuzeejhm.jpeg?q=70",
-                description: "Description for Product 1"
-            },
-          
-
+ 
+    if(isData){
+        formalShoes = [
+            [
+                menFormalShoes[7],
+                menFormalShoes[6]
+            ],
+            [
+                menFormalShoes[5],
+                menFormalShoes[4]
+            ],
+            [
+                menFormalShoes[3],
+                menFormalShoes[2]
+            ],
+            [
+                menFormalShoes[1],
+                menFormalShoes[0]
+            ]
         ]
-       
+    }
 
-
-        // Add more products here
-    ];
+  
 
    
 
-    console.log(data);
+   useEffect(()=>{
+    dispatch(menFormalShoesData())
+   }, [])
 
     return (
         <DIV className="slideshow-container">
             <Slider {...settings} className='slider'>
-                {products.map((product) => (
+                {isData && formalShoes.map((product) => (
                     <div key={product.id}>
                         <div className='main'>
 
                             {
                                 product.map((el) => (
+
+                                    <Link to={`/singleProduct/shoes/${el._id}`}>
                                     <div style={{ marginRight: "20px", height: "250px" }}>
-                                        <img width="200px" src={el.image} alt={el.name} />
-                                        <div className="product-info">
-                                            {/* <h2>{el.name}</h2>
-                  <p>{el.description}</p> */}
-                                        </div>
+                                        <img width="200px" src={el.images[0]} alt={el.name} />
+                                        
                                     </div>
+                                    </Link>
 
                                 ))
                             }
-
-
-
-                            {/* Add more products here */}
-
 
                         </div>
                     </div>
                 ))}
             </Slider>
             <div className="dot-indicators custom-dots">
-                {products.map((_, index) => (
+                {isData && formalShoes.map((_, index) => (
                     <div >
                         <span
                             key={index}

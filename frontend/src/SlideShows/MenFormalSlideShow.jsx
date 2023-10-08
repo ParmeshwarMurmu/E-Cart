@@ -88,7 +88,7 @@ export const MenFormalSlideShow = () => {
                                     isLoading ? <LoaderComp />   : product.map((el) => (
                                         <Link to={`/singleProduct/men/${el._id}`}>
                                         <div  style={{ marginRight: "20px", height: "250px" }}>
-                                            <img width="200px" src={el.images[0]} alt={el.title} />
+                                            <img className='card_box' width="200px" src={el.images[0]} alt={el.title} />
                                             <div className="product-info">
 
                                             </div>
@@ -159,6 +159,19 @@ margin-top: 30px;
   .slideshow-container{
     z-index: -1;
   }
+
+  
+.card_box {
+  position: relative;
+  /* box-shadow: 0 25px 50px rgba(0,0,0,0.55); */
+  cursor: pointer;
+  transition: all .3s;
+}
+
+.card_box:hover {
+  transform: scale(0.9);
+}
+
 
 
 `

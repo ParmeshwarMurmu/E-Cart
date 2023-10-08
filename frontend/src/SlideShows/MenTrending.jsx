@@ -159,6 +159,7 @@ const DIV = styled.div`
   .slideshow-container{
     z-index: -1;
   }
+  
 
   
 @media screen and (max-width: 768px) {

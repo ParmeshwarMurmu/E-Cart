@@ -8,7 +8,8 @@ import { reducer as womenTrendingReducer } from '../womenTrendingReducer/reducer
 import { reducer as womenKurtasKurtisReducer } from '../womenKurtasKurtisReducer/reducer';
 import { reducer as adminShoeReducer } from '../adminShoeReducer/reducer';
 import { reducer as womenFlatShoeReducer } from '../womenFlatShoeReducer/reducer';
-import { reducer as shoesHeelsTrendingReducer } from '../shoeHeelsTrendingReducer/reducer'
+import { reducer as shoesHeelsTrendingReducer } from '../shoeHeelsTrendingReducer/reducer';
+import { reducer as menFormalShoesReducer } from '../menFormalShoesReducer/reducer'
 
 import thunk from"redux-thunk"
 
@@ -22,7 +23,8 @@ const rootReducer = combineReducers({
     womenKurtasKurtisReducer,
     adminShoeReducer,
     womenFlatShoeReducer,
-    shoesHeelsTrendingReducer
+    shoesHeelsTrendingReducer,
+    menFormalShoesReducer
 
    
 

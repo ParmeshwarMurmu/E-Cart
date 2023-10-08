@@ -44,7 +44,7 @@ gap: 5px;
 
 
 .menLatest{
-   border: 2px solid green;
+
    width: 90%;
    grid-area: 1/1/3/2;
    margin-top: 30px;
@@ -52,12 +52,12 @@ gap: 5px;
 }
 
 .mens{
-border: 2px solid red;
+
 width: 90%;
 }
 
 .sarees{
-border: 2px solid black ;
+
 width: 90%;
 }
 
