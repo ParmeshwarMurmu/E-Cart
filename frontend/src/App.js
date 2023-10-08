@@ -103,9 +103,12 @@ function App() {
           </div>
 
           <div>
+
+          <Link to={'/product/womens'}>
             <Categories images='https://rukminim2.flixcart.com/image/832/832/xif0q/kurta/s/k/4/l-913-jaffry-embroidery-original-imagsc36sh7khhfj.jpeg?q=70'
               alt='women'
             />
+            </Link>
 
             <div className='title'>
               {/* <Link to={'/product'} onClick={() => { handleClick("womens") }}><Text>Womens</Text> </Link> */}
@@ -127,32 +130,20 @@ function App() {
             </div>
           </div>
 
-          <div>
-            <Categories images='https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/k/w/k/-original-imagg2abzhxjckxu.jpeg?q=70'
-              alt='mobiles'
-            />
-            <div className='title'>
-              <Link to={'/product'} ><Text>Mobiles</Text> </Link>
-            </div>
-          </div>
 
           <div>
+
+          <Link to={'/product/shoes'}>
             <Categories images='https://rukminim2.flixcart.com/image/612/612/l51d30w0/shoe/z/w/c/10-mrj1914-10-aadi-white-black-red-original-imagft9k9hydnfjp.jpeg?q=70'
               alt='shoes'
             />
+            </Link>
             <div className='title'>
               <Link to={'/product'}><Text>Shoes</Text> </Link>
             </div>
           </div>
 
-          <div>
-            <Categories images='https://rukminim2.flixcart.com/image/612/612/xif0q/watch/m/a/i/-original-imagrcjkpwzzbttr.jpeg?q=70'
-              alt='watches'
-            />
-            <div className='title'>
-              <Link to={'/product'} ><Text>Watches</Text> </Link>
-            </div>
-          </div>
+          
         </div>
 
 

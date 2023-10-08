@@ -5,7 +5,7 @@ import styled from "styled-components"
 import { AddToCart } from './AddToCart'
 import { WhilistBtn } from './WhilistBtn'
 
-export const ProductCard = () => {
+export const ProductCard = ({images, brand, title, size, category, color, price}) => {
     return (
         <DIV>
             <div class="container">
@@ -13,7 +13,7 @@ export const ProductCard = () => {
                 <Link to={'/singleProduct'}>
                 <div class="card_box">
                     {/* <span></span> */}
-                    <Image src='https://rukminim2.flixcart.com/image/612/612/l3t2fm80/shirt/h/q/w/xxl-r-peacock-blue-stoneberg-original-imageum82pyz8c9q.jpeg?q=70' />
+                    <Image h={'270px'} src={images[0]} alt={title} />
                 </div>
                 </Link>
 
