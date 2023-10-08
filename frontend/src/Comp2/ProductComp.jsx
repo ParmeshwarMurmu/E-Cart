@@ -8,10 +8,6 @@ import { allProductData } from '../Redux/allMenProductReducer/action'
 export const ProductComp = () => {
   
 
-  const {category} = useParams()
-
-  const dispatch = useDispatch()
-
 
   const {data, isLoading, isError, isData} = useSelector((store)=>{
     return {
@@ -24,11 +20,7 @@ export const ProductComp = () => {
   }, shallowEqual)
 
 
-  console.log(`${category}`, "cate");
 
-  useEffect(()=>{
-   dispatch(allProductData(category))
-  }, [category])
 
 
   return (

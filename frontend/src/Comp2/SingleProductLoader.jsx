@@ -23,6 +23,11 @@ export const SingleProductLoader = () => {
 }
 
 const DIV = styled.div`
+
+display: flex;
+justify-content: center;
+align-items: center;
+
 .loader {
   position: relative;
   width: 54px;
@@ -33,7 +38,7 @@ const DIV = styled.div`
 .loader div {
   width: 8%;
   height: 24%;
-  background: rgb(128, 128, 128);
+  background: rgb(98, 96, 96);
   position: absolute;
   left: 50%;
   top: 30%;

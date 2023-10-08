@@ -3,6 +3,10 @@ import { ALL_MEN_PRODUCT_ERROR, ALL_MEN_PRODUCT_LOADING, ALL_MEN_PRODUCT_SUCCESS
 const initialState = {
     isLoading: false,
     data: [],
+    allBrands: [],
+    allColors: [],
+    allCategory: [],
+    allGender: [],
     isData: false,
     isError: false
 }
@@ -21,7 +25,11 @@ export const reducer = (state = initialState, {type, payload})=>{
                 return {
                     ...state,
                     isLoading: false,
-                    data: payload,
+                    data: payload.data,
+                    allBrands: payload.allBrands,
+                    allCategory:payload.allCategory,
+                    allColors: payload.allColors,
+                    allGender:payload.allGender,
                     isData: true
                 }
 

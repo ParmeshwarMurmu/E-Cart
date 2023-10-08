@@ -1,61 +1,71 @@
 import React, { useContext, useEffect } from 'react'
 import { appContent } from '../Context/ContextApi'
-import { useSearchParams } from 'react-router-dom'
+import { useParams, useSearchParams } from 'react-router-dom'
 import styled from "styled-components"
 import { SideBar } from '../Comp2/SideBar'
 import { ProductComp } from '../Comp2/ProductComp'
+import { shallowEqual, useDispatch, useSelector } from 'react-redux'
+import { allProductData } from '../Redux/allMenProductReducer/action'
+import { SingleProductLoader } from '../Comp2/SingleProductLoader'
 
 export const Product = () => {
-  
-  // const [searchParams, setSearchParams] = useSearchParams()
-  // const initialCategory = searchParams.get('category')
-  // const {handleClick, Params} = useContext(appContent)
+
+  const { category } = useParams()
+
+  const dispatch = useDispatch()
 
 
-  // useEffect(()=>{
+  const {isLoading, isError, isData } = useSelector((store) => {
+    return {
 
-  //   const params = {category: Params}
-  //   setSearchParams(params);
+      isLoading: store.allMenProductReducer.isLoading,
+      isError: store.allMenProductReducer.isError,
+      isData: store.allMenProductReducer.isData,
+    }
 
-  // }, [Params])
-
-
-  // useEffect(() => {
-  //   setSearchParams({ category: Params || initialCategory });
-  // }, [Params]);
+  }, shallowEqual)
 
 
+  useEffect(() => {
+    dispatch(allProductData(category))
+  }, [category])
 
 
   return (
-    <DIV>
+    <>
 
-      <div className='sideBar'>
-         <SideBar />
-      </div>
+      {
+        isLoading ? <SingleProductLoader /> : <DIV>
+          <div className='sideBar'>
+            <SideBar />
+          </div>
 
 
-      <div className='productComp'>
-        <ProductComp />
-      </div>
+          <div className='productComp'>
+            <ProductComp />
+          </div>
 
-    </DIV>
+
+        </DIV>
+      }
+    </>
+
+
   )
 }
 
 
 const DIV = styled.div`
-border: 2px solid red;
+
 display: flex;
 
 
 .sideBar{
   width: 18%;
-  border: 2px solid black;
+  
 }
 
 .productComp{
-  border: 2px solid green;
   width: 100%;
 }
   

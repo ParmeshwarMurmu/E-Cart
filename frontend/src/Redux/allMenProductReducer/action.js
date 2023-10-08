@@ -22,7 +22,7 @@ export const allProductData = (category)=>(dispatch)=>{
     dispatch(allMenProductLoadingAction())
     axios.get(`http://localhost:8080/allProducts/${category}`)
     .then((res)=>{
-     dispatch(allMenProductSuccessAction(res.data.data))
+     dispatch(allMenProductSuccessAction(res.data))
     })
     .then((err)=>{
      dispatch(allMenProductErrorAction())
