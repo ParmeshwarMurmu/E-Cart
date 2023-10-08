@@ -87,7 +87,7 @@ export const MenFormalSlideShow = () => {
                                 {
                                     isLoading ? <LoaderComp />   : product.map((el) => (
                                         <Link to={`/singleProduct/men/${el._id}`}>
-                                        <div  style={{ marginRight: "20px", height: "250px" }}>
+                                        <div key={el._id}  style={{ marginRight: "20px", height: "250px" }}>
                                             <img className='card_box' width="200px" src={el.images[0]} alt={el.title} />
                                             <div className="product-info">
 

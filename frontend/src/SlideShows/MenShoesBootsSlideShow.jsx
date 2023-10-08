@@ -1,17 +1,15 @@
-
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { flexbox } from '@chakra-ui/react';
 import styled from "styled-components"
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
-
+import { store } from '../Redux/Store/store';
+import { menFormalShoesData } from '../Redux/menFormalShoesReducer/action';
 import { Link } from 'react-router-dom';
-import { womenHeelsTrendingData } from '../Redux/shoeHeelsTrendingReducer/action';
+import { menShoesBootsData } from '../Redux/menShoeBootsReducer/action';
 
-
-export const WomenHeelsTrending = () => {
+export const MenShoesBootsSlideShow = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
     const [data, setData] = useState("");
 
@@ -26,61 +24,59 @@ export const WomenHeelsTrending = () => {
     };
 
     const dispatch = useDispatch();
-    let womenHeels;
-
-    const {heels, isLoading, isData, isError } = useSelector((store)=>{
+    let boots;
+    const {mensBoots, isLoading, isData, isError} = useSelector((store)=>{
 
         return {
-           heels: store.shoesHeelsTrendingReducer.heels,
-           isLoading: store.shoesHeelsTrendingReducer.isLoading,
-           isData: store.shoesHeelsTrendingReducer.isData,
-           isError: store.shoesHeelsTrendingReducer.isError,
+            mensBoots: store.menShoeBootsReducer.mensBoots,
+            isLoading: store.menShoeBootsReducer.isLoading,
+            isData: store.menShoeBootsReducer.isData,
+            isError: store.menShoeBootsReducer.isError,
         }
     }, shallowEqual)
 
+    
+        
+         
+ 
     if(isData){
-        womenHeels = [
+       boots = [
             [
-                heels[3],
-                heels[4],
-
+                mensBoots[0],
+                mensBoots[1]
             ],
             [
-                heels[5],
-                heels[0],
-
+                mensBoots[2],
+                mensBoots[3]
             ],
             [
-                heels[1],
-                heels[2]
+                mensBoots[4]
             ],
-            [
-                heels[13],
-                heels[15]
-            ]
+           
         ]
     }
 
+  
 
-    useState(()=>{
-        dispatch(womenHeelsTrendingData())
+ 
 
-    },[])
+   useEffect(()=>{
+    dispatch(menShoesBootsData())
+   }, [])
 
-   
-
-  return (
-    <DIV className="slideshow-container">
+    return (
+        <DIV className="slideshow-container">
             <Slider {...settings} className='slider'>
-                {isData && womenHeels.map((product) => (
+                {isData && boots.map((product) => (
                     <div key={product.id}>
                         <div className='main'>
 
                             {
                                 product.map((el) => (
+
                                     <Link to={`/singleProduct/shoes/${el._id}`}>
-                                    <div className='imgDiv' style={{ marginRight: "20px", height: "250px" }}>
-                                        <img className='sliderImage' src={el.images[0]} alt={el.name} width = '200px' />
+                                    <div key={el._id} style={{ marginRight: "20px", height: "250px" }}>
+                                        <img width="200px" src={el.images[0]} alt={el.name} />
                                         
                                     </div>
                                     </Link>
@@ -88,17 +84,12 @@ export const WomenHeelsTrending = () => {
                                 ))
                             }
 
-
-
-                            {/* Add more products here */}
-
-
                         </div>
                     </div>
                 ))}
             </Slider>
             <div className="dot-indicators custom-dots">
-                {isData && womenHeels.map((_, index) => (
+                {isData && boots.map((_, index) => (
                     <div >
                         <span
                             key={index}
@@ -114,13 +105,14 @@ export const WomenHeelsTrending = () => {
                 ))}
             </div>
         </DIV>
-  )
+    );
 }
 
 
 
 const DIV = styled.div`
- margin-top: 30px;
+
+margin-top: 30px;
   
   .main{
     display: flex;
@@ -131,7 +123,6 @@ const DIV = styled.div`
 .slider{
   width: 90%; /* Adjust the width as needed */
   margin: 0 auto; /* Center the slider */
-
  
 }
 
@@ -146,53 +137,6 @@ const DIV = styled.div`
   .slideshow-container{
     z-index: -1;
   }
-
-  
-@media screen and (max-width: 768px) {
-      /* Your styles for large devices go here */
-
-      .imgDiv{
-          height: 170px;
-      }
-
-      .sliderImage{
-           width: 170px;
-      }
-
-      .slider{
-
-      }
-   
-      
-    }
-
-    @media screen and (max-width: 420px) {
-      /* Your styles for large devices go here */
-
-      .imgDiv{
-          height: 70px;
-      }
-
-      .sliderImage{
-           width: 150px;
-      }
-
-      .slider{
-        height: 225px;
-      }
-   
-      
-    }
-
-    @media screen and (max-width: 510px) {
-      /* Your styles for large devices go here */
-
-      .slider{
-        height: 245px;
-      }
-   
-      
-    }
 
 
 `

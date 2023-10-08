@@ -21,6 +21,7 @@ import { MenSlideShow } from '../SlideShows/MenSlideShow'
 import { MenFormalSlideShow } from '../SlideShows/MenFormalSlideShow'
 import { WomenKuttasKutis } from '../SlideShows/WomenKuttasKutis'
 import { WomenHeelsTrending } from '../SlideShows/WomenHeelsTrending'
+import { MenShoesBootsSlideShow } from '../SlideShows/MenShoesBootsSlideShow'
 
 
 
@@ -153,6 +154,8 @@ export const Home = () => {
 
         <div style={{ width: "50%" }}>
           <MenShoweslideshow />
+
+          <MenShoesBootsSlideShow />
         </div>
 
       </div>

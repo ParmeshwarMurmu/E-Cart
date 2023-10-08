@@ -131,14 +131,14 @@ export const WomenTrending = () => {
   return (
     <DIV className="slideshow-container">
             <Slider {...settings} className='slider'>
-                { isData && womenTrending.map((product) => (
-                    <div key={product.id}>
+                { isData && womenTrending.map((product, inde) => (
+                    <div key={inde}>
                         <div className='main'>
 
                             {
                                 product.map((el) => (
                                     <Link to={`/singleProduct/women/${el._id}`}>
-                                    <div className='imgDiv' style={{ marginRight: "20px", height: "250px" }}>
+                                    <div key={el._id} className='imgDiv' style={{ marginRight: "20px", height: "250px" }}>
                                         <img className='sliderImage' src={el.images[0]} alt={el.title} width = '200px' />
                                         
                                     </div>
