@@ -7,16 +7,11 @@ export const appContent = createContext()
 
 export const ContextApi = ({children}) => {
 
-    const [Params, setParams] = useState("");
+  const [isAuth, setIsAuth] = useState(false)
 
-    const handleClick = (cat) => {
-        // setParams(cat);
-      };
-
-    
 
   return (
     
-    <appContent.Provider >{children}</appContent.Provider>
+    <appContent.Provider value={{isAuth, setIsAuth}}>{children}</appContent.Provider>
   )
 }

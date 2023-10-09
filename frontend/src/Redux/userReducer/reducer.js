@@ -1,8 +1,10 @@
-import { EMAIL, PASSWORD } from "./action"
+import { EMAIL, FIRST_NAME, LAST_NAME, PASSWORD, RESET } from "./action"
 
 const initialState = {
     email: "",
-    password: ""
+    password: "",
+    firstName: "",
+    lastName: "",
 }
 
 export const reducer = (state = initialState, { type, payload }) => {
@@ -19,6 +21,23 @@ export const reducer = (state = initialState, { type, payload }) => {
                 ...state,
                 password: payload
             }
+
+            case FIRST_NAME:
+            return {
+                ...state,
+                firstName: payload
+            }
+
+            case LAST_NAME:
+            return {
+                ...state,
+                lastName: payload
+            }
+
+            case RESET:
+                return {
+                    ...initialState
+                }
 
         default:
             return state

@@ -7,6 +7,10 @@ import { SingleProduct } from './SingleProduct'
 import { AdminHome } from '../Admin/AdminHome'
 import { Si2 } from '../try/Si2'
 import { SingleProductPage } from './SingleProductPage'
+import { CartPage } from '../Components/Home/CartPage'
+import { PrivateRoute } from './PrivateRoute'
+import { Login } from './Login'
+import { SignUp } from './SignUp'
 
 export const AllRoutes = () => {
   // const {handleClick, Params} = useContext(appContent)
@@ -16,8 +20,15 @@ export const AllRoutes = () => {
         <Route path='/' element={<Home/>} />
         <Route path='/product/:category' element={<Product/>} />
         <Route path='/admin' element={<AdminHome/>} />
-        {/* <Route path='/singleProduct/:category/:id' element={<Si2 />} /> */}
+        <Route path='/login' element={<Login/>} />
+        <Route path='/signUp' element={<SignUp/>} />
+        
         <Route path='/singleProduct/:category/:id' element={<SingleProductPage />} />
+        <Route path='/cart' element={
+          <PrivateRoute>
+            <CartPage />
+          </PrivateRoute>
+        } />
         
     </Routes>
   )

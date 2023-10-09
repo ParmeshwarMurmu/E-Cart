@@ -9,14 +9,11 @@ import { Navbar } from './Routes/Navbar';
 import { Button, Input, Menu, MenuButton, MenuItem, MenuList, Text, border } from '@chakra-ui/react';
 import { Notification } from './Components/Home/Notification';
 import { Count } from './Components/Home/Count';
-import { LoginPopover } from './Components/Home/LoginPopover';
 import { SignInLogo } from './Components/Home/SignInLogo';
 import { AfterLogin } from './Components/Home/AfterLogin';
 import { MenuItemProfile } from './Components/Home/MenuItemProfile';
 import { theme } from './DefaultTheme';
 import { Categories } from './Components/Home/Categories';
-import { Try } from './try/Try';
-import { Home } from './Routes/Home';
 import { appContent } from './Context/ContextApi';
 import { Link, useSearchParams } from 'react-router-dom';
 import {ChevronDownIcon, ChevronUpIcon } from '@chakra-ui/icons'
@@ -27,6 +24,7 @@ function App() {
 
   const [searchParams, setSearchParams] = useSearchParams()
   const [type, setType] = useState('')
+  const {isAuth} = useContext(appContent)
 
   const mensCategoryHandler = (e)=>{
     const {value} = e.target;
@@ -49,7 +47,7 @@ function App() {
 
 
   return (
-    <DIV theme={theme}>
+    <DIV theme={theme} isAuth={isAuth}>
 
     
 
@@ -75,12 +73,14 @@ function App() {
               </div>
 
               <div>
-                <LoginPopover />
+                <SignInLogo />
               </div>
 
-              <div>
+              {
+                isAuth && <div>
                 <MenuItemProfile />
               </div>
+              }
 
 
             </div>
