@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import { ProductCard } from './ProductCard'
-import { useParams } from 'react-router-dom'
+import { useParams, useSearchParams } from 'react-router-dom'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import { store } from '../Redux/Store/store'
 import { allProductData } from '../Redux/allMenProductReducer/action'
 
 export const ProductComp = () => {
   
-
+  
+  const dispatch = useDispatch()
+  
+  
 
   const {data, isLoading, isError, isData} = useSelector((store)=>{
     return {
@@ -19,7 +22,7 @@ export const ProductComp = () => {
 
   }, shallowEqual)
 
-
+  
 
 
 

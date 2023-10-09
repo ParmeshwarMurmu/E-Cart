@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useRef } from 'react'
 import { appContent } from '../Context/ContextApi'
 import { useParams, useSearchParams } from 'react-router-dom'
 import styled from "styled-components"
@@ -11,24 +11,62 @@ import { SingleProductLoader } from '../Comp2/SingleProductLoader'
 export const Product = () => {
 
   const { category } = useParams()
-
   const dispatch = useDispatch()
+  const [searchParams, setSearchParams] = useSearchParams()
+  const prevCategory = useRef(category);
+
+  const obj = {
+    params:{
+      brand: searchParams.getAll('brand'),
+      category: searchParams.getAll('category'),
+      color: searchParams.getAll('color')
+    }
+  }
 
 
-  const {isLoading, isError, isData } = useSelector((store) => {
+  const {data, isLoading,urlCategory } = useSelector((store) => {
     return {
 
       isLoading: store.allMenProductReducer.isLoading,
-      isError: store.allMenProductReducer.isError,
-      isData: store.allMenProductReducer.isData,
+      data: store.allMenProductReducer.data,
+      urlCategory: store.allMenProductReducer.urlCategory,
     }
 
   }, shallowEqual)
 
 
+  // console.log("SS", data);
+  
+
+
+  // useEffect(() => {
+  //   // dispatch(allProductData(category))
+
+  //   if (category !== urlCategory) {
+  //     console.log("&&&");
+  //     dispatch(allProductData(category));
+  //     // prevCategory.current = category;
+  //   }
+   
+
+  // }, [category])
+
+
+  // useEffect(() => {
+    
+  //     dispatch(allProductData(category, obj));
+  //   // }
+
+  // }, [searchParams])
+
+  console.log("obj", obj);
+
   useEffect(() => {
-    dispatch(allProductData(category))
-  }, [category])
+    console.log("Obj uEEFFECT", obj);
+    dispatch(allProductData(category, obj));
+  }, [searchParams])
+
+
 
 
   return (

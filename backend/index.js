@@ -10,6 +10,7 @@ const {womenCategoryRoute} = require('./AllRoutes/womenCategory')
 const {shoeRouter} = require('./AllRoutes/shoesRoutes')
 const {shoeCategoryRoute} = require('./AllRoutes/shoeCategoryRoute')
 const {allProductRoute} = require('./AllRoutes/allProductRoute')
+const {userRoute} = require('./AllRoutes/userRoutes')
 const cors = require('cors')
 
 
@@ -25,6 +26,7 @@ app.use('/singleProduct', singleProduct)
 app.use('/women', womenCategoryRoute)
 app.use('/shoes', shoeCategoryRoute)
 app.use('/allProducts', allProductRoute)
+app.use('/user', userRoute)
 
 
 app.listen(process.env.PORT, async()=>{

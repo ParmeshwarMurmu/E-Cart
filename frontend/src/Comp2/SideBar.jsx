@@ -16,6 +16,7 @@ export const SideBar = () => {
     const [searchParams, setSearchParams] = useSearchParams()
     const [brand, setBrand] = useState([])
     const [category, setCategory] = useState([])
+    const [color, setColor] = useState([])
 
     const { allColors, allCategory, allBrands, allGender, isLoading, isError, isData } = useSelector((store) => {
         return {
@@ -65,19 +66,35 @@ export const SideBar = () => {
         setCategory(newCategory)
     }
 
-    console.log(category)
+    const colorHandler = (e)=>{
+        const {value} = e.target;
+
+        let newColor = [...color];
+        if(newColor.includes(value)){
+            newColor = newColor.filter(el => el !== value)
+        }
+        else{
+            newColor.push(value)
+        }
+
+        setColor(newColor)
+    }
+
+   
 
     useEffect(() => {
 
         const params = {
             brand: brand,
-            category: category
+            category: category,
+            color: color
         }
 
         setSearchParams(params)
+        
 
 
-    }, [brand, category])
+    }, [brand, category, color])
 
 
 
@@ -175,7 +192,7 @@ export const SideBar = () => {
                     {
                             allColors.map((el, index) => (
                                 <div key={index}>
-                                    <input type="checkbox" value={el} onChange={brandHandler} />
+                                    <input type="checkbox" value={el} onChange={colorHandler} />
                                     <label htmlFor="">{el}</label>
                                 </div>
 

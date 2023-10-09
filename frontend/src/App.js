@@ -18,12 +18,34 @@ import { Categories } from './Components/Home/Categories';
 import { Try } from './try/Try';
 import { Home } from './Routes/Home';
 import { appContent } from './Context/ContextApi';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import {ChevronDownIcon, ChevronUpIcon } from '@chakra-ui/icons'
 
 function App() {
 
   const [icon, setIcon] = useState(1)
+
+  const [searchParams, setSearchParams] = useSearchParams()
+  const [type, setType] = useState('')
+
+  const mensCategoryHandler = (e)=>{
+    const {value} = e.target;
+    // alert('value')
+    setType(value)
+
+
+  }
+
+  useEffect(() => {
+
+    if (type !== '') { // Only update searchParams if type is not empty
+      const params = {
+        type: type
+      }
+      setSearchParams(params)
+    }
+
+}, [type])
 
 
   return (
@@ -90,7 +112,10 @@ function App() {
                   Mens
                 </MenuButton>
                 <MenuList>
-                  <MenuItem>T-Shirts</MenuItem>
+                  <Link to={`/product/mens`}>
+                  <MenuItem onClick={mensCategoryHandler} value={'t-shirts'}>T-Shirts</MenuItem>
+                  </Link>
+
                   <MenuItem>Formal Shirts</MenuItem>
                   <MenuItem>Casual-Shirts</MenuItem>
                   <MenuItem>Jeans</MenuItem>

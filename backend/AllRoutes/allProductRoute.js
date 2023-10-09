@@ -7,12 +7,18 @@ const allProductRoute = express.Router()
 
 allProductRoute.get('/mens', async(req, res)=>{
 
+    console.log(req.query, "***");
+
+    const {category, color, brand} = req.query;
+
     try {
+
+        const isEmptyQuery = Object.keys(req.query).length === 0; 
         const data = await MenModel.find();
         const allBrands = await MenModel.distinct('brand');
         const allColors = await MenModel.distinct('color');
         const allCategory = await MenModel.distinct('category');
-        res.status(200).send({"data": data, "allBrands": allBrands, "allColors": allColors, "allCategory": allCategory, "allGender": []})
+        res.status(200).send({"data": data, "allBrands": allBrands, "allColors": allColors, "allCategory": allCategory, "allGender": [], "urlCategory": "mens"})
     } catch (error) {
         res.status(200).send({"msg": error})
     }

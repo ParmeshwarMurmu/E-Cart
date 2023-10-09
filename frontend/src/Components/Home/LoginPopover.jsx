@@ -15,18 +15,66 @@ import {
   ButtonGroup,
   Text,
   TagRightIcon,
+  useToast,
 } from '@chakra-ui/react'
 import { Input } from '@chakra-ui/react'
 import { AdminLogin } from '../../Admin/AdminLogin'
 import { theme } from '../../DefaultTheme'
 import { SignInLogo } from './SignInLogo'
+import { shallowEqual, useDispatch, useSelector } from 'react-redux'
+import { emaiAction, passwordAction } from '../../Redux/userReducer/action'
+import axios from 'axios'
 
 export const LoginPopover = () => {
   const initialFocusRef = React.useRef()
   const inputRef = useRef(null);
-
+  const toast = useToast();
   const [state, setState] = useState("login")
+  
+  const dispatch = useDispatch()
+  const {email, password} = useSelector((store)=>{
 
+    return {
+      email: store.userReducer.email,
+      password: store.userReducer.password,
+    }
+  }, shallowEqual)
+ 
+  let data = {
+    email,
+   password
+  }
+
+  const registerHandler = ()=>{
+
+   console.log(data);
+    axios.post('http://localhost:8080/user/register', data)
+    .then((res)=>{
+      
+        toast({
+          title: 'SignUp',
+          description: `${res.data.msg}`,
+          status: 'success',
+          duration: 4000,
+          isClosable: true,
+        })
+      
+      
+  
+      
+    })
+    .catch((err)=>{
+      toast({
+        title: 'Error Occured',
+        description: `Cannot Add men item`,
+        status: 'error',
+        duration: 4000,
+        isClosable: true,
+      })
+    })
+
+  
+  }
 
 
   const SignUpHandler = () => {
@@ -78,8 +126,13 @@ export const LoginPopover = () => {
 
             <div>
                 <div className='loginForm'>
-                  <Input type='email' placeholder='Email' p={2} mb={4} mt={4} className='inp' />
+                  <Input type='email' placeholder='Email' p={2} mb={4} mt={4} className='inp'
+                   
+                   />
+
+
                   <Input type='password' placeholder='Password' p={2}className='inp'/>
+
                 
                 </div>
 
@@ -92,8 +145,17 @@ export const LoginPopover = () => {
 
               <div>
                 <div className='loginForm'>
-                  <Input type='email' placeholder='Email' p={2} mb={4} mt={4} ref={inputRef} className='inp'/>
-                  <Input type='password' placeholder='Password' p={2}  className='inp'/>
+                  <Input type='email' placeholder='Email' p={2} mb={4} mt={4} ref={inputRef} className='inp' 
+                  onChange={(e)=>{
+                    dispatch(emaiAction(e.target.value))
+                  }}
+                  
+                  />
+                  <Input type='password' placeholder='Password' p={2}  className='inp'
+                    onChange={(e)=>{
+                      dispatch(passwordAction(e.target.value))
+                    }}
+                  />
                   
                 </div>
 
@@ -118,7 +180,9 @@ export const LoginPopover = () => {
                 state === 'login' ? <Button width={'100%'} colorScheme='blue' >
                 Login
               </Button>
-               : <Button colorScheme='blue' >
+               : <Button colorScheme='blue' 
+               onClick={registerHandler}
+               >
                SignUp
              </Button>
               }

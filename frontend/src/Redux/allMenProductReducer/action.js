@@ -17,11 +17,14 @@ export const allMenProductErrorAction = ()=>{
     return {type: ALL_MEN_PRODUCT_ERROR}
 }
 
-export const allProductData = (category)=>(dispatch)=>{
+export const allProductData = (category, obj)=>(dispatch)=>{
+
+    console.log(category, obj);
  
     dispatch(allMenProductLoadingAction())
-    axios.get(`http://localhost:8080/allProducts/${category}`)
+    axios.get(`http://localhost:8080/allProducts/${category}`, obj)
     .then((res)=>{
+        console.log(res.data);
      dispatch(allMenProductSuccessAction(res.data))
     })
     .then((err)=>{
