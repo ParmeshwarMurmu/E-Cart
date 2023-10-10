@@ -88,11 +88,9 @@ export const MenTrending = () => {
                                 {
                                     isLoading ? <LoaderComp />   : product.map((el) => (
                                         <Link to={`/singleProduct/men/${el._id}`}>
-                                        <div key={el._id} style={{ marginRight: "20px", height: "250px" }}>
+                                        <div key={el._id} className='imgDiv' style={{ marginRight: "20px", height: "250px" }}>
                                             <img width="200px" src={el.images[0]} alt={el.title} />
-                                            <div className="product-info">
-
-                                            </div>
+                        
                                         </div>
                                         </Link>
 
@@ -159,9 +157,20 @@ const DIV = styled.div`
   .slideshow-container{
     z-index: -1;
   }
+
+  .imgDiv {
+  position: relative;
+  /* box-shadow: 0 25px 50px rgba(0,0,0,0.55); */
+  cursor: pointer;
+  transition: all .3s;
+}
+
+.imgDiv:hover {
+  transform: scale(0.9);
+}
   
 
-  
+   
 @media screen and (max-width: 768px) {
       /* Your styles for large devices go here */
 
@@ -207,6 +216,8 @@ const DIV = styled.div`
    
       
     }
+
+
 
 
 `

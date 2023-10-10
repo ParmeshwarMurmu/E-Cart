@@ -17,6 +17,7 @@ import { Categories } from './Components/Home/Categories';
 import { appContent } from './Context/ContextApi';
 import { Link, useSearchParams } from 'react-router-dom';
 import {ChevronDownIcon, ChevronUpIcon } from '@chakra-ui/icons'
+import { Footer } from './Routes/Footer';
 
 function App() {
 
@@ -183,6 +184,8 @@ function App() {
       <div style={{ marginTop: "80px", }}>
         <Main />
       </div>
+
+      <Footer />
 
 
     </DIV>

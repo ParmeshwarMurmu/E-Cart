@@ -21,12 +21,14 @@ export const SingleProductAddToCart = ({category, id, userSize, type}) => {
    
       
       if((type === 'saree' || type === 'lehenga cholis') || (userSize !== "")){
+
       const data = {
-        productType: `${category}s`,
         productId: id,
-        type,
+        productModel: `${category}`,
         size:userSize
       }
+
+      console.log("addtocart", data);
 
       axios.post('http://localhost:8080/user/addToCart', data, {
         headers: {
@@ -49,7 +51,7 @@ export const SingleProductAddToCart = ({category, id, userSize, type}) => {
           toast({
             title: 'Cart',
             description: `${res.data.msg}`,
-            status: 'success',
+            status: 'error',
             duration: 4000,
             isClosable: true,
           })

@@ -140,8 +140,8 @@ export const WomenSlideShow = () => {
                                     product.map((element, index) => (
 
                                         <Link to={`/singleProduct/women/${element._id}`}>
-                                        <div key={index} style={{ marginRight: "20px", height: "250px" }}>
-                                            <img width="200px" src={element.images[0]} alt={"p"} />
+                                        <div key={index} className='imgDiv' style={{ marginRight: "20px", height: "250px" }}>
+                                            <img className='sliderImage' width="200px" src={element.images[0]} alt={"p"} />
 
 
                                         </div>
@@ -207,6 +207,38 @@ const DIV = styled.div`
   .slideshow-container{
     z-index: -1;
   }
+
+  .imgDiv {
+  position: relative;
+  /* box-shadow: 0 25px 50px rgba(0,0,0,0.55); */
+  cursor: pointer;
+  transition: all .3s;
+}
+
+.imgDiv:hover {
+  transform: scale(0.9);
+}
+
+
+ 
+@media screen and (max-width: 1237px) {
+      /* Your styles for large devices go here */
+
+      .imgDiv{
+          height: 170px;
+      }
+
+      .sliderImage{
+           width: 170px;
+      }
+
+      .slider{
+
+      }
+   
+      
+    }
+    
 
 
 `

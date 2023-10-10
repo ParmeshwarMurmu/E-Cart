@@ -140,6 +140,17 @@ const DIV = styled.div`
     z-index: -1;
   }
 
+  .imgDiv {
+  position: relative;
+  /* box-shadow: 0 25px 50px rgba(0,0,0,0.55); */
+  cursor: pointer;
+  transition: all .3s;
+}
+
+.imgDiv:hover {
+  transform: scale(0.9);
+}
+
   
 @media screen and (max-width: 768px) {
       /* Your styles for large devices go here */
