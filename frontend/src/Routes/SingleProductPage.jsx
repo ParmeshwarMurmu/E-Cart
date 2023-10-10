@@ -203,7 +203,7 @@ export const SingleProductPage = () => {
 
                                 <div style={{ display: "flex", marginRight: "10px" }}>
                                     <div style={{ marginRight: "20px" }}>
-                                        <SingleProductAddToCart />
+                                        <SingleProductAddToCart category={category} id={id}  />
                                     </div>
 
                                     <div>

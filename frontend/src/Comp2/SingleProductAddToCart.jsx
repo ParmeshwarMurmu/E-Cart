@@ -1,10 +1,63 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
+import { appContent } from '../Context/ContextApi'
+import { useNavigate } from 'react-router-dom'
+import { useToast } from '@chakra-ui/react'
+import axios from 'axios'
 
-export const SingleProductAddToCart = () => {
+export const SingleProductAddToCart = ({category, id}) => {
+
+  const {isAuth} = useContext(appContent)
+  const navigate = useNavigate()
+  const toast = useToast()
+  const token = localStorage.getItem('token')
+
+
+  const addToCartHandler = ()=>{
+
+    if(isAuth){
+      const data = {
+        productType: `${category}s`,
+        productId: id
+      }
+
+      axios.post('http://localhost:8080/user/addToCart', data, {
+        headers: {
+          Authorization: `bearer ${token}`
+        }
+      })
+      .then((res)=>{
+        toast({
+          title: 'Cart',
+          description: `${res.data.msg}`,
+          status: 'success',
+          duration: 4000,
+          isClosable: true,
+        })
+  
+       
+      })
+      .catch((err)=>{
+        console.log(err);
+      })
+
+    }
+    else{
+      toast({
+        title: 'Login',
+        description: `Please Login To Proceed`,
+        status: 'warning',
+        duration: 4000,
+        isClosable: true,
+      })
+
+      navigate('/login')
+    }
+    
+  }
     return (
         <DIV>
-            <button class="CartBtn">
+            <button class="CartBtn" onClick={addToCartHandler}>
                 <span class="IconContainer">
                     <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512" fill="rgb(17, 17, 17)" class="cart"><path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"></path></svg>
                 </span>

@@ -2,13 +2,15 @@ const express = require('express')
 const {userModel, UserModel} = require('../Model/UserSchema')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
+const {auth} = require('../middlewares/auth')
+const {CartModel} = require('../Model/CartSchema')
 require('dotenv').config()
+
 const userRoute = express.Router()
 
 userRoute.post('/register', async(req, res)=>{
 
     const {email, password} = req.body
-    console.log(email,password);
 
     try {
 
@@ -50,7 +52,7 @@ userRoute.post('/login', async(req, res)=>{
                     res.status(200).send({"msg": 'Wrong Password'})
                 }
                 // result == true
-                const token = jwt.sign({userId: existingUser._id}, process.env.SECRET_KEY, {expiresIn: '7d'});
+                const token = jwt.sign({userId: existingUser._id, userName: existingUser.firstName}, process.env.SECRET_KEY, {expiresIn: '7d'});
                 res.status(200).send({"msg": "LogIn successfull", "token": token})
             });
             
@@ -62,6 +64,27 @@ userRoute.post('/login', async(req, res)=>{
     }
 })
 
+
+userRoute.post('/addToCart', auth, async(req, res)=>{
+
+    const { userId, userName, productId, productType } = req.body;
+    console.log("req body");
+    console.log(req.body);
+    try {
+        // const newCartItem = new CartModel({
+        //     userId,
+        //     userName,
+        //     productType, // Set this to "men", "women", or "shoes" based on the product type
+        //     productId
+        // });
+
+        // await newCartItem.save()
+        res.send({"msg": "Product added to your cart"})
+    } catch (error) {
+        
+        res.send({"msg": "Product added to your cart"})
+    }
+})
 
 
 
