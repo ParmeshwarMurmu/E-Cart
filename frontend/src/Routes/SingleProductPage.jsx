@@ -18,6 +18,7 @@ export const SingleProductPage = () => {
 
     const [index, setIndex] = useState(0)
     const [sizeIndex, setSizeIndex] = useState(-1)
+    const [userSize, setUserSize] = useState("")
 
 
     const { category, id } = useParams()
@@ -34,6 +35,11 @@ export const SingleProductPage = () => {
 
         }
     }, shallowEqual)
+
+    const sizeHandler = (el, sizeInd) => {
+        setSizeIndex(sizeInd)
+        setUserSize(el)
+    }
 
 
 
@@ -56,12 +62,12 @@ export const SingleProductPage = () => {
 
                             <div>
                                 <div>
-                             
-                                <Image className='card_box' h={'500px'} src={data.images[index]} alt={data.title} />
-                              
+
+                                    <Image className='card_box' h={'500px'} src={data.images[index]} alt={data.title} />
+
                                 </div>
 
-                               
+
 
 
                                 {/* Main Image */}
@@ -97,6 +103,7 @@ export const SingleProductPage = () => {
 
                                 {/* brand and title */}
                                 <Text fontSize='xl' fontWeight={'bold'} colorScheme='gray'>{data.brand}</Text>
+                                <Text fontSize='md' fontWeight={'bold'} colorScheme='gray'>{data.category}</Text>
                                 <Text fontSize='lg'>{data.title}</Text>
 
 
@@ -142,10 +149,12 @@ export const SingleProductPage = () => {
                                                 border: sizeInd === sizeIndex ? '2px solid blue' : '1px solid grey',
                                                 // boxShadow: sizeInd === sizeIndex ? ' rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px' : ''
                                             }}
-                                                onClick={() => { (setSizeIndex(sizeInd)) }}
+
+                                            onClick={() => sizeHandler(el, sizeInd)}
+
                                             >
                                                 <Button
-
+                                                    
                                                     variant={'none'} size='sm'>
                                                     {el}
                                                 </Button>
@@ -203,7 +212,7 @@ export const SingleProductPage = () => {
 
                                 <div style={{ display: "flex", marginRight: "10px" }}>
                                     <div style={{ marginRight: "20px" }}>
-                                        <SingleProductAddToCart category={category} id={id}  />
+                                        <SingleProductAddToCart category={category} id={id} userSize={userSize} type={data.category} />
                                     </div>
 
                                     <div>

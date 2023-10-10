@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import { useToast } from '@chakra-ui/react'
 import axios from 'axios'
 
-export const SingleProductAddToCart = ({category, id}) => {
+export const SingleProductAddToCart = ({category, id, userSize, type}) => {
 
   const {isAuth} = useContext(appContent)
   const navigate = useNavigate()
@@ -14,11 +14,18 @@ export const SingleProductAddToCart = ({category, id}) => {
 
 
   const addToCartHandler = ()=>{
+   
+
 
     if(isAuth){
+   
+      
+      if((type === 'saree' || type === 'lehenga cholis') || (userSize !== "")){
       const data = {
         productType: `${category}s`,
-        productId: id
+        productId: id,
+        type,
+        size:userSize
       }
 
       axios.post('http://localhost:8080/user/addToCart', data, {
@@ -27,19 +34,42 @@ export const SingleProductAddToCart = ({category, id}) => {
         }
       })
       .then((res)=>{
-        toast({
-          title: 'Cart',
-          description: `${res.data.msg}`,
-          status: 'success',
-          duration: 4000,
-          isClosable: true,
-        })
+
+        if(res.data.msg === 'Product added to your cart'){
+
+          toast({
+            title: 'Cart',
+            description: `${res.data.msg}`,
+            status: 'success',
+            duration: 4000,
+            isClosable: true,
+          })
+        }
+        else{
+          toast({
+            title: 'Cart',
+            description: `${res.data.msg}`,
+            status: 'success',
+            duration: 4000,
+            isClosable: true,
+          })
+        }
   
        
       })
       .catch((err)=>{
         console.log(err);
       })
+    }
+    else{
+      toast({
+        title: 'Size',
+        description: `Please Select Size`,
+        status: 'warning',
+        duration: 4000,
+        isClosable: true,
+      })
+    }
 
     }
     else{

@@ -17,7 +17,7 @@ import {
     Text,
 } from "@chakra-ui/react";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
-import { Link, Navigate } from 'react-router-dom';
+import { Link, Navigate, useParams, useSearchParams } from 'react-router-dom';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import { emaiAction, passwordAction, ressetAction } from '../Redux/userReducer/action';
@@ -29,6 +29,7 @@ import { appContent } from '../Context/ContextApi';
 export const Login = () => {
 
     const [showPassword, setShowPassword] = useState(false)
+    const [searchParams, setSearchParams] = useSearchParams()
     const toast = useToast();
     const navigate = useNavigate();
     const {setIsAuth} = useContext(appContent)
@@ -55,6 +56,7 @@ export const Login = () => {
     .then((res)=>{
        console.log(res.data);
        localStorage.setItem("token", res.data.token)
+       localStorage.setItem("E-Cart_userId", res.data.userId)
         toast({
           title: 'Login',
           description: `${res.data.msg}`,
@@ -65,7 +67,11 @@ export const Login = () => {
 
         dispatch(ressetAction())
         setIsAuth(true)
-        navigate('/');
+        
+    //   const userId = res.data.userId;
+    //   searchParams.set('userId', userId);
+    //   setSearchParams(searchParams);
+      navigate('/');
         
       
   

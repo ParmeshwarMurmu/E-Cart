@@ -53,7 +53,7 @@ userRoute.post('/login', async(req, res)=>{
                 }
                 // result == true
                 const token = jwt.sign({userId: existingUser._id, userName: existingUser.firstName}, process.env.SECRET_KEY, {expiresIn: '7d'});
-                res.status(200).send({"msg": "LogIn successfull", "token": token})
+                res.status(200).send({"msg": "LogIn successfull", "token": token, userId: existingUser._id})
             });
             
         }
@@ -68,21 +68,30 @@ userRoute.post('/login', async(req, res)=>{
 userRoute.post('/addToCart', auth, async(req, res)=>{
 
     const { userId, userName, productId, productType } = req.body;
-    console.log("req body");
-    console.log(req.body);
+    
     try {
-        // const newCartItem = new CartModel({
-        //     userId,
-        //     userName,
-        //     productType, // Set this to "men", "women", or "shoes" based on the product type
-        //     productId
-        // });
-
-        // await newCartItem.save()
+        const newCartItem = new CartModel(req.body);
+        await newCartItem.save()
         res.send({"msg": "Product added to your cart"})
     } catch (error) {
         
         res.send({"msg": "Product added to your cart"})
+    }
+})
+
+userRoute.get('/cart', auth, async(req, res)=>{
+
+    const { userId} = req.body;
+    console.log("cart");
+    console.log(req.body);
+    
+    try {
+        const cart = await CartModel.find({ userId }).populate('productId')
+        console.log(cart);
+        res.status(200).send({"cart": cart})
+    } catch (error) {
+        
+        res.send({"msg": error})
     }
 })
 
