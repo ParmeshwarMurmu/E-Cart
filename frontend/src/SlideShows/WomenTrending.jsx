@@ -272,6 +272,39 @@ const DIV = styled.div`
       
     }
 
+    @media screen and (max-width: 639px) {
+      /* Your styles for large devices go here */
+
+      .slider{
+        height: 150px;
+        width: 77%;
+      }
+
+      .sliderImage{
+        height: 150px;
+        width: 130px;
+      }
+   
+      
+    }
+
+
+    @media screen and (max-width: 510px) {
+      /* Your styles for large devices go here */
+
+      .slider{
+        height: 150px;
+        width: 77%;
+      }
+
+      .sliderImage{
+        height: 150px;
+        width: 130px;
+      }
+   
+      
+    }
+
     
 
     @media screen and (max-width: 420px) {
@@ -294,15 +327,6 @@ const DIV = styled.div`
       
     }
 
-    @media screen and (max-width: 510px) {
-      /* Your styles for large devices go here */
-
-      .slider{
-        height: 245px;
-      }
-   
-      
-    }
 
 
 `

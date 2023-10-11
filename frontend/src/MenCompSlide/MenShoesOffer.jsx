@@ -11,19 +11,19 @@ export const MenShoesOffer = () => {
         <DIV>
           <div className='menLatest'>
             <Box>
-              <Image src={menShoesOffer3} alt='Mens' />
+              <Image className='image' src={menShoesOffer3} alt='Mens' />
             </Box>
           </div>
     
           <div className='sarees'>
             <Box>
-              <Image src={menShoesOffer1} alt='Mens' />
+              <Image className='image' src={menShoesOffer1} alt='Mens' />
             </Box>
           </div>
     
           <div  className='mens'>
             <Box >
-              <Image src={menShoesOffer2} alt='Mens' />
+              <Image className='image' src={menShoesOffer2} alt='Mens' />
             </Box>
           </div>
     
@@ -60,6 +60,41 @@ width: 90%;
 
 width: 90%;
 }
+
+
+
+@media screen and (max-width: 639px) {
+      /* Your styles for large devices go here */
+
+      .menLatest{
+        height: 350px;
+        padding-top: 10px;
+      }
+      
+      .menLatest .image{
+        height: 310px;
+        
+      }
+
+      .sarees{
+        padding-top: 10px;
+      }
+
+      .sarees .image{
+        height: 150px;
+      }
+
+
+      .mens{
+        padding-top: 10px;
+    
+      }
+
+      .mens .image{
+        height: 150px;
+      }
+
+    }
 
 
 `

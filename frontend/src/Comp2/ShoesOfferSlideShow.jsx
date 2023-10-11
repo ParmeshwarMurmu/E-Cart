@@ -11,19 +11,19 @@ export const ShoesOfferSlideShow = () => {
     <DIV>
       <div className='womenLatest'>
         <Box>
-          <Image src={womenSale} alt='Mens' />
+          <Image className='image' src={womenSale} alt='Mens' />
         </Box>
       </div>
 
       <div className='sarees'>
         <Box>
-          <Image src={WomenShoes1} alt='Mens' />
+          <Image className='image' src={WomenShoes1} alt='Mens' />
         </Box>
       </div>
 
       <div  className='mens'>
         <Box >
-          <Image src={WomenShoes2} alt='Mens' />
+          <Image className='image' src={WomenShoes2} alt='Mens' />
         </Box>
       </div>
 
@@ -55,6 +55,42 @@ width: 90%;
 .sarees{
 width: 90%;
 }
+
+
+
+      @media screen and (max-width: 639px) {
+      /* Your styles for large devices go here */
+
+      .womenLatest{
+        height: 350px;
+        padding-top: 10px;
+      }
+      
+      .womenLatest .image{
+        height: 310px;
+        
+      }
+
+      .sarees{
+        padding-top: 10px;
+      }
+
+      .sarees .image{
+        height: 150px;
+      }
+
+
+      .mens{
+        padding-top: 5px;
+    
+      }
+
+      .mens .image{
+        height: 150px;
+      }
+
+    }
+
 
 
 `

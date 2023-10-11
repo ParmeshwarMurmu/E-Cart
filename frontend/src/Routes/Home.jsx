@@ -31,9 +31,9 @@ export const Home = () => {
 
       {/* Mensection slideshow */}
       <div className='mens'>
-        <div style={{ backgroundColor: "green" }}>
+        <div style={{}}>
           <Box >
-            <Image src={mensNewArrivial} alt='Mens' />
+            <Image className='menImage' src={mensNewArrivial} alt='Mens' />
           </Box>
         </div>
 
@@ -57,7 +57,7 @@ export const Home = () => {
         </div>
       </div>
 
-      <div style={{width: "95%"}}>
+      <div className='trending' style={{ border: "2px solid black"}}>
       <MenTrending />
       </div>
 
@@ -130,7 +130,7 @@ export const Home = () => {
         </div>
       </div>
 
-      <div style={{width: "95%"}}>
+      <div className='trending' style={{ border: "2px solid black"}}>
       <WomenShoesTrending />
       </div>
 
@@ -168,7 +168,7 @@ export const Home = () => {
         </div>
       </div>
 
-      <div style={{width: "95%"}}>
+      <div className='trending' style={{ border: "2px solid black"}}>
       <MenShoesTrending />
       </div>
 
@@ -236,6 +236,20 @@ const DIV = styled.div`
    
       
     }
+
+
+    @media screen and (max-width: 639px) {
+      /* Your styles for large devices go here */
+
+      .menImage{
+        height: 324px;
+        
+      }
+      
+   
+      
+    }
+
 
 
 `

@@ -272,6 +272,22 @@ const DIV = styled.div`
    
       
     }
+
+    @media screen and (max-width: 639px) {
+      /* Your styles for large devices go here */
+
+      .slider{
+        height: 150px;
+        width: 89%;
+      }
+
+      .sliderImage{
+        height: 150px;
+        width: 130px;
+      }
+   
+      
+    }
     
 
 

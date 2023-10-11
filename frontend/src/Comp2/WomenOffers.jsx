@@ -12,23 +12,23 @@ export const WomenOffers = () => {
 
       <div className='womenLatest'>
         <Box>
-          <Image src={womenLatest} alt='Mens' />
+          <Image className='image' src={womenLatest} alt='Mens' />
         </Box>
       </div>
 
       <div className='sarees'>
         <Box>
-          <Image src={Sarees} alt='Mens' />
+          <Image className='image' src={Sarees} alt='Mens' />
         </Box>
       </div>
 
-      <div  className='mens'>
+      <div className='mens'>
         <Box >
-          <Image src={summerSale} alt='Mens' />
+          <Image className='image' src={summerSale} alt='Mens' />
         </Box>
       </div>
 
-      
+
 
 
 
@@ -61,6 +61,41 @@ width: 90%;
 
 width: 90%;
 }
+
+@media screen and (max-width: 639px) {
+      /* Your styles for large devices go here */
+
+      .womenLatest{
+        height: 350px;
+      }
+      
+      .womenLatest .image{
+        height: 350px;
+      }
+
+      .sarees{
+      
+        padding-top: 20px;
+      }
+
+      .sarees .image{
+        height: 150px;
+      }
+      .mens{
+        padding-top: 20px;
+    
+      }
+
+      .mens .image{
+        height: 150px;
+      }
+
+
+
+ 
+   
+      
+    }
 
 
 
