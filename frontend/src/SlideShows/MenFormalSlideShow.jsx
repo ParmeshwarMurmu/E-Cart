@@ -87,11 +87,9 @@ export const MenFormalSlideShow = () => {
                                 {
                                     isLoading ? <LoaderComp />   : product.map((el) => (
                                         <Link to={`/singleProduct/men/${el._id}`}>
-                                        <div key={el._id} className='card_box' style={{ marginRight: "20px", height: "250px" }}>
-                                            <img  width="200px" src={el.images[0]} alt={el.title} />
-                                            <div className="product-info">
-
-                                            </div>
+                                        <div key={el._id} className='imgDiv' style={{ marginRight: "20px", height: "250px" }}>
+                                            <img className='sliderImage'  width="200px" src={el.images[0]} alt={el.title} />
+                                            
                                         </div>
                                         </Link>
 
@@ -161,16 +159,69 @@ margin-top: 30px;
   }
 
   
-.card_box {
+.imgDiv {
   position: relative;
   /* box-shadow: 0 25px 50px rgba(0,0,0,0.55); */
   cursor: pointer;
   transition: all .3s;
 }
 
-.card_box:hover {
+.imgDiv:hover {
   transform: scale(0.9);
 }
+
+ 
+@media screen and (max-width: 1237px) {
+      /* Your styles for large devices go here */
+
+      .imgDiv{
+          height: 170px;
+      }
+
+      .sliderImage{
+           width: 170px;
+      }
+
+      .slider{
+
+      }
+   
+      
+    }
+
+    @media screen and (max-width: 1076px) {
+      /* Your styles for large devices go here */
+
+      .slider{
+        height: 180px;
+        border: 2px solid red;
+      }
+
+      .sliderImage{
+        height: 180px;
+        width: 150px;
+      }
+   
+      
+    }
+
+    @media screen and (max-width: 768px) {
+      /* Your styles for large devices go here */
+
+      .imgDiv{
+          height: 170px;
+      }
+
+      .sliderImage{
+           width: 160px;
+      }
+
+      .slider{
+
+      }
+   
+      
+    }
 
 
 

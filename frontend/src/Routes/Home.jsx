@@ -85,14 +85,14 @@ export const Home = () => {
 
       <div className='menTrending'>
       
-      <div className='viewAll'>
+      <div className='viewAll' style={{border: "2px solid green"}}>
         <div>
         <Text fontSize={'2xl'}>Trending</Text>
         <Button colorScheme='blue'>View All</Button>
         </div>
       </div>
 
-      <div style={{width: "95%"}}>
+      <div className='trending' style={{ border: "2px solid black"}}>
       <WomenTrending />
       </div>
 
@@ -222,6 +222,20 @@ const DIV = styled.div`
  .mens > div{
   /* border: 2px solid black; */
  }
+
+ .trending{
+  width: 95%;
+ }
+
+ @media screen and (max-width: 768px) {
+      /* Your styles for large devices go here */
+
+    .trending{
+      width: 90%;
+    }
+   
+      
+    }
 
 
 `

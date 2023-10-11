@@ -225,6 +225,25 @@ const DIV = styled.div`
       }
 
       .sliderImage{
+           width: 160px;
+      }
+
+      .slider{
+
+      }
+   
+      
+    }
+
+     
+@media screen and (max-width: 1237px) {
+      /* Your styles for large devices go here */
+
+      .imgDiv{
+          height: 170px;
+      }
+
+      .sliderImage{
            width: 170px;
       }
 
@@ -234,6 +253,26 @@ const DIV = styled.div`
    
       
     }
+
+
+    @media screen and (max-width: 1076px) {
+      /* Your styles for large devices go here */
+
+      .slider{
+        height: 180px;
+        border: 2px solid red;
+        width: 77%;
+      }
+
+      .sliderImage{
+        height: 180px;
+        width: 150px;
+      }
+   
+      
+    }
+
+    
 
     @media screen and (max-width: 420px) {
       /* Your styles for large devices go here */
@@ -247,7 +286,9 @@ const DIV = styled.div`
       }
 
       .slider{
-        height: 225px;
+        height: 180px;
+        border: 2px solid red;
+        width: 75%;
       }
    
       

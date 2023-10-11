@@ -176,6 +176,24 @@ const DIV = styled.div`
    
       
     }
+
+
+    @media screen and (max-width: 1076px) {
+      /* Your styles for large devices go here */
+
+      .slider{
+        height: 180px;
+        border: 2px solid red;
+        width: 77%;
+      }
+
+      .sliderImage{
+        height: 180px;
+        width: 150px;
+      }
+   
+      
+    }
   
 @media screen and (max-width: 768px) {
       /* Your styles for large devices go here */
@@ -185,7 +203,7 @@ const DIV = styled.div`
       }
 
       .sliderImage{
-           width: 170px;
+           width: 160px;
       }
 
       .slider{

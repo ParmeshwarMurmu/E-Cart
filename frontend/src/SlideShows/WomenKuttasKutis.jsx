@@ -160,7 +160,7 @@ const DIV = styled.div`
 }
 
   
-@media screen and (max-width: 1237px) {
+@media screen and (min-width: 1237px) {
       /* Your styles for large devices go here */
 
       .imgDiv{
@@ -196,11 +196,35 @@ const DIV = styled.div`
       
     }
 
-    @media screen and (max-width: 510px) {
+    @media screen and (max-width: 1076px) {
       /* Your styles for large devices go here */
 
       .slider{
-        height: 245px;
+        height: 180px;
+        border: 2px solid red;
+      }
+
+      .sliderImage{
+        height: 180px;
+        width: 150px;
+      }
+   
+      
+    }
+
+    @media screen and (max-width: 768px) {
+      /* Your styles for large devices go here */
+
+      .imgDiv{
+          height: 170px;
+      }
+
+      .sliderImage{
+           width: 160px;
+      }
+
+      .slider{
+
       }
    
       

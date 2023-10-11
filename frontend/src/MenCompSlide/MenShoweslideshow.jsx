@@ -79,7 +79,7 @@ export const MenShoweslideshow = () => {
 
                                     <Link to={`/singleProduct/shoes/${el._id}`}>
                                     <div key={el._id} className='imgDiv' style={{ marginRight: "20px", height: "250px" }}>
-                                        <img width="200px" src={el.images[0]} alt={el.name} />
+                                        <img className='sliderImage' width="200px" src={el.images[0]} alt={el.name} />
                                         
                                     </div>
                                     </Link>
@@ -149,6 +149,59 @@ const DIV = styled.div`
 .imgDiv:hover {
   transform: scale(0.9);
 }
+
+ 
+@media screen and (max-width: 1237px) {
+      /* Your styles for large devices go here */
+
+      .imgDiv{
+          height: 170px;
+      }
+
+      .sliderImage{
+           width: 170px;
+      }
+
+      .slider{
+
+      }
+   
+      
+    }
+
+    @media screen and (max-width: 1076px) {
+      /* Your styles for large devices go here */
+
+      .slider{
+        height: 180px;
+        border: 2px solid red;
+      }
+
+      .sliderImage{
+        height: 180px;
+        width: 150px;
+      }
+   
+      
+    }
+
+    @media screen and (max-width: 768px) {
+      /* Your styles for large devices go here */
+
+      .imgDiv{
+          height: 170px;
+      }
+
+      .sliderImage{
+           width: 160px;
+      }
+
+      .slider{
+
+      }
+   
+      
+    }
 
   
 
