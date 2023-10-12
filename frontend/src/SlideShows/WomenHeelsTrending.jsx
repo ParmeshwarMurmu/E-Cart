@@ -183,7 +183,6 @@ const DIV = styled.div`
 
       .slider{
         height: 180px;
-        border: 2px solid red;
         width: 77%;
       }
 

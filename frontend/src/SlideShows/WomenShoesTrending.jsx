@@ -66,7 +66,7 @@ export const WomenShoesTrending = () => {
    
 
   return (
-    <DIV className="slideshow-container" style={{backgroundColor: "red"}}>
+    <DIV className="slideshow-container">
             <Slider {...settings} className='slider'>
                 {isData && womenHeels.map((product) => (
                     <div key={product.id}>
@@ -177,7 +177,6 @@ const DIV = styled.div`
 
       .slider{
         height: 180px;
-        border: 2px solid red;
         width: 77%;
       }
 

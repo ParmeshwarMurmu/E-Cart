@@ -182,7 +182,6 @@ margin-top: 30px;
 
       .slider{
         height: 180px;
-        border: 2px solid red;
       }
 
       .sliderImage{
@@ -246,19 +245,17 @@ margin-top: 30px;
 
 
     @media screen and (max-width: 425px) {
-     
-      
+
       .slider{
   height: 140px;
-  width: 190%;
+  width: 120%;
 }
 
 .sliderImage{
   height: 120px;
   width: 110px;
 }
-   
-      
+
     }
 
 

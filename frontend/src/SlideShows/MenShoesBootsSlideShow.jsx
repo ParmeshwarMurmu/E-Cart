@@ -173,7 +173,6 @@ margin-top: 30px;
 
       .slider{
         height: 180px;
-        border: 2px solid red;
       }
 
       .sliderImage{

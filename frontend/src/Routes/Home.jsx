@@ -57,7 +57,7 @@ export const Home = () => {
         </div>
       </div>
 
-      <div className='trending' style={{ border: "2px solid black"}}>
+      <div className='trending' >
       <MenTrending />
       </div>
 
@@ -85,14 +85,14 @@ export const Home = () => {
 
       <div className='menTrending'>
       
-      <div className='viewAll' style={{border: "2px solid green"}}>
+      <div className='viewAll' >
         <div>
         <Text fontSize={'2xl'}>Trending</Text>
         <Button colorScheme='blue'>View All</Button>
         </div>
       </div>
 
-      <div className='trending' style={{ border: "2px solid black"}}>
+      <div className='trending' >
       <WomenTrending />
       </div>
 
@@ -130,7 +130,7 @@ export const Home = () => {
         </div>
       </div>
 
-      <div className='trending' style={{ border: "2px solid black"}}>
+      <div className='trending' >
       <WomenShoesTrending />
       </div>
 
@@ -168,7 +168,7 @@ export const Home = () => {
         </div>
       </div>
 
-      <div className='trending' style={{ border: "2px solid black"}}>
+      <div className='trending' >
       <MenShoesTrending />
       </div>
 
