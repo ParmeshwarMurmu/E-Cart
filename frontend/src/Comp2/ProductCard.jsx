@@ -100,4 +100,9 @@ const DIV = styled.div`
   box-shadow: 140px -140px #cc3f47;
   background-image: linear-gradient(45deg, #FF512F 0%, #F09819  51%, #FF512F  100%);
 }
+
+
+
+
+
 `

@@ -58,7 +58,7 @@ export const SingleProductPage = () => {
             <div className='loader'>
                 {
                     isLoading ? <SingleProductLoader /> : isData ? (<div className='singleData'>
-                        <div style={{ display: "flex", justifyContent: "space-between" }}>
+                        <div className='singleProduct' >
 
                             <div>
                                 <div>
@@ -71,10 +71,11 @@ export const SingleProductPage = () => {
 
 
                                 {/* Main Image */}
-                                <div style={{ display: "flex", marginTop: "15px", }}>
+                                <div className='smallImages' >
                                     {
                                         data.images.map((el, ind) => (
                                             <div key={ind}
+                                            className='smallImageDiv'
                                                 style={{
                                                     padding: "5px",
                                                     marginRight: "10px",
@@ -140,7 +141,7 @@ export const SingleProductPage = () => {
                                     </div>
                                 }
 
-                                <div style={{ display: 'flex' }}>
+                                <div style={{ display: 'flex', flexWrap: "wrap" }}>
 
                                     {
                                         data.size.length > 0 && data.size.map((el, sizeInd) => (
@@ -210,7 +211,7 @@ export const SingleProductPage = () => {
 
                                 {/* Add To Cart */}
 
-                                <div style={{ display: "flex", marginRight: "10px" }}>
+                                <div className='cartBtnAndWhilist' style={{ display: "flex", marginRight: "10px" }}>
                                     <div style={{ marginRight: "20px" }}>
                                         <SingleProductAddToCart category={category} id={id} userSize={userSize} type={data.category} />
                                     </div>
@@ -245,7 +246,10 @@ export const SingleProductPage = () => {
 // box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 const DIV = styled.div`
 
-
+.singleProduct{
+    display: flex;
+    justify-content: space-between;
+}
 
 .loader{
   display: flex;
@@ -266,10 +270,18 @@ const DIV = styled.div`
 
 /* Container uiverse */
 
+.smallImages{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
 
 
 
-
+/* .smallImages{
+    display: flex;
+    margin-top: 15px;
+    flex-wrap: wrap;
+} */
 
 
 
@@ -284,6 +296,38 @@ const DIV = styled.div`
   transform: scale(0.9);
 }
 
+
+@media screen and (max-width: 425px) {
+      
+    .singleProduct{
+        flex-direction: column;
+    }
+
+    .smallImages{
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0px;
+    }
+
+    .smallImageDiv{
+        width: 50%;
+    }
+
+
+    .cartBtnAndWhilist{
+        flex-direction: column;
+    }
+
+    .cartBtnAndWhilist > div{
+        margin-bottom: 20px;
+        
+    }
+
+    .card_box{
+        height: 400px;
+    }
+
+      
+    }
 
 
 
