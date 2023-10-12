@@ -8,6 +8,7 @@ import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { trackPantsFailure, trackPantsLoading, trackPantsSuccess } from '../Redux/MenTrackPantsSlideShow/action';
 import { LoaderComp } from '../Comp2/LoaderComp';
 import { Link } from 'react-router-dom';
+import { menTrendingData } from '../Redux/menTrendingSlideShowReducer/action';
 
 
 export const MenTrending = () => {
@@ -17,20 +18,8 @@ export const MenTrending = () => {
     let [prod, setProd] = useState([])
 
     const [tShirts, setTShirts] = useState([])
-
-    const dispatch = useDispatch();
-
-    const { isLoading,isError, trackPants} = useSelector((store)=>{
-
-        return {
-            isLoading: store.menTrackPants.isLoading,
-            isError: store.menTrackPants.isError,
-            trackPants: store.menTrackPants.trackPants
-        }
-
-    }, shallowEqual)
-
-    const settings = {
+    
+     const settings = {
         dots: true,
         infinite: true,
         speed: 500,
@@ -40,36 +29,43 @@ export const MenTrending = () => {
         variableWidth: true,
     };
 
-    useEffect(() => {
-        
-        dispatch(trackPantsLoading())
-        axios.get('https://full-4qyv.onrender.com/home/men/category?category=casual shirts')
-            .then((res) => {
-                setTShirts(res.data.category)
-                dispatch(trackPantsSuccess(res.data.category))
-                setProd([
-                    [
-                        res.data.category[0],
-                        res.data.category[5],
-                        res.data.category[2],
-                       
-                    ],
-                    [
-                    
-                        res.data.category[3],
-                        res.data.category[4],
-                        
-                        res.data.category[1],
-                      
-                        
-                    ],
-                    
-                ])
+    let trending;
+    const dispatch = useDispatch();
 
-            })
-            .catch((err) => {
-                dispatch(trackPantsFailure())
-            })
+    const { isLoading,isError, menTrending, isData} = useSelector((store)=>{
+
+        return {
+            isLoading: store.menTrendingSlideShowReducer.isLoading,
+            isError: store.menTrendingSlideShowReducer.isError,
+            isData: store.menTrendingSlideShowReducer.isData,
+            menTrending: store.menTrendingSlideShowReducer.menTrending,
+            trackPants: store.menTrendingSlideShowReducer.trackPants
+        }
+
+    }, shallowEqual)
+
+    if(isData){
+      trending = [
+        [
+          menTrending[0],
+          menTrending[1],
+        ],
+        [
+          menTrending[2],
+          menTrending[3],
+        ],
+        [
+          menTrending[4],
+          menTrending[5],
+        ]
+      ]
+    }
+
+   
+
+    useEffect(() => {
+        dispatch(menTrendingData())
+        
     }, [])
 
     // console.log(isError, trackPants);
@@ -81,7 +77,7 @@ export const MenTrending = () => {
             {isLoading ? <LoaderComp /> : <div>
             <Slider {...settings} className='slider'>
                 {
-                    prod && prod.map((product) => (
+                    isData && trending.map((product) => (
                         <div key={product.id}>
                             <div className='main'>
 
@@ -108,7 +104,7 @@ export const MenTrending = () => {
                 }
             </Slider>
             <div className="dot-indicators custom-dots">
-                {prod.map((_, index) => (
+                {isData && trending.map((_, index) => (
                     <div >
                         <span
                             key={index}

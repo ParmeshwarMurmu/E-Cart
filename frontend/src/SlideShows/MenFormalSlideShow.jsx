@@ -3,52 +3,63 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import styled from "styled-components"
-import axios from 'axios';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
-import { trackPantsData} from '../Redux/MenTrackPantsSlideShow/action';
 import { LoaderComp } from '../Comp2/LoaderComp';
 import { Link } from 'react-router-dom';
+import { menFormalData } from '../Redux/menFormalSlideShowReducer/action';
 
 export const MenFormalSlideShow = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
     const [data, setData] = useState("");
-    let [prod, setProd] = useState([])
-
-    const [tShirts, setTShirts] = useState([])
+    
+    const settings = {
+      dots: true,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      afterChange: (index) => setCurrentSlide(index),
+      variableWidth: true,
+  };
 
     const dispatch = useDispatch();
+    let formalShirts;
 
-    const { trackPants, isData,isLoading,isError} = useSelector((store)=>{
+    const { menFormal, isData,isLoading,isError} = useSelector((store)=>{
 
         return {
 
-            isLoading: store.menTrackPants.isLoading,
-            trackPants: store.menTrackPants.trackPants,
-            isData: store.menTrackPants.isData,
-            isError: store.menTrackPants.isError,
+            isLoading: store.menFormalSlideShowReducer.isLoading,
+            menFormal: store.menFormalSlideShowReducer.menFormal,
+            isData: store.menFormalSlideShowReducer.isData,
+            isError: store.menFormalSlideShowReducer.isError,
           
         }
 
     }, shallowEqual)
 
-    const settings = {
-        dots: true,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        afterChange: (index) => setCurrentSlide(index),
-        variableWidth: true,
-    };
+
+    if(isData){
+      formalShirts = [
+        [
+          menFormal[0],
+          menFormal[1],
+        ],
+        [
+          menFormal[2],
+          menFormal[3],
+        ]
+       
+      ]
+
+    }
 
     useEffect(() => {
-        dispatch(trackPantsData())
+        dispatch(menFormalData())
     }, [])
 
     
-    if(isData){
-      console.log("track", trackPants)
-    }
+    
 
 
 
@@ -57,7 +68,7 @@ export const MenFormalSlideShow = () => {
             {isLoading ? <LoaderComp /> : <div>
             <Slider {...settings} className='slider'>
                 {
-                    prod && prod.map((product) => (
+                    isData && formalShirts.map((product) => (
                         <div key={product.id}>
                             <div className='main'>
 
@@ -84,7 +95,7 @@ export const MenFormalSlideShow = () => {
                 }
             </Slider>
             <div className="dot-indicators custom-dots">
-                {prod.map((_, index) => (
+                {isData && formalShirts.map((_, index) => (
                     <div >
                         <span
                             key={index}

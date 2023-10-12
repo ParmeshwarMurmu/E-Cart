@@ -8,66 +8,59 @@ import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 
 import { LoaderComp } from '../Comp2/LoaderComp';
 import { Link } from 'react-router-dom';
+import { trackPantsData } from '../Redux/MenTrackPantsSlideShow/action';
 
 export const MenSlideShow = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
     const [data, setData] = useState("");
-    let [prod, setProd] = useState([])
 
-    const [tShirts, setTShirts] = useState([])
+    const settings = {
+      dots: true,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      afterChange: (index) => setCurrentSlide(index),
+      variableWidth: true,
+  };
+
+  let track;
 
     const dispatch = useDispatch();
 
-    const { isLoading,isError, trackPants} = useSelector((store)=>{
+    const { isLoading,isError, trackPants, isData} = useSelector((store)=>{
 
         return {
             isLoading: store.menTrackPants.isLoading,
             isError: store.menTrackPants.isError,
+            isData: store.menTrackPants.isData,
             trackPants: store.menTrackPants.trackPants
         }
 
     }, shallowEqual)
 
-    const settings = {
-        dots: true,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        afterChange: (index) => setCurrentSlide(index),
-        variableWidth: true,
-    };
+    if(isData){
+      
+      track = [
+        [
+          trackPants[0],
+          trackPants[1],
+        ],
+        [
+          trackPants[2],
+          trackPants[3],
+        ],
+        [
+          trackPants[4],
+          trackPants[5],
+        ]
+     
+      ]
+    }
 
+    
     useEffect(() => {
-        
-        dispatch(trackPantsLoading())
-        axios.get('https://full-4qyv.onrender.com/home/men/category?category=track pants')
-            .then((res) => {
-            
-                setTShirts(res.data.category)
-                dispatch(trackPantsSuccess(res.data.category))
-                setProd([
-                    [
-                        res.data.category[0],
-                        res.data.category[1],
-                        res.data.category[2],
-                       
-                    ],
-                    [
-                    
-                        res.data.category[3],
-                        res.data.category[4],
-                        res.data.category[5],
-                      
-                        
-                    ],
-                    
-                ])
-
-            })
-            .catch((err) => {
-                dispatch(trackPantsFailure())
-            })
+        dispatch(trackPantsData())
     }, [])
 
     // console.log(isError, trackPants);
@@ -79,7 +72,7 @@ export const MenSlideShow = () => {
             {isLoading ? <LoaderComp /> : <div>
             <Slider {...settings} className='slider'>
                 {
-                    prod && prod.map((product) => (
+                  isData && track.map((product) => (
                         <div key={product.id}>
                             <div className='main'>
 
@@ -106,7 +99,7 @@ export const MenSlideShow = () => {
                 }
             </Slider>
             <div className="dot-indicators custom-dots">
-                {prod.map((_, index) => (
+                {isData && track.map((_, index) => (
                     <div >
                         <span
                             key={index}
