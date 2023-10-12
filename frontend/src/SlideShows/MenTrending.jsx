@@ -43,7 +43,7 @@ export const MenTrending = () => {
     useEffect(() => {
         
         dispatch(trackPantsLoading())
-        axios.get('http://localhost:8080/home/men/category?category=casual shirts')
+        axios.get('https://full-4qyv.onrender.com/home/men/category?category=casual shirts')
             .then((res) => {
                 setTShirts(res.data.category)
                 dispatch(trackPantsSuccess(res.data.category))
@@ -243,21 +243,34 @@ const DIV = styled.div`
       
     }
 
-    @media screen and (max-width: 420px) {
+
+    @media screen and (max-width: 500px) {
       /* Your styles for large devices go here */
 
-      .imgDiv{
-          height: 70px;
+      .slider{
+        height: 120px;
+        width: 89%;
       }
 
       .sliderImage{
-           width: 150px;
-      }
-
-      .slider{
-        height: 225px;
+        height: 120px;
+        width: 110px;
       }
    
+      
+    }
+
+    @media screen and (max-width: 425px) {
+     
+      .slider{
+  height: 140px;
+  width: 100%;
+}
+
+.sliderImage{
+  height: 120px;
+  width: 110px;
+}
       
     }
 

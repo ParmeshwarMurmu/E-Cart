@@ -220,6 +220,48 @@ margin-top: 30px;
     }
 
 
+    @media screen and (max-width: 500px) {
+      /* Your styles for large devices go here */
+
+      .slider{
+        height: 120px;
+        width: 89%;
+      }
+
+      .sliderImage{
+        height: 120px;
+        width: 110px;
+      }
+   
+      
+    }
+
+    
+    @media screen and (max-width: 425px) {
+/* 
+.sliderImage{
+ height: 130px;
+
+}
+
+.slider{
+ height: 160px;
+ width: 190%;
+} */
+
+.slider{
+  height: 140px;
+  width: 190%;
+}
+
+.sliderImage{
+  height: 120px;
+  width: 110px;
+}
+
+}
+
+
 
 `
 

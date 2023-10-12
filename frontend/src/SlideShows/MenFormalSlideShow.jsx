@@ -5,7 +5,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import styled from "styled-components"
 import axios from 'axios';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
-import { trackPantsFailure, trackPantsLoading, trackPantsSuccess } from '../Redux/MenTrackPantsSlideShow/action';
+import { trackPantsData} from '../Redux/MenTrackPantsSlideShow/action';
 import { LoaderComp } from '../Comp2/LoaderComp';
 import { Link } from 'react-router-dom';
 
@@ -18,12 +18,15 @@ export const MenFormalSlideShow = () => {
 
     const dispatch = useDispatch();
 
-    const { isLoading,isError, trackPants} = useSelector((store)=>{
+    const { trackPants, isData,isLoading,isError} = useSelector((store)=>{
 
         return {
+
             isLoading: store.menTrackPants.isLoading,
+            trackPants: store.menTrackPants.trackPants,
+            isData: store.menTrackPants.isData,
             isError: store.menTrackPants.isError,
-            trackPants: store.menTrackPants.trackPants
+          
         }
 
     }, shallowEqual)
@@ -39,39 +42,13 @@ export const MenFormalSlideShow = () => {
     };
 
     useEffect(() => {
-        
-        dispatch(trackPantsLoading())
-        axios.get('http://localhost:8080/home/men/category?category=formal shirts')
-            .then((res) => {
-                
-                setTShirts(res.data.category)
-                dispatch(trackPantsSuccess(res.data.category))
-                setProd([
-                    [
-                        res.data.category[0],
-                        res.data.category[5],
-                        res.data.category[2],
-                       
-                    ],
-                    [
-                    
-                        res.data.category[3],
-                        res.data.category[4],
-                        
-                        res.data.category[1],
-                      
-                        
-                    ],
-                    
-                ])
-
-            })
-            .catch((err) => {
-                dispatch(trackPantsFailure())
-            })
+        dispatch(trackPantsData())
     }, [])
 
-    // console.log(isError, trackPants);
+    
+    if(isData){
+      console.log("track", trackPants)
+    }
 
 
 
@@ -235,6 +212,40 @@ margin-top: 30px;
         height: 150px;
         width: 130px;
       }
+   
+      
+    }
+
+
+    @media screen and (max-width: 500px) {
+      /* Your styles for large devices go here */
+
+      .slider{
+        height: 140px;
+        width: 89%;
+      }
+
+      .sliderImage{
+        height: 120px;
+        width: 110px;
+      }
+   
+      
+    }
+
+
+    @media screen and (max-width: 425px) {
+     
+      
+      .slider{
+  height: 140px;
+  width: 190%;
+}
+
+.sliderImage{
+  height: 120px;
+  width: 110px;
+}
    
       
     }

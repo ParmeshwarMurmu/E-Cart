@@ -63,80 +63,6 @@ export const ShoesOffer = () => {
         dispatch(womenFlatShoesData())
     },[])
 
-
-
-    
-        
-         
-    // const products = [
-
-    //     [
-    //         {
-    //             id: 1,
-    //             name: "Product 1",
-    //             image: "https://rukminim2.flixcart.com/image/612/612/xif0q/sandal/4/3/0/3-b-38-miyoko-yellow-original-imagtgawuxvghxta.jpeg?q=70",
-    //             description: "Description for Product 1"
-    //         },
-
-    //         {
-    //             id: 1,
-    //             name: "Product 1",
-    //             image: "https://rukminim2.flixcart.com/image/612/612/xif0q/sandal/8/s/p/6-a28pinkuk6-purplehunt-pink-original-imagtggghyhtkxwd.jpeg?q=70",
-    //             description: "Description for Product 1"
-    //         },
-          
-    //     ],
-
-    //     [
-            
-    //         {
-    //             id: 1,
-    //             name: "Product 1",
-    //             image: "https://rukminim2.flixcart.com/image/612/612/xif0q/sandal/6/1/s/7-a16greenuk7-purplehunt-green-original-imagtghh9gjwgzh2.jpeg?q=70",
-    //             description: "Description for Product 1"
-    //         },
-            
-    //         {
-    //             id: 1,
-    //             name: "Product 1",
-    //             image: "https://rukminim2.flixcart.com/image/612/612/xif0q/sandal/w/r/b/8-tr-h-hb11-triksy-yellow-original-imagt97wazwcfnkf.jpeg?q=70",
-    //             description: "Description for Product 1"
-    //         },
-            
-
-            
-    //     ],
-
-    //     [
-            
-    //         {
-    //             id: 1,
-    //             name: "Product 1",
-    //             image: "https://rukminim2.flixcart.com/image/612/612/xif0q/sandal/n/7/a/3-women-s-and-girls-fancy-stylish-light-weight-block-heel-kiwaoo-original-imagnvwewutqfkc2.jpeg?q=70",
-    //             description: "Description for Product 1"
-    //         },
-            
-    //         {
-    //             id: 1,
-    //             name: "Product 1",
-    //             image: "https://rukminim2.flixcart.com/image/612/612/xif0q/sandal/q/c/c/7-criss-cross-babe-white-heels-gulmohar-fashion-white-original-imagt6urvuzeejhm.jpeg?q=70",
-    //             description: "Description for Product 1"
-    //         },
-          
-
-    //     ]
-       
-
-
-    //     // Add more products here
-    // ];
-
-
-
-   
-
-    
-
     return (
         <DIV className="slideshow-container">
             <Slider {...settings} className='slider'>
@@ -293,6 +219,39 @@ const DIV = styled.div`
         width: 130px;
       }
    
+      
+    }
+
+
+    @media screen and (max-width: 500px) {
+      /* Your styles for large devices go here */
+
+      .slider{
+        height: 120px;
+        width: 89%;
+      }
+
+      .sliderImage{
+        height: 120px;
+        width: 110px;
+      }
+   
+      
+    }
+
+
+
+    @media screen and (max-width: 425px) {
+
+      .slider{
+  height: 140px;
+  width: 190%;
+}
+
+.sliderImage{
+  height: 120px;
+  width: 110px;
+}
       
     }
 

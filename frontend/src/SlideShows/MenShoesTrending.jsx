@@ -145,6 +145,7 @@ const DIV = styled.div`
   /* box-shadow: 0 25px 50px rgba(0,0,0,0.55); */
   cursor: pointer;
   transition: all .3s;
+
 }
 
 .imgDiv:hover {
@@ -175,7 +176,7 @@ const DIV = styled.div`
 
       .slider{
         height: 180px;
-        border: 2px solid red;
+        /* border: 2px solid red; */
         width: 77%;
       }
 
@@ -222,23 +223,21 @@ const DIV = styled.div`
       
     }
 
-    @media screen and (max-width: 420px) {
-      /* Your styles for large devices go here */
+    
+    @media screen and (max-width: 425px) {
 
-      .imgDiv{
-          height: 70px;
-      }
+.slider{
+  height: 140px;
+  width: 100%;
+}
 
-      .sliderImage{
-           width: 150px;
-      }
+.sliderImage{
+  height: 120px;
+  width: 110px;
+}
 
-      .slider{
-        height: 225px;
-      }
-   
-      
-    }
+}
+
 
 
 `

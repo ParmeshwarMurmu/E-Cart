@@ -39,52 +39,6 @@ export const WomenSlideShow = () => {
 
 
 
-
-    const products = [
-        [
-
-            {
-                id: 1,
-                name: "Product 1",
-                image: "https://rukminim2.flixcart.com/image/612/612/xif0q/ethnic-set/w/b/w/m-133-wine-kurta-pant-dupatta-set-ziva-fashion-original-imag892weuurbar2-bb.jpeg?q=70",
-                description: "Description for Product 1"
-            },
-
-            {
-                id: 1,
-                name: "Product 1",
-                image: "https://rukminim2.flixcart.com/image/612/612/khdqnbk0/ethnic-set/u/f/j/xl-ie26kd9bk1857-indo-era-original-imafxeqkwr3nzxzd.jpeg?q=70",
-                description: "Description for Product 1"
-            },
-
-
-
-        ],
-
-        [
-
-            {
-                id: 1,
-                name: "Product 1",
-                image: "https://rukminim2.flixcart.com/image/612/612/l2z26q80/ethnic-set/s/n/m/xxl-blue-indigoset-klosia-original-image7c4dckmy2tt.jpeg?q=70",
-                description: "Description for Product 1"
-            },
-
-            {
-                id: 1,
-                name: "Product 1",
-                image: "https://rukminim2.flixcart.com/image/612/612/xif0q/ethnic-set/k/6/a/s-chaaya-suit-klosia-original-imagkfwhm9gkyush.jpeg?q=70",
-                description: "Description for Product 1"
-            },
-
-
-        ]
-
-
-
-        // Add more products here
-    ];
-
     
 
     if (isData) {
@@ -162,7 +116,7 @@ export const WomenSlideShow = () => {
                 }
             </Slider>
             <div className="dot-indicators custom-dots">
-                {products.map((_, index) => (
+                {isData && saree.map((_, index) => (
                     <div >
                         <span
                             key={index}
@@ -288,6 +242,38 @@ const DIV = styled.div`
    
       
     }
+
+
+    @media screen and (max-width: 500px) {
+      /* Your styles for large devices go here */
+
+      .slider{
+        height: 130px;
+        width: 89%;
+      }
+
+      .sliderImage{
+        height: 120px;
+        width: 110px;
+      }
+   
+      
+    }
+
+    @media screen and (max-width: 425px) {
+      
+      .slider{
+  height: 140px;
+  width: 190%;
+}
+
+.sliderImage{
+  height: 120px;
+  width: 110px;
+}
+      
+    }
+
     
 
 

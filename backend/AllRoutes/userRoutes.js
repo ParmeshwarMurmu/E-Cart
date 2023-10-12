@@ -105,31 +105,31 @@ userRoute.get('/cart', auth, async (req, res) => {
         // console.log(cartItems);
         // res.send({ "data": cartItems });
 
-        const cartItems = await CartModel.find({ userId }).exec();
+        const cartItems = await CartModel.find({ userId }).populate('men')
 
-        const populatedCartItems = await Promise.all(cartItems.map(async (cartItem) => {
-            switch (cartItem.productModel) {
-                case 'men':
-                    return {
-                        ...cartItem.toObject(),
-                        product: await MenModel.findById(cartItem.productId)
-                    };
-                case 'women':
-                    return {
-                        ...cartItem.toObject(),
-                        product: await WomenModel.findById(cartItem.productId)
-                    };
-                case 'shoe':
-                    return {
-                        ...cartItem.toObject(),
-                        product: await ShoeModel.findById(cartItem.productId)
-                    };
-                default:
-                    return null; // Handle error
-            }
-        }));
-
-        res.send({ "data": populatedCartItems });
+        // const populatedCartItems = await Promise.all(cartItems.map(async (cartItem) => {
+        //     switch (cartItem.productModel) {
+        //         case 'men':
+        //             return {
+        //                 ...cartItem.toObject(),
+        //                 product: await MenModel.findById(cartItem.productId)
+        //             };
+        //         case 'women':
+        //             return {
+        //                 ...cartItem.toObject(),
+        //                 product: await WomenModel.findById(cartItem.productId)
+        //             };
+        //         case 'shoe':
+        //             return {
+        //                 ...cartItem.toObject(),
+        //                 product: await ShoeModel.findById(cartItem.productId)
+        //             };
+        //         default:
+        //             return null; // Handle error
+        //     }
+        // }));
+       console.log(cartItems);
+        res.send({ "data": cartItems });
 
     } catch (error) {
         res.send({ "err": error });

@@ -25,7 +25,7 @@ export const womenKurtasKurtisSuccessAction = (payload)=>{
 export const womenKurtasKurtisBackend = ()=>(dispatch)=>{
 
    dispatch(womenKurtasKurtisLoadingAction())
-    axios.get(`http://localhost:8080/home/women/category?category=kurtas kurtis`)
+    axios.get(`https://full-4qyv.onrender.com/home/women/category?category=kurtas kurtis`)
     .then((res)=>{
     dispatch(womenKurtasKurtisSuccessAction(res.data.data))
     })

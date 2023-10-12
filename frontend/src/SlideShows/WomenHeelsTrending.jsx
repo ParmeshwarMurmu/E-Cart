@@ -230,21 +230,35 @@ const DIV = styled.div`
     }
 
 
-    @media screen and (max-width: 420px) {
+    @media screen and (max-width: 500px) {
       /* Your styles for large devices go here */
 
-      .imgDiv{
-          height: 70px;
+      .slider{
+        height: 120px;
+        width: 89%;
       }
 
       .sliderImage{
-           width: 150px;
-      }
-
-      .slider{
-        height: 225px;
+        height: 120px;
+        width: 110px;
       }
    
+      
+    }
+
+
+    @media screen and (max-width: 425px) {
+      .slider{
+  height: 140px;
+  width: 190%;
+}
+
+.sliderImage{
+  height: 120px;
+  width: 110px;
+}
+
+
       
     }
 

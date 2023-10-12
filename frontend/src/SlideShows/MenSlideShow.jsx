@@ -5,7 +5,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import styled from "styled-components"
 import axios from 'axios';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
-import { trackPantsFailure, trackPantsLoading, trackPantsSuccess } from '../Redux/MenTrackPantsSlideShow/action';
+
 import { LoaderComp } from '../Comp2/LoaderComp';
 import { Link } from 'react-router-dom';
 
@@ -41,7 +41,7 @@ export const MenSlideShow = () => {
     useEffect(() => {
         
         dispatch(trackPantsLoading())
-        axios.get('http://localhost:8080/home/men/category?category=track pants')
+        axios.get('https://full-4qyv.onrender.com/home/men/category?category=track pants')
             .then((res) => {
             
                 setTShirts(res.data.category)
@@ -234,6 +234,41 @@ const DIV = styled.div`
    
       
     }
+
+
+    @media screen and (max-width: 500px) {
+      /* Your styles for large devices go here */
+
+      .slider{
+        height: 140px;
+        width: 89%;
+      }
+
+      .sliderImage{
+        height: 120px;
+        width: 110px;
+      }
+   
+      
+    }
+
+
+
+    @media screen and (max-width: 425px) {
+
+      .slider{
+  height: 140px;
+  width: 190%;
+}
+
+.sliderImage{
+  height: 120px;
+  width: 110px;
+}
+      
+    }
+
+   
 
 
  

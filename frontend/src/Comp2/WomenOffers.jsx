@@ -8,7 +8,7 @@ import { Box, Image } from '@chakra-ui/react'
 
 export const WomenOffers = () => {
   return (
-    <DIV>
+    <DIV className='womenOffer'>
 
       <div className='womenLatest'>
         <Box>
@@ -39,6 +39,7 @@ export const WomenOffers = () => {
 
 
 const DIV = styled.div`
+border: 2px solid black;
 
 display: grid;
 grid-template-columns: repeat(2, 1fr);
@@ -62,8 +63,11 @@ width: 90%;
 width: 90%;
 }
 
+
+
+/* 
 @media screen and (max-width: 639px) {
-      /* Your styles for large devices go here */
+ 
 
       .womenLatest{
         height: 350px;
@@ -90,13 +94,21 @@ width: 90%;
         height: 150px;
       }
 
+      
+    } */
 
+    @media screen and (max-width: 425px) {
+      /* Your styles for large devices go here */
 
- 
-   
+      /* .womenOffer{
+        width: 100%;
+        height: 400px;
+      } */
       
     }
 
+
+   
 
 
 `

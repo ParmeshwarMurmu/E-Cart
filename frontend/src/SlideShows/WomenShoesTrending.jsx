@@ -224,22 +224,39 @@ const DIV = styled.div`
       
     }
 
-    @media screen and (max-width: 420px) {
+    @media screen and (max-width: 500px) {
       /* Your styles for large devices go here */
 
-      .imgDiv{
-          height: 70px;
+      .slider{
+        height: 120px;
+        width: 89%;
       }
 
       .sliderImage{
-           width: 150px;
-      }
-
-      .slider{
-        height: 225px;
+        height: 120px;
+        width: 110px;
       }
    
       
+    }
+
+    @media screen and (max-width: 425px) {
+      /* Your styles for large devices go here */
+
+      .imgDiv{
+          /* width: 100px; */
+      }
+
+      /* .sliderImage{
+        height: 140px;
+      
+      }
+
+      .slider{
+        height: 150px;
+       width: 100%;
+      } */
+
     }
 
    

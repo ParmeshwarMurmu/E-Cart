@@ -30,7 +30,7 @@ export const SingleProductAddToCart = ({category, id, userSize, type}) => {
 
       console.log("addtocart", data);
 
-      axios.post('http://localhost:8080/user/addToCart', data, {
+      axios.post('https://full-4qyv.onrender.com/user/addToCart', data, {
         headers: {
           Authorization: `bearer ${token}`
         }

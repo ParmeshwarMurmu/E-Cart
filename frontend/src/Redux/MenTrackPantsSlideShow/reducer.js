@@ -4,6 +4,7 @@ const initialState = {
 
     trackPants:[],
     isLoading: false,
+    isData: false,
     isError: false
 }
 
@@ -23,6 +24,7 @@ export const reducer = (state = initialState, {type, payload})=>{
                 ...state,
                 trackPants: payload,
                 isError: false,
+                isData: true,
                 isLoading: false
             }
 

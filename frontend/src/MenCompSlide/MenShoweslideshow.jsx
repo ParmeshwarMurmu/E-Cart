@@ -9,106 +9,106 @@ import { menFormalShoesData } from '../Redux/menFormalShoesReducer/action';
 import { Link } from 'react-router-dom';
 
 export const MenShoweslideshow = () => {
-    const [currentSlide, setCurrentSlide] = useState(0);
-    const [data, setData] = useState("");
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [data, setData] = useState("");
 
-    const settings = {
-        dots: true,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        afterChange: (index) => setCurrentSlide(index),
-        variableWidth: true,
-    };
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    afterChange: (index) => setCurrentSlide(index),
+    variableWidth: true,
+  };
 
-    const dispatch = useDispatch();
-    let formalShoes;
-    const {menFormalShoes, isLoading, isData, isError} = useSelector((store)=>{
+  const dispatch = useDispatch();
+  let formalShoes;
+  const { menFormalShoes, isLoading, isData, isError } = useSelector((store) => {
 
-        return {
-            menFormalShoes: store.menFormalShoesReducer.menFormalShoes,
-            isLoading: store.menFormalShoesReducer.isLoading,
-            isData: store.menFormalShoesReducer.isData,
-            isError: store.menFormalShoesReducer.isError,
-        }
-    })
-
-    
-        
-         
- 
-    if(isData){
-        formalShoes = [
-            [
-                menFormalShoes[7],
-                menFormalShoes[6]
-            ],
-            [
-                menFormalShoes[5],
-                menFormalShoes[4]
-            ],
-            [
-                menFormalShoes[3],
-                menFormalShoes[2]
-            ],
-            [
-                menFormalShoes[1],
-                menFormalShoes[0]
-            ]
-        ]
+    return {
+      menFormalShoes: store.menFormalShoesReducer.menFormalShoes,
+      isLoading: store.menFormalShoesReducer.isLoading,
+      isData: store.menFormalShoesReducer.isData,
+      isError: store.menFormalShoesReducer.isError,
     }
+  })
 
-  
 
-   
 
-   useEffect(()=>{
+
+
+  if (isData) {
+    formalShoes = [
+      [
+        menFormalShoes[7],
+        menFormalShoes[6]
+      ],
+      [
+        menFormalShoes[5],
+        menFormalShoes[4]
+      ],
+      [
+        menFormalShoes[3],
+        menFormalShoes[2]
+      ],
+      [
+        menFormalShoes[1],
+        menFormalShoes[0]
+      ]
+    ]
+  }
+
+
+
+
+
+  useEffect(() => {
     dispatch(menFormalShoesData())
-   }, [])
+  }, [])
 
-    return (
-        <DIV className="slideshow-container">
-            <Slider {...settings} className='slider'>
-                {isData && formalShoes.map((product) => (
-                    <div key={product.id}>
-                        <div className='main'>
+  return (
+    <DIV className="slideshow-container">
+      <Slider {...settings} className='slider'>
+        {isData && formalShoes.map((product) => (
+          <div key={product.id}>
+            <div className='main'>
 
-                            {
-                                product.map((el) => (
+              {
+                product.map((el) => (
 
-                                    <Link to={`/singleProduct/shoes/${el._id}`}>
-                                    <div key={el._id} className='imgDiv' style={{ marginRight: "20px", height: "250px" }}>
-                                        <img className='sliderImage' width="200px" src={el.images[0]} alt={el.name} />
-                                        
-                                    </div>
-                                    </Link>
+                  <Link to={`/singleProduct/shoes/${el._id}`}>
+                    <div key={el._id} className='imgDiv' style={{ marginRight: "20px", height: "250px" }}>
+                      <img className='sliderImage' width="200px" src={el.images[0]} alt={el.name} />
 
-                                ))
-                            }
-
-                        </div>
                     </div>
-                ))}
-            </Slider>
-            <div className="dot-indicators custom-dots">
-                {isData && formalShoes.map((_, index) => (
-                    <div >
-                        <span
-                            key={index}
-                            className={currentSlide === index ? 'active-dot' : 'dot'}
-                            onClick={() => {
-                                setCurrentSlide(index);
-                
-                                setData(123)
+                  </Link>
 
-                            }}
-                        />
-                    </div>
-                ))}
+                ))
+              }
+
             </div>
-        </DIV>
-    );
+          </div>
+        ))}
+      </Slider>
+      <div className="dot-indicators custom-dots">
+        {isData && formalShoes.map((_, index) => (
+          <div >
+            <span
+              key={index}
+              className={currentSlide === index ? 'active-dot' : 'dot'}
+              onClick={() => {
+                setCurrentSlide(index);
+
+                setData(123)
+
+              }}
+            />
+          </div>
+        ))}
+      </div>
+    </DIV>
+  );
 }
 
 
@@ -219,6 +219,50 @@ const DIV = styled.div`
    
       
     }
+
+
+    @media screen and (max-width: 500px) {
+      /* Your styles for large devices go here */
+
+      .slider{
+        height: 120px;
+        width: 89%;
+      }
+
+      .sliderImage{
+        height: 120px;
+        width: 110px;
+      }
+   
+      
+    }
+
+
+    
+    @media screen and (max-width: 425px) {
+
+/* .sliderImage{
+ height: 130px;
+
+}
+
+.slider{
+ height: 160px;
+ width: 190%;
+} */
+
+.slider{
+  height: 140px;
+  width: 190%;
+}
+
+.sliderImage{
+  height: 120px;
+  width: 110px;
+}
+
+}
+
 
 
   

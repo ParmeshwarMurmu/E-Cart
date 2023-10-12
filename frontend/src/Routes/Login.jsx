@@ -52,7 +52,7 @@ export const Login = () => {
  
   const loginHandler = ()=>{
 
-    axios.post('http://localhost:8080/user/login', data)
+    axios.post('https://full-4qyv.onrender.com/user/login', data)
     .then((res)=>{
        console.log(res.data);
        localStorage.setItem("token", res.data.token)

@@ -61,7 +61,7 @@ width: 90%;
       @media screen and (max-width: 639px) {
       /* Your styles for large devices go here */
 
-      .womenLatest{
+      /* .womenLatest{
         height: 350px;
         padding-top: 10px;
       }
@@ -87,7 +87,7 @@ width: 90%;
 
       .mens .image{
         height: 150px;
-      }
+      } */
 
     }
 

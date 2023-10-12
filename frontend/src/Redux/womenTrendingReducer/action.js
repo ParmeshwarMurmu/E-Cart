@@ -25,7 +25,7 @@ export const womenTrendingSuccessAction = (payload)=>{
 export const womenTrendingBackend = ()=>(dispatch)=>{
 
     dispatch(womenTrendingLoadingAction())
-    axios.get(`http://localhost:8080/home/women/category?category=lehenga cholis`)
+    axios.get(`https://full-4qyv.onrender.com/home/women/category?category=lehenga cholis`)
     .then((res)=>{
       dispatch(womenTrendingSuccessAction(res.data.data))
     })

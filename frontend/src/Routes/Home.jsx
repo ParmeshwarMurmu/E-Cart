@@ -31,7 +31,7 @@ export const Home = () => {
 
       {/* Mensection slideshow */}
       <div className='mens'>
-        <div style={{}}>
+        <div className='menOffer' style={{}}>
           <Box >
             <Image className='menImage' src={mensNewArrivial} alt='Mens' />
           </Box>
@@ -242,9 +242,60 @@ const DIV = styled.div`
       /* Your styles for large devices go here */
 
       .menImage{
-        height: 324px;
+        /* height: 324px; */
         
       }
+      
+   
+      
+    }
+
+
+
+    @media screen and (max-width: 425px) {
+      /* Your styles for large devices go here */
+
+      .imgDiv{
+          /* height: 30px; */
+      }
+
+      .sliderImage{
+           /* width: 10px; */
+      }
+
+      .slider{
+        height: 125px;
+      }
+
+      .mens{
+        flex-direction: column;
+      }
+
+      .womensOffers{
+        flex-direction: column;
+      }
+
+
+      .shoesOffers{
+        flex-direction: column-reverse;
+      }
+
+      .menShoesOffers{
+        flex-direction: column;
+      }
+
+      .menOffer{
+        display: none;
+      }
+
+      .menTrending{
+        flex-direction: column;
+      }
+
+      .trending{
+        /* width: 100%; */
+      }
+
       
    
       

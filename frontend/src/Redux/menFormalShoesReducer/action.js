@@ -20,7 +20,7 @@ export const menFormalShoesErrorAction = ()=>{
 export const menFormalShoesData = ()=>(dispatch)=>{
  
     dispatch(menFormalShoesLoadingAction())
-    axios.get(`http://localhost:8080/shoes/male/formalShoes`)
+    axios.get(`https://full-4qyv.onrender.com/shoes/male/formalShoes`)
     .then((res)=>{
      dispatch(menFormalShoesSuccessAction(res.data.formalShoes))
     })
