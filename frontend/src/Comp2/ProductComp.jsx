@@ -5,11 +5,11 @@ import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import { store } from '../Redux/Store/store'
 import { allProductData } from '../Redux/allMenProductReducer/action'
 
-export const ProductComp = () => {
+export const ProductComp = ({category}) => {
   
   
   const dispatch = useDispatch()
-  
+  const [searchParams, setSearchParams] = useSearchParams()
   
 
   const {data, isLoading, isError, isData} = useSelector((store)=>{
@@ -21,6 +21,18 @@ export const ProductComp = () => {
     }
 
   }, shallowEqual)
+
+  const obj = {
+    params:{
+      brand: searchParams.getAll('brand'),
+      category: searchParams.getAll('category'),
+      color: searchParams.getAll('color')
+    }
+  }
+
+  useEffect(()=>{
+    // dispatch(allProductData(category, obj));
+  }, [setSearchParams])
 
   
 

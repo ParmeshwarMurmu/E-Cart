@@ -1,17 +1,54 @@
 import { Avatar, Wrap, WrapItem } from '@chakra-ui/react'
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import styled from "styled-components"
+import { appContent } from '../../Context/ContextApi'
+import { shallowEqual, useDispatch, useSelector } from 'react-redux'
+import { singleUserData } from '../../Redux/singleUserReducer/action'
 
 
 export const AfterLogin = () => {
+
+  const {isAuth} = useContext(appContent)
+
+  const dispatch = useDispatch()
+
+  const {user, isLoading, isData} = useSelector((store)=>{
+
+    return {
+      user: store.singleUserReducer.user,
+      isLoading: store.singleUserReducer.isLoading,
+      isData: store.singleUserReducer.isData,
+    }
+  }, shallowEqual)
+   
+ 
+
+  const userDispatchFunction = ()=>{
+    const userId = localStorage.getItem('E-Cart_userId')
+    dispatch(singleUserData(userId))
+  }
+
+  console.log("user", user)
+
+ 
+
+  useEffect(()=>{
+
+    if(isAuth){
+      userDispatchFunction()
+    }
+
+  }, [])
+
+
   return (
     <DIV>
         <Wrap>
           <WrapItem>
             <Avatar
               size='sm'
-              name='Prosper Otemuyiwa'
-              src={"http://localhost:3000/static/media/ECart.2e87f26d610f15288a8c.png"}
+              name={user.firstName}
+              src={''}
             />{' '}
           </WrapItem>
           

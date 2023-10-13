@@ -1,5 +1,5 @@
 const express = require('express')
-const { userModel, UserModel } = require('../Model/UserSchema')
+const {  UserModel } = require('../Model/UserSchema')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const { auth } = require('../middlewares/auth')
@@ -63,6 +63,20 @@ userRoute.post('/login', async (req, res) => {
         res.status(400).send({ "msg": "Cannot Registered", "error": error })
     }
 })
+
+userRoute.get('/singleUser/:id', async (req, res) => {
+
+    const { id} = req.params
+
+    try {
+        const user = await UserModel.findOne({_id: id})
+        res.status(200).send({"user": user})
+
+    } catch (error) {
+        res.status(400).send({ "msg": "Please login Cannot find single User", "error": error })
+    }
+})
+
 
 
 userRoute.post('/addToCart', auth, async (req, res) => {

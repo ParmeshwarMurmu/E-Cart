@@ -17,6 +17,10 @@ import { reducer as userReducer } from '../userReducer/reducer'
 import { reducer as cartReducer } from '../cartReducer/reducer'
 import { reducer as menFormalSlideShowReducer } from '../menFormalSlideShowReducer/reducer'
 import { reducer as menTrendingSlideShowReducer } from '../menTrendingSlideShowReducer/reducer'
+import { reducer as singleUserReducer } from '../singleUserReducer/reducer'
+
+
+
 import thunk from"redux-thunk"
 
 const rootReducer = combineReducers({
@@ -37,7 +41,8 @@ const rootReducer = combineReducers({
     userReducer,
     cartReducer,
     menFormalSlideShowReducer,
-    menTrendingSlideShowReducer
+    menTrendingSlideShowReducer,
+    singleUserReducer
 
 })
 

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import { appContent } from '../Context/ContextApi'
 import { useParams, useSearchParams } from 'react-router-dom'
 import styled from "styled-components"
@@ -8,11 +8,13 @@ import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import { allProductData } from '../Redux/allMenProductReducer/action'
 import { SingleProductLoader } from '../Comp2/SingleProductLoader'
 
-export const Product = () => {
+export const Product = ({type}) => {
 
   const { category } = useParams()
   const dispatch = useDispatch()
   const [searchParams, setSearchParams] = useSearchParams()
+  // const [type, setType] = useState(type || "")
+  // const categoryType = searchParams.get('type')
   const prevCategory = useRef(category);
 
   const obj = {
@@ -35,34 +37,9 @@ export const Product = () => {
   }, shallowEqual)
 
 
-  // console.log("SS", data);
-  
-
-
-  // useEffect(() => {
-  //   // dispatch(allProductData(category))
-
-  //   if (category !== urlCategory) {
-  //     console.log("&&&");
-  //     dispatch(allProductData(category));
-  //     // prevCategory.current = category;
-  //   }
-   
-
-  // }, [category])
-
-
-  // useEffect(() => {
-    
-  //     dispatch(allProductData(category, obj));
-  //   // }
-
-  // }, [searchParams])
-
-  console.log("obj", obj);
-
   useEffect(() => {
-    console.log("Obj uEEFFECT", obj);
+
+    console.log(obj);
     dispatch(allProductData(category, obj));
   }, [searchParams])
 
@@ -80,7 +57,7 @@ export const Product = () => {
 
 
           <div className='productComp'>
-            <ProductComp />
+            <ProductComp category={category} />
           </div>
 
 

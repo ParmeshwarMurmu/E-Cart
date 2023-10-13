@@ -14,9 +14,12 @@ import { shallowEqual, useSelector } from 'react-redux'
 export const SideBar = () => {
 
     const [searchParams, setSearchParams] = useSearchParams()
-    const [brand, setBrand] = useState([])
-    const [category, setCategory] = useState([])
-    const [color, setColor] = useState([])
+    const initialBrand = searchParams.getAll("brand")
+    const [brand, setBrand] = useState(initialBrand || [])
+    const initialColor = searchParams.getAll("color")
+    const [color, setColor] = useState(initialColor || [])
+    const initialCategory = searchParams.getAll("category")
+    const [category, setCategory] = useState(initialCategory || [])
 
     const { allColors, allCategory, allBrands, allGender, isLoading, isError, isData } = useSelector((store) => {
         return {
@@ -103,32 +106,32 @@ export const SideBar = () => {
         <DIV>
             <Accordion defaultIndex={[0]} allowMultiple>
                 {
-                       allGender.length > 0 && <AccordionItem>
-                       <h2>
-                           <AccordionButton>
-                               <Box as="span" flex='1' textAlign='left'>
-                                   Filter By Gender
-                               </Box>
-                               <AccordionIcon />
-                           </AccordionButton>
-                       </h2>
-                       <AccordionPanel pb={4}>
+                //        isData && allGender.length > 0 && <AccordionItem>
+                //        <h2>
+                //            <AccordionButton>
+                //                <Box as="span" flex='1' textAlign='left'>
+                //                    Filter By Gender
+                //                </Box>
+                //                <AccordionIcon />
+                //            </AccordionButton>
+                //        </h2>
+                //        <AccordionPanel pb={4}>
    
-                           {
-                               allGender.map((el, index) => (
-                                   <div key={index}>
-                                       <input type="checkbox" value={el} onChange={categoryHandler} />
-                                       <label htmlFor="">{el}</label>
-                                   </div>
+                //            {
+                //                allGender.map((el, index) => (
+                //                    <div key={index}>
+                //                        <input type="checkbox" value={el} onChange={categoryHandler}  />
+                //                        <label htmlFor="">{el}</label>
+                //                    </div>
    
-                               ))
-                           }
+                //                ))
+                //            }
    
                           
    
    
-                       </AccordionPanel>
-                   </AccordionItem>
+                //        </AccordionPanel>
+                //    </AccordionItem>
                 }
                 <AccordionItem>
                     <h2>
@@ -142,9 +145,9 @@ export const SideBar = () => {
                     <AccordionPanel pb={4}>
 
                         {
-                            allCategory.map((el, index) => (
+                           isData &&  allCategory.map((el, index) => (
                                 <div key={index}>
-                                    <input type="checkbox" value={el} onChange={categoryHandler} />
+                                    <input type="checkbox" value={el} onChange={categoryHandler} checked={category.includes(el)} />
                                     <label htmlFor="">{el}</label>
                                 </div>
 
@@ -168,9 +171,9 @@ export const SideBar = () => {
                     </h2>
                     <AccordionPanel pb={4}>
                         {
-                            allBrands.map((el, index) => (
+                            isData && allBrands.map((el, index) => (
                                 <div key={index}>
-                                    <input type="checkbox" value={el} onChange={brandHandler} />
+                                    <input type="checkbox" value={el} onChange={brandHandler} checked={brand.includes(el)} />
                                     <label htmlFor="">{el}</label>
                                 </div>
 
@@ -190,9 +193,9 @@ export const SideBar = () => {
                     </h2>
                     <AccordionPanel pb={4}>
                     {
-                            allColors.map((el, index) => (
+                            isData && allColors.map((el, index) => (
                                 <div key={index}>
-                                    <input type="checkbox" value={el} onChange={colorHandler} />
+                                    <input type="checkbox" value={el} onChange={colorHandler} checked={color.includes(el)} />
                                     <label htmlFor="">{el}</label>
                                 </div>
 

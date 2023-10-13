@@ -16,7 +16,9 @@ import { theme } from './DefaultTheme';
 import { Categories } from './Components/Home/Categories';
 import { appContent } from './Context/ContextApi';
 import { Link, useSearchParams } from 'react-router-dom';
-import {ChevronDownIcon, ChevronUpIcon } from '@chakra-ui/icons'
+import { useHistory } from 'react-router-dom';
+
+import { ChevronDownIcon, ChevronUpIcon } from '@chakra-ui/icons'
 import { Footer } from './Routes/Footer';
 
 function App() {
@@ -24,33 +26,16 @@ function App() {
   const [icon, setIcon] = useState(1)
 
   const [searchParams, setSearchParams] = useSearchParams()
-  const [type, setType] = useState('')
-  const {isAuth} = useContext(appContent)
-
-  const mensCategoryHandler = (e)=>{
-    const {value} = e.target;
-    // alert('value')
-    setType(value)
+  const { isAuth } = useContext(appContent)
 
 
-  }
 
-  useEffect(() => {
-
-    if (type !== '') { // Only update searchParams if type is not empty
-      const params = {
-        type: type
-      }
-      setSearchParams(params)
-    }
-
-}, [type])
 
 
   return (
     <DIV theme={theme} isAuth={isAuth}>
 
-    
+
 
       <div>
         <div className='nav'>
@@ -79,8 +64,8 @@ function App() {
 
               {
                 isAuth && <div>
-                <MenuItemProfile />
-              </div>
+                  <MenuItemProfile />
+                </div>
               }
 
 
@@ -99,22 +84,25 @@ function App() {
 
         <div className='categoriesSection'>
           <div>
-            <Link to={'/product/mens'}>
 
-            <Categories images='https://rukminim2.flixcart.com/image/832/832/xif0q/t-shirt/6/s/v/s-mt416-metronaut-original-imagmj8ndmbetfah.jpeg?q=70'
-              alt='mens'
-            />
-            </Link>
+            <div>
+              <Link to={'/product/mens'} >
+
+                <Categories  images='https://rukminim2.flixcart.com/image/832/832/xif0q/t-shirt/6/s/v/s-mt416-metronaut-original-imagmj8ndmbetfah.jpeg?q=70'
+                  alt='mens'
+                />
+              </Link>
+            </div>
 
             <div className='title'>
               {/* <Link to={'/product'} ><Text>Mens</Text> </Link> */}
               <Menu>
-                <MenuButton onClick={()=>{setIcon((prev)=> prev + 1)}} variant={'none'} as={Button} p={0} m={0} rightIcon={ icon%2===0 ?  <ChevronUpIcon />  : <ChevronDownIcon />}>
+                <MenuButton onClick={() => { setIcon((prev) => prev + 1) }} variant={'none'} as={Button} p={0} m={0} rightIcon={icon % 2 === 0 ? <ChevronUpIcon /> : <ChevronDownIcon />}>
                   Mens
                 </MenuButton>
                 <MenuList>
-                  <Link to={`/product/mens`}>
-                  <MenuItem onClick={mensCategoryHandler} value={'t-shirts'}>T-Shirts</MenuItem>
+                  <Link to={`/product`}>
+                    <MenuItem  value={'t-shirts'}>T-Shirts</MenuItem>
                   </Link>
 
                   <MenuItem>Formal Shirts</MenuItem>
@@ -130,17 +118,17 @@ function App() {
 
           <div>
 
-          <Link to={'/product/womens'}>
-            <Categories images='https://rukminim2.flixcart.com/image/832/832/xif0q/kurta/s/k/4/l-913-jaffry-embroidery-original-imagsc36sh7khhfj.jpeg?q=70'
-              alt='women'
-            />
+            <Link to={'/product/womens'}>
+              <Categories type={'womens'} images='https://rukminim2.flixcart.com/image/832/832/xif0q/kurta/s/k/4/l-913-jaffry-embroidery-original-imagsc36sh7khhfj.jpeg?q=70'
+                alt='women'
+              />
             </Link>
 
             <div className='title'>
               {/* <Link to={'/product'} onClick={() => { handleClick("womens") }}><Text>Womens</Text> </Link> */}
 
               <Menu>
-                <MenuButton onClick={()=>{setIcon((prev)=> prev + 1)}} variant={'none'} as={Button} p={0} m={0} rightIcon={ icon%2===0 ?  <ChevronUpIcon />  : <ChevronDownIcon />}>
+                <MenuButton onClick={() => { setIcon((prev) => prev + 1) }} variant={'none'} as={Button} p={0} m={0} rightIcon={icon % 2 === 0 ? <ChevronUpIcon /> : <ChevronDownIcon />}>
                   Womens
                 </MenuButton>
                 <MenuList>
@@ -159,17 +147,17 @@ function App() {
 
           <div>
 
-          <Link to={'/product/shoes'}>
-            <Categories images='https://rukminim2.flixcart.com/image/612/612/l51d30w0/shoe/z/w/c/10-mrj1914-10-aadi-white-black-red-original-imagft9k9hydnfjp.jpeg?q=70'
-              alt='shoes'
-            />
+            <Link to={'/product/shoes'}>
+              <Categories type={'shoes'} images='https://rukminim2.flixcart.com/image/612/612/l51d30w0/shoe/z/w/c/10-mrj1914-10-aadi-white-black-red-original-imagft9k9hydnfjp.jpeg?q=70'
+                alt='shoes'
+              />
             </Link>
             <div className='title'>
               <Link to={'/product'}><Text>Shoes</Text> </Link>
             </div>
           </div>
 
-          
+
         </div>
 
 

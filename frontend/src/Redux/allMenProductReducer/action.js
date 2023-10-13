@@ -24,6 +24,7 @@ export const allProductData = (category, obj)=>(dispatch)=>{
     dispatch(allMenProductLoadingAction())
     axios.get(`https://full-4qyv.onrender.com/allProducts/${category}`, obj)
     .then((res)=>{
+        console.log("&&");
         console.log(res.data);
      dispatch(allMenProductSuccessAction(res.data))
     })

@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express();
+const cors = require('cors')
 require('dotenv').config()
 const {connection} = require('./db')
 const {menRoutes} = require('./AllRoutes/menRoutes')
@@ -11,7 +12,7 @@ const {shoeRouter} = require('./AllRoutes/shoesRoutes')
 const {shoeCategoryRoute} = require('./AllRoutes/shoeCategoryRoute')
 const {allProductRoute} = require('./AllRoutes/allProductRoute')
 const {userRoute} = require('./AllRoutes/userRoutes')
-const cors = require('cors')
+
 
 
 
