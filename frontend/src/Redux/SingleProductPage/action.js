@@ -24,7 +24,7 @@ export const singlePageDataSuccessAction = (payload)=>{
 export const singlePageData = (id, category)=>(dispatch)=>{
 
     dispatch(singlePageLoadingAction())
-    axios.get(`https://full-4qyv.onrender.com/singleProduct/${category}/${id}`)
+    axios.get(`http://localhost:8080/singleProduct/${category}/${id}`)
     .then((res)=>{
       dispatch(singlePageDataSuccessAction(res.data.msg))
     })

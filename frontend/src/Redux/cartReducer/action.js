@@ -24,7 +24,7 @@ export const cartErrorAction = ()=>{
 export const cartPageData = (token, userId)=>(dispatch)=>{
     console.log(token);
     dispatch(cartLoadingAction())
-    axios.get(`https://full-4qyv.onrender.com/user/cart`,{userId}, {
+    axios.get(`http://localhost:8080/user/cart`,{userId}, {
         headers: {
             Authorization: `bearer ${token}`
           }

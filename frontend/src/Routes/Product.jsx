@@ -36,6 +36,8 @@ export const Product = ({type}) => {
 
   }, shallowEqual)
 
+  console.log("products", data)
+  console.log("category", category);
 
   useEffect(() => {
 
