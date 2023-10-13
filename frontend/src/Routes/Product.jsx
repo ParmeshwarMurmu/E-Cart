@@ -84,6 +84,7 @@ display: flex;
 
 .productComp{
   width: 100%;
+  
 }
   
 `

@@ -2,10 +2,10 @@ import React from 'react'
 import styled from "styled-components"
 
 
-export const AddToCart = () => {
+export const AddToCart = ({price}) => {
     return (
         <DIV>
-            <div data-tooltip="Price:-$90" class="button">
+            <div data-tooltip={`Price: ${price}`} class="button">
                 <div class="button-wrapper">
                     <div class="text">Add To Cart</div>
                     <span class="icon">
@@ -24,20 +24,20 @@ export const AddToCart = () => {
 const DIV = styled.div`
 
 .button {
-  --width: 100px;
+  /* --width: 100px; */
   --height: 35px;
   --tooltip-height: 35px;
   --tooltip-width: 90px;
   --gap-between-tooltip-to-button: 18px;
-  --button-color: #222;
+  --button-color:  rgb(255, 208, 0);
   --tooltip-color: #fff;
   width: var(--width);
   height: var(--height);
   background: var(--button-color);
   position: relative;
   text-align: center;
-  border-radius: 0.45em;
-  font-family: "Arial";
+  /* border-radius: 0.45em; */
+
   transition: background 0.3s;
 }
 
@@ -76,6 +76,7 @@ const DIV = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
 }
 
 .button-wrapper,.text,.icon {
@@ -84,7 +85,7 @@ const DIV = styled.div`
   width: 100%;
   height: 100%;
   left: 0;
-  color: #fff;
+  color: #090909;
 }
 
 .text {
@@ -96,7 +97,7 @@ const DIV = styled.div`
 }
 
 .icon {
-  color: #fff;
+  color: #050505;
   top: 100%;
   display: flex;
   align-items: center;
@@ -109,7 +110,7 @@ const DIV = styled.div`
 }
 
 .button:hover {
-  background: #222;
+  background: #43e915;
 }
 
 .button:hover .text {

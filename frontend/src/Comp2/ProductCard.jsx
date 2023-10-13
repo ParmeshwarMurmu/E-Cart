@@ -4,38 +4,70 @@ import { Link } from 'react-router-dom'
 import styled from "styled-components"
 import { AddToCart } from './AddToCart'
 import { WhilistBtn } from './WhilistBtn'
+import { FaRupeeSign } from "react-icons/fa";
 
-export const ProductCard = ({images, brand, title, size, category, color, price}) => {
-    return (
-        <DIV>
-            <div class="container">
-                <div>
-                <Link to={'/singleProduct'}>
-                <div class="card_box">
-                    {/* <span></span> */}
-                    <Image h={'270px'} src={images[0]} alt={title} />
-                </div>
-                </Link>
-
-                <div style={{marginTop: "40px", border: "2px solid blue"}}>
-                    
-                    <div>
-                    <Text >Brand</Text>
-                    {/* <Text >Title: hnxjxcjcjcjjcjcsdfifigdhif jdifhdifodafd</Text> */}
-                    <p>snasjbcjadbjcjadbcbsdjcbj jdbcujabca cjcbaj cacbdishcfasc b </p>
-                    <Text >Price</Text>
-                    <Text >Size</Text>
-                    </div>
-
-                    <div style={{display: "flex", justifyContent: "space-between"}}>
-                        <AddToCart />
-                        <WhilistBtn />
-                    </div>
-                </div>
-                </div>
+export const ProductCard = ({ images, brand, title, size, category, color, price , _id}) => {
+  return (
+    <DIV>
+      <div class="container">
+        <div>
+        {/* '/singleProduct/:category/:id'  */}
+          <Link to={`/singleProduct/${category}/${_id}`}>
+            <div class="card_box">
+              {/* <span></span> */}
+              <Image h={'270px'} src={images[0]} alt={title} />
             </div>
-        </DIV>
-    )
+          </Link>
+
+          <div style={{ marginTop: "40px"}}>
+
+            <div>
+              <Text
+                fontWeight="bold"
+                fontSize="sm"
+                letterSpacing="wide"
+                style={{ marginBottom: "5px"}}
+              >
+                {brand}
+              </Text>
+
+              <Text
+               
+                fontSize="sm"
+                style={{ marginBottom: "5px"}}
+                
+              >
+               {title}
+              </Text>
+
+              
+         
+              <Text  fontSize="md" style={{display: "flex", marginBottom: "5px"}} > <span  style={{paddingTop: "3px"}}><FaRupeeSign /> </span> {price}</Text>
+
+            </div>
+
+            
+          </div>
+
+          <div className='addAndWhi' >
+
+              <div>
+              <AddToCart price={price}/>
+              </div>
+
+              <div>
+
+              <WhilistBtn  />
+              </div>
+            </div>
+
+          
+        </div>
+
+        
+      </div>
+    </DIV>
+  )
 }
 
 const DIV = styled.div`
@@ -44,6 +76,12 @@ const DIV = styled.div`
   align-items: center;
   justify-content: center;
 }
+
+.addAndWhi > div {
+margin-bottom: 10px;
+}
+
+
 
 .card_box {
   width: 200px;

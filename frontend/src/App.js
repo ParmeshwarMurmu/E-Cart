@@ -86,7 +86,7 @@ function App() {
           <div>
 
             <div>
-              <Link to={'/product/mens'} >
+              <Link to={'/product/men'} >
 
                 <Categories  images='https://rukminim2.flixcart.com/image/832/832/xif0q/t-shirt/6/s/v/s-mt416-metronaut-original-imagmj8ndmbetfah.jpeg?q=70'
                   alt='mens'

@@ -4,6 +4,7 @@ import { useParams, useSearchParams } from 'react-router-dom'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import { store } from '../Redux/Store/store'
 import { allProductData } from '../Redux/allMenProductReducer/action'
+import styled from 'styled-components'
 
 export const ProductComp = ({category}) => {
   
@@ -39,14 +40,23 @@ export const ProductComp = ({category}) => {
 
 
   return (
-    <div style={{display: "flex", flexWrap: "wrap", justifyContent: "space-around"}}>
+    <DIV  className='cardParent'>
       {
           data.map((el)=>(
-            <div key={el._id} style={{display: "flex", flexWrap: "wrap", marginBottom: "50px", border: "2px solid red", width: "19%"}}>
-              <ProductCard {...el} />
+            <div  key={el._id} style={{ marginBottom: "50px"}}>
+              <ProductCard {...el} category={category} />
             </div>
           ))
       }
-    </div>
+    </DIV>
   )
 }
+
+const DIV = styled.div`
+  
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+
+
+`

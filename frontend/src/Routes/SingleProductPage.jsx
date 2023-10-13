@@ -41,6 +41,9 @@ export const SingleProductPage = () => {
         setUserSize(el)
     }
 
+    console.log("singleProduct Page", category, id
+    )
+ 
 
 
 

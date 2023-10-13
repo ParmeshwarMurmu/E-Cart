@@ -5,16 +5,17 @@ const { WomenModel } = require('../Model/WomenSchema')
 
 const allProductRoute = express.Router()
 
-allProductRoute.get('/mens', async (req, res) => {
+allProductRoute.get('/men', async (req, res) => {
 
 
 
-    const { category, color, brand } = req.query;
+    const { category, color, brand, price } = req.query;
     console.log(category);
     console.log(color);
     console.log(brand);
 
     try {
+
 
         // let query = {};
 
@@ -22,13 +23,25 @@ allProductRoute.get('/mens', async (req, res) => {
         //     query.category = { $in: category };
         // }
 
+        // if (color) {
+        //     query.color = { $in: color };
+        // }
+
+        // if (brand) {
+        //     query.brand = { $in: brand };
+        // }
+
         // const data = await MenModel.find(query);
 
-        // const allBrands = await MenModel.distinct('brand');
-        // const allColors = await MenModel.distinct('color');
-        // const allCategory = await MenModel.distinct('category');
-        // res.status(200).send({ "data": data, "allBrands": allBrands, "allColors": allColors, "allCategory": allCategory, "allGender": [], "urlCategory": "mens", "masai": "m" })
+        // // Filter distinct brands and colors by the selected category, if available
+        // const brandsQuery = { ...query };
+        // const colorsQuery = { ...query };
 
+        // const allBrands = await MenModel.distinct('brand', brandsQuery);
+        // const allColors = await MenModel.distinct('color', colorsQuery);
+        // const allCategory = await MenModel.distinct('category');
+
+        // res.status(200).send({ "data": data, "allBrands": allBrands, "allColors": allColors, "allCategory": allCategory, "allGender": [], "urlCategory": "mens", "masai": "m" })
 
         let query = {};
 
@@ -44,25 +57,27 @@ allProductRoute.get('/mens', async (req, res) => {
             query.brand = { $in: brand };
         }
 
-        const data = await MenModel.find(query);
+        const sortOption = price === 'highToLow' ? -1 : 1; // Determine the sorting order based on the user's choice
 
-        // Get all distinct brands, regardless of selection
-        const allBrands = await MenModel.distinct('brand');
+        const data = await MenModel.find(query).sort({ price: sortOption });
 
-        // Filter distinct colors by the selected category, if available
+        // Filter distinct brands and colors by the selected category, if available
+        const brandsQuery = { ...query };
         const colorsQuery = { ...query };
+
+        const allBrands = await MenModel.distinct('brand', brandsQuery);
         const allColors = await MenModel.distinct('color', colorsQuery);
-        
         const allCategory = await MenModel.distinct('category');
 
-        res.status(200).send({ "data": data, "allBrands": allBrands, "allColors": allColors, "allCategory": allCategory, "allGender": [], "urlCategory": "mens", "masai": "m" })
+        res.status(200).send({ "data": data, "allBrands": allBrands, "allColors": allColors, "allCategory": allCategory, "allGender": [], "urlCategory": "mens", "masai": "m" });
+
 
     } catch (error) {
         res.status(200).send({ "msg": error })
     }
 })
 
-allProductRoute.get('/womens', async (req, res) => {
+allProductRoute.get('/women', async (req, res) => {
 
     try {
         const data = await WomenModel.find();
@@ -75,7 +90,7 @@ allProductRoute.get('/womens', async (req, res) => {
     }
 })
 
-allProductRoute.get('/shoes', async (req, res) => {
+allProductRoute.get('/shoe', async (req, res) => {
 
     try {
         const data = await ShoeModel.find();
