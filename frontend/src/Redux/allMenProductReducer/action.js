@@ -17,12 +17,12 @@ export const allMenProductErrorAction = ()=>{
     return {type: ALL_MEN_PRODUCT_ERROR}
 }
 
-export const allProductData = (category, obj)=>(dispatch)=>{
+export const allProductData = (category, obj, page)=>(dispatch)=>{
 
     console.log(category, obj);
  
     dispatch(allMenProductLoadingAction())
-    axios.get(`http://localhost:8080/allProducts/${category}`, obj)
+    axios.get(`http://localhost:8080/allProducts/${category}?page=${page}&limit=10`, obj)
     .then((res)=>{
         console.log("&&");
         console.log(res.data);

@@ -37,7 +37,7 @@ singleProduct.get('/women/:id', async(req, res)=>{
 
 })
 
-singleProduct.get('/shoes/:id', async(req, res)=>{
+singleProduct.get('/shoe/:id', async(req, res)=>{
 
     const {id} = req.params;
 

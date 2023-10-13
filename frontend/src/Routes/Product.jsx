@@ -13,15 +13,17 @@ export const Product = ({type}) => {
   const { category } = useParams()
   const dispatch = useDispatch()
   const [searchParams, setSearchParams] = useSearchParams()
-  // const [type, setType] = useState(type || "")
-  // const categoryType = searchParams.get('type')
   const prevCategory = useRef(category);
+  const page = searchParams.get('page')
 
   const obj = {
     params:{
       brand: searchParams.getAll('brand'),
       category: searchParams.getAll('category'),
-      color: searchParams.getAll('color')
+      color: searchParams.getAll('color'),
+      order: searchParams.get('order'),
+      gender: searchParams.getAll('gender'),
+      page: searchParams.get('page')
     }
   }
 
@@ -36,14 +38,12 @@ export const Product = ({type}) => {
 
   }, shallowEqual)
 
-  console.log("products", data)
-  console.log("category", category);
 
   useEffect(() => {
 
     console.log(obj);
-    dispatch(allProductData(category, obj));
-  }, [searchParams])
+    dispatch(allProductData(category, obj, page));
+  }, [searchParams, category, page])
 
 
 
@@ -65,6 +65,8 @@ export const Product = ({type}) => {
 
         </DIV>
       }
+
+
     </>
 
 

@@ -20,6 +20,10 @@ export const SideBar = () => {
     const [color, setColor] = useState(initialColor || [])
     const initialCategory = searchParams.getAll("category")
     const [category, setCategory] = useState(initialCategory || [])
+    const initialOrder = searchParams.get("order")
+    const [order, setOrder] = useState(initialOrder || "")
+    const initialGender = searchParams.get("gender")
+    const [gender, setGender] = useState(initialGender || [])
 
     const { allColors, allCategory, allBrands, allGender, isLoading, isError, isData } = useSelector((store) => {
         return {
@@ -83,6 +87,26 @@ export const SideBar = () => {
         setColor(newColor)
     }
 
+    const orderHandler = (e)=>{
+
+        setOrder(e.target.value)
+
+    }
+
+    const genderHandler = (e)=>{
+        const {value} = e.target;
+
+        let newGender = [...color];
+        if(newGender.includes(value)){
+            newGender = newGender.filter(el => el !== value)
+        }
+        else{
+            newGender.push(value)
+        }
+
+        setGender(newGender)
+    }
+
    
 
     useEffect(() => {
@@ -90,14 +114,18 @@ export const SideBar = () => {
         const params = {
             brand: brand,
             category: category,
-            color: color
+            color: color,
+            gender: gender
+            
         }
+
+        order && (params.order = order)
 
         setSearchParams(params)
         
 
 
-    }, [brand, category, color])
+    }, [brand, category, color, order, gender])
 
 
 
@@ -106,32 +134,32 @@ export const SideBar = () => {
         <DIV>
             <Accordion defaultIndex={[0]} allowMultiple>
                 {
-                //        isData && allGender.length > 0 && <AccordionItem>
-                //        <h2>
-                //            <AccordionButton>
-                //                <Box as="span" flex='1' textAlign='left'>
-                //                    Filter By Gender
-                //                </Box>
-                //                <AccordionIcon />
-                //            </AccordionButton>
-                //        </h2>
-                //        <AccordionPanel pb={4}>
+                       isData && allGender.length > 0 && <AccordionItem>
+                       <h2>
+                           <AccordionButton>
+                               <Box as="span" flex='1' textAlign='left'>
+                                   Filter By Gender
+                               </Box>
+                               <AccordionIcon />
+                           </AccordionButton>
+                       </h2>
+                       <AccordionPanel pb={4}>
    
-                //            {
-                //                allGender.map((el, index) => (
-                //                    <div key={index}>
-                //                        <input type="checkbox" value={el} onChange={categoryHandler}  />
-                //                        <label htmlFor="">{el}</label>
-                //                    </div>
+                           {
+                               allGender.map((el, index) => (
+                                   <div key={index}>
+                                       <input type="checkbox" value={el} onChange={genderHandler}  />
+                                       <label htmlFor="">{el}</label>
+                                   </div>
    
-                //                ))
-                //            }
+                               ))
+                           }
    
                           
    
    
-                //        </AccordionPanel>
-                //    </AccordionItem>
+                       </AccordionPanel>
+                   </AccordionItem>
                 }
                 <AccordionItem>
                     <h2>
@@ -214,14 +242,14 @@ export const SideBar = () => {
                         </AccordionButton>
                     </h2>
                     <AccordionPanel pb={4}>
-                        <div>
+                        <div onChange={orderHandler}>
                             <div>
-                                <input type="radio" value={"asc"} name='order' />
+                                <input type="radio" value={"asc"} name='order' defaultChecked={order === 'asc'}/>
                                 <label htmlFor="">Low To High</label>
                             </div>
 
                             <div>
-                                <input type="radio" value={"desc"} name='order' />
+                                <input type="radio" value={"desc"} name='order' defaultChecked={order === 'desc'} />
                                 <label htmlFor="">High To Low</label>
                             </div>
                         </div>

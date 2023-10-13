@@ -5,15 +5,15 @@ import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import { store } from '../Redux/Store/store'
 import { allProductData } from '../Redux/allMenProductReducer/action'
 import styled from 'styled-components'
+import Pagination from './Pagination'
 
-export const ProductComp = ({category}) => {
-  
-  
+export const ProductComp = ({ category }) => {
+
+
   const dispatch = useDispatch()
   const [searchParams, setSearchParams] = useSearchParams()
-  
 
-  const {data, isLoading, isError, isData} = useSelector((store)=>{
+  const { data, isLoading, isError, isData } = useSelector((store) => {
     return {
       data: store.allMenProductReducer.data,
       isLoading: store.allMenProductReducer.isLoading,
@@ -23,31 +23,54 @@ export const ProductComp = ({category}) => {
 
   }, shallowEqual)
 
-  const obj = {
-    params:{
-      brand: searchParams.getAll('brand'),
-      category: searchParams.getAll('category'),
-      color: searchParams.getAll('color')
-    }
-  }
+  const [page, setPage] = useState(Math.ceil(data.length / 10))
 
-  useEffect(()=>{
-    // dispatch(allProductData(category, obj));
-  }, [setSearchParams])
+  const initialPage = searchParams.get("page")
+  const [currentPage, setCurrentPage] = useState(1);
+  // const [gender, setGender] = useState(initialPage || 1)
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+    console.log(`Button with text "${page}" clicked`);
+  };
+
+
+
+  useEffect(() => {
 
   
+     const params = {
+        page: currentPage
+      }
+    
+
+    setSearchParams(params)
+
+  }, [currentPage])
+
+
+
+
 
 
 
   return (
-    <DIV  className='cardParent'>
+    <DIV className='cardParent'>
       {
-          data.map((el)=>(
-            <div  key={el._id} style={{ marginBottom: "50px"}}>
-              <ProductCard {...el} category={category} />
-            </div>
-          ))
+        data.map((el) => (
+          <div key={el._id} style={{ marginBottom: "50px" }}>
+            <ProductCard {...el} category={category} />
+          </div>
+        ))
       }
+
+      <Pagination
+        totalPages={page}
+        currentPage={currentPage}
+        onPageChange={handlePageChange}
+      />
+
+      {/* totalPages, currentPage, onPageChange */}
     </DIV>
   )
 }

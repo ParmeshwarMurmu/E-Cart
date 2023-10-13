@@ -118,7 +118,7 @@ function App() {
 
           <div>
 
-            <Link to={'/product/womens'}>
+            <Link to={'/product/women'}>
               <Categories type={'womens'} images='https://rukminim2.flixcart.com/image/832/832/xif0q/kurta/s/k/4/l-913-jaffry-embroidery-original-imagsc36sh7khhfj.jpeg?q=70'
                 alt='women'
               />
@@ -147,7 +147,7 @@ function App() {
 
           <div>
 
-            <Link to={'/product/shoes'}>
+            <Link to={'/product/shoe'}>
               <Categories type={'shoes'} images='https://rukminim2.flixcart.com/image/612/612/l51d30w0/shoe/z/w/c/10-mrj1914-10-aadi-white-black-red-original-imagft9k9hydnfjp.jpeg?q=70'
                 alt='shoes'
               />

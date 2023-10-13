@@ -9,39 +9,10 @@ allProductRoute.get('/men', async (req, res) => {
 
 
 
-    const { category, color, brand, price } = req.query;
-    console.log(category);
-    console.log(color);
-    console.log(brand);
+    const { category, color, brand, order} = req.query;
+   
 
     try {
-
-
-        // let query = {};
-
-        // if (category) {
-        //     query.category = { $in: category };
-        // }
-
-        // if (color) {
-        //     query.color = { $in: color };
-        // }
-
-        // if (brand) {
-        //     query.brand = { $in: brand };
-        // }
-
-        // const data = await MenModel.find(query);
-
-        // // Filter distinct brands and colors by the selected category, if available
-        // const brandsQuery = { ...query };
-        // const colorsQuery = { ...query };
-
-        // const allBrands = await MenModel.distinct('brand', brandsQuery);
-        // const allColors = await MenModel.distinct('color', colorsQuery);
-        // const allCategory = await MenModel.distinct('category');
-
-        // res.status(200).send({ "data": data, "allBrands": allBrands, "allColors": allColors, "allCategory": allCategory, "allGender": [], "urlCategory": "mens", "masai": "m" })
 
         let query = {};
 
@@ -57,11 +28,13 @@ allProductRoute.get('/men', async (req, res) => {
             query.brand = { $in: brand };
         }
 
-        const sortOption = price === 'highToLow' ? -1 : 1; // Determine the sorting order based on the user's choice
+        if (order) {
+            const sortOption = (order === 'asc') ? 1 : -1; // Determine the sorting order based on the user's choice
+            data = await MenModel.find(query).sort({ price: sortOption });
+        } else {
+            data = await MenModel.find(query);
+        }
 
-        const data = await MenModel.find(query).sort({ price: sortOption });
-
-        // Filter distinct brands and colors by the selected category, if available
         const brandsQuery = { ...query };
         const colorsQuery = { ...query };
 
@@ -79,12 +52,42 @@ allProductRoute.get('/men', async (req, res) => {
 
 allProductRoute.get('/women', async (req, res) => {
 
+    const { category, color, brand, order} = req.query;
+   
+
     try {
-        const data = await WomenModel.find();
-        const allBrands = await WomenModel.distinct('brand');
-        const allColors = await WomenModel.distinct('color');
+
+        let query = {};
+
+        if (category) {
+            query.category = { $in: category };
+        }
+
+        if (color) {
+            query.color = { $in: color };
+        }
+
+        if (brand) {
+            query.brand = { $in: brand };
+        }
+
+        if (order) {
+            const sortOption = (order === 'asc') ? 1 : -1; // Determine the sorting order based on the user's choice
+            data = await WomenModel.find(query).sort({ price: sortOption });
+        } else {
+            data = await WomenModel.find(query);
+        }
+
+        const brandsQuery = { ...query };
+        const colorsQuery = { ...query };
+
+        const allBrands = await WomenModel.distinct('brand', brandsQuery);
+        const allColors = await WomenModel.distinct('color', colorsQuery);
         const allCategory = await WomenModel.distinct('category');
-        res.status(200).send({ "data": data, "allBrands": allBrands, "allColors": allColors, "allCategory": allCategory, "allGender": [] })
+
+        res.status(200).send({ "data": data, "allBrands": allBrands, "allColors": allColors, "allCategory": allCategory, "allGender": [], "urlCategory": "mens", "masai": "m" });
+
+
     } catch (error) {
         res.status(200).send({ "msg": error })
     }
@@ -92,13 +95,47 @@ allProductRoute.get('/women', async (req, res) => {
 
 allProductRoute.get('/shoe', async (req, res) => {
 
+    const { category, color, brand, order, gender} = req.query;
+   
+
     try {
-        const data = await ShoeModel.find();
-        const allBrands = await ShoeModel.distinct('brand');
-        const allGender = await ShoeModel.distinct('gender');
-        const allColors = await ShoeModel.distinct('color');
+
+        let query = {};
+
+        if (category) {
+            query.category = { $in: category };
+        }
+
+        if (color) {
+            query.color = { $in: color };
+        }
+
+        if (brand) {
+            query.brand = { $in: brand };
+        }
+
+        if (gender) {
+            query.gender = gender; // Add filter for gender
+        }
+
+        if (order) {
+            const sortOption = (order === 'asc') ? 1 : -1; // Determine the sorting order based on the user's choice
+            data = await ShoeModel.find(query).sort({ price: sortOption });
+        } else {
+            data = await ShoeModel.find(query);
+        }
+
+        const brandsQuery = { ...query };
+        const colorsQuery = { ...query };
+
+        const allBrands = await ShoeModel.distinct('brand', brandsQuery);
+        const allColors = await ShoeModel.distinct('color', colorsQuery);
         const allCategory = await ShoeModel.distinct('category');
-        res.status(200).send({ "data": data, "allBrands": allBrands, "allColors": allColors, "allCategory": allCategory, "allGender": allGender })
+        const allGender = await ShoeModel.distinct('gender');
+
+        res.status(200).send({ "data": data, "allBrands": allBrands, "allColors": allColors, "allCategory": allCategory, "allGender": allGender, "urlCategory": "mens", "masai": "m" });
+
+
     } catch (error) {
         res.status(200).send({ "msg": error })
     }
