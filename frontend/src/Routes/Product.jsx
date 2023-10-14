@@ -7,6 +7,7 @@ import { ProductComp } from '../Comp2/ProductComp'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import { allProductData } from '../Redux/allMenProductReducer/action'
 import { SingleProductLoader } from '../Comp2/SingleProductLoader'
+import Pagination from '../Comp2/Pagination'
 
 export const Product = ({type}) => {
 
@@ -14,7 +15,8 @@ export const Product = ({type}) => {
   const dispatch = useDispatch()
   const [searchParams, setSearchParams] = useSearchParams()
   const prevCategory = useRef(category);
-  const page = searchParams.get('page')
+  // const page = searchParams.get('page')
+  const [currentPage, setCurrentPage] = useState(1);
 
   const obj = {
     params:{
@@ -23,7 +25,7 @@ export const Product = ({type}) => {
       color: searchParams.getAll('color'),
       order: searchParams.get('order'),
       gender: searchParams.getAll('gender'),
-      page: searchParams.get('page')
+      // page: searchParams.get('page')
     }
   }
 
@@ -38,12 +40,17 @@ export const Product = ({type}) => {
 
   }, shallowEqual)
 
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+};
+
+  
+
 
   useEffect(() => {
 
-    console.log(obj);
-    dispatch(allProductData(category, obj, page));
-  }, [searchParams, category, page])
+    dispatch(allProductData(category, obj, currentPage));
+  }, [searchParams, category, currentPage])
 
 
 
@@ -59,12 +66,16 @@ export const Product = ({type}) => {
 
 
           <div className='productComp'>
-            <ProductComp category={category} />
+            <ProductComp currentPage = {currentPage} onPageChange={handlePageChange} category={category} />
           </div>
 
 
         </DIV>
       }
+
+      <div>
+     
+      </div>
 
 
     </>

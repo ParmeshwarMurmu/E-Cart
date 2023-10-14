@@ -9,8 +9,15 @@ allProductRoute.get('/men', async (req, res) => {
 
 
 
-    const { category, color, brand, order} = req.query;
+    let { category, color, brand, order, page, limit} = req.query;
    
+    // page = parseInt(page[1], 10);page, limit
+    // page = parseInt(page, 10);
+    // limit = parseInt(limit, 10);
+    // console.log(page, "page")
+    // // console.log(page[1], "page n1");
+    // console.log(limit, "limit")
+
 
     try {
 
@@ -28,6 +35,8 @@ allProductRoute.get('/men', async (req, res) => {
             query.brand = { $in: brand };
         }
 
+        let data;
+
         if (order) {
             const sortOption = (order === 'asc') ? 1 : -1; // Determine the sorting order based on the user's choice
             data = await MenModel.find(query).sort({ price: sortOption });
@@ -35,14 +44,23 @@ allProductRoute.get('/men', async (req, res) => {
             data = await MenModel.find(query);
         }
 
+        const startIndex = (page - 1) * limit;
+        const endIndex = page * limit;
+        const results = data.slice(startIndex, endIndex);
+
+        // console.log(startIndex, "start");
+        // console.log(endIndex, "end");
+        // console.log(results);
+
         const brandsQuery = { ...query };
         const colorsQuery = { ...query };
 
         const allBrands = await MenModel.distinct('brand', brandsQuery);
         const allColors = await MenModel.distinct('color', colorsQuery);
         const allCategory = await MenModel.distinct('category');
+        const totalData =  data.length;
 
-        res.status(200).send({ "data": data, "allBrands": allBrands, "allColors": allColors, "allCategory": allCategory, "allGender": [], "urlCategory": "mens", "masai": "m" });
+        res.status(200).send({ "data": results, "allBrands": allBrands, "allColors": allColors, "allCategory": allCategory, "allGender": [], "totalData": totalData });
 
 
     } catch (error) {
@@ -52,8 +70,8 @@ allProductRoute.get('/men', async (req, res) => {
 
 allProductRoute.get('/women', async (req, res) => {
 
-    const { category, color, brand, order} = req.query;
-   
+    const { category, color, brand, order } = req.query;
+
 
     try {
 
@@ -95,8 +113,8 @@ allProductRoute.get('/women', async (req, res) => {
 
 allProductRoute.get('/shoe', async (req, res) => {
 
-    const { category, color, brand, order, gender} = req.query;
-   
+    const { category, color, brand, order, gender } = req.query;
+
 
     try {
 

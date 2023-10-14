@@ -115,7 +115,7 @@ export const SideBar = () => {
             brand: brand,
             category: category,
             color: color,
-            gender: gender
+            gender: gender,
             
         }
 

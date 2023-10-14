@@ -20,8 +20,15 @@ export const allMenProductErrorAction = ()=>{
 export const allProductData = (category, obj, page)=>(dispatch)=>{
 
     console.log(category, obj);
- 
+    // ?page=${page}&limit=10
     dispatch(allMenProductLoadingAction())
+    // axios.get(`http://localhost:8080/allProducts/${category}`, {
+        //     params: {
+            //         ...obj,
+            //         // page,
+            //         // limit :10
+            //     }
+            // })
     axios.get(`http://localhost:8080/allProducts/${category}?page=${page}&limit=10`, obj)
     .then((res)=>{
         console.log("&&");

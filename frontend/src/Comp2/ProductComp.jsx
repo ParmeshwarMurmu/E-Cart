@@ -7,46 +7,46 @@ import { allProductData } from '../Redux/allMenProductReducer/action'
 import styled from 'styled-components'
 import Pagination from './Pagination'
 
-export const ProductComp = ({ category }) => {
+export const ProductComp = ({ category, currentPage, onPageChange}) => {
 
 
   const dispatch = useDispatch()
   const [searchParams, setSearchParams] = useSearchParams()
 
-  const { data, isLoading, isError, isData } = useSelector((store) => {
+  const { data, isLoading, isError, isData , totalData} = useSelector((store) => {
     return {
       data: store.allMenProductReducer.data,
       isLoading: store.allMenProductReducer.isLoading,
       isError: store.allMenProductReducer.isError,
       isData: store.allMenProductReducer.isData,
+      totalData: store.allMenProductReducer.totalData,
     }
 
   }, shallowEqual)
 
-  const [page, setPage] = useState(Math.ceil(data.length / 10))
+  const [page, setPage] = useState(Math.ceil(Number(totalData) / 10))
 
-  const initialPage = searchParams.get("page")
-  const [currentPage, setCurrentPage] = useState(1);
-  // const [gender, setGender] = useState(initialPage || 1)
-
-  const handlePageChange = (page) => {
-    setCurrentPage(page);
-    console.log(`Button with text "${page}" clicked`);
-  };
+  // const initialPage = searchParams.get("page")
+  // const [currentPage, setCurrentPage] = useState(1);
 
 
+  // const handlePageChange = (page) => {
+  //   setCurrentPage(page);
 
-  useEffect(() => {
+  // };
 
-  
-     const params = {
-        page: currentPage
-      }
-    
+  // console.log("CURR", currentPage);
 
-    setSearchParams(params)
+  // useEffect(() => {
 
-  }, [currentPage])
+  //     const params = {
+  //       page: currentPage
+  //     }
+
+  //   setSearchParams(params)
+
+
+  // }, [currentPage])
 
 
 
@@ -55,31 +55,41 @@ export const ProductComp = ({ category }) => {
 
 
   return (
-    <DIV className='cardParent'>
-      {
-        data.map((el) => (
-          <div key={el._id} style={{ marginBottom: "50px" }}>
-            <ProductCard {...el} category={category} />
-          </div>
-        ))
-      }
+    <DIV >
+
+      <div className='cardParent'>
+        {
+
+          data.map((el) => (
+            <div key={el._id} style={{ marginBottom: "50px" }}>
+              <ProductCard {...el} category={category} />
+            </div>
+          ))
+        }
+
+      </div>
+
+      <div style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
 
       <Pagination
         totalPages={page}
         currentPage={currentPage}
-        onPageChange={handlePageChange}
+        onPageChange={onPageChange}
       />
-
-      {/* totalPages, currentPage, onPageChange */}
+      </div>
     </DIV>
   )
 }
 
 const DIV = styled.div`
   
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 20px;
+  
+  
 
+  .cardParent{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+  }
 
 `
