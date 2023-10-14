@@ -29,7 +29,7 @@ const DIV = styled.div`
   --tooltip-height: 35px;
   --tooltip-width: 90px;
   --gap-between-tooltip-to-button: 18px;
-  --button-color:  rgb(255, 208, 0);
+  --button-color:  rgb(255, 162, 0);
   --tooltip-color: #fff;
   width: var(--width);
   height: var(--height);

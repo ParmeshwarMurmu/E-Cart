@@ -8,6 +8,7 @@ import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import { allProductData } from '../Redux/allMenProductReducer/action'
 import { SingleProductLoader } from '../Comp2/SingleProductLoader'
 import Pagination from '../Comp2/Pagination'
+import { Ty } from '../try/Ty'
 
 export const Product = ({type}) => {
 
@@ -73,9 +74,7 @@ export const Product = ({type}) => {
         </DIV>
       }
 
-      <div>
-     
-      </div>
+      
 
 
     </>

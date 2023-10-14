@@ -61,15 +61,15 @@ export const ProductComp = ({ category, currentPage, onPageChange}) => {
         {
 
           data.map((el) => (
-            <div key={el._id} style={{ marginBottom: "50px" }}>
-              <ProductCard {...el} category={category} />
-            </div>
+            // <div key={el._id} style={{ marginBottom: "50px"}}>
+              <ProductCard key={el._id} {...el} category={category} />
+            // </div>
           ))
         }
 
       </div>
 
-      <div style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
+      <div style={{display: "flex", justifyContent: "center", alignItems: "center", marginTop: "50px"}}>
 
       <Pagination
         totalPages={page}
@@ -90,6 +90,12 @@ const DIV = styled.div`
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 20px;
+    row-gap: 50px
+  
+  }
+
+  .cardParent > div{
+   height: 100%;
   }
 
 `

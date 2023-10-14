@@ -22,7 +22,7 @@ export const SideBar = () => {
     const [category, setCategory] = useState(initialCategory || [])
     const initialOrder = searchParams.get("order")
     const [order, setOrder] = useState(initialOrder || "")
-    const initialGender = searchParams.get("gender")
+    const initialGender = searchParams.getAll("gender")
     const [gender, setGender] = useState(initialGender || [])
 
     const { allColors, allCategory, allBrands, allGender, isLoading, isError, isData } = useSelector((store) => {
@@ -70,6 +70,8 @@ export const SideBar = () => {
             newCategory.push(value)
         }
 
+
+
         setCategory(newCategory)
     }
 
@@ -96,13 +98,15 @@ export const SideBar = () => {
     const genderHandler = (e)=>{
         const {value} = e.target;
 
-        let newGender = [...color];
+        let newGender = [...gender];
         if(newGender.includes(value)){
             newGender = newGender.filter(el => el !== value)
         }
         else{
             newGender.push(value)
         }
+
+   
 
         setGender(newGender)
     }
@@ -134,7 +138,7 @@ export const SideBar = () => {
         <DIV>
             <Accordion defaultIndex={[0]} allowMultiple>
                 {
-                       isData && allGender.length > 0 && <AccordionItem>
+                    allGender.length > 0 && <AccordionItem>
                        <h2>
                            <AccordionButton>
                                <Box as="span" flex='1' textAlign='left'>
@@ -148,7 +152,7 @@ export const SideBar = () => {
                            {
                                allGender.map((el, index) => (
                                    <div key={index}>
-                                       <input type="checkbox" value={el} onChange={genderHandler}  />
+                                       <input type="checkbox" value={el} onChange={genderHandler} checked={gender.includes(el)}  />
                                        <label htmlFor="">{el}</label>
                                    </div>
    

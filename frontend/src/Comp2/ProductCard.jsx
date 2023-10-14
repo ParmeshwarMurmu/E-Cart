@@ -6,12 +6,12 @@ import { AddToCart } from './AddToCart'
 import { WhilistBtn } from './WhilistBtn'
 import { FaRupeeSign } from "react-icons/fa";
 
-export const ProductCard = ({ images, brand, title, size, category, color, price , _id}) => {
+export const ProductCard = ({ images, brand, title, size, category, color, price, _id }) => {
   return (
     <DIV>
       <div class="container">
-        <div>
-        {/* '/singleProduct/:category/:id'  */}
+        <div >
+          {/* '/singleProduct/:category/:id'  */}
           <Link to={`/singleProduct/${category}/${_id}`}>
             <div class="card_box">
               {/* <span></span> */}
@@ -19,67 +19,94 @@ export const ProductCard = ({ images, brand, title, size, category, color, price
             </div>
           </Link>
 
-          <div style={{ marginTop: "40px"}}>
+          <div style={{ marginTop: "40px" }}>
 
             <div>
               <Text
                 fontWeight="bold"
                 fontSize="sm"
                 letterSpacing="wide"
-                style={{ marginBottom: "5px"}}
+                style={{ marginBottom: "5px" }}
               >
                 {brand}
               </Text>
 
               <Text
-               
+
                 fontSize="sm"
-                style={{ marginBottom: "5px"}}
-                
+                style={{ marginBottom: "5px" }}
+
               >
-               {title}
+                {title}
               </Text>
 
-              
-         
-              <Text  fontSize="md" style={{display: "flex", marginBottom: "5px"}} > <span  style={{paddingTop: "3px"}}><FaRupeeSign /> </span> {price}</Text>
+
+
+              <Text fontSize="md" style={{ display: "flex", marginBottom: "5px" }} > <span style={{ paddingTop: "3px" }}><FaRupeeSign /> </span> {price}</Text>
 
             </div>
 
-            
+
           </div>
 
-          <div className='addAndWhi' >
 
-              <div>
-              <AddToCart price={price}/>
-              </div>
 
-              <div>
 
-              <WhilistBtn  />
-              </div>
-            </div>
 
-          
+
         </div>
 
-        
+        <div className='addAndWhi' >
+
+          <div className='addToCart'>
+            <div style={{marginBottom: "10px"}}>
+              <AddToCart price={price} />
+            </div>
+
+            <div>
+
+              <WhilistBtn />
+            </div>
+          </div>
+
+
+        </div>
+
+
+
+
       </div>
     </DIV>
   )
 }
 
 const DIV = styled.div`
-    .container {
+
+  .container {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+
 }
 
-.addAndWhi > div {
-margin-bottom: 10px;
+.addToCart{
+  width: 100%;
 }
+
+
+
+.container > div{
+  height: 100%;
+}
+
+.addAndWhi{
+  display: flex;
+  align-items: flex-end;
+  
+}
+
+
+
 
 
 

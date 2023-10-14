@@ -21,7 +21,7 @@ const DIV = styled.div`
   height: 35px;
   /* border-radius:  0.45em; */
   border: 1px solid rgba(255, 255, 255, 0.349);
-  background-color: #ffb224; 
+  background-color: #fac83e; 
   display: flex;
   align-items: center;
   justify-content: center;
@@ -41,7 +41,7 @@ const DIV = styled.div`
   justify-content: center;
   overflow: hidden;
   z-index: 2;
-  transition-duration: .3s;
+  /* transition-duration: .3s; */
 }
 
 .icon {
@@ -65,9 +65,9 @@ const DIV = styled.div`
 }
 
 .bookmarkBtn:hover .IconContainer {
-  width: 90px;
-  border-radius: 40px;
-  transition-duration: .3s;
+  /* width: 90px; */
+  /* border-radius: 40px; */
+  /* transition-duration: .3s; */
 }
 
 .bookmarkBtn:hover .text {

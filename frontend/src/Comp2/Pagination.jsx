@@ -13,8 +13,8 @@ const Pagination = ({ totalPages, currentPage, onPageChange }) => {
     
     const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1);
 
-    console.log(totalPages, "totalPage");
-    console.log(currentPage, "currentPage");
+    // console.log(totalPages, "totalPage");
+    // console.log(currentPage, "currentPage");
     // console.log(pageNoInUrl, "PageNumberURL");
 
     
