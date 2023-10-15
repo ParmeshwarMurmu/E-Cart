@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { Categories } from './Home/Categories'
 import { ChevronDownIcon, ChevronUpIcon, SearchIcon } from '@chakra-ui/icons'
 import styled from "styled-components"
+import { FilterComp } from '../Comp2/FilterComp'
 
 export const NavCategories = () => {
 
@@ -134,6 +135,10 @@ export const NavCategories = () => {
           </Stack>
         </div>
 
+        {/* <div className='filter'>
+          <FilterComp />
+        </div> */}
+
 
       </div>
     </DIV>
@@ -174,6 +179,32 @@ margin-bottom: 50px;
 .title{
   display: flex;
   justify-content: center;
+}
+
+.filter{
+  display: none;
+}
+
+@media screen and (max-width: 425px) {
+
+.searchBar{
+  display: none;
+}
+
+.filter{
+  display: block;
+}
+
+.allCategories{
+  
+  justify-content: space-evenly;
+
+}
+  
+
+  
+
+  
 }
 
 `

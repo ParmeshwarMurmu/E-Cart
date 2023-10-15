@@ -6,6 +6,8 @@ import { store } from '../Redux/Store/store'
 import { allProductData } from '../Redux/allMenProductReducer/action'
 import styled from 'styled-components'
 import Pagination from './Pagination'
+import { FilterComp } from './FilterComp'
+import { Text } from '@chakra-ui/react'
 
 export const ProductComp = ({ category, currentPage, onPageChange }) => {
 
@@ -57,12 +59,21 @@ export const ProductComp = ({ category, currentPage, onPageChange }) => {
   return (
     <DIV >
 
+      <div className='filter'>
+        <div style={{ display: "flex", justifyContent: "center", alignItems: "center"}}>
+        <Text fontStyle={'md'}>Filters</Text>
+        </div>
+        <div style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
+        <FilterComp />
+        </div>
+      </div>
+
       <div className='cardParent'>
         {
 
           data.map((el) => (
             // <div key={el._id} style={{ marginBottom: "50px"}}>
-            <ProductCard key={el._id} {...el} category={category} />
+            <ProductCard key={el._id} {...el} cate={category} />
             // </div>
           ))
         }
@@ -96,6 +107,12 @@ const DIV = styled.div`
 
   .cardParent > div{
    height: 100%;
+  }
+
+
+  .filter{
+    display: flex;
+    justify-content: flex-end;
   }
 
   @media screen and (max-width: 1396px) {

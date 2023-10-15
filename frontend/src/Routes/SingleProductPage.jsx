@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { SingleProductLoader } from '../Comp2/SingleProductLoader';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { Button, Image, Text } from '@chakra-ui/react';
 import { BiSolidOffer } from 'react-icons/bi';
 import { FaRupeeSign } from 'react-icons/fa';
@@ -13,6 +13,12 @@ import { SingleProductAddToCart } from '../Comp2/SingleProductAddToCart';
 import { RadioGroup } from '@headlessui/react'
 import { SingleProductWhilist } from '../Comp2/SingleProductWhilist';
 import { NavCategories } from '../Components/NavCategories';
+import { relatedItemsData } from '../Redux/relatedItemsReducer/action';
+
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import { flexbox } from '@chakra-ui/react';
 
 
 export const SingleProductPage = () => {
@@ -20,12 +26,26 @@ export const SingleProductPage = () => {
     const [index, setIndex] = useState(0)
     const [sizeIndex, setSizeIndex] = useState(-1)
     const [userSize, setUserSize] = useState("")
+    const [currentSlide, setCurrentSlide] = useState(0);
+    const [slideData, setSlideData] = useState("");
+
+    const settings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        afterChange: (index) => setCurrentSlide(index),
+        variableWidth: true,
+    };
 
 
-    const { category, id } = useParams()
+
+    const { category, id, type } = useParams()
     const dispatch = useDispatch()
+    let relatedData;
 
-    const { isLoading, isError, data, isData } = useSelector((store) => {
+    const { isLoading, isError, data, isData, } = useSelector((store) => {
 
         return {
             isLoading: store.singleProductPage.isLoading,
@@ -34,24 +54,61 @@ export const SingleProductPage = () => {
             isData: store.singleProductPage.isData,
 
 
+
         }
     }, shallowEqual)
+
+    const { isRelatedData, relatedItems } = useSelector((store) => {
+
+        return {
+
+            relatedItems: store.relatedItemsReducer.relatedItems,
+            isRelatedData: store.relatedItemsReducer.isRelatedData,
+
+
+        }
+    }, shallowEqual)
+
+    if (isRelatedData) {
+        relatedData = [
+            [
+                relatedItems[0],
+                relatedItems[1],
+            ],
+            [
+                relatedItems[2],
+                relatedItems[3],
+            ],
+            [
+                relatedItems[4],
+                relatedItems[5],
+            ]
+        ]
+    }
+
+
 
     const sizeHandler = (el, sizeInd) => {
         setSizeIndex(sizeInd)
         setUserSize(el)
     }
 
-    console.log("singleProduct Page", category, id
-    )
+    // console.log("category", category);
+    // console.log("id", id);
+    // console.log("type", type);
 
+    console.log("relatedItems", relatedItems)
 
 
 
 
     useEffect(() => {
         dispatch(singlePageData(id, category))
-    }, [])
+    }, [id])
+
+    useEffect(() => {
+        dispatch(relatedItemsData(category, type))
+    }, [id])
 
 
 
@@ -245,6 +302,68 @@ export const SingleProductPage = () => {
 
             </div>
 
+
+            <div>
+                <div>
+                    <Text fontSize={'lg'}>Related Items</Text>
+                </div>
+
+                <div>
+                    {
+                        isData &&
+                  
+                    <DIV className="slideshow-container">
+                        <Slider {...settings} className='slider'>
+                            {isRelatedData && relatedData.map((product, inde) => (
+                                <div key={inde}>
+                                    <div className='main'>
+
+                                        {
+                                            product.map((el) => (
+                                                <Link to={`/singleProduct/${category}/${el._id}/${el.category}`}
+                                                onClick={()=>{
+                                                    setIndex(0)
+                                                }}
+                                                >
+                                                    <div key={el._id} className='imgDiv' style={{ marginRight: "20px", height: "250px" }}>
+                                                        <img className='sliderImage' src={el.images[0]} alt={el.title} width='200px' />
+
+                                                    </div>
+                                                </Link>
+
+                                            ))
+                                        }
+
+
+
+
+
+
+                                    </div>
+                                </div>
+                            ))}
+                        </Slider>
+                        <div className="dot-indicators custom-dots">
+                            {isRelatedData && relatedData.map((_, index) => (
+                                <div >
+                                    <span
+                                        key={index}
+                                        className={currentSlide === index ? 'active-dot' : 'dot'}
+                                        onClick={() => {
+                                            setCurrentSlide(index);
+
+                                            setSlideData(123)
+
+                                        }}
+                                    />
+                                </div>
+                            ))}
+                        </div>
+                    </DIV>
+                      }
+                </div>
+            </div>
+
         </DIV>
     )
 }
@@ -279,6 +398,7 @@ const DIV = styled.div`
 /* Container uiverse */
 
 .smallImages{
+    margin-top: 40px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
 }
@@ -336,6 +456,152 @@ const DIV = styled.div`
 
       
     }
+
+
+    /* slider */
+
+    .main{
+    display: flex;
+    justify-content: space-between;
+    
+  }
+
+.slider{
+  width: 90%; /* Adjust the width as needed */
+  margin: 0 auto; /* Center the slider */
+
+ 
+}
+
+--slider-arrow-color: #050505; 
+  
+  .slick-prev::before,
+  .slick-next::before {
+    color: var(--slider-arrow-color);
+  }
+  
+
+  .slideshow-container{
+    z-index: -1;
+  }
+
+  .imgDiv {
+  position: relative;
+  /* box-shadow: 0 25px 50px rgba(0,0,0,0.55); */
+  cursor: pointer;
+  transition: all .3s;
+}
+
+.imgDiv:hover {
+  transform: scale(0.9);
+}
+
+  
+@media screen and (max-width: 768px) {
+      /* Your styles for large devices go here */
+
+      .imgDiv{
+          height: 170px;
+      }
+
+      .sliderImage{
+           width: 160px;
+      }
+
+      .slider{
+
+      }
+   
+      
+    }
+
+     
+@media screen and (max-width: 1237px) {
+      /* Your styles for large devices go here */
+
+      .imgDiv{
+          height: 170px;
+      }
+
+      .sliderImage{
+           width: 170px;
+      }
+
+      .slider{
+
+      }
+   
+      
+    }
+
+
+    @media screen and (max-width: 1076px) {
+      /* Your styles for large devices go here */
+
+      .slider{
+        height: 180px;
+        width: 77%;
+      }
+
+      .sliderImage{
+        height: 180px;
+        width: 150px;
+      }
+   
+      
+    }
+
+    @media screen and (max-width: 639px) {
+      /* Your styles for large devices go here */
+
+      .slider{
+        height: 150px;
+        width: 77%;
+      }
+
+      .sliderImage{
+        height: 150px;
+        width: 130px;
+      }
+   
+      
+    }
+
+
+    
+
+    @media screen and (max-width: 500px) {
+      /* Your styles for large devices go here */
+
+      .slider{
+        height: 120px;
+        width:89%;
+      }
+
+      .sliderImage{
+        height: 120px;
+        width: 110px;
+      }
+   
+      
+    }
+
+    
+
+    @media screen and (max-width: 425px) {
+
+.slider{
+  height: 140px;
+  width: 100%;
+}
+
+.sliderImage{
+  height: 120px;
+  width: 110px;
+}
+
+}
+
 
 
 

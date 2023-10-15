@@ -18,6 +18,7 @@ import { reducer as cartReducer } from '../cartReducer/reducer'
 import { reducer as menFormalSlideShowReducer } from '../menFormalSlideShowReducer/reducer'
 import { reducer as menTrendingSlideShowReducer } from '../menTrendingSlideShowReducer/reducer'
 import { reducer as singleUserReducer } from '../singleUserReducer/reducer'
+import { reducer as relatedItemsReducer } from '../relatedItemsReducer/reducer'
 
 
 
@@ -42,7 +43,8 @@ const rootReducer = combineReducers({
     cartReducer,
     menFormalSlideShowReducer,
     menTrendingSlideShowReducer,
-    singleUserReducer
+    singleUserReducer,
+    relatedItemsReducer
 
 })
 

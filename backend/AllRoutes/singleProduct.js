@@ -9,7 +9,7 @@ const singleProduct = expres.Router();
 singleProduct.get('/men/:id', async(req, res)=>{
 
     const {id} = req.params;
-    console.log("***");
+
 
     try {
         const menData = await MenModel.findOne({_id: id})
@@ -46,6 +46,23 @@ singleProduct.get('/shoe/:id', async(req, res)=>{
         const ShoeData = await ShoeModel.findOne({_id: id})
         
         res.status(200).send({"msg": ShoeData})
+    } catch (error) {
+        res.status(400).send({"msg": error})
+        
+    }
+
+})
+
+singleProduct.get('/relatedItems/men/:type', async(req, res)=>{
+
+    const {type} = req.params;
+    // console.log("type", type);
+    // console.log("$$");
+
+    try {
+        const menData = await MenModel.find({category: type})
+        
+        res.status(200).send({"relatedItems": menData})
     } catch (error) {
         res.status(400).send({"msg": error})
         

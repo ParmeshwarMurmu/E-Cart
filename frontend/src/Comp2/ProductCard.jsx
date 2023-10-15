@@ -6,13 +6,15 @@ import { AddToCart } from './AddToCart'
 import { WhilistBtn } from './WhilistBtn'
 import { FaRupeeSign } from "react-icons/fa";
 
-export const ProductCard = ({ images, brand, title, size, category, color, price, _id }) => {
+export const ProductCard = ({ images, brand, title, size, cate, color, price, _id , category}) => {
+
+
   return (
     <DIV>
       <div class="container">
         <div >
           {/* '/singleProduct/:category/:id'  */}
-          <Link to={`/singleProduct/${category}/${_id}`}>
+          <Link to={`/singleProduct/${cate}/${_id}/${category}`}>
             <div class="card_box">
               {/* <span></span> */}
               <Image h={'270px'} src={images[0]} alt={title} />
@@ -76,6 +78,8 @@ export const ProductCard = ({ images, brand, title, size, category, color, price
 
 
       </div>
+
+      
     </DIV>
   )
 }
