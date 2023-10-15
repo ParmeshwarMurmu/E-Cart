@@ -67,14 +67,14 @@ export const MenShoesBootsSlideShow = () => {
     return (
         <DIV className="slideshow-container">
             <Slider {...settings} className='slider'>
-                {isData && boots.map((product) => (
-                    <div key={product.id}>
+                {isData && boots.map((product, index) => (
+                    <div key={index+1}>
                         <div className='main'>
 
                             {
                                 product.map((el) => (
 
-                                    <Link to={`/singleProduct/shoes/${el._id}`}>
+                                    <Link to={`/singleProduct/shoe/${el._id}/${el.category}`}>
                                     <div className='imgDiv' key={el._id} style={{ marginRight: "20px", height: "250px" }}>
                                         <img className='sliderImage' width="200px" src={el.images[0]} alt={el.name} />
                                         

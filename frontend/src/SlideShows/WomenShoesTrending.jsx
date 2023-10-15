@@ -60,7 +60,6 @@ export const WomenShoesTrending = () => {
 
     useState(()=>{
         dispatch(womenHeelsTrendingData())
-
     },[])
 
    

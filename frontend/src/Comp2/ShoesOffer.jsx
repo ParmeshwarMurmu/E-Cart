@@ -72,7 +72,7 @@ export const ShoesOffer = () => {
 
                             {
                                 product.map((el, index) => (
-                                    <Link to={`/singleProduct/shoes/${el._id}`}>
+                                    <Link to={`/singleProduct/shoe/${el._id}/${el.category}`}>
                                     <div key={index} className='imgDiv' style={{ marginRight: "20px", height: "250px" }}>
                                         <img className='sliderImage' width="200px" src={el.images[0]} alt={el.name} />
                                        
