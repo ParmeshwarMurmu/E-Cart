@@ -6,13 +6,15 @@ import { Text } from '@chakra-ui/react'
 import { AdminHome } from '../Admin/AdminHome'
 import FileUploadForm from '../Components/FileUpload'
 import { SignInLogo } from '../Components/Home/SignInLogo'
+import { NavCategories } from '../Components/NavCategories'
 
 export const Main = () => {
   return (
     <DIV>
-         <div style={{ width: "90%", margin: "auto"}}>
+      
+      <div style={{ width: "90%", margin: "auto" }}>
         <AllRoutes />
-        </div> 
+      </div>
 
 
     </DIV>

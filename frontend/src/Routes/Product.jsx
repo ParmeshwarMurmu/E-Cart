@@ -9,8 +9,9 @@ import { allProductData } from '../Redux/allMenProductReducer/action'
 import { SingleProductLoader } from '../Comp2/SingleProductLoader'
 import Pagination from '../Comp2/Pagination'
 import { Ty } from '../try/Ty'
+import { NavCategories } from '../Components/NavCategories'
 
-export const Product = ({type}) => {
+export const Product = ({ type }) => {
 
   const { category } = useParams()
   const dispatch = useDispatch()
@@ -20,7 +21,7 @@ export const Product = ({type}) => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const obj = {
-    params:{
+    params: {
       brand: searchParams.getAll('brand'),
       category: searchParams.getAll('category'),
       color: searchParams.getAll('color'),
@@ -31,7 +32,7 @@ export const Product = ({type}) => {
   }
 
 
-  const {data, isLoading,urlCategory } = useSelector((store) => {
+  const { data, isLoading, urlCategory } = useSelector((store) => {
     return {
 
       isLoading: store.allMenProductReducer.isLoading,
@@ -43,9 +44,9 @@ export const Product = ({type}) => {
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
-};
+  };
 
-  
+
 
 
   useEffect(() => {
@@ -59,6 +60,10 @@ export const Product = ({type}) => {
   return (
     <>
 
+      <div>
+        <NavCategories />
+      </div>
+
       {
         isLoading ? <SingleProductLoader /> : <DIV>
           <div className='sideBar'>
@@ -67,14 +72,14 @@ export const Product = ({type}) => {
 
 
           <div className='productComp'>
-            <ProductComp currentPage = {currentPage} onPageChange={handlePageChange} category={category} />
+            <ProductComp currentPage={currentPage} onPageChange={handlePageChange} category={category} />
           </div>
 
 
         </DIV>
       }
 
-      
+
 
 
     </>
@@ -96,6 +101,18 @@ display: flex;
 
 .productComp{
   width: 100%;
+  
+}
+
+@media screen and (max-width: 425px) {
+
+.sideBar{
+  display: none;
+}
+  
+
+  
+
   
 }
   

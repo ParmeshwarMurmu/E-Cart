@@ -5,7 +5,7 @@ export const Categories = ({images, alt}) => {
   return (
     <div>
       <WrapItem>
-        <Avatar  size='xl' name='Christian Nwamba' src={images} alt={alt} />
+        <Avatar  size='lg' name='Christian Nwamba' src={images} alt={alt} />
       </WrapItem>
 
       

@@ -19,6 +19,7 @@ import { MenFormalSlideShow } from '../SlideShows/MenFormalSlideShow'
 import { WomenKuttasKutis } from '../SlideShows/WomenKuttasKutis'
 import { WomenHeelsTrending } from '../SlideShows/WomenHeelsTrending'
 import { MenShoesBootsSlideShow } from '../SlideShows/MenShoesBootsSlideShow'
+import { NavCategories } from '../Components/NavCategories'
 
 
 
@@ -28,6 +29,12 @@ export const Home = () => {
 
   return (
     <DIV>
+
+      {/* <NavCategories /> */}
+
+      <div>
+        <NavCategories />
+      </div>
 
       {/* Mensection slideshow */}
       <div className='mens'>

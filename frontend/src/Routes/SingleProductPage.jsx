@@ -12,6 +12,7 @@ import { singlePageData } from '../Redux/SingleProductPage/action';
 import { SingleProductAddToCart } from '../Comp2/SingleProductAddToCart';
 import { RadioGroup } from '@headlessui/react'
 import { SingleProductWhilist } from '../Comp2/SingleProductWhilist';
+import { NavCategories } from '../Components/NavCategories';
 
 
 export const SingleProductPage = () => {
@@ -43,7 +44,7 @@ export const SingleProductPage = () => {
 
     console.log("singleProduct Page", category, id
     )
- 
+
 
 
 
@@ -57,6 +58,10 @@ export const SingleProductPage = () => {
 
     return (
         <DIV>
+
+            <div>
+                <NavCategories />
+            </div>
 
             <div className='loader'>
                 {
@@ -78,7 +83,7 @@ export const SingleProductPage = () => {
                                     {
                                         data.images.map((el, ind) => (
                                             <div key={ind}
-                                            className='smallImageDiv'
+                                                className='smallImageDiv'
                                                 style={{
                                                     padding: "5px",
                                                     marginRight: "10px",
@@ -154,11 +159,11 @@ export const SingleProductPage = () => {
                                                 // boxShadow: sizeInd === sizeIndex ? ' rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px' : ''
                                             }}
 
-                                            onClick={() => sizeHandler(el, sizeInd)}
+                                                onClick={() => sizeHandler(el, sizeInd)}
 
                                             >
                                                 <Button
-                                                    
+
                                                     variant={'none'} size='sm'>
                                                     {el}
                                                 </Button>

@@ -7,13 +7,13 @@ import { allProductData } from '../Redux/allMenProductReducer/action'
 import styled from 'styled-components'
 import Pagination from './Pagination'
 
-export const ProductComp = ({ category, currentPage, onPageChange}) => {
+export const ProductComp = ({ category, currentPage, onPageChange }) => {
 
 
   const dispatch = useDispatch()
   const [searchParams, setSearchParams] = useSearchParams()
 
-  const { data, isLoading, isError, isData , totalData} = useSelector((store) => {
+  const { data, isLoading, isError, isData, totalData } = useSelector((store) => {
     return {
       data: store.allMenProductReducer.data,
       isLoading: store.allMenProductReducer.isLoading,
@@ -62,20 +62,20 @@ export const ProductComp = ({ category, currentPage, onPageChange}) => {
 
           data.map((el) => (
             // <div key={el._id} style={{ marginBottom: "50px"}}>
-              <ProductCard key={el._id} {...el} category={category} />
+            <ProductCard key={el._id} {...el} category={category} />
             // </div>
           ))
         }
 
       </div>
 
-      <div style={{display: "flex", justifyContent: "center", alignItems: "center", marginTop: "50px"}}>
+      <div style={{ display: "flex", justifyContent: "center", alignItems: "center", marginTop: "50px" }}>
 
-      <Pagination
-        totalPages={page}
-        currentPage={currentPage}
-        onPageChange={onPageChange}
-      />
+        <Pagination
+          totalPages={page}
+          currentPage={currentPage}
+          onPageChange={onPageChange}
+        />
       </div>
     </DIV>
   )
@@ -97,5 +97,42 @@ const DIV = styled.div`
   .cardParent > div{
    height: 100%;
   }
+
+  @media screen and (max-width: 1396px) {
+
+    .cardParent{
+      grid-template-columns: repeat(4, 1fr);
+    }
+      
+
+      
+   
+      
+    }
+
+@media screen and (max-width: 1080px) {
+
+.cardParent{
+  grid-template-columns: repeat(3, 1fr);
+}
+  
+
+  
+
+  
+}
+
+@media screen and (max-width: 425px) {
+
+.cardParent{
+  grid-template-columns: repeat(2, 1fr);
+}
+  
+
+  
+
+  
+}
+
 
 `
