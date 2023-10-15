@@ -78,7 +78,7 @@ export const WomenHeelsTrending = () => {
 
                             {
                                 product.map((el) => (
-                                    <Link to={`/singleProduct/shoes/${el._id}`}>
+                                    <Link to={`/singleProduct/shoe/${el._id}/${el.category}`}>
                                     <div className='imgDiv' style={{ marginRight: "20px", height: "250px" }}>
                                         <img className='sliderImage' src={el.images[0]} alt={el.name} width = '200px' />
                                         
@@ -149,7 +149,6 @@ const DIV = styled.div`
 
   .imgDiv {
   position: relative;
-  /* box-shadow: 0 25px 50px rgba(0,0,0,0.55); */
   cursor: pointer;
   transition: all .3s;
 }
@@ -160,8 +159,7 @@ const DIV = styled.div`
 
 
 @media screen and (max-width: 1237px) {
-      /* Your styles for large devices go here */
-
+   
       .imgDiv{
           height: 170px;
       }
@@ -179,7 +177,7 @@ const DIV = styled.div`
 
 
     @media screen and (max-width: 1076px) {
-      /* Your styles for large devices go here */
+
 
       .slider{
         height: 180px;
@@ -195,8 +193,7 @@ const DIV = styled.div`
     }
   
 @media screen and (max-width: 768px) {
-      /* Your styles for large devices go here */
-
+ 
       .imgDiv{
           height: 170px;
       }
@@ -213,8 +210,7 @@ const DIV = styled.div`
     }
 
     @media screen and (max-width: 639px) {
-      /* Your styles for large devices go here */
-
+   
       .slider{
         height: 150px;
         width: 89%;

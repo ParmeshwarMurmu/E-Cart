@@ -22,10 +22,10 @@ export const relatedItemsErrorAction = ()=>{
 
 
 
-export const relatedItemsData = (category, type)=>(dispatch)=>{
+export const relatedItemsData = (category, type, id)=>(dispatch)=>{
     
     dispatch(relatedItemsLoadingAction())
-    axios.get(`http://localhost:8080/singleProduct/relatedItems/${category}/${type}`)
+    axios.get(`http://localhost:8080/singleProduct/relatedItems/${category}/${type}/${id}`)
     .then((res)=>{
       console.log("%%",res.data)
       dispatch(relatedItemsSuccessAction(res.data.relatedItems))

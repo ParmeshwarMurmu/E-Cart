@@ -74,7 +74,7 @@ export const WomenShoesTrending = () => {
 
                             {
                                 product.map((el) => (
-                                    <Link to={`/singleProduct/shoes/${el._id}`}>
+                                    <Link to={`/singleProduct/shoe/${el._id}/${el.category}`}>
                                     <div className='imgDiv' style={{ marginRight: "20px", height: "250px" }}>
                                         <img className='sliderImage' src={el.images[0]} alt={el.name} width = '200px' />
                                         

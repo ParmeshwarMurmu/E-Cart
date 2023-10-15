@@ -93,7 +93,7 @@ export const WomenSlideShow = () => {
                                 {
                                     product.map((element, index) => (
 
-                                        <Link to={`/singleProduct/women/${element._id}`}>
+                                        <Link to={`/singleProduct/women/${element._id}/${element.category}`}>
                                         <div key={index} className='imgDiv' style={{ marginRight: "20px", height: "250px" }}>
                                             <img className='sliderImage' width="200px" src={element.images[0]} alt={"p"} />
 

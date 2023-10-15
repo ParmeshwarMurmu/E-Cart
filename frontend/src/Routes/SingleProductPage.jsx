@@ -58,12 +58,13 @@ export const SingleProductPage = () => {
         }
     }, shallowEqual)
 
-    const { isRelatedData, relatedItems } = useSelector((store) => {
+    const { isRelatedData, relatedItems, isLoadingRelated } = useSelector((store) => {
 
         return {
 
             relatedItems: store.relatedItemsReducer.relatedItems,
             isRelatedData: store.relatedItemsReducer.isRelatedData,
+            isLoadingRelated: store.relatedItemsReducer.isLoadingRelated,
 
 
         }
@@ -104,11 +105,12 @@ export const SingleProductPage = () => {
 
     useEffect(() => {
         dispatch(singlePageData(id, category))
+        dispatch(relatedItemsData(category, type, id))
     }, [id])
 
-    useEffect(() => {
-        dispatch(relatedItemsData(category, type))
-    }, [id])
+    // useEffect(() => {
+    //     dispatch(relatedItemsData(category, type))
+    // }, [id])
 
 
 
@@ -291,11 +293,14 @@ export const SingleProductPage = () => {
                             </div>
 
                         </div>
+
+
+                        {/* Related Items */}
+
+
                     </div>
                     )
                         : null
-
-
 
                 }
 
@@ -303,66 +308,75 @@ export const SingleProductPage = () => {
             </div>
 
 
-            <div>
-                <div>
-                    <Text fontSize={'lg'}>Related Items</Text>
-                </div>
+            {
+                isLoadingRelated ? null : isRelatedData ? (
 
-                <div>
-                    {
-                        isData &&
-                  
-                    <DIV className="slideshow-container">
-                        <Slider {...settings} className='slider'>
-                            {isRelatedData && relatedData.map((product, inde) => (
-                                <div key={inde}>
-                                    <div className='main'>
-
-                                        {
-                                            product.map((el) => (
-                                                <Link to={`/singleProduct/${category}/${el._id}/${el.category}`}
-                                                onClick={()=>{
-                                                    setIndex(0)
-                                                }}
-                                                >
-                                                    <div key={el._id} className='imgDiv' style={{ marginRight: "20px", height: "250px" }}>
-                                                        <img className='sliderImage' src={el.images[0]} alt={el.title} width='200px' />
-
-                                                    </div>
-                                                </Link>
-
-                                            ))
-                                        }
-
-
-
-
-
-
-                                    </div>
-                                </div>
-                            ))}
-                        </Slider>
-                        <div className="dot-indicators custom-dots">
-                            {isRelatedData && relatedData.map((_, index) => (
-                                <div >
-                                    <span
-                                        key={index}
-                                        className={currentSlide === index ? 'active-dot' : 'dot'}
-                                        onClick={() => {
-                                            setCurrentSlide(index);
-
-                                            setSlideData(123)
-
-                                        }}
-                                    />
-                                </div>
-                            ))}
+                    <div>
+                        <div>
+                            <Text fontSize={'lg'}>Related Items</Text>
                         </div>
-                    </DIV>
-                      }
-                </div>
-            </div>
+
+                        <div>
+                            {
+
+                                <DIV className="slideshow-container">
+                                    <Slider {...settings} className='slider'>
+                                        {isRelatedData && relatedData.map((product, inde) => (
+                                            <div key={inde}>
+                                                <div className='main'>
+
+                                                    {
+                                                        product.map((el) => (
+                                                            <Link to={`/singleProduct/${category}/${el._id}/${el.category}`}
+                                                                onClick={() => {
+                                                                    setIndex(0)
+                                                                }}
+                                                            >
+                                                                <div key={el._id} className='imgDiv' style={{ marginRight: "20px", height: "250px" }}>
+                                                                    <img className='sliderImage' src={el.images[0]} alt={el.title} width='200px' />
+
+                                                                </div>
+                                                            </Link>
+
+                                                        ))
+                                                    }
+
+
+
+
+
+
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </Slider>
+                                    <div className="dot-indicators custom-dots">
+                                        {isRelatedData && relatedData.map((_, index) => (
+                                            <div >
+                                                <span
+                                                    key={index}
+                                                    className={currentSlide === index ? 'active-dot' : 'dot'}
+                                                    onClick={() => {
+                                                        setCurrentSlide(index);
+
+                                                        setSlideData(123)
+
+                                                    }}
+                                                />
+                                            </div>
+                                        ))}
+                                    </div>
+                                </DIV>
+                            }
+                        </div>
+                    </div>
+
+                )
+                : null
+            }
+
+
+
 
         </DIV>
     )

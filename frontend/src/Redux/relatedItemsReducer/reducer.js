@@ -1,7 +1,7 @@
 import { RELATED_ITEMS_ERROR, RELATED_ITEMS_LOADING, RELATED_ITEMS_SUCCESS } from "./action"
 
 const initialState = {
-    isLoading: false,
+    isLoadingRelated: false,
     relatedItems: [],
     isRelatedData: false,
     isError: false
@@ -14,13 +14,13 @@ export const reducer = (state = initialState, {type, payload})=>{
         case RELATED_ITEMS_LOADING:
             return {
                 ...state,
-                isLoading: true,
+                isLoadingRelated: true,
             }
 
             case RELATED_ITEMS_SUCCESS:
                 return {
                     ...state,
-                    isLoading: false,
+                    isLoadingRelated: false,
                     relatedItems: payload,
                     isRelatedData: true,
                     isError: false
@@ -29,7 +29,7 @@ export const reducer = (state = initialState, {type, payload})=>{
                 case RELATED_ITEMS_ERROR:
                     return {
                         ...state,
-                        isLoading: false,
+                        isLoadingRelated: false,
                         isError:true,
                     }
 
