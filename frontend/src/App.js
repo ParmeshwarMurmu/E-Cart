@@ -23,6 +23,8 @@ import { Footer } from './Routes/Footer';
 import { TopHeader } from './Components/TopHeader';
 import { NavCategories } from './Components/NavCategories';
 
+import { Hamberg } from './Comp2/Hamberg';
+
 function App() {
 
   const [icon, setIcon] = useState(1)
@@ -37,7 +39,7 @@ function App() {
   return (
     <DIV theme={theme} isAuth={isAuth}>
 
-    
+
       <div>
         <div className='nav'>
 
@@ -69,6 +71,12 @@ function App() {
                 </div>
               }
 
+              <div style={{border: "2px solid red", paddingBottom: "5px"}}>
+               
+                <Hamberg />
+
+              </div>
+
 
             </div>
 
@@ -86,7 +94,10 @@ function App() {
         <Main />
       </div>
 
-      <Footer />
+
+      <div className='footer'>
+        <Footer />
+      </div>
 
 
     </DIV>
@@ -155,6 +166,11 @@ font-family: Verdana, Geneva, Tahoma, sans-serif;
   width: 20%;
   justify-content: space-between;
   padding-top: 5px;
+}
+
+.footer{
+
+  margin-top: 50px;
 }
 
 

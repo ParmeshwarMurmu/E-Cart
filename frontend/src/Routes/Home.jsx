@@ -20,11 +20,23 @@ import { WomenKuttasKutis } from '../SlideShows/WomenKuttasKutis'
 import { WomenHeelsTrending } from '../SlideShows/WomenHeelsTrending'
 import { MenShoesBootsSlideShow } from '../SlideShows/MenShoesBootsSlideShow'
 import { NavCategories } from '../Components/NavCategories'
+import { shallowEqual, useSelector } from 'react-redux'
+import { store } from '../Redux/Store/store'
+import { SingleProductLoader } from '../Comp2/SingleProductLoader'
 
 
 
 
 export const Home = () => {
+
+  const {isLoading} = useSelector((store)=>{
+
+    return {
+      isLoading: store.menShoeTrendingReducer.isLoading
+    }
+  }, shallowEqual)
+
+  console.log("isLoading", isLoading)
 
 
   return (
@@ -37,6 +49,10 @@ export const Home = () => {
       </div>
 
       {/* Mensection slideshow */}
+      {/* {
+        isLoading ? <SingleProductLoader /> : ( */}
+          <>
+      
       <div className='mens'>
         <div className='menOffer' style={{}}>
           <Box >
@@ -53,7 +69,7 @@ export const Home = () => {
         
       </div>
 
-      {/* Men Trending */}
+     
 
       <div className='menTrending'>
       
@@ -180,6 +196,11 @@ export const Home = () => {
       </div>
 
       </div>
+
+      </>
+
+        {/* )
+} */}
 
 
 

@@ -111,9 +111,19 @@ display: flex;
 }
   
 
+}
+
+
+@media screen and (max-width: 955px) {
+
+.sideBar{
+  display: none;
+}
   
 
   
 }
+
+
   
 `

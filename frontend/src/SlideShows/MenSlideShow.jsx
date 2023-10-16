@@ -69,7 +69,7 @@ export const MenSlideShow = () => {
 
     return (
         <DIV className="slideshow-container">
-            {isLoading ? <LoaderComp /> : <div>
+            {/* {isLoading ? <LoaderComp /> : <div> */}
             <Slider {...settings} className='slider'>
                 {
                   isData && track.map((product) => (
@@ -114,8 +114,8 @@ export const MenSlideShow = () => {
                     </div>
                 ))}
             </div>
-            </div>
-             }
+            {/* </div> */}
+             {/* } */}
         </DIV>
     );
 }
