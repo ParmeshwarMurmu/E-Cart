@@ -19,18 +19,39 @@ export const SingleProductAddToCart = ({category, id, userSize, type}) => {
 
     if(isAuth){
    
-      
+      let data;
       if((type === 'saree' || type === 'lehenga cholis') || (userSize !== "")){
-
-      const data = {
-        productId: id,
-        productModel: `${category}`,
-        size:userSize
-      }
+      
+        if(category ==='men'){
+          data = {
+            mensProduct: id,
+            productModel: `${category}`,
+            size:userSize
+          }
+        }
+        else if(category === 'women'){
+          data = {
+            womensProduct: id,
+            productModel: `${category}`,
+            size:userSize
+          }
+        }
+        else if(category === 'shoe'){
+          data = {
+            shoesProduct: id,
+            productModel: `${category}`,
+            size:userSize
+          }
+        }
+      // data = {
+      //   productId: id,
+      //   productModel: `${category}`,
+      //   size:userSize
+      // }
 
       console.log("addtocart", data);
 
-      axios.post('https://full-4qyv.onrender.com/user/addToCart', data, {
+      axios.post('http://localhost:8080/user/addToCart', data, {
         headers: {
           Authorization: `bearer ${token}`
         }

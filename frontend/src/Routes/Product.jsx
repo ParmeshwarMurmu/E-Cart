@@ -106,19 +106,24 @@ display: flex;
 
 @media screen and (max-width: 425px) {
 
-.sideBar{
-  display: none;
-}
-  
+
 
 }
 
 
 @media screen and (max-width: 955px) {
 
+
+  
+}
+
+@media screen and (max-width: 1080px) {
+
 .sideBar{
   display: none;
 }
+  
+
   
 
   

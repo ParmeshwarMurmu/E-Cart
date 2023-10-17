@@ -7,8 +7,11 @@ const cartSchema = mongoose.Schema({
     userId: { type: mongoose.Schema.Types.ObjectId, ref: 'user' },
     userName: String,
     size: String,
-    productId:{ type: mongoose.Schema.Types.ObjectId, refPath: 'productModel' },
-    productModel: { type: String, required: true, enum: ['men', 'women', 'shoe'] }
+    // productId: { type: mongoose.Schema.Types.ObjectId, ref: 'men' || 'women' || 'shoe' },
+    productModel: String,
+    mensProduct: {type: mongoose.Schema.Types.ObjectId, ref: 'men'},
+    womensProduct: {type: mongoose.Schema.Types.ObjectId, ref: 'women'},
+    shoesProduct: {type: mongoose.Schema.Types.ObjectId, ref: 'shoe'},
 },{
     versionKey: false
 })

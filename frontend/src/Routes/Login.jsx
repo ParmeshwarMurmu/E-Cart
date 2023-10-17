@@ -56,7 +56,10 @@ export const Login = () => {
     axios.post('http://localhost:8080/user/login', data)
     .then((res)=>{
        console.log(res.data);
-       localStorage.setItem("token", res.data.token)
+
+       if(res.data.msg === "LogIn successfull"){
+
+        localStorage.setItem("token", res.data.token)
        localStorage.setItem("E-Cart_userId", res.data.userId)
         toast({
           title: 'Login',
@@ -68,11 +71,20 @@ export const Login = () => {
 
         dispatch(ressetAction())
         setIsAuth(true)
-        
-    //   const userId = res.data.userId;
-    //   searchParams.set('userId', userId);
-    //   setSearchParams(searchParams);
       navigate('/');
+
+       }
+       else if(res.data.msg === "user not found"){
+        toast({
+            title: 'Login',
+            description: `${res.data.msg}`,
+            status: 'warning',
+            duration: 4000,
+            isClosable: true,
+          })
+
+       }
+       
         
       
   

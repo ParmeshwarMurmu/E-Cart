@@ -39,11 +39,13 @@ userRoute.post('/register', async (req, res) => {
 userRoute.post('/login', async (req, res) => {
 
     const { email, password } = req.body
-
+   console.log(email);
 
     try {
 
         const existingUser = await UserModel.findOne({ email })
+        console.log(existingUser, "+")
+
         if (existingUser) {
 
             bcrypt.compare(password, existingUser.password, (err, result) => {
@@ -56,6 +58,9 @@ userRoute.post('/login', async (req, res) => {
                 res.status(200).send({ "msg": "LogIn successfull", "token": token, userId: existingUser._id })
             });
 
+        }
+        else{
+            res.status(200).send({"msg": "user not found"})
         }
 
 
@@ -100,57 +105,12 @@ userRoute.get('/cart', auth, async (req, res) => {
 
     try {
 
-        // console.log("Cart Item");
-        // const cartItems = await CartModel.find({ userId }).populate({
-        //     path: 'productId',
-        //     model: function (doc) {
-        //         switch (doc.productModel) {
-        //             case 'men':
-        //                 return MenModel;
-        //             case 'women':
-        //                 return WomenModel;
-        //             case 'shoe':
-        //                 return ShoeModel;
-        //             default:
-        //                 return null; // Handle error
-        //         }
-        //     }
-        // }).exec();
-        // console.log(cartItems);
-        // res.send({ "data": cartItems });
-
-        const cartItems = await CartModel.find({ userId }).populate('men')
-
-        // const populatedCartItems = await Promise.all(cartItems.map(async (cartItem) => {
-        //     switch (cartItem.productModel) {
-        //         case 'men':
-        //             return {
-        //                 ...cartItem.toObject(),
-        //                 product: await MenModel.findById(cartItem.productId)
-        //             };
-        //         case 'women':
-        //             return {
-        //                 ...cartItem.toObject(),
-        //                 product: await WomenModel.findById(cartItem.productId)
-        //             };
-        //         case 'shoe':
-        //             return {
-        //                 ...cartItem.toObject(),
-        //                 product: await ShoeModel.findById(cartItem.productId)
-        //             };
-        //         default:
-        //             return null; // Handle error
-        //     }
-        // }));
-       console.log(cartItems);
-        res.send({ "data": cartItems });
-
+        const data = await CartModel.find({userId}).populate('mensProduct').populate('womensProduct').populate('shoesProduct').sort({ _id: -1 })
+        // console.log(data);
+        res.send({ "cart":data });
     } catch (error) {
-        res.send({ "err": error });
+        res.send({ "err": error, "msg": "cannot get your cart product" });
     }
-
-
-
 
 })
 
