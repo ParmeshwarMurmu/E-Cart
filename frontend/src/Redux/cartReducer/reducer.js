@@ -1,7 +1,7 @@
 import { CART_ERROR, CART_LOADING, CART_SUCCESS } from "./action";
 
 const initialState = {
-    isLoding:"",
+    isLoading:"",
     cartData: [],
     isError: "",
     isData: ""
@@ -13,13 +13,13 @@ export const reducer = (state = initialState.cartData, {type, payload})=>{
         case CART_LOADING:
             return {
                 ...state,
-                isLoding: true
+                isLoading: true
             }
 
             case CART_SUCCESS:
             return {
                 ...state,
-                isLoding: false,
+                isLoading: false,
                 cartData: payload,
                 isData: true
             }
@@ -27,7 +27,7 @@ export const reducer = (state = initialState.cartData, {type, payload})=>{
             case CART_ERROR:
                 return {
                     ...state,
-                    isLoding: false,
+                    isLoading: false,
                     isError:true
                     
                    

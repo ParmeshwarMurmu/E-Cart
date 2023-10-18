@@ -115,6 +115,25 @@ userRoute.get('/cart', auth, async (req, res) => {
 })
 
 
+userRoute.get('/order', auth, async (req, res) => {
+
+    const { userId } = req.body;
+    console.log("cart");
+    console.log(req.body);
+
+    try {
+
+        const data = await CartModel.find({userId}).populate('mensProduct').populate('womensProduct').populate('shoesProduct').sort({ _id: -1 })
+        // console.log(data);
+        res.send({ "cart":data });
+    } catch (error) {
+        res.send({ "err": error, "msg": "cannot get your cart product" });
+    }
+
+})
+
+
+
 
 module.exports = {
     userRoute

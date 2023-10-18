@@ -1,8 +1,54 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import styled from "styled-components"
+import { appContent } from '../../Context/ContextApi'
+import { cartErrorAction, cartLoadingAction, cartSuccessAction } from '../../Redux/cartReducer/action'
+import { shallowEqual, useDispatch, useSelector } from 'react-redux'
+import axios from 'axios'
 
 export const Count = () => {
+
+  // const {isAuth} = useContext(appContent)
+  // const dispatch = useDispatch()
+  // const token = localStorage.getItem('token')
+  // let totalProduct = 0;
+
+  // const { cartData, isData } = useSelector((store) => {
+
+  //   return {
+  //     cartData: store.cartReducer.cartData,
+  //     isData: store.cartReducer.isData,
+  
+  //   }
+  // }, shallowEqual)
+
+  // if(isData){
+  //   totalProduct = cartData.length
+    
+  // }
+
+  // console.log("tttttttt", totalProduct)
+
+  // useEffect(()=>{
+
+  //   if(isAuth){
+  //     dispatch(cartLoadingAction())
+  //   axios.get(`http://localhost:8080/user/cart`, {
+  //     headers: {
+  //       Authorization: `bearer ${token}`
+  //     }
+  //   })
+  //     .then((res) => {
+  //       console.log(res)
+  //       dispatch(cartSuccessAction(res.data.cart))
+  //     })
+  //     .then((err) => {
+  //       dispatch(cartErrorAction())
+  //     })
+  //   }
+  // })
+
+
     return (
         <DIV>
             {/* <button>Notification By HTML Data attribute</button> */}
@@ -41,7 +87,7 @@ button {
 }
 
 button::before {
-  content: "6";
+  /* content:  ${props => (props.isAuth === true ?  props.totalProduct : props.totalProduct)}; */
   position: absolute;
   display: flex;
   top: -0.75em;
