@@ -1,1 +1,2 @@
-# E-Cart
+# E-Car
+An ECommerce project
