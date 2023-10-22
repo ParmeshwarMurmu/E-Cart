@@ -22,6 +22,30 @@ export const Ty = () => {
         <div className='all'></div>
         <div className='all'></div>
         <div className='all'></div>
+
+        <div className='all'></div>
+        <div className='all'></div>
+        <div className='all'></div>
+
+        <div className='all'></div>
+        <div className='all'></div>
+        <div className='all'></div>
+
+        <div className='all'></div>
+        <div className='all'></div>
+        <div className='all'></div>
+
+        <div className='all'></div>
+        <div className='all'></div>
+        <div className='all'></div>
+
+        <div className='all'></div>
+        <div className='all'></div>
+        <div className='all'></div>
+
+        <div className='all'></div>
+        <div className='all'></div>
+        <div className='all'></div>
     </DIV>
   )
 }
