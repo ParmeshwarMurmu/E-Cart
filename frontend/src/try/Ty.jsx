@@ -4,48 +4,65 @@ import styled from "styled-components"
 export const Ty = () => {
   return (
     <DIV>
-        <div className='all'></div>
-        <div className='all'></div>
-        <div className='all'></div>
-        <div className='all'></div>
-        <div className='all'></div>
-        <div className='all'></div>
-        <div className='all'></div>
-        <div className='all'></div>
-        <div className='all'></div>
-        <div className='all'></div>
-        <div className='all'></div>
-        <div className='all'></div>
-        <div className='all'></div>
-        <div className='all'></div>
-        <div className='all'></div>
-        <div className='all'></div>
-        <div className='all'></div>
-        <div className='all'></div>
+      <div className='all'></div>
+      <div className='all'></div>
+      <div className='all'></div>
+      <div className='all'></div>
+      <div className='all'></div>
+      <div className='all'></div>
+      <div className='all'></div>
+      <div className='all'></div>
+      <div className='all'></div>
+      <div className='all'></div>
+      <div className='all'></div>
+      <div className='all'></div>
+      <div className='all'></div>
+      <div className='all'></div>
+      <div className='all'></div>
+      <div className='all'></div>
+      <div className='all'></div>
+      <div className='all'></div>
 
-        <div className='all'></div>
-        <div className='all'></div>
-        <div className='all'></div>
+      <div className='all'></div>
+      <div className='all'></div>
+      <div className='all'></div>
 
-        <div className='all'></div>
-        <div className='all'></div>
-        <div className='all'></div>
+      <div className='all'></div>
+      <div className='all'></div>
+      <div className='all'></div>
 
-        <div className='all'></div>
-        <div className='all'></div>
-        <div className='all'></div>
+      <div className='all'></div>
+      <div className='all'></div>
+      <div className='all'></div>
 
-        <div className='all'></div>
-        <div className='all'></div>
-        <div className='all'></div>
+      <div className='all'></div>
+      <div className='all'></div>
+      <div className='all'></div>
 
-        <div className='all'></div>
-        <div className='all'></div>
-        <div className='all'></div>
+      <div className='all'></div>
+      <div className='all'></div>
+      <div className='all'></div>
 
-        <div className='all'></div>
-        <div className='all'></div>
-        <div className='all'></div>
+      <div className='all'></div>
+      <div className='all'></div>
+      <div className='all'></div>
+
+
+      <div className='all'></div>
+      <div className='all'></div>
+      <div className='all'></div>
+
+      <div className='all'></div>
+      <div className='all'></div>
+      <div className='all'></div>
+
+      <div className='all'></div>
+      <div className='all'></div>
+      <div className='all'></div>
+
+      <div className='all'></div>
+      <div className='all'></div>
+      <div className='all'></div>
     </DIV>
   )
 }

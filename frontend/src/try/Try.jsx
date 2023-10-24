@@ -34,23 +34,44 @@ const Slideshow = () => {
       description: "Description for Product 1"
     },
 
+    {
+      id: 1,
+      name: "Product 1",
+      image: "https://rukminim2.flixcart.com/image/612/612/xif0q/shirt/o/s/c/s-designer-shirts-blackcreek-original-imaghfagdm2xjuzt.jpeg?q=70",
+      description: "Description for Product 1"
+    },
+
+    {
+      id: 1,
+      name: "Product 1",
+      image: "https://rukminim2.flixcart.com/image/612/612/xif0q/shirt/o/s/c/s-designer-shirts-blackcreek-original-imaghfagdm2xjuzt.jpeg?q=70",
+      description: "Description for Product 1"
+    },
+
+    {
+      id: 1,
+      name: "Product 1",
+      image: "https://rukminim2.flixcart.com/image/612/612/xif0q/shirt/o/s/c/s-designer-shirts-blackcreek-original-imaghfagdm2xjuzt.jpeg?q=70",
+      description: "Description for Product 1"
+    },
+
+    {
+      id: 1,
+      name: "Product 1",
+      image: "https://rukminim2.flixcart.com/image/612/612/xif0q/shirt/o/s/c/s-designer-shirts-blackcreek-original-imaghfagdm2xjuzt.jpeg?q=70",
+      description: "Description for Product 1"
+    },
+
+    {
+      id: 1,
+      name: "Product 1",
+      image: "https://rukminim2.flixcart.com/image/612/612/xif0q/shirt/o/s/c/s-designer-shirts-blackcreek-original-imaghfagdm2xjuzt.jpeg?q=70",
+      description: "Description for Product 1"
+    },
+
   ]
 
-  const products = [
-    {
-
-    },
-    {
-
-    },
-    {
-
-    }
-   
-
-    
-    // Add more products here
-  ];
+ 
 
   console.log(data);
 
