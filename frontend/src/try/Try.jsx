@@ -19,7 +19,7 @@ const Slideshow = () => {
     variableWidth: true,
   };
 
-  const prod = [
+  const products = [
     {
       id: 1,
       name: "Product 1",
@@ -83,7 +83,7 @@ const Slideshow = () => {
           <div className='main'>
 
             {
-              prod.map((el)=>(
+              products.map((el)=>(
                 <div style={{marginRight: "20px", height: "250px"}}>
               <img width="200px"  src={el.image} alt={el.name} />
               <div className="product-info">
