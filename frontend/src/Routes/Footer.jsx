@@ -76,7 +76,7 @@ export const Footer = () => {
             {/* <Box>
               <Logo color={useColorModeValue("gray.700", "white")} />
             </Box> */}
-            <Text fontSize={"sm"}>© 2023 ArtDeviant. All rights reserved</Text>
+            <Text fontSize={"sm"}>© 2023 E-Cart. All rights reserved</Text>
             <Stack direction={"row"} spacing={6}>
               <SocialButton label={"Twitter"}>
                 <FaTwitter />

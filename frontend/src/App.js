@@ -52,7 +52,10 @@ function App() {
 
 
 
+
+
             <div className='loginSection' >
+
               <div>
                 <Notification />
               </div>
@@ -71,14 +74,24 @@ function App() {
                 </div>
               }
 
-              <div style={{border: "2px solid red", paddingBottom: "5px"}}>
-               
-                <Hamberg />
+
+             
+
+              <div style={{ border: "2px solid red" }}>
+
+                 <Hamberg />
 
               </div>
 
 
+
+
             </div>
+
+
+
+
+
 
           </div>
 
@@ -165,6 +178,7 @@ font-family: Verdana, Geneva, Tahoma, sans-serif;
   display: flex;
   width: 20%;
   justify-content: space-between;
+  border: 2px solid red;
   padding-top: 5px;
 }
 
