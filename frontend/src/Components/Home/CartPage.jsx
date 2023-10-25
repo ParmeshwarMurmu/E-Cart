@@ -9,6 +9,7 @@ import { FaRupeeSign } from "react-icons/fa";
 import { Delete } from '../../Comp2/Delete';
 import { DeleteBtn } from '../../Comp2/DeleteBtn';
 import { SingleProductLoader } from '../../Comp2/SingleProductLoader'
+import { EmptyCart } from './EmptyCart';
 
 
 
@@ -75,7 +76,7 @@ export const CartPage = () => {
     <DIV>
 
       {
-        isLoading === true ? <SingleProductLoader /> : <div>
+        isLoading === true ? <SingleProductLoader /> : ( isData && cartData.length >0 ) ? <div>
           <div>
             <Heading as='h2' size='xl'>
               Your Items
@@ -271,7 +272,7 @@ export const CartPage = () => {
 
           </div>
 
-        </div>
+        </div>  : <EmptyCart />
 
       }
 
