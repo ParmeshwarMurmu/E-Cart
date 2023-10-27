@@ -123,7 +123,7 @@ export const CartPage = () => {
 
 
                               <div style={{ display: "flex", alignItems: "flex-end" }}>
-                                <DeleteBtn />
+                                <DeleteBtn {...el} />
                               </div>
 
                             </div>
@@ -159,7 +159,7 @@ export const CartPage = () => {
                               </div>
 
                               <div style={{ display: "flex", alignItems: "flex-end" }}>
-                                <DeleteBtn />
+                                <DeleteBtn {...el} />
                               </div>
 
                             </div>
@@ -190,7 +190,7 @@ export const CartPage = () => {
                               </div>
 
                               <div style={{ display: "flex", alignItems: "flex-end" }}>
-                                <DeleteBtn />
+                                <DeleteBtn {...el} />
                               </div>
 
                             </div>

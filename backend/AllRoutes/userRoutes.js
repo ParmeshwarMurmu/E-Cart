@@ -100,8 +100,7 @@ userRoute.post('/addToCart', auth, async (req, res) => {
 userRoute.get('/cart', auth, async (req, res) => {
 
     const { userId } = req.body;
-    console.log("cart");
-    console.log(req.body);
+ 
 
     try {
 
@@ -113,6 +112,25 @@ userRoute.get('/cart', auth, async (req, res) => {
     }
 
 })
+
+
+
+userRoute.delete('/cart/:id', auth, async (req, res) => {
+
+    const { id } = req.params;
+    console.log("id", id)
+    
+
+    try {
+
+        await CartModel.findByIdAndDelete({_id: id})
+        res.send({"msg": "Item Removed Successfully"});
+    } catch (error) {
+        res.send({ "err": error, "msg": "cannot get your cart product" });
+    }
+
+})
+
 
 
 userRoute.get('/order', auth, async (req, res) => {

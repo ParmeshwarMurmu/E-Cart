@@ -1,27 +1,25 @@
 import logo from './logo.svg';
 import './App.css';
-import { AdminHome } from './Admin/AdminHome';
-import { useContext, useEffect, useRef, useState } from 'react';
+
+import { useContext, useState } from 'react';
 import styled from "styled-components"
-import { AdminLogin } from './Admin/AdminLogin';
+
 import { Main } from './Routes/Main';
 import { Navbar } from './Routes/Navbar';
-import { Button, Input, Menu, MenuButton, MenuItem, MenuList, Text, border } from '@chakra-ui/react';
 import { Notification } from './Components/Home/Notification';
 import { Count } from './Components/Home/Count';
 import { SignInLogo } from './Components/Home/SignInLogo';
-import { AfterLogin } from './Components/Home/AfterLogin';
+
 import { MenuItemProfile } from './Components/Home/MenuItemProfile';
 import { theme } from './DefaultTheme';
-import { Categories } from './Components/Home/Categories';
-import { appContent } from './Context/ContextApi';
-import { Link, useSearchParams } from 'react-router-dom';
-import { useHistory } from 'react-router-dom';
 
-import { ChevronDownIcon, ChevronUpIcon } from '@chakra-ui/icons'
+import { appContent } from './Context/ContextApi';
+import { useSearchParams } from 'react-router-dom';
+
+
+
 import { Footer } from './Routes/Footer';
-import { TopHeader } from './Components/TopHeader';
-import { NavCategories } from './Components/NavCategories';
+
 
 import { Hamberg } from './Comp2/Hamberg';
 
