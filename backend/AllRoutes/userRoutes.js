@@ -105,7 +105,6 @@ userRoute.get('/cart', auth, async (req, res) => {
     try {
 
         const data = await CartModel.find({userId}).populate('mensProduct').populate('womensProduct').populate('shoesProduct').sort({ _id: -1 })
-        // console.log(data);
         res.send({ "cart":data });
     } catch (error) {
         res.send({ "err": error, "msg": "cannot get your cart product" });
@@ -118,7 +117,7 @@ userRoute.get('/cart', auth, async (req, res) => {
 userRoute.delete('/cart/:id', auth, async (req, res) => {
 
     const { id } = req.params;
-    console.log("id", id)
+    // console.log("id", id)
     
 
     try {

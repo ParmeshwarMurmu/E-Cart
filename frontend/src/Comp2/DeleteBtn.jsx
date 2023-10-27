@@ -1,13 +1,19 @@
+import { useToast } from '@chakra-ui/react';
 import axios from 'axios'
 import React from 'react'
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components'
+import { cartPageData } from '../Redux/cartReducer/action';
 
 export const DeleteBtn = ({ _id }) => {
 
+    const toast = useToast();
+    const dispatch = useDispatch()
     const token = localStorage.getItem('token')
+    const userId = localStorage.getItem('E-Cart_userId')
 
     const delHandler = () => {
-        console.log('token', token)
+        // console.log('token', token)
         axios.delete(`http://localhost:8080/user/cart/${_id}`, {
             headers: {
                 Authorization: `bearer ${token}`
@@ -15,9 +21,26 @@ export const DeleteBtn = ({ _id }) => {
         })
             .then((res) => {
                 if(res.data.msg === "Item Removed Successfully"){
-                    
+                    toast({
+                        title: 'Deleted',
+                        description: `${res.data.msg}`,
+                        status: 'success',
+                        duration: 4000,
+                        isClosable: true,
+                      })
+                      dispatch(cartPageData(token, userId))
+
                 }
-                console.log("data deleted");
+                else{
+                    toast({
+                        title: 'Delete Item',
+                        description: `Something went wrong`,
+                        status: 'warning',
+                        duration: 4000,
+                        isClosable: true,
+                      })
+                }
+                
             })
             .catch((err) => {
                 console.log(err);

@@ -1,11 +1,40 @@
+import { useToast } from '@chakra-ui/react'
 import React from 'react'
 import styled from "styled-components"
+import { useContext } from 'react'
+import { appContent } from '../Context/ContextApi'
+import { useNavigate } from 'react-router-dom'
 
 
 export const AddToCart = ({price}) => {
+
+  const toast = useToast();
+  const {isAuth} = useContext(appContent)
+  const token = localStorage.getItem('token')
+  const navigate = useNavigate()
+
+  const addToCartHandler = ()=>{
+
+    if(isAuth){
+     
+    }
+    else{
+      toast({
+        title: 'Login',
+        description: `Please Login To Proceed`,
+        status: 'warning',
+        duration: 4000,
+        isClosable: true,
+      })
+
+      navigate('/login')
+    }
+
+    
+  }
     return (
         <DIV>
-            <div data-tooltip={`Price: ${price}`} class="button">
+            <div data-tooltip={`Price: ${price}`} class="button" onClick={addToCartHandler}>
                 <div class="button-wrapper">
                     <div class="text">Add To Cart</div>
                     <span class="icon">

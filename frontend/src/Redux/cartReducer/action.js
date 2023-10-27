@@ -22,9 +22,10 @@ export const cartErrorAction = ()=>{
 }
 
 export const cartPageData = (token, userId)=>(dispatch)=>{
-    console.log(token);
+    // console.log(token);
+    console.log("Data Loding......")
     dispatch(cartLoadingAction())
-    axios.get(`http://localhost:8080/user/cart`,{userId}, {
+    axios.get(`http://localhost:8080/user/cart`,{
         headers: {
             Authorization: `bearer ${token}`
           }
