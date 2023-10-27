@@ -3,24 +3,85 @@ import React from 'react'
 import styled from "styled-components"
 import { useContext } from 'react'
 import { appContent } from '../Context/ContextApi'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
+import axios from 'axios'
 
 
-export const AddToCart = ({price}) => {
+export const AddToCart = ({price, id}) => {
 
   const toast = useToast();
+  const { category } = useParams()
   const {isAuth} = useContext(appContent)
   const token = localStorage.getItem('token')
   const navigate = useNavigate()
 
   const addToCartHandler = ()=>{
+    let data;
 
     if(isAuth){
+
+      if(category === 'men'){
+        data = {
+          mensProduct: id,
+          productModel: `${category}`,
+          // size:userSize
+        }
+
+      }
+      else if(category === 'women'){
+        data = {
+          womensProduct: id,
+          productModel: `${category}`,
+          // size:userSize
+        }
+      }
+      else if(category === 'shoe'){
+        data = {
+          shoesProduct: id,
+          productModel: `${category}`,
+          // size:userSize
+        }
+      }
+
      
+      axios.post('http://localhost:8080/user/addToCart', data, {
+        headers: {
+          Authorization: `bearer ${token}`
+        }
+      })
+      .then((res)=>{
+
+        if(res.data.msg === 'Product added to your cart'){
+
+          toast({
+            title: 'Cart',
+            description: `${res.data.msg}`,
+            status: 'success',
+            duration: 4000,
+            isClosable: true,
+          })
+        }
+        else{
+          toast({
+            title: 'Cart',
+            description: `${res.data.msg}`,
+            status: 'error',
+            duration: 4000,
+            isClosable: true,
+          })
+        }
+  
+       
+      })
+      .catch((err)=>{
+        console.log(err);
+      })
+
+
     }
     else{
       toast({
-        title: 'Login',
+        title: `Login`,
         description: `Please Login To Proceed`,
         status: 'warning',
         duration: 4000,
