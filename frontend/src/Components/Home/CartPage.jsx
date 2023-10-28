@@ -11,6 +11,7 @@ import { DeleteBtn } from '../../Comp2/DeleteBtn';
 import { SingleProductLoader } from '../../Comp2/SingleProductLoader'
 import { EmptyCart } from './EmptyCart';
 import { CheckoutModel } from '../CheckoutModel';
+import { Link } from 'react-router-dom';
 
 
 
@@ -217,7 +218,7 @@ export const CartPage = () => {
 
 
             {/* checkout */}
-            <div style={{ width: '50%', border: "2px solid red" }} className='orderSumarryDiv'>
+            <div style={{ width: '50%' }} className='orderSumarryDiv'>
 
 
               <div className='orderSummary'>
@@ -261,8 +262,10 @@ export const CartPage = () => {
                 </div>
 
                 <div style={{ display: "flex", justifyContent: "center", alignItems: "center", marginTop: "30px" }}>
-                  {/* <Button colorScheme='blue'>Checkout</Button> */}
-                  <CheckoutModel />
+                  <Link to={'/payment'}>
+                  <Button colorScheme='blue'>Checkout</Button>
+                  </Link>
+                  {/* <CheckoutModel /> */}
                 </div>
 
 

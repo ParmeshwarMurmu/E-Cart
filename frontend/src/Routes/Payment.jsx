@@ -1,143 +1,64 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-// import PaymentImage from "../Images/PaymentImage.png";
 import PaymentImage from '../Images/PaymentImage.png'
-import { Box, Flex, Stack, Text } from "@chakra-ui/react";
-import { Button, ButtonGroup } from "@chakra-ui/react";
+import { Flex, Stack, Text } from "@chakra-ui/react";
+import { Button} from "@chakra-ui/react";
 import { useToast } from "@chakra-ui/react";
 import { useNavigate } from "react-router";
-import { useDispatch, useSelector } from "react-redux";
-// import { postOrder } from "../../redux/productRedux/action";
-// import { clearcartaction } from "../../redux/cartRedux/action";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import { store } from "../Redux/Store/store";
+import { userAddressAction, userCardNumberAction, userCvvAction, userDistrictAction, userEmailAction, userExpmonthAction, userExpyearAction, userPaymentModeAction, userPincodeAction, userStateAction } from "../Redux/paymentReducer/action";
 
-const initialCod = {
-  email: "",
-  address: "",
-  state: "",
-  district: "",
-  pincode: "",
-};
 
-const initialCard = {
-  email: "",
-  address: "",
-  state: "",
-  district: "",
-  pincode: "",
-  cardNumber: "",
-  expMonth: "",
-  expYear: "",
-  cvv: "",
-};
 
 export const Payment = () => {
   const toast = useToast();
-  const [cod, setCod] = useState(initialCod);
-  const [card, setCard] = useState(initialCard);
-//   const navigate = useNavigate();
-//   const dispatch = useDispatch();
-  const [payment, setPayment] = useState("cod");
-//   const {cartproduct} = useSelector(store => store.cartReducer);
-//   const {orders} = useSelector(store => store.productReducer);
-//   const {userEmail, userName} = useSelector(store=> store.authReducer);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+//   const [payment, setPayment] = useState("cod")
 
-//   useEffect(()=>{
-    // for(let i=0; i<cartproduct.length; i++){
-    //   let pro = cartproduct[i];
-    //   orders.forEach((item)=>{
-    //     let orderProduct = item.products;
-    //     for(let i=0; i<orderProduct.length; i++){
-    //       if(pro.name === orderProduct[i].name){
-    //         toast({
-    //           title: `Order has been placed!`,
-    //           status: "success",
-    //           isClosable: true,
-    //           duration: 9000
-    //         })
-    //         dispatch(clearcartaction());
-    //         navigate('/');
-    //       }
-    //     }
-      
-//       })
-//     }
-//   }, [orders]);
+  const {email, address, state, district, expMonth, expYear, cardNumber, pincode, cvv, paymentMode} = useSelector((store)=>{
 
-//   const handleChange = (e) => {
-//     const { name, value } = e.target;
-//     if (payment === "cod") {
-//       setCod((prev) => {
-//         return { ...prev, [name]: name === "pincode" ? +value : value };
-//       });
-//     } else if (payment === "cards") {
-//       setCard((prev) => {
-//         return {
-//           ...prev,
-//           [name]:
-//             name === "pincode" ||
-//             name === "cardNumber" ||
-//             name === "cvv" ||
-//             name === "expMonth" ||
-//             name === "expYear"
-//               ? +value
-//               : value,
-//         };
-//       });
-//     }
-//   };
+    return {
+        email: store.paymentReducer.email,
+        address: store.paymentReducer.address,
+        state: store.paymentReducer.state,
+        district: store.paymentReducer.district,
+        expMonth: store.paymentReducer.expMonth,
+        expYear: store.paymentReducer.expYear,
+        cardNumber: store.paymentReducer.cardNumber,
+        pincode: store.paymentReducer.pincode,
+        cvv: store.paymentReducer.cvv,
+        paymentMode: store.paymentReducer.paymentMode,
+    }
+  }, shallowEqual);
 
-//   const successHandler = () => {
-//     if(payment === "cards"){
-   
-//       if(!card.email || !card.address || !card.state || !card.district || !card.pincode || !card.expYear || !card.cardNumber || !card.expMonth || !card.cvv){
-//         toast({
-//           title: `All fields are require`,
-//           status: "error",
-//           isClosable: true,
-//           duration: 9000
-//         });
-//       }else{
-//         let postObj = {
-//         //   products: cartproduct,
-//           userEmail,
-//           userName,
-//           status: "Pending",
-//           address: card,
-//           payment: "card",
-//         //   quantity: cartproduct.length
-//         }
-//         // dispatch(postOrder(postObj));
-//       }
-//     }else if(payment === 'cod'){
-//       if(!cod.email || !cod.address || !cod.state || !cod.district || !cod.pincode){
-        
-//         toast({
-//           title: `All fields are require`,
-//           status: "error",
-//           isClosable: true,
-//           duration: 9000
-//         });
-//       }else{
-//         let postObj = {
-//         //   products: cartproduct,
-//           userEmail,
-//           userName,
-//           status: "Pending",
-//           address: cod,
-//           payment: "cod",
-//         //   quantity: cartproduct.length
-//         }
-//         // dispatch(postOrder(postObj));
-       
-//       }
-//     }else{
-//       toast({
-//       title: `Choose to correct payment option`,
-//       status: "error",
-//       isClosable: true,
-//     });
-//     }
-//   };
+  console.log(paymentMode, "mode")
+
+  const paymentHandler = ()=>{
+    let data = {
+        email,
+        address,
+        state,
+        district,
+        expMonth,
+        expYear,
+        cardNumber,
+        pincode,
+        cvv,
+        paymentMode
+    }
+
+    console.log(data)
+  }
+
+  useEffect(()=>{
+
+    dispatch(userPaymentModeAction("Cash On Delivery"))
+
+  }, [])
+
+
 
   return (
     <DIV>
@@ -145,7 +66,7 @@ export const Payment = () => {
       
         <Flex  justifyContent={"center"} gap={"2rem"}   marginLeft={"5rem"} alignItems={"center"}>
           <Stack justifyContent={'center'} alignItems={'flex-end'} >
-            {/* <img src={PaymentImage} alt="" width={"50%"}  /> */}
+            <img src={PaymentImage} alt="" width={"50%"}  />
           </Stack>
 
           <Stack gap={"1rem"} w={"100%"}>
@@ -159,7 +80,8 @@ export const Payment = () => {
 
               <div
                 onChange={(e) => {
-                  setPayment(e.target.value);
+                //   setPayment(e.target.value);
+                dispatch(userPaymentModeAction(e.target.value))
                 }}
                 style={{ display: "flex", gap:"1rem" }}
               >
@@ -167,8 +89,9 @@ export const Payment = () => {
                   <input
                     type="radio"
                     name="paymentOptions"
-                    value={"cod"}
-                    checked={payment === "cod"}
+                    value={"Cash On Delivery"}
+                    // checked={payment === "cod"}
+                    checked={paymentMode === "Cash On Delivery"}
                   />
                   &nbsp;<label htmlFor="">Cash On Delivery</label>
                 </div>
@@ -181,7 +104,7 @@ export const Payment = () => {
 
               <div>
                 <form action="" className="paymentForm">
-                  {payment === "cod" || payment === "" ? (
+                  {paymentMode === "Cash On Delivery" || paymentMode === "" ? (
                     <div>
                       <div>
                         <label htmlFor="">Email</label>
@@ -191,8 +114,8 @@ export const Payment = () => {
                           type="text"
                           placeholder="Enter Your Email"
                           name="email"
-                          value={cod.email}
-                        //   onChange={handleChange}
+                        //   value={cod.email}
+                          onChange={(e)=>{ dispatch(userEmailAction(e.target.value))}}
                           aria-required
                         />
                       </div>
@@ -205,8 +128,8 @@ export const Payment = () => {
                           type="text"
                           placeholder="Enter Your Address"
                           name="address"
-                          value={cod.address}
-                        //   onChange={handleChange}
+                        //   value={cod.address}
+                          onChange={(e)=>{ dispatch(userAddressAction(e.target.value))}}
                           aria-required
                         />
                       </div>
@@ -219,8 +142,8 @@ export const Payment = () => {
                           type="text"
                           placeholder="Enter Your State"
                           name="state"
-                          value={cod.state}
-                        //   onChange={handleChange}
+                        //   value={cod.state}
+                          onChange={(e)=>{ dispatch(userStateAction(e.target.value))}}
                           aria-required
                         />
                       </div>
@@ -233,8 +156,8 @@ export const Payment = () => {
                           type="text"
                           placeholder="Enter Your District"
                           name="district"
-                          value={cod.district}
-                        //   onChange={handleChange}
+                        //   value={cod.district}
+                          onChange={(e)=>{ dispatch(userDistrictAction(e.target.value))}}
                           aria-required
                         />
                       </div>
@@ -247,8 +170,8 @@ export const Payment = () => {
                           type="number"
                           placeholder="Enter Your Pincode"
                           name="pincode"
-                          value={cod.pincode}
-                        //   onChange={handleChange}
+                        //   value={cod.pincode}
+                          onChange={(e)=>{ dispatch(userPincodeAction(e.target.value))}}
                           aria-required
                         />
                       </div>
@@ -270,7 +193,7 @@ export const Payment = () => {
                               type="text"
                               placeholder="Enter Your Email"
                               onChange={(e) => {
-                                card.email = e.target.value;
+                                 dispatch(userEmailAction(e.target.value))
                               }}
                               aria-required
                             />
@@ -284,7 +207,7 @@ export const Payment = () => {
                               type="text"
                               placeholder="Enter Your Address"
                               onChange={(e) => {
-                                card.address = e.target.value;
+                                dispatch(userAddressAction(e.target.value))
                               }}
                               aria-required
                             />
@@ -298,7 +221,7 @@ export const Payment = () => {
                               type="text"
                               placeholder="Enter Your State"
                               onChange={(e) => {
-                                card.state = e.target.value;
+                                 dispatch(userStateAction(e.target.value))
                               }}
                               aria-required
                             />
@@ -312,7 +235,7 @@ export const Payment = () => {
                               type="text"
                               placeholder="Enter Your District"
                               onChange={(e) => {
-                                card.district = e.target.value;
+                               dispatch(userDistrictAction(e.target.value))
                               }}
                               aria-required
                             />
@@ -326,7 +249,7 @@ export const Payment = () => {
                               type="number"
                               placeholder="Enter Your Pincode"
                               onChange={(e) => {
-                                card.pincode = e.target.value;
+                                dispatch(userPincodeAction(e.target.value))
                               }}
                               aria-required
                             />
@@ -343,8 +266,8 @@ export const Payment = () => {
                               type="number"
                               placeholder="Enter Card Number"
                               name="cardNumber"
-                              value={card.cardNumber}
-                            //   onChange={handleChange}
+                            //   value={card.cardNumber}
+                              onChange={(e)=>{ dispatch(userCardNumberAction(e.target.value))}}
                               required
                             />
                           </div>
@@ -357,8 +280,8 @@ export const Payment = () => {
                               type="number"
                               placeholder="Enter Month"
                               name="expMonth"
-                              value={card.expMonth}
-                            //   onChange={handleChange}
+                            //   value={card.expMonth}
+                              onChange={(e)=>{ dispatch(userExpmonthAction(e.target.value))}}
                             />
                           </div>
 
@@ -368,9 +291,9 @@ export const Payment = () => {
                           <div>
                             <select
                               id=""
-                            //   onChange={handleChange}
+                              onChange={(e)=>{ dispatch(userExpyearAction(e.target.value))}}
                               name="expYear"
-                              value={card.expYear}
+                            //   value={card.expYear}
                             >
                               <option value="">Select Year</option>
                               <option value="2025">2025</option>
@@ -393,8 +316,8 @@ export const Payment = () => {
                               type="number"
                               placeholder="Enter CVV"
                               name="cvv"
-                              value={card.cvv}
-                            //   onChange={handleChange}
+                            //   value={card.cvv}
+                              onChange={(e)=>{ dispatch(userCvvAction(e.target.value))}}
                             />
                           </div>
                         </div>
@@ -406,7 +329,7 @@ export const Payment = () => {
                     variant={"SimpleBlue"}
                     colorScheme="blue"
                     className="cvv"
-                    // onClick={successHandler}
+                    onClick={paymentHandler}
                   >
                     Payment
                   </Button>

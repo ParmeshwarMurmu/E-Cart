@@ -9,6 +9,7 @@ export const USER_EXPMONTH = "USER_EXPMONTH";
 export const USER_EXPYEAR = "USER_EXPYEAR";
 export const USER_CVV = "USER_CVV";
 export const USER_CARD_NUMBER = "USER_CARD_NUMBER";
+export const USER_PAYMENT_MODE = "USER_PAYMENT_MODE";
 
 
 export const userEmailAction = (payload)=>{
@@ -45,4 +46,8 @@ export const userCvvAction = (payload)=>{
 
 export const userCardNumberAction = (payload)=>{
     return {type: USER_CARD_NUMBER, payload: payload}
+}
+
+export const userPaymentModeAction = (payload)=>{
+    return {type: USER_PAYMENT_MODE, payload: payload}
 }

@@ -1,4 +1,4 @@
-import { USER_ADDESSS, USER_CARD_NUMBER, USER_CVV, USER_DISTRICT, USER_EMAIL, USER_EXPMONTH, USER_EXPYEAR, USER_PINCODE, USER_STATE } from "./action";
+import { USER_ADDESSS, USER_CARD_NUMBER, USER_CVV, USER_DISTRICT, USER_EMAIL, USER_EXPMONTH, USER_EXPYEAR, USER_PAYMENT_MODE, USER_PINCODE, USER_STATE } from "./action";
 
 const initialState = {
     email: "",
@@ -10,6 +10,7 @@ const initialState = {
     expMonth: "",
     expYear: "",
     cvv: "",
+    paymentMode: "Cash On Delivery"
 };
 
 export const reducer = (state = initialState, { type, payload }) => {
@@ -71,8 +72,17 @@ export const reducer = (state = initialState, { type, payload }) => {
             }
 
 
+            case USER_PAYMENT_MODE:
+            return {
+                ...state,
+                paymentMode: payload
+            }
+
+
         default:
-            break;
+            return {
+                state
+            }
     }
 
 }
