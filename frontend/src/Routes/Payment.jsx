@@ -49,7 +49,7 @@ export const Payment = () => {
         paymentMode
     }
 
-    console.log(data)
+    navigate('/paymentProcessing')
   }
 
   useEffect(()=>{
