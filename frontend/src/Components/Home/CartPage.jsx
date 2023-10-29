@@ -12,6 +12,8 @@ import { SingleProductLoader } from '../../Comp2/SingleProductLoader'
 import { EmptyCart } from './EmptyCart';
 import { CheckoutModel } from '../CheckoutModel';
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { appContent } from '../../Context/ContextApi';
 
 
 
@@ -19,6 +21,7 @@ import { Link } from 'react-router-dom';
 export const CartPage = () => {
 
   const dispatch = useDispatch();
+  const {setTotalAmount, totalAmount} = useContext(appContent)
   const token = localStorage.getItem('token')
   const userId = localStorage.getItem('E-Cart_userId')
   const { cartData, isLoading, isData, isError } = useSelector((store) => {
@@ -31,24 +34,29 @@ export const CartPage = () => {
     }
   }, shallowEqual)
 
-  let totalAmount = 0;
+  let total = 0;
   if (isData) {
 
     cartData.forEach((ele) => {
 
       if (ele.productModel === "men") {
-        totalAmount = totalAmount + ele.mensProduct.price
+        total = total + ele.mensProduct.price
       }
       else if (ele.productModel === "women") {
-        totalAmount = totalAmount + ele.womensProduct.price
+        total = total + ele.womensProduct.price
       }
       else if (ele.productModel === "shoe") {
-        totalAmount = totalAmount + ele.shoesProduct.price
+        total = total + ele.shoesProduct.price
       }
 
     });
 
+
+
   }
+
+  setTotalAmount(total+10)
+  console.log("total", totalAmount);
 
 
 
@@ -256,7 +264,7 @@ export const CartPage = () => {
 
                       <FaRupeeSign />
                     </div>
-                    <span>{totalAmount + 10}.00</span>
+                    <span>{total + 10}.00</span>
                   </div>
 
                 </div>

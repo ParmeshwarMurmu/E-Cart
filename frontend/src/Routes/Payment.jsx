@@ -8,6 +8,8 @@ import { useNavigate } from "react-router";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { store } from "../Redux/Store/store";
 import { userAddressAction, userCardNumberAction, userCvvAction, userDistrictAction, userEmailAction, userExpmonthAction, userExpyearAction, userPaymentModeAction, userPincodeAction, userStateAction } from "../Redux/paymentReducer/action";
+import { useContext } from "react";
+import { appContent } from "../Context/ContextApi";
 
 
 
@@ -15,6 +17,7 @@ export const Payment = () => {
   const toast = useToast();
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const {totalAmount} = useContext(appContent)
 //   const [payment, setPayment] = useState("cod")
 
   const {email, address, state, district, expMonth, expYear, cardNumber, pincode, cvv, paymentMode} = useSelector((store)=>{
@@ -46,8 +49,11 @@ export const Payment = () => {
         cardNumber,
         pincode,
         cvv,
-        paymentMode
+        paymentMode,
+
     }
+
+    console.log("pyament", totalAmount)
 
     navigate('/paymentProcessing')
   }
