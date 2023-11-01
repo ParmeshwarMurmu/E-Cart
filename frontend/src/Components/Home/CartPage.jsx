@@ -55,8 +55,27 @@ export const CartPage = () => {
 
   }
 
-  setTotalAmount(total+10)
-  console.log("total", totalAmount);
+  // setTotalAmount(total+10)
+  // console.log("total", totalAmount);
+
+  const checkoutHandler = ()=>{
+    alert("order placed")
+
+    axios.post(`http://localhost:8080/user/order`,{}, {
+      headers: {
+        Authorization: `bearer ${token}`
+      }
+    })
+      .then((res) => {
+        console.log(res)
+        dispatch(cartSuccessAction(res.data.cart))
+      })
+      .then((err) => {
+        dispatch(cartErrorAction())
+      })
+
+
+  }
 
 
 
@@ -230,7 +249,7 @@ export const CartPage = () => {
 
 
             {/* checkout */}
-            
+
             <div style={{ width: '50%' }} className='orderSumarryDiv'>
 
 

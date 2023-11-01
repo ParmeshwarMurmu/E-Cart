@@ -31,7 +31,7 @@ export const PaymentProcessing = () => {
         if (success && count === 0) {
             // Redirect once countdown is complete
             // history.push('/'); // Replace with your actual redirect path
-            navigate('/')
+            navigate('/cart')
         }
     }, [success, count]);
 

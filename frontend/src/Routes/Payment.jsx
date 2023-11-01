@@ -39,6 +39,7 @@ export const Payment = () => {
   console.log(paymentMode, "mode")
 
   const paymentHandler = ()=>{
+
     let data = {
         email,
         address,
@@ -63,6 +64,9 @@ export const Payment = () => {
     dispatch(userPaymentModeAction("Cash On Delivery"))
 
   }, [])
+
+
+
 
 
 

@@ -4,6 +4,8 @@ const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const { auth } = require('../middlewares/auth')
 const { CartModel } = require('../Model/CartSchema')
+const { OrderModel } = require('../Model/OrderShema')
+
 require('dotenv').config()
 
 const userRoute = express.Router()
