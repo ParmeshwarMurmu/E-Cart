@@ -13,6 +13,8 @@ export const SignInLogo = () => {
 
   const logoutHandler = () => {
     setIsAuth(false)
+    localStorage.removeItem("token");
+    localStorage.removeItem("E-Cart_userId");
     toast({
       title: 'Loged Out',
       description: `You have been loged out succefully`,

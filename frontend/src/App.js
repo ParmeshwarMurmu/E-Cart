@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import styled from "styled-components"
 
 import { Main } from './Routes/Main';
@@ -28,7 +28,16 @@ function App() {
   const [icon, setIcon] = useState(1)
 
   const [searchParams, setSearchParams] = useSearchParams()
-  const { isAuth } = useContext(appContent)
+  const { isAuth, setIsAuth } = useContext(appContent)
+
+
+  // useEffect(() => {
+  //   const token = localStorage.getItem("token");
+  //   console.log("token", token)
+  //   if (token) {
+  //     setIsAuth(true);
+  //   }
+  // }, [setIsAuth]);
 
 
 
@@ -36,6 +45,7 @@ function App() {
 
   return (
     <DIV theme={theme} isAuth={isAuth}>
+
 
 
       <div>

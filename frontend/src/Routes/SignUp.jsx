@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import {
     Button,
     Flex,
@@ -21,10 +21,14 @@ import { Link, useNavigate } from 'react-router-dom';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import { emaiAction, firstNameAction, lastNameAction, passwordAction, ressetAction } from '../Redux/userReducer/action';
+import { appContent } from '../Context/ContextApi';
 
 
 export const SignUp = () => {
     const [showPassword, setShowPassword] = useState(false)
+
+    const {isAuth, setIsAuth} = useContext(appContent)
+
 
     const toast = useToast();
     const navigate = useNavigate();
@@ -79,6 +83,15 @@ export const SignUp = () => {
 
 
     }
+
+    // useEffect(() => {
+    //     const token = localStorage.getItem("token");
+    //     console.log("token", token)
+    //     if (token) {
+    //       setIsAuth(true);
+    //     }
+    //   }, [setIsAuth, isAuth]);
+    
 
 
     return (

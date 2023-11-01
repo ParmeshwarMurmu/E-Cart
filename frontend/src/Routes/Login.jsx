@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import {
     Button,
     Flex,
@@ -33,7 +33,7 @@ export const Login = () => {
     const [searchParams, setSearchParams] = useSearchParams()
     const toast = useToast();
     const navigate = useNavigate();
-    const {setIsAuth} = useContext(appContent)
+    const {setIsAuth, isAuth} = useContext(appContent)
 
 
     const dispatch = useDispatch()
@@ -103,8 +103,21 @@ export const Login = () => {
   
   }
 
+//   useEffect(()=>{
+//     const token = localStorage.getItem("token");
+//     console.log("token", token)
+//     if (token) {
+//       setIsAuth(true);
+//       <Navigate to={'/cart'} />
+//     }
+
+   
+//   }, [setIsAuth])
+
     return (
-        <DIV>
+        <DIV>   
+
+                 
         <Stack minH={"100vh"} direction={{ base: "column", md: "row" }}>
             <Flex flex={1} display={{ base: "none", lg: "inline-flex" }}>
                 <Image alt={"Login Image"} objectFit={"none"} src={"https://img.freepik.com/free-vector/privacy-policy-concept-illustration_114360-7853.jpg?w=740&t=st=1696865065~exp=1696865665~hmac=4d1403e398c4d59f83ead8db5c8178698f01eaa418f3946f8438824a8cd9db81"} />
@@ -198,11 +211,13 @@ export const Login = () => {
                 </Stack>
             </Flex>
         </Stack>
+
+                        
         </DIV>
     );
 }
 
 
 const DIV = styled.div`
-    border: 2px solid red;
+    
 `

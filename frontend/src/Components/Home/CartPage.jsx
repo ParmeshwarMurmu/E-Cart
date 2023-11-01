@@ -21,7 +21,7 @@ import { appContent } from '../../Context/ContextApi';
 export const CartPage = () => {
 
   const dispatch = useDispatch();
-  const {setTotalAmount, totalAmount} = useContext(appContent)
+  const {setTotalAmount, totalAmount, setIsAuth, isAuth} = useContext(appContent)
   const token = localStorage.getItem('token')
   const userId = localStorage.getItem('E-Cart_userId')
   const { cartData, isLoading, isData, isError } = useSelector((store) => {
@@ -62,6 +62,9 @@ export const CartPage = () => {
 
 
   useEffect(() => {
+
+
+
     dispatch(cartLoadingAction())
     axios.get(`http://localhost:8080/user/cart`, {
       headers: {
@@ -77,6 +80,7 @@ export const CartPage = () => {
       })
 
   }, [])
+
 
 
 
@@ -109,7 +113,7 @@ export const CartPage = () => {
                           <div style={{ display: "flex" }}>
 
                             <div>
-                              <Image boxSize={'200px'} src={el.mensProduct.images[0]} alt={el.mensProduct.title} />
+                              <Image style={{height: "200px", width: "160px"}}  src={el.mensProduct.images[0]} alt={el.mensProduct.title} />
                             </div>
 
                             {/* Product detail */}
@@ -142,8 +146,8 @@ export const CartPage = () => {
                           // Render for 'women' case
 
                           <div style={{ display: "flex" }}>
-                            <div>
-                              <Image boxSize={'200px'} src={el.womensProduct.images[0]} alt={el.womensProduct.title} />
+                            <div >
+                              <Image style={{height: "200px", width: "160px"}} src={el.womensProduct.images[0]} alt={el.womensProduct.title} />
                             </div>
 
                             {/* Product detail */}
@@ -180,7 +184,7 @@ export const CartPage = () => {
 
                           <div style={{ display: "flex" }}>
                             <div>
-                              <Image boxSize={'200px'} src={el.shoesProduct.images[0]} alt={el.shoesProduct.title} />
+                              <Image style={{height: "200px", width: "160px"}} boxSize={'200px'} src={el.shoesProduct.images[0]} alt={el.shoesProduct.title} />
                             </div>
 
                             {/* Product detail */}
@@ -226,6 +230,7 @@ export const CartPage = () => {
 
 
             {/* checkout */}
+            
             <div style={{ width: '50%' }} className='orderSumarryDiv'>
 
 
