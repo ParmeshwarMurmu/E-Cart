@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import PaymentImage from '../Images/PaymentImage.png'
 import { Flex, Stack, Text } from "@chakra-ui/react";
-import { Button} from "@chakra-ui/react";
+import { Button } from "@chakra-ui/react";
 import { useToast } from "@chakra-ui/react";
 import { useNavigate } from "react-router";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
@@ -10,6 +10,7 @@ import { store } from "../Redux/Store/store";
 import { userAddressAction, userCardNumberAction, userCvvAction, userDistrictAction, userEmailAction, userExpmonthAction, userExpyearAction, userPaymentModeAction, userPincodeAction, userStateAction } from "../Redux/paymentReducer/action";
 import { useContext } from "react";
 import { appContent } from "../Context/ContextApi";
+import axios from "axios";
 
 
 
@@ -17,49 +18,102 @@ export const Payment = () => {
   const toast = useToast();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const {totalAmount} = useContext(appContent)
-//   const [payment, setPayment] = useState("cod")
+  const { totalAmount } = useContext(appContent)
+  //   const [payment, setPayment] = useState("cod")
 
-  const {email, address, state, district, expMonth, expYear, cardNumber, pincode, cvv, paymentMode} = useSelector((store)=>{
+  const token = localStorage.getItem('token')
+  const userId = localStorage.getItem('E-Cart_userId')
+
+  const { email, address, state, district, expMonth, expYear, cardNumber, pincode, cvv, paymentMode } = useSelector((store) => {
 
     return {
-        email: store.paymentReducer.email,
-        address: store.paymentReducer.address,
-        state: store.paymentReducer.state,
-        district: store.paymentReducer.district,
-        expMonth: store.paymentReducer.expMonth,
-        expYear: store.paymentReducer.expYear,
-        cardNumber: store.paymentReducer.cardNumber,
-        pincode: store.paymentReducer.pincode,
-        cvv: store.paymentReducer.cvv,
-        paymentMode: store.paymentReducer.paymentMode,
+      email: store.paymentReducer.email,
+      address: store.paymentReducer.address,
+      state: store.paymentReducer.state,
+      district: store.paymentReducer.district,
+      expMonth: store.paymentReducer.expMonth,
+      expYear: store.paymentReducer.expYear,
+      cardNumber: store.paymentReducer.cardNumber,
+      pincode: store.paymentReducer.pincode,
+      cvv: store.paymentReducer.cvv,
+      paymentMode: store.paymentReducer.paymentMode,
     }
   }, shallowEqual);
 
-  console.log(paymentMode, "mode")
+  // console.log(paymentMode, "mode")
 
-  const paymentHandler = ()=>{
+
+  const { cartData, isLoading, isData, isError } = useSelector((store) => {
+
+    return {
+      cartData: store.cartReducer.cartData,
+      isLoading: store.cartReducer.isLoading,
+      isData: store.cartReducer.isData,
+      isError: store.cartReducer.isError,
+    }
+  }, shallowEqual)
+
+  let total = 0;
+  if (isData) {
+
+    cartData.forEach((ele) => {
+
+      if (ele.productModel === "men") {
+        total = total + ele.mensProduct.price
+      }
+      else if (ele.productModel === "women") {
+        total = total + ele.womensProduct.price
+      }
+      else if (ele.productModel === "shoe") {
+        total = total + ele.shoesProduct.price
+      }
+
+    });
+
+
+
+  }
+
+  const paymentHandler = () => {
+
+    let userDetail = {
+      email,
+      address,
+      state,
+      district,
+      expMonth,
+      expYear,
+      cardNumber,
+      pincode,
+      cvv,
+      paymentMode,
+    }
 
     let data = {
-        email,
-        address,
-        state,
-        district,
-        expMonth,
-        expYear,
-        cardNumber,
-        pincode,
-        cvv,
-        paymentMode,
-
+      products: cartData,
+      totalAmount: total,
+      userDetail
     }
+
+    axios.post(`http://localhost:8080/user/order`, data, {
+      headers: {
+        Authorization: `bearer ${token}`
+      }
+    })
+      .then((res) => {
+        console.log(res)
+        
+      })
+      .then((err) => {
+        
+      })
 
     console.log("pyament", totalAmount)
 
     navigate('/paymentProcessing')
   }
 
-  useEffect(()=>{
+  useEffect(() => {
 
     dispatch(userPaymentModeAction("Cash On Delivery"))
 
@@ -73,281 +127,281 @@ export const Payment = () => {
   return (
     <DIV>
       <div className="payment">
-      
-        <Flex  justifyContent={"center"} gap={"2rem"}   marginLeft={"5rem"} alignItems={"center"}>
+
+        <Flex justifyContent={"center"} gap={"2rem"} marginLeft={"5rem"} alignItems={"center"}>
           <Stack justifyContent={'center'} alignItems={'flex-end'} >
-            <img src={PaymentImage} alt="" width={"50%"}  />
+            <img src={PaymentImage} alt="" width={"50%"} />
           </Stack>
 
           <Stack gap={"1rem"} w={"100%"}>
-           
-              <Text fontSize="xl" className="">
-                Accepted Card
-              </Text>
-                <img src="https://logodix.com/logo/845851.png" width={"30%"} alt="" />
 
-              {/* Payment Options */}
+            <Text fontSize="xl" className="">
+              Accepted Card
+            </Text>
+            <img src="https://logodix.com/logo/845851.png" width={"30%"} alt="" />
 
-              <div
-                onChange={(e) => {
+            {/* Payment Options */}
+
+            <div
+              onChange={(e) => {
                 //   setPayment(e.target.value);
                 dispatch(userPaymentModeAction(e.target.value))
-                }}
-                style={{ display: "flex", gap:"1rem" }}
-              >
-                <div>
-                  <input
-                    type="radio"
-                    name="paymentOptions"
-                    value={"Cash On Delivery"}
-                    // checked={payment === "cod"}
-                    checked={paymentMode === "Cash On Delivery"}
-                  />
-                  &nbsp;<label htmlFor="">Cash On Delivery</label>
-                </div>
-
-                <div>
-                  <input type="radio" name="paymentOptions" value={"cards"} />
-                  &nbsp;<label htmlFor="">Debit Card / Credit Cards </label>
-                </div>
+              }}
+              style={{ display: "flex", gap: "1rem" }}
+            >
+              <div>
+                <input
+                  type="radio"
+                  name="paymentOptions"
+                  value={"Cash On Delivery"}
+                  // checked={payment === "cod"}
+                  checked={paymentMode === "Cash On Delivery"}
+                />
+                &nbsp;<label htmlFor="">Cash On Delivery</label>
               </div>
 
               <div>
-                <form action="" className="paymentForm">
-                  {paymentMode === "Cash On Delivery" || paymentMode === "" ? (
-                    <div>
-                      <div>
-                        <label htmlFor="">Email</label>
-                      </div>
-                      <div>
-                        <input
-                          type="text"
-                          placeholder="Enter Your Email"
-                          name="email"
-                        //   value={cod.email}
-                          onChange={(e)=>{ dispatch(userEmailAction(e.target.value))}}
-                          aria-required
-                        />
-                      </div>
-
-                      <div>
-                        <label htmlFor="">Address</label>
-                      </div>
-                      <div>
-                        <input
-                          type="text"
-                          placeholder="Enter Your Address"
-                          name="address"
-                        //   value={cod.address}
-                          onChange={(e)=>{ dispatch(userAddressAction(e.target.value))}}
-                          aria-required
-                        />
-                      </div>
-
-                      <div>
-                        <label htmlFor="">State</label>
-                      </div>
-                      <div>
-                        <input
-                          type="text"
-                          placeholder="Enter Your State"
-                          name="state"
-                        //   value={cod.state}
-                          onChange={(e)=>{ dispatch(userStateAction(e.target.value))}}
-                          aria-required
-                        />
-                      </div>
-
-                      <div>
-                        <label htmlFor="">District</label>
-                      </div>
-                      <div>
-                        <input
-                          type="text"
-                          placeholder="Enter Your District"
-                          name="district"
-                        //   value={cod.district}
-                          onChange={(e)=>{ dispatch(userDistrictAction(e.target.value))}}
-                          aria-required
-                        />
-                      </div>
-
-                      <div>
-                        <label htmlFor="">Pincode</label>
-                      </div>
-                      <div>
-                        <input
-                          type="number"
-                          placeholder="Enter Your Pincode"
-                          name="pincode"
-                        //   value={cod.pincode}
-                          onChange={(e)=>{ dispatch(userPincodeAction(e.target.value))}}
-                          aria-required
-                        />
-                      </div>
-                    </div>
-                  ) : (
-                    <div>
-                      <div
-                        style={{
-                          display: "flex",
-                          gap: "2rem"
-                        }}
-                      >
-                        <div>
-                          <div>
-                            <label htmlFor="">Email</label>
-                          </div>
-                          <div>
-                            <input
-                              type="text"
-                              placeholder="Enter Your Email"
-                              onChange={(e) => {
-                                 dispatch(userEmailAction(e.target.value))
-                              }}
-                              aria-required
-                            />
-                          </div>
-
-                          <div>
-                            <label htmlFor="">Address</label>
-                          </div>
-                          <div>
-                            <input
-                              type="text"
-                              placeholder="Enter Your Address"
-                              onChange={(e) => {
-                                dispatch(userAddressAction(e.target.value))
-                              }}
-                              aria-required
-                            />
-                          </div>
-
-                          <div>
-                            <label htmlFor="">State</label>
-                          </div>
-                          <div>
-                            <input
-                              type="text"
-                              placeholder="Enter Your State"
-                              onChange={(e) => {
-                                 dispatch(userStateAction(e.target.value))
-                              }}
-                              aria-required
-                            />
-                          </div>
-
-                          <div>
-                            <label htmlFor="">District</label>
-                          </div>
-                          <div>
-                            <input
-                              type="text"
-                              placeholder="Enter Your District"
-                              onChange={(e) => {
-                               dispatch(userDistrictAction(e.target.value))
-                              }}
-                              aria-required
-                            />
-                          </div>
-
-                          <div>
-                            <label htmlFor="">Pincode</label>
-                          </div>
-                          <div>
-                            <input
-                              type="number"
-                              placeholder="Enter Your Pincode"
-                              onChange={(e) => {
-                                dispatch(userPincodeAction(e.target.value))
-                              }}
-                              aria-required
-                            />
-                          </div>
-                        </div>
-
-                        {/* CARD DETAILS */}
-                        <div>
-                          <div>
-                            <label htmlFor="">Card Number</label>
-                          </div>
-                          <div>
-                            <input
-                              type="number"
-                              placeholder="Enter Card Number"
-                              name="cardNumber"
-                            //   value={card.cardNumber}
-                              onChange={(e)=>{ dispatch(userCardNumberAction(e.target.value))}}
-                              required
-                            />
-                          </div>
-
-                          <div>
-                            <label htmlFor="">Exp Month</label>
-                          </div>
-                          <div>
-                            <input
-                              type="number"
-                              placeholder="Enter Month"
-                              name="expMonth"
-                            //   value={card.expMonth}
-                              onChange={(e)=>{ dispatch(userExpmonthAction(e.target.value))}}
-                            />
-                          </div>
-
-                          <div>
-                            <label htmlFor="">Exp Year</label>
-                          </div>
-                          <div>
-                            <select
-                              id=""
-                              onChange={(e)=>{ dispatch(userExpyearAction(e.target.value))}}
-                              name="expYear"
-                            //   value={card.expYear}
-                            >
-                              <option value="">Select Year</option>
-                              <option value="2025">2025</option>
-                              <option value="2026">2026</option>
-                              <option value="2027">2027</option>
-                              <option value="2028">2028</option>
-                              <option value="2029">2029</option>
-                              <option value="2030">2030</option>
-                              <option value="2031">2032</option>
-                              <option value="2033">2034</option>
-                              <option value="2035">2035</option>
-                            </select>
-                          </div>
-
-                          <div>
-                            <label htmlFor="">CVV</label>
-                          </div>
-                          <div>
-                            <input
-                              type="number"
-                              placeholder="Enter CVV"
-                              name="cvv"
-                            //   value={card.cvv}
-                              onChange={(e)=>{ dispatch(userCvvAction(e.target.value))}}
-                            />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-
-                  <Button
-                    variant={"SimpleBlue"}
-                    colorScheme="blue"
-                    className="cvv"
-                    onClick={paymentHandler}
-                  >
-                    Payment
-                  </Button>
-                </form>
+                <input type="radio" name="paymentOptions" value={"cards"} />
+                &nbsp;<label htmlFor="">Debit Card / Credit Cards </label>
               </div>
+            </div>
+
+            <div>
+              <form action="" className="paymentForm">
+                {paymentMode === "Cash On Delivery" || paymentMode === "" ? (
+                  <div>
+                    <div>
+                      <label htmlFor="">Email</label>
+                    </div>
+                    <div>
+                      <input
+                        type="text"
+                        placeholder="Enter Your Email"
+                        name="email"
+                        //   value={cod.email}
+                        onChange={(e) => { dispatch(userEmailAction(e.target.value)) }}
+                        aria-required
+                      />
+                    </div>
+
+                    <div>
+                      <label htmlFor="">Address</label>
+                    </div>
+                    <div>
+                      <input
+                        type="text"
+                        placeholder="Enter Your Address"
+                        name="address"
+                        //   value={cod.address}
+                        onChange={(e) => { dispatch(userAddressAction(e.target.value)) }}
+                        aria-required
+                      />
+                    </div>
+
+                    <div>
+                      <label htmlFor="">State</label>
+                    </div>
+                    <div>
+                      <input
+                        type="text"
+                        placeholder="Enter Your State"
+                        name="state"
+                        //   value={cod.state}
+                        onChange={(e) => { dispatch(userStateAction(e.target.value)) }}
+                        aria-required
+                      />
+                    </div>
+
+                    <div>
+                      <label htmlFor="">District</label>
+                    </div>
+                    <div>
+                      <input
+                        type="text"
+                        placeholder="Enter Your District"
+                        name="district"
+                        //   value={cod.district}
+                        onChange={(e) => { dispatch(userDistrictAction(e.target.value)) }}
+                        aria-required
+                      />
+                    </div>
+
+                    <div>
+                      <label htmlFor="">Pincode</label>
+                    </div>
+                    <div>
+                      <input
+                        type="number"
+                        placeholder="Enter Your Pincode"
+                        name="pincode"
+                        //   value={cod.pincode}
+                        onChange={(e) => { dispatch(userPincodeAction(e.target.value)) }}
+                        aria-required
+                      />
+                    </div>
+                  </div>
+                ) : (
+                  <div>
+                    <div
+                      style={{
+                        display: "flex",
+                        gap: "2rem"
+                      }}
+                    >
+                      <div>
+                        <div>
+                          <label htmlFor="">Email</label>
+                        </div>
+                        <div>
+                          <input
+                            type="text"
+                            placeholder="Enter Your Email"
+                            onChange={(e) => {
+                              dispatch(userEmailAction(e.target.value))
+                            }}
+                            aria-required
+                          />
+                        </div>
+
+                        <div>
+                          <label htmlFor="">Address</label>
+                        </div>
+                        <div>
+                          <input
+                            type="text"
+                            placeholder="Enter Your Address"
+                            onChange={(e) => {
+                              dispatch(userAddressAction(e.target.value))
+                            }}
+                            aria-required
+                          />
+                        </div>
+
+                        <div>
+                          <label htmlFor="">State</label>
+                        </div>
+                        <div>
+                          <input
+                            type="text"
+                            placeholder="Enter Your State"
+                            onChange={(e) => {
+                              dispatch(userStateAction(e.target.value))
+                            }}
+                            aria-required
+                          />
+                        </div>
+
+                        <div>
+                          <label htmlFor="">District</label>
+                        </div>
+                        <div>
+                          <input
+                            type="text"
+                            placeholder="Enter Your District"
+                            onChange={(e) => {
+                              dispatch(userDistrictAction(e.target.value))
+                            }}
+                            aria-required
+                          />
+                        </div>
+
+                        <div>
+                          <label htmlFor="">Pincode</label>
+                        </div>
+                        <div>
+                          <input
+                            type="number"
+                            placeholder="Enter Your Pincode"
+                            onChange={(e) => {
+                              dispatch(userPincodeAction(e.target.value))
+                            }}
+                            aria-required
+                          />
+                        </div>
+                      </div>
+
+                      {/* CARD DETAILS */}
+                      <div>
+                        <div>
+                          <label htmlFor="">Card Number</label>
+                        </div>
+                        <div>
+                          <input
+                            type="number"
+                            placeholder="Enter Card Number"
+                            name="cardNumber"
+                            //   value={card.cardNumber}
+                            onChange={(e) => { dispatch(userCardNumberAction(e.target.value)) }}
+                            required
+                          />
+                        </div>
+
+                        <div>
+                          <label htmlFor="">Exp Month</label>
+                        </div>
+                        <div>
+                          <input
+                            type="number"
+                            placeholder="Enter Month"
+                            name="expMonth"
+                            //   value={card.expMonth}
+                            onChange={(e) => { dispatch(userExpmonthAction(e.target.value)) }}
+                          />
+                        </div>
+
+                        <div>
+                          <label htmlFor="">Exp Year</label>
+                        </div>
+                        <div>
+                          <select
+                            id=""
+                            onChange={(e) => { dispatch(userExpyearAction(e.target.value)) }}
+                            name="expYear"
+                          //   value={card.expYear}
+                          >
+                            <option value="">Select Year</option>
+                            <option value="2025">2025</option>
+                            <option value="2026">2026</option>
+                            <option value="2027">2027</option>
+                            <option value="2028">2028</option>
+                            <option value="2029">2029</option>
+                            <option value="2030">2030</option>
+                            <option value="2031">2032</option>
+                            <option value="2033">2034</option>
+                            <option value="2035">2035</option>
+                          </select>
+                        </div>
+
+                        <div>
+                          <label htmlFor="">CVV</label>
+                        </div>
+                        <div>
+                          <input
+                            type="number"
+                            placeholder="Enter CVV"
+                            name="cvv"
+                            //   value={card.cvv}
+                            onChange={(e) => { dispatch(userCvvAction(e.target.value)) }}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                <Button
+                  variant={"SimpleBlue"}
+                  colorScheme="blue"
+                  className="cvv"
+                  onClick={paymentHandler}
+                >
+                  Payment
+                </Button>
+              </form>
+            </div>
           </Stack>
 
-         
+
         </Flex>
       </div>
     </DIV>

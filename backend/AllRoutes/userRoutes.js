@@ -88,7 +88,7 @@ userRoute.get('/singleUser/:id', async (req, res) => {
 
 userRoute.post('/addToCart', auth, async (req, res) => {
 
-    console.log(req.body);
+    // console.log(req.body);
 
     try {
         const newCartItem = new CartModel(req.body);
@@ -142,9 +142,10 @@ userRoute.get('/order', auth, async (req, res) => {
 
     try {
 
-        const data = await CartModel.find({userId}).populate('mensProduct').populate('womensProduct').populate('shoesProduct').sort({ _id: -1 })
+        // const data = await CartModel.find({userId}).populate('mensProduct').populate('womensProduct').populate('shoesProduct').sort({ _id: -1 })
         // console.log(data);
-        res.send({ "cart":data });
+        res.send({ "msg": "Ordered Succesfully" });
+        // res.send({ "cart":data });
     } catch (error) {
         res.send({ "err": error, "msg": "cannot get your cart product" });
     }
