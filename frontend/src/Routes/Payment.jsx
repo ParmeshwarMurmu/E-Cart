@@ -18,8 +18,8 @@ export const Payment = () => {
   const toast = useToast();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { totalAmount } = useContext(appContent)
-  //   const [payment, setPayment] = useState("cod")
+  const { totalAmount, setTotalAmount, setUserCart, userCart } = useContext(appContent)
+
 
   const token = localStorage.getItem('token')
   const userId = localStorage.getItem('E-Cart_userId')
@@ -40,39 +40,10 @@ export const Payment = () => {
     }
   }, shallowEqual);
 
-  // console.log(paymentMode, "mode")
+  console.log(userCart);
 
-
-  const { cartData, isLoading, isData, isError } = useSelector((store) => {
-
-    return {
-      cartData: store.cartReducer.cartData,
-      isLoading: store.cartReducer.isLoading,
-      isData: store.cartReducer.isData,
-      isError: store.cartReducer.isError,
-    }
-  }, shallowEqual)
-
-  let total = 0;
-  if (isData) {
-
-    cartData.forEach((ele) => {
-
-      if (ele.productModel === "men") {
-        total = total + ele.mensProduct.price
-      }
-      else if (ele.productModel === "women") {
-        total = total + ele.womensProduct.price
-      }
-      else if (ele.productModel === "shoe") {
-        total = total + ele.shoesProduct.price
-      }
-
-    });
-
-
-
-  }
+  console.log(totalAmount, "total")
+ 
 
   const paymentHandler = () => {
 
@@ -90,10 +61,12 @@ export const Payment = () => {
     }
 
     let data = {
-      products: cartData,
-      totalAmount: total,
+      products: userCart,
+      totalAmount,
       userDetail
     }
+
+    console.log(data);
 
     axios.post(`http://localhost:8080/user/order`, data, {
       headers: {
@@ -102,15 +75,16 @@ export const Payment = () => {
     })
       .then((res) => {
         console.log(res)
-        
+        console.log("pyament", totalAmount)
+        navigate('/paymentProcessing')
       })
       .then((err) => {
         
       })
 
-    console.log("pyament", totalAmount)
+   
 
-    navigate('/paymentProcessing')
+    
   }
 
   useEffect(() => {
@@ -390,8 +364,8 @@ export const Payment = () => {
                 )}
 
                 <Button
-                  variant={"SimpleBlue"}
-                  colorScheme="blue"
+                  // variant={"SimpleBlue"}
+                  // colorScheme="blue"
                   className="cvv"
                   onClick={paymentHandler}
                 >

@@ -21,7 +21,7 @@ import { appContent } from '../../Context/ContextApi';
 export const CartPage = () => {
 
   const dispatch = useDispatch();
-  const {setTotalAmount, totalAmount, setIsAuth, isAuth} = useContext(appContent)
+  const {setTotalAmount, totalAmount, setUserCart} = useContext(appContent)
   const token = localStorage.getItem('token')
   const userId = localStorage.getItem('E-Cart_userId')
   const { cartData, isLoading, isData, isError } = useSelector((store) => {
@@ -37,26 +37,32 @@ export const CartPage = () => {
   let total = 0;
   if (isData) {
 
+    setUserCart(cartData)
+
     cartData.forEach((ele) => {
 
       if (ele.productModel === "men") {
         total = total + ele.mensProduct.price
+        // setTotalAmount(totalAmount + ele.mensProduct.price)
       }
       else if (ele.productModel === "women") {
         total = total + ele.womensProduct.price
+        // setTotalAmount(totalAmount + ele.womensProduct.price)
       }
       else if (ele.productModel === "shoe") {
         total = total + ele.shoesProduct.price
+        // setTotalAmount(totalAmount + ele.shoesProduct.price)
       }
 
     });
 
-
+    // console.log(total, "total");
+    setTotalAmount(total)
 
   }
 
-  // setTotalAmount(total+10)
-  // console.log("total", totalAmount);
+  console.log("SETtOTAL", totalAmount);
+
 
   const checkoutHandler = ()=>{
     alert("order placed")

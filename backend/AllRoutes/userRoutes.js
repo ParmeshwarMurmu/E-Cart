@@ -134,7 +134,7 @@ userRoute.delete('/cart/:id', auth, async (req, res) => {
 
 
 
-userRoute.get('/order', auth, async (req, res) => {
+userRoute.post('/order', auth, async (req, res) => {
 
     const { userId } = req.body;
     console.log("cart");

@@ -9,10 +9,11 @@ export const ContextApi = ({children}) => {
 
   const [isAuth, setIsAuth] = useState(false)
   const [totalAmount, setTotalAmount] = useState(0)
+  const [userCart, setUserCart] = useState([])
 
 
   return (
     
-    <appContent.Provider value={{isAuth, setIsAuth, totalAmount, setTotalAmount}}>{children}</appContent.Provider>
+    <appContent.Provider value={{isAuth, setIsAuth, totalAmount, setTotalAmount, userCart,setUserCart}}>{children}</appContent.Provider>
   )
 }
