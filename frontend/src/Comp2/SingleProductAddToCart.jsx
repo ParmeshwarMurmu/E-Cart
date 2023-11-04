@@ -26,21 +26,27 @@ export const SingleProductAddToCart = ({category, id, userSize, type}) => {
           data = {
             mensProduct: id,
             productModel: `${category}`,
-            size:userSize
+            size:userSize,
+            quantity: 1,
+          deleiveredStatus: "pending"
           }
         }
         else if(category === 'women'){
           data = {
             womensProduct: id,
             productModel: `${category}`,
-            size:userSize
+            size:userSize,
+            quantity: 1,
+            deleiveredStatus: "pending"
           }
         }
         else if(category === 'shoe'){
           data = {
             shoesProduct: id,
             productModel: `${category}`,
-            size:userSize
+            size:userSize,
+            quantity: 1,
+            deleiveredStatus: "pending"
           }
         }
       // data = {

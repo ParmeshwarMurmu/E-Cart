@@ -142,7 +142,8 @@ userRoute.post('/order', auth, async (req, res) => {
 
     try {
 
-        // const data = await CartModel.find({userId}).populate('mensProduct').populate('womensProduct').populate('shoesProduct').sort({ _id: -1 })
+        const order = new OrderModel(req.body)
+        await order.save()
         // console.log(data);
         res.send({ "msg": "Ordered Succesfully" });
         // res.send({ "cart":data });

@@ -18,14 +18,15 @@ const orderSchema = mongoose.Schema({
   userName: String,
   products: [{
     productModel: String,
+    deleiveredStatus: String,
+    quantity: Number,
     mensProduct: { type: mongoose.Schema.Types.ObjectId, ref: 'men' },
     womensProduct: { type: mongoose.Schema.Types.ObjectId, ref: 'women' },
-    shoesProduct: { type: mongoose.Schema.Types.ObjectId, ref: 'shoe' },
-    size: String,
-    deleiveredStatus: String
+    shoesProduct: { type: mongoose.Schema.Types.ObjectId, ref: 'shoe' }
   }],
   userDetail: userDetailSchema, 
   totalAmount: Number,
+  
 }, {
   versionKey: false
 });

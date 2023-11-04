@@ -7,6 +7,8 @@ const cartSchema = mongoose.Schema({
     userId: { type: mongoose.Schema.Types.ObjectId, ref: 'user' },
     userName: String,
     size: String,
+    quantity: Number,
+    deleiveredStatus: String,
     // productId: { type: mongoose.Schema.Types.ObjectId, ref: 'men' || 'women' || 'shoe' },
     productModel: String,
     mensProduct: {type: mongoose.Schema.Types.ObjectId, ref: 'men'},

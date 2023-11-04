@@ -4,7 +4,8 @@ const initialState = {
     isLoading:"",
     cartData: [],
     isError: "",
-    isData: ""
+    isData: "",
+
 }
 
 export const reducer = (state = initialState.cartData, {type, payload})=>{
