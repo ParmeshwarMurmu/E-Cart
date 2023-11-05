@@ -2,6 +2,7 @@ const express = require('express')
 const { MenModel } = require('../Model/MenSchema')
 const { ShoeModel } = require('../Model/ShoeSchema')
 const { WomenModel } = require('../Model/WomenSchema')
+const { OderModel, OrderModel } = require('../Model/OrderShema')
 
 const allProductRoute = express.Router()
 
@@ -179,6 +180,17 @@ allProductRoute.get('/shoe', async (req, res) => {
 
     } catch (error) {
         res.status(200).send({ "msg": error })
+    }
+})
+
+allProductRoute.get('/order', async(req, res)=>{
+
+    try {
+        
+        const order = await OrderModel.find().sort({_id: -1})
+        res.status(200).send({"allOrders": order})
+    } catch (error) {
+        res.status(400).send({"err": error})
     }
 })
 

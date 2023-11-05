@@ -16,6 +16,7 @@ const userDetailSchema = new mongoose.Schema({
 const orderSchema = mongoose.Schema({
   userId: { type: mongoose.Schema.Types.ObjectId, ref: 'user' },
   userName: String,
+  orderDate: { type: Date, default: Date.now }, 
   products: [{
     productModel: String,
     deleiveredStatus: String,

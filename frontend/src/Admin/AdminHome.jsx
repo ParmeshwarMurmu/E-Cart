@@ -2,6 +2,7 @@ import React from 'react'
 import { Tabs, TabList, TabPanels, Tab, TabPanel} from '@chakra-ui/react'
 import styled from "styled-components";
 import { AddItem } from './AddItem';
+import { AllOrders } from './AllOrders';
 
 export const AdminHome = () => {
     return (
@@ -10,8 +11,8 @@ export const AdminHome = () => {
                 <TabList className='tabs' >
                     <Tab _selected={{ color: 'white', bg: 'blue.500' }}>Home</Tab>
                     <Tab _selected={{ color: 'white', bg: 'green.400' }} fontSize={'l'}>Add Items</Tab>
-                    <Tab _selected={{ color: 'white', bg: 'blue.500' }}>Home</Tab>
-                    <Tab _selected={{ color: 'white', bg: 'green.400' }}>Two</Tab>
+                    <Tab _selected={{ color: 'white', bg: 'blue.500' }}>Users</Tab>
+                    <Tab _selected={{ color: 'white', bg: 'green.400' }}>All Orders</Tab>
                     <Tab _selected={{ color: 'white', bg: 'blue.500' }}>Home</Tab>
                     <Tab _selected={{ color: 'white', bg: 'green.400' }}>Two</Tab>
                     <Tab _selected={{ color: 'white', bg: 'blue.500' }}>Home</Tab>
@@ -31,11 +32,12 @@ export const AdminHome = () => {
 
                     <TabPanel>
                         <p>
-                            <button>Click ME</button>
+                            <button>Users</button>
                         </p>
                     </TabPanel>
                     <TabPanel>
-                        <p>two!</p>
+                        {/* <p>All Orders</p> */}
+                        <AllOrders />
                     </TabPanel>
 
                     <TabPanel>

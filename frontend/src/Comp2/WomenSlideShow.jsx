@@ -68,9 +68,12 @@ export const WomenSlideShow = () => {
 
     }
 
+ 
+
 
     useEffect(() => {
         dispatch(womenSareeData())
+
     }, [])
 
 

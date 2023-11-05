@@ -142,7 +142,7 @@ userRoute.post('/order', auth, async (req, res) => {
 
     try {
 
-        const order = new OrderModel(req.body)
+        const order = new OrderModel({...req.body, orderDate: new Date()})
         await order.save()
         // console.log(data);
         res.send({ "msg": "Ordered Succesfully" });
@@ -152,6 +152,22 @@ userRoute.post('/order', auth, async (req, res) => {
     }
 
 })
+
+
+userRoute.delete('/cartItems/:id', auth, async(req, res)=>{
+
+    const {id} = req.params;
+    console.log("id", id);
+    // console.log(userId, "cartItems");
+
+    try {
+        const result = await CartModel.deleteMany({userId: id})
+        res.status(200).send({"msg": "Deleted all Cart Items"})
+    } catch (error) {
+        res.status(400).send({"msg": error, "err": error})
+    }
+})
+
 
 
 

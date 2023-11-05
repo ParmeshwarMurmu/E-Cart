@@ -21,10 +21,10 @@ import { appContent } from '../../Context/ContextApi';
 export const CartPage = () => {
 
   const dispatch = useDispatch();
-  const {setTotalAmount, totalAmount, setUserCart} = useContext(appContent)
+  const {setTotalAmount, totalAmount, setUserCart, setDeleteCart, deleteCart} = useContext(appContent)
   const token = localStorage.getItem('token')
   const userId = localStorage.getItem('E-Cart_userId')
-  const { cartData, isLoading, isData, isError } = useSelector((store) => {
+  const { cartData, isLoading, isData,} = useSelector((store) => {
 
     return {
       cartData: store.cartReducer.cartData,
@@ -83,10 +83,35 @@ export const CartPage = () => {
 
   }
 
+  if(deleteCart){
+
+    console.log("########3")
+    console.log("userId", userId);
+    console.log("TOKKKEEN", token)
+    let data = {
+      userId
+    }
+    
+    axios.delete(`http://localhost:8080/user/cartItems/${userId}`,{
+      headers:{
+        Authorization: `bearer ${token}`
+      }
+    })
+    .then((res)=>{
+      console.log(res);
+      setDeleteCart(false)
+    })
+    .catch((err)=>{
+      console.log(err);
+    })
+
+  }
+
 
 
 
   useEffect(() => {
+
 
 
 

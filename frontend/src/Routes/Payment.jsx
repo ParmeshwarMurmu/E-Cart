@@ -18,7 +18,9 @@ export const Payment = () => {
   const toast = useToast();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { totalAmount, setTotalAmount, setUserCart, userCart } = useContext(appContent)
+  
+
+  const { totalAmount, setTotalAmount, setUserCart, userCart, setDeleteCart, deleteCart } = useContext(appContent)
 
 
   const token = localStorage.getItem('token')
@@ -40,7 +42,7 @@ export const Payment = () => {
     }
   }, shallowEqual);
 
-  console.log(userCart);
+  console.log("userCart",userCart);
 
   console.log(totalAmount, "total")
  
@@ -76,16 +78,22 @@ export const Payment = () => {
       .then((res) => {
         console.log(res)
         console.log("pyament", totalAmount)
+        setDeleteCart(true)
         navigate('/paymentProcessing')
-      })
-      .then((err) => {
         
       })
+      .then((err) => {
+        console.log(err);
+      })
 
-   
 
     
   }
+
+  console.log("deleteCart", deleteCart);
+
+
+  
 
   useEffect(() => {
 
