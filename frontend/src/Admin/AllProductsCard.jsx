@@ -7,12 +7,12 @@ export const AllProductsCard = (data) => {
 
   console.log(data)
 
-  const [orderStatus, setOrderStatus] = useState('pending')
+  const [orderStatus, setOrderStatus] = useState(data.deleiveredStatus)
 
 
   useEffect(()=>{
 
-    axios.patch(`http://localhost:8080/user/order/${data._id}`, {deleiveredStatus: `${orderStatus}`})
+    axios.patch(`http://localhost:8080/user/order/${data.id}/${data._id}`, {deleiveredStatus: `${orderStatus}`})
     .then((res)=>{
       console.log(res);
     })
@@ -44,6 +44,7 @@ export const AllProductsCard = (data) => {
 
 
       <Select className='selectStatus'
+      value={orderStatus}
       onChange={(e)=>{setOrderStatus(e.target.value)}}
       >
         <option value="pending">Pending</option>

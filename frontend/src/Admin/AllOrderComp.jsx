@@ -82,7 +82,7 @@ export const AllOrderComp = ({ products, totalAmount, userDetail, userId, userNa
                     {
                         products.map((el) => (
                             <div key={el._id}>
-                                <AllProductsCard {...el} />
+                                <AllProductsCard {...el} id={_id}/>
                             </div>
                         ))
                     }

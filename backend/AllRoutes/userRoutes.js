@@ -154,19 +154,36 @@ userRoute.post('/order', auth, async (req, res) => {
 })
 
 
-userRoute.patch('/order/:id', async(req, res)=>{
+userRoute.patch('/order/:orderId/:productId', async(req, res)=>{
 
-    const {id} = req.params;
+    const {orderId, productId} = req.params;
 
     const {deleiveredStatus} = req.body;
 
     console.log("patching");
-    console.log(id, deleiveredStatus);
+    console.log(orderId, "orderId")
+    console.log(productId, "productId");
+    console.log(deleiveredStatus);
+   
 
 
     try {
-        // const data = await OrderModel.findByIdAndUpdate({_id: id}, deleiveredStatus)
-        res.status(200).send({"msg": "Status updated"})
+        const updatedOrder = await OrderModel.findOneAndUpdate(
+            { _id: orderId, "products._id": productId },
+            { $set: { "products.$.deleiveredStatus": deleiveredStatus } },
+            { new: true }
+        );
+
+        if (!updatedOrder) {
+            return res.status(404).json({ error: "Order or product not found" });
+        }
+
+        return res.json({ message: "Status updated" });
+
+       
+
+        // const data = await OrderModel.findByIdAndUpdate(id, { "products.$.deleiveredStatus": deleiveredStatus })
+        // res.status(200).send({"msg": "Status updated", "data": data})
     } catch (error) {
         res.status(400).send({"msg": error})
     }
