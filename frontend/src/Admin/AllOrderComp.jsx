@@ -76,7 +76,7 @@ export const AllOrderComp = ({ products, totalAmount, userDetail, userId, userNa
 
                 {/* item Orderd */}
 
-                <div>
+                <div className='itemOrdered'>
 
 
                     {
@@ -98,6 +98,12 @@ export const AllOrderComp = ({ products, totalAmount, userDetail, userId, userNa
 const DIV = styled.div`
 
 border: 2px solid red;
+
+.itemOrdered{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    
+}
 
 
     

@@ -187,7 +187,10 @@ allProductRoute.get('/order', async(req, res)=>{
 
     try {
         
-        const order = await OrderModel.find().sort({_id: -1})
+        const order = await OrderModel.find()
+        .populate('products.mensProduct', 'title images brand color price category size')
+        .populate('products.womensProduct', 'title images brand color price category size')
+        .populate('products.shoesProduct', 'title images brand color price gender category size').sort({_id: -1})
         res.status(200).send({"allOrders": order})
     } catch (error) {
         res.status(400).send({"err": error})

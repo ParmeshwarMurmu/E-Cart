@@ -154,6 +154,24 @@ userRoute.post('/order', auth, async (req, res) => {
 })
 
 
+userRoute.patch('/order/:id', async(req, res)=>{
+
+    const {id} = req.params;
+
+    const {deleiveredStatus} = req.body;
+
+    console.log("patching");
+    console.log(id, deleiveredStatus);
+
+
+    try {
+        // const data = await OrderModel.findByIdAndUpdate({_id: id}, deleiveredStatus)
+        res.status(200).send({"msg": "Status updated"})
+    } catch (error) {
+        res.status(400).send({"msg": error})
+    }
+})
+
 userRoute.delete('/cartItems/:id', auth, async(req, res)=>{
 
     const {id} = req.params;
