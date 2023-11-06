@@ -84,6 +84,7 @@ img{
   background-color: ${props =>(props.status === 'pending' ? '#FB2A2A' : (props.status === 'shipped') ? 'orange' : '#38FB09')};
   font-size: 18px;
   color: #030303;
+  margin-top: 10px;
 }
 
 option{
