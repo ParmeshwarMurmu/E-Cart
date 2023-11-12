@@ -13,6 +13,7 @@ import { Login } from './Login'
 import { SignUp } from './SignUp'
 import { Payment } from './Payment'
 import { PaymentProcessing } from '../Components/PaymentProcessing'
+import { UserOrders } from './UserOrders'
 
 export const AllRoutes = () => {
   // const {handleClick, Params} = useContext(appContent)
@@ -35,6 +36,7 @@ export const AllRoutes = () => {
 
       <Route path='/payment' element={<Payment />} />
       <Route path='/paymentProcessing' element={<PaymentProcessing />} />
+      <Route path='/yourOrders' element={<UserOrders />} />
 
     </Routes>
   )

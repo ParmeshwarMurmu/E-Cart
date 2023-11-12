@@ -154,6 +154,28 @@ userRoute.post('/order', auth, async (req, res) => {
 })
 
 
+// user Order Route
+
+userRoute.get('/userOrder', auth, async (req, res) => {
+
+    const { userId } = req.body;
+   console.log("userOrder", userId);
+
+    try {
+
+        if(userId){
+            const userOrder = await OrderModel.find({userId})
+            res.send({ "userOrder": userOrder });
+        }
+
+      
+    } catch (error) {
+        res.send({ "err": error, "msg": "cannot get your cart product" });
+    }
+
+})
+
+
 userRoute.patch('/order/:orderId/:productId', async(req, res)=>{
 
     const {orderId, productId} = req.params;

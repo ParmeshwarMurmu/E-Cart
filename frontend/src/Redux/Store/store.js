@@ -20,6 +20,7 @@ import { reducer as menTrendingSlideShowReducer } from '../menTrendingSlideShowR
 import { reducer as singleUserReducer } from '../singleUserReducer/reducer'
 import { reducer as relatedItemsReducer } from '../relatedItemsReducer/reducer'
 import { reducer as paymentReducer } from "../paymentReducer/reducer"
+import { reducer as userOrderReducer } from '../userOrderReducer/reducer'
 
 
 
@@ -46,7 +47,8 @@ const rootReducer = combineReducers({
     menTrendingSlideShowReducer,
     singleUserReducer,
     relatedItemsReducer,
-    paymentReducer
+    paymentReducer,
+    userOrderReducer
 
 })
 

@@ -1,3 +1,4 @@
+import axios from "axios"
 
 
 export const USER_ORDER_LOADING = 'USER_ORDER_LOADING'
@@ -17,10 +18,4 @@ export const userOrderErrorAction = ()=>{
     return {type: USER_ORDER_ERROR}
 }
 
-// export const userOrderData = ()=>()=>{
 
-// }
-
-// / export const userOrderData = ()=>()=>{
-
-    // }
