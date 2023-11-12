@@ -1,10 +1,14 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { userOrderData, userOrderErrorAction, userOrderLoadingAction, userOrderSuccessAction } from '../Redux/userOrderReducer/action'
+import {userOrderErrorAction, userOrderLoadingAction, userOrderSuccessAction } from '../Redux/userOrderReducer/action'
 import axios from 'axios'
 import { store } from '../Redux/Store/store'
 import styled from 'styled-components'
 import { SingleProductLoader } from '../Comp2/SingleProductLoader'
+import { UserOrderComponent } from '../Components/UserOrderComponent'
+import { CartPage } from '../Components/Home/CartPage'
+
+
 
 export const UserOrders = () => {
 
@@ -31,7 +35,7 @@ export const UserOrders = () => {
     })
       .then((res) => {
         console.log(res);
-        dispatch(userOrderSuccessAction(res.data))
+        dispatch(userOrderSuccessAction(res.data.userOrder))
 
       })
       .catch((err) => {
@@ -49,20 +53,26 @@ export const UserOrders = () => {
 
   }, [])
 
+  console.log("userOredr", userOrder);
+
 
   return (
     <DIV>
 
       {
         isLoading ? <SingleProductLoader /> : <div>
-
-
+          {
+            userOrder.map((el)=>(
+              <UserOrderComponent {...el} />
+            ))
+          }
         </div>
       }
 
     </DIV>
   )
 }
+
 
 const DIV = styled.div`
 

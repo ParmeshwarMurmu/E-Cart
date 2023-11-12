@@ -164,7 +164,17 @@ userRoute.get('/userOrder', auth, async (req, res) => {
     try {
 
         if(userId){
-            const userOrder = await OrderModel.find({userId})
+            // const userOrder = await OrderModel.find({userId}).sort({_id: -1})
+            const userOrder = await OrderModel.find({ userId })
+            .sort({ _id: -1 })
+            .populate({
+              path: 'products',
+              populate: [
+                { path: 'mensProduct', model: 'men' },
+                { path: 'womensProduct', model: 'women' },
+                { path: 'shoesProduct', model: 'shoe' }
+              ]
+            });
             res.send({ "userOrder": userOrder });
         }
 

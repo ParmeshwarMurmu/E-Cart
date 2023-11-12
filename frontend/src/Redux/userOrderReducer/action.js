@@ -10,8 +10,8 @@ export const userOrderLoadingAction = ()=>{
     return {type: USER_ORDER_LOADING}
 }
 
-export const userOrderSuccessAction = ()=>{
-    return {type: USER_ORDER_SUCCESS}
+export const userOrderSuccessAction = (payload)=>{
+    return {type: USER_ORDER_SUCCESS, payload}
 }
 
 export const userOrderErrorAction = ()=>{
