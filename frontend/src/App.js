@@ -1,5 +1,4 @@
-import logo from './logo.svg';
-import './App.css';
+
 
 import { useContext, useEffect, useState } from 'react';
 import styled from "styled-components"
@@ -14,14 +13,16 @@ import { MenuItemProfile } from './Components/Home/MenuItemProfile';
 import { theme } from './DefaultTheme';
 
 import { appContent } from './Context/ContextApi';
-import { useSearchParams } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 
-
+import { BiLogOut, BiLogIn, BiSolidUser } from "react-icons/bi";
+import { AiOutlineUser} from "react-icons/ai";
 
 import { Footer } from './Routes/Footer';
 
 
 import { Hamberg } from './Comp2/Hamberg';
+import { Button, Tooltip } from '@chakra-ui/react';
 
 function App() {
 
@@ -31,17 +32,6 @@ function App() {
   const { isAuth, setIsAuth } = useContext(appContent)
 
 
-  // useEffect(() => {
-  //   const token = localStorage.getItem("token");
-  //   console.log("token", token)
-  //   if (token) {
-  //     setIsAuth(true);
-  //   }
-  // }, [setIsAuth]);
-
-
-
-
 
   return (
     <DIV theme={theme} isAuth={isAuth}>
@@ -49,6 +39,7 @@ function App() {
 
 
       <div>
+
         <div className='nav'>
 
 
@@ -65,16 +56,28 @@ function App() {
             <div className='loginSection' >
 
               <div>
-                <Notification />
+                <Tooltip label={'Existing User'} placement='bottom'>
+                <Link to={'/login'}><Button variant={'none'} fontSize={'18px'}><BiLogIn  fontSize={'25px'} color='white' /> <span style={{marginLeft: "5px"}}>Login</span></Button></Link>
+                </Tooltip>
               </div>
+
+              <div>
+                <Tooltip label={'New User'} placement='bottom'>
+                <Link to={'/signUp'}><Button variant={'none'} fontSize={'18px'}><BiSolidUser fontSize={'20px'} color='white'/><span style={{marginLeft: "5px"}}>Sign Up</span></Button></Link>
+                </Tooltip>
+              </div>
+
+              {/* <div>
+                <Notification />
+              </div> */}
 
               <div>
                 <Count />
               </div>
 
-              <div>
+              {/* <div>
                 <SignInLogo />
-              </div>
+              </div> */}
 
               {
                 isAuth && <div>
@@ -82,24 +85,7 @@ function App() {
                 </div>
               }
 
-
-             
-
-              <div style={{ border: "2px solid red" }}>
-
-                 <Hamberg />
-
-              </div>
-
-
-
-
             </div>
-
-
-
-
-
 
           </div>
 
@@ -184,7 +170,7 @@ font-family: Verdana, Geneva, Tahoma, sans-serif;
 
 .loginSection{
   display: flex;
-  width: 20%;
+  /* width: 20%; */
   justify-content: space-between;
   border: 2px solid red;
   padding-top: 5px;

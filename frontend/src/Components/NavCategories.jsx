@@ -1,6 +1,6 @@
 import { Button, IconButton, Input, Menu, MenuButton, MenuItem, MenuList, Stack, Text } from '@chakra-ui/react'
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Navigate } from 'react-router-dom'
 import { Categories } from './Home/Categories'
 import { ChevronDownIcon, ChevronUpIcon, SearchIcon } from '@chakra-ui/icons'
 import styled from "styled-components"
@@ -9,6 +9,14 @@ import { FilterComp } from '../Comp2/FilterComp'
 export const NavCategories = () => {
 
   const [icon, setIcon] = useState(1)
+  const [search, setSearch] = useState("")
+
+  
+
+  const searchHandler = ()=>{
+    console.log("search", search);
+    // return <Navigate to={`/product/${search}`} />
+  }
 
   return (
     <DIV>
@@ -115,11 +123,13 @@ export const NavCategories = () => {
           <Stack spacing={3} >
             
             <div style={{display: "flex"}}>
-            <Input placeholder='Search' size='sm' marginRight={4} border={'2px solid grey'} />
+            <Input placeholder='Search' size='sm' marginRight={4} border={'2px solid grey'}
+            onChange={(e)=>{setSearch(e.target.value)}}
+             />
 
             <div>
 
-            <IconButton
+            <Link to={`/product/${search}`}><IconButton
               colorScheme='blue'
               aria-label='Search database'
               icon={<SearchIcon />}
@@ -127,8 +137,9 @@ export const NavCategories = () => {
               m={0}
               // h={2}
               size={'sm'}
+              // onClick={searchHandler}
 
-              />
+              /></Link>
               </div>
 
               </div>

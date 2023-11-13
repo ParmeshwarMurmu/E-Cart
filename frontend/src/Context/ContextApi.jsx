@@ -12,6 +12,18 @@ export const ContextApi = ({children}) => {
   const [userCart, setUserCart] = useState([])
   const [deleteCart, setDeleteCart] = useState(false)
 
+  useEffect(()=>{
+
+    let token = localStorage.getItem('token')
+    if(token){
+      setIsAuth(true)
+    }
+    else{
+      setIsAuth(false)
+    }
+
+  }, [])
+
 
   return (
     

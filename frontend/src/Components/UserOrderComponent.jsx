@@ -3,22 +3,20 @@ import React from 'react'
 import styled from 'styled-components'
 
 export const UserOrderComponent = ({ orderDate, products }) => {
-  // lue="pending">Pending</option>
-  // <option value="shipped">Shipped</option>
-  // <option value="delivered">Delivered</option>
-  
-const getStatusColor = (status) => {
-  switch (status) {
-    case 'delivered':
-      return '#38FB09';
-    case 'shipped':
-      return 'orange';
-    case 'pending':
-      return '#FB2A2A';
-    default:
-      return 'gray'; // Default color for unknown status
-  }
-};
+
+
+  const getStatusColor = (status) => {
+    switch (status) {
+      case 'delivered':
+        return '#38FB09';
+      case 'shipped':
+        return 'orange';
+      case 'pending':
+        return '#FB2A2A';
+      default:
+        return 'gray'; // Default color for unknown status
+    }
+  };
 
   return (
     <DIV>
@@ -27,30 +25,78 @@ const getStatusColor = (status) => {
           <div key={el._id}>
 
             {
-              el.productModel === 'shoe' ? (<div>
+              el.productModel === 'shoe' ? (<div className='productContainer'>
 
                 <div className='orderImages'>
-                <Image w={'100%'} src={el.shoesProduct.images[0]} alt='shoe images' />
+                  <Image w={'100%'} src={el.shoesProduct.images[0]} alt='shoe images' />
                 </div>
 
                 <div>
-                 {el.shoesProduct.title}
+
+                <div>
+                  {el.shoesProduct.title}
                 </div>
 
                 <div>
                   <Button variant={'none'}
-                  style={{ backgroundColor: getStatusColor(el.deleiveredStatus) }}
+                    style={{ backgroundColor: getStatusColor(el.deleiveredStatus) }}
 
                   >{
-                    el.deleiveredStatus === 'pending' ? "Pending" : el.deleiveredStatus === 'delivered' ? "Delivered" : "Shipped"
-                  }
+                      el.deleiveredStatus === 'pending' ? "Pending" : el.deleiveredStatus === 'delivered' ? "Delivered" : "Shipped"
+                    }
                   </Button>
                 </div>
 
-              </div>) : el.productModel === 'women' ? <div>
-                <Image src={el.womensProduct.images[0]} alt='women images' />
-              </div> : <div>
-                <Image src={el.mensProduct.images[0]} alt='women images' />
+                </div>
+
+              </div>) : el.productModel === 'women' ? <div className='productContainer'>
+
+                <div className='orderImages'>
+                  <Image w={'100%'} src={el.womensProduct.images[0]} alt='women images' />
+                </div>
+
+                <div>
+
+                <div>
+                  {el.womensProduct.title}
+                </div>
+
+                <div>
+                  <Button variant={'none'}
+                    style={{ backgroundColor: getStatusColor(el.deleiveredStatus) }}
+
+                  >{
+                      el.deleiveredStatus === 'pending' ? "Pending" : el.deleiveredStatus === 'delivered' ? "Delivered" : "Shipped"
+                    }
+                  </Button>
+                </div>
+
+                </div>
+
+              </div> : <div className='productContainer'>
+
+                <div className='orderImages'>
+                  <Image w={'100%'} src={el.mensProduct.images[0]} alt='mens images' />
+                </div>
+
+                <div>
+
+                <div>
+                  {el.mensProduct.title}
+                </div>
+
+                <div>
+                  <Button variant={'none'}
+                    style={{ backgroundColor: getStatusColor(el.deleiveredStatus) }}
+
+                  >{
+                      el.deleiveredStatus === 'pending' ? "Pending" : el.deleiveredStatus === 'delivered' ? "Delivered" : "Shipped"
+                    }
+                  </Button>
+                </div>
+
+                </div>
+
               </div>
             }
 
@@ -67,6 +113,21 @@ const DIV = styled.div`
 
 .orderImages{
   width: 10%;
+}
+
+
+
+.productContainer{
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.productContainer > div{
+  margin-left: 10px;
+}
+
+Button{
+  margin-top: 20px;
 }
 
 `

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import {userOrderErrorAction, userOrderLoadingAction, userOrderSuccessAction } from '../Redux/userOrderReducer/action'
 import axios from 'axios'
@@ -7,6 +7,7 @@ import styled from 'styled-components'
 import { SingleProductLoader } from '../Comp2/SingleProductLoader'
 import { UserOrderComponent } from '../Components/UserOrderComponent'
 import { CartPage } from '../Components/Home/CartPage'
+import { appContent } from '../Context/ContextApi'
 
 
 
@@ -15,6 +16,7 @@ export const UserOrders = () => {
   const dispatch = useDispatch()
   const token = localStorage.getItem('token')
   const userId = localStorage.getItem('E-Cart_userId')
+  const {isAuth} = useContext(appContent)
 
   const { userOrder, isLoading, isError, isData } = useSelector((store) => {
 
@@ -53,7 +55,7 @@ export const UserOrders = () => {
 
   }, [])
 
-  console.log("userOredr", userOrder);
+  console.log("UserCart isAuth", isAuth);
 
 
   return (

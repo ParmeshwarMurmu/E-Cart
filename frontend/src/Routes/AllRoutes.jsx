@@ -36,7 +36,9 @@ export const AllRoutes = () => {
 
       <Route path='/payment' element={<Payment />} />
       <Route path='/paymentProcessing' element={<PaymentProcessing />} />
-      <Route path='/yourOrders' element={<UserOrders />} />
+      <Route path='/yourOrders' element={<PrivateRoute>
+        <UserOrders />
+        </PrivateRoute>} />
 
     </Routes>
   )

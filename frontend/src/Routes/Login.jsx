@@ -114,6 +114,8 @@ export const Login = () => {
    
 //   }, [setIsAuth])
 
+console.log("LoginIsAuth", isAuth)
+
     return (
         <DIV>   
 

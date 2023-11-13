@@ -8,50 +8,12 @@ import axios from 'axios'
 
 export const Count = () => {
 
-  // const {isAuth} = useContext(appContent)
-  // const dispatch = useDispatch()
-  // const token = localStorage.getItem('token')
-  // let totalProduct = 0;
-
-  // const { cartData, isData } = useSelector((store) => {
-
-  //   return {
-  //     cartData: store.cartReducer.cartData,
-  //     isData: store.cartReducer.isData,
-  
-  //   }
-  // }, shallowEqual)
-
-  // if(isData){
-  //   totalProduct = cartData.length
-    
-  // }
-
-  // console.log("tttttttt", totalProduct)
-
-  // useEffect(()=>{
-
-  //   if(isAuth){
-  //     dispatch(cartLoadingAction())
-  //   axios.get(`http://localhost:8080/user/cart`, {
-  //     headers: {
-  //       Authorization: `bearer ${token}`
-  //     }
-  //   })
-  //     .then((res) => {
-  //       console.log(res)
-  //       dispatch(cartSuccessAction(res.data.cart))
-  //     })
-  //     .then((err) => {
-  //       dispatch(cartErrorAction())
-  //     })
-  //   }
-  // })
+ 
 
 
     return (
         <DIV>
-            {/* <button>Notification By HTML Data attribute</button> */}
+            
             <Link to={'/cart'}>
             <button class="button">
                 <svg viewBox="0 0 16 16" class="bi bi-cart-check" height="24" width="24" xmlns="http://www.w3.org/2000/svg" fill="#fff">
@@ -65,6 +27,9 @@ export const Count = () => {
 }
 
 const DIV = styled.div`
+
+margin-top: 5px;
+
 button {
   position: relative;
   /* margin: 1rem; */
