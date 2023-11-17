@@ -16,13 +16,13 @@ import { appContent } from './Context/ContextApi';
 import { Link, useSearchParams } from 'react-router-dom';
 
 import { BiLogOut, BiLogIn, BiSolidUser } from "react-icons/bi";
-import { AiOutlineUser} from "react-icons/ai";
+import { AiOutlineUser } from "react-icons/ai";
 
 import { Footer } from './Routes/Footer';
 
 
 import { Hamberg } from './Comp2/Hamberg';
-import { Button, Tooltip } from '@chakra-ui/react';
+import { Button, Tooltip, useToast } from '@chakra-ui/react';
 
 function App() {
 
@@ -30,6 +30,22 @@ function App() {
 
   const [searchParams, setSearchParams] = useSearchParams()
   const { isAuth, setIsAuth } = useContext(appContent)
+  const toast = useToast();
+
+  const logoutHandler = () => {
+    localStorage.removeItem('token')
+    localStorage.removeItem('userId')
+    setIsAuth(false)
+    toast({
+      title: 'Logout',
+      description: `loged out Successfully`,
+      status: 'success',
+      duration: 4000,
+      isClosable: true,
+    })
+  }
+
+  console.log("app isAuth", isAuth);
 
 
 
@@ -55,17 +71,28 @@ function App() {
 
             <div className='loginSection' >
 
-              <div>
-                <Tooltip label={'Existing User'} placement='bottom'>
-                <Link to={'/login'}><Button variant={'none'} fontSize={'18px'}><BiLogIn  fontSize={'25px'} color='white' /> <span style={{marginLeft: "5px"}}>Login</span></Button></Link>
-                </Tooltip>
-              </div>
+              {
+                isAuth === true ? <div>
+                  <Tooltip label={'Logout'} placement='bottom'>
+                    <Button variant={'none'} fontSize={'18px'} onClick={logoutHandler}><BiLogOut fontSize={'25px'} color='black' /></Button>
+                  </Tooltip>
+                </div> : <div>
+                  <Tooltip label={'Existing User'} placement='bottom'>
+                    <Link to={'/login'}><Button variant={'none'} fontSize={'18px'}><BiLogIn fontSize={'25px'} color='white' /> <span style={{ marginLeft: "5px" }}>Login</span></Button></Link>
+                  </Tooltip>
+                </div>
+              }
 
-              <div>
-                <Tooltip label={'New User'} placement='bottom'>
-                <Link to={'/signUp'}><Button variant={'none'} fontSize={'18px'}><BiSolidUser fontSize={'20px'} color='white'/><span style={{marginLeft: "5px"}}>Sign Up</span></Button></Link>
-                </Tooltip>
-              </div>
+
+              {
+                isAuth === true ? "" : <div>
+                  <Tooltip label={'New User ?'} placement='bottom'>
+                    <Link to={'/signUp'}><Button variant={'none'} fontSize={'18px'}><BiSolidUser fontSize={'20px'} color='white' /><span style={{ marginLeft: "5px" }}>Sign Up</span></Button></Link>
+                  </Tooltip>
+                </div>
+              }
+
+
 
               {/* <div>
                 <Notification />
@@ -172,7 +199,7 @@ font-family: Verdana, Geneva, Tahoma, sans-serif;
   display: flex;
   /* width: 20%; */
   justify-content: space-between;
-  border: 2px solid red;
+  /* border: 2px solid red; */
   padding-top: 5px;
 }
 

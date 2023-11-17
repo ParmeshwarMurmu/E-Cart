@@ -1,22 +1,22 @@
 import React from 'react'
 import {
-    Drawer,
-    DrawerBody,
-    DrawerFooter,
-    DrawerHeader,
-    DrawerOverlay,
-    DrawerContent,
-    DrawerCloseButton,
-    useDisclosure,
-    Button,
-    Input,
-  } from '@chakra-ui/react'
+  Drawer,
+  DrawerBody,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerCloseButton,
+  useDisclosure,
+  Button,
+  Input,
+} from '@chakra-ui/react'
 
-  import { FaFilter } from "react-icons/fa";
+import { FaFilter } from "react-icons/fa";
 import { SideBar } from './SideBar';
 
 export const FilterComp = () => {
-    const { isOpen, onOpen, onClose } = useDisclosure()
+  const { isOpen, onOpen, onClose } = useDisclosure()
   const btnRef = React.useRef()
   return (
     <>
@@ -36,8 +36,8 @@ export const FilterComp = () => {
 
           <DrawerBody >
             {/* <Input placeholder='Type here...' /> */}
-            <div style={{ marginTop: "40px"}}>
-            <SideBar  />
+            <div style={{ marginTop: "40px" }}>
+              <SideBar />
             </div>
 
           </DrawerBody>

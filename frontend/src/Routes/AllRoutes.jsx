@@ -14,6 +14,7 @@ import { SignUp } from './SignUp'
 import { Payment } from './Payment'
 import { PaymentProcessing } from '../Components/PaymentProcessing'
 import { UserOrders } from './UserOrders'
+import { SearchComp } from './SearchComp'
 
 export const AllRoutes = () => {
   // const {handleClick, Params} = useContext(appContent)
@@ -39,6 +40,8 @@ export const AllRoutes = () => {
       <Route path='/yourOrders' element={<PrivateRoute>
         <UserOrders />
         </PrivateRoute>} />
+
+        <Route path='/searchBar' element={<SearchComp />} />
 
     </Routes>
   )

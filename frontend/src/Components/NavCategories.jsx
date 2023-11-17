@@ -1,22 +1,45 @@
 import { Button, IconButton, Input, Menu, MenuButton, MenuItem, MenuList, Stack, Text } from '@chakra-ui/react'
-import React, { useState } from 'react'
-import { Link, Navigate } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { Link, Navigate, useNavigate, useSearchParams } from 'react-router-dom'
 import { Categories } from './Home/Categories'
 import { ChevronDownIcon, ChevronUpIcon, SearchIcon } from '@chakra-ui/icons'
 import styled from "styled-components"
 import { FilterComp } from '../Comp2/FilterComp'
+import axios from 'axios'
+
 
 export const NavCategories = () => {
 
   const [icon, setIcon] = useState(1)
   const [search, setSearch] = useState("")
-
+  const [searchParams, setSearchParams] = useSearchParams();
   
+  const navigate = useNavigate()
 
-  const searchHandler = ()=>{
+
+  const searchHandler = () => {
     console.log("search", search);
-    // return <Navigate to={`/product/${search}`} />
+    // axios.get(`http://localhost:3000/product/men?category=${search}`)
+    // .then((res)=>{
+    //   console.log(res);
+    // })
+    // .then((err)=>{
+    //   console.log(err);
+    // })
+    console.log("navigating");
+    navigate('/searchBar')
+    
   }
+
+  useEffect(() => {
+
+    const params = {
+    }
+    search && (params.search = search)
+
+    search && setSearchParams(params)
+
+  }, [searchParams, search])
 
   return (
     <DIV>
@@ -121,28 +144,28 @@ export const NavCategories = () => {
         <div className='searchBar'>
 
           <Stack spacing={3} >
-            
-            <div style={{display: "flex"}}>
-            <Input placeholder='Search' size='sm' marginRight={4} border={'2px solid grey'}
-            onChange={(e)=>{setSearch(e.target.value)}}
-             />
 
-            <div>
+            <div style={{ display: "flex" }}>
+              <Input placeholder='Search' size='sm' marginRight={4} border={'2px solid grey'}
+                onChange={(e) => { setSearch(e.target.value) }}
+              />
 
-            <Link to={`/product/${search}`}><IconButton
-              colorScheme='blue'
-              aria-label='Search database'
-              icon={<SearchIcon />}
-              p={0}
-              m={0}
-              // h={2}
-              size={'sm'}
-              // onClick={searchHandler}
+              <div>
 
-              /></Link>
+                <IconButton
+                  colorScheme='blue'
+                  aria-label='Search database'
+                  icon={<SearchIcon />}
+                  p={0}
+                  m={0}
+                  // h={2}
+                  size={'sm'}
+                  onClick={searchHandler}
+
+                />
               </div>
 
-              </div>
+            </div>
           </Stack>
         </div>
 

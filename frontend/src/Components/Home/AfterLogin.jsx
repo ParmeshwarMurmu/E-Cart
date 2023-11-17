@@ -60,6 +60,9 @@ export const AfterLogin = () => {
 }
 
 const DIV = styled.div`
+
+margin-left: 20px;
+margin-top: 4px;
 /* margin-top: 50px; */
 /* border: 2px solid red; */
 display: flex;

@@ -23,13 +23,13 @@ export const Navbar = () => {
       </Link>
 
       <div style={{marginLeft: '10px', marginRight: "10px"}}>
-        <Tooltip label={'Existing User'} placement='bottom'>
+        <Tooltip label={'About'} placement='bottom'>
           <Link to={'/login'}><Button variant={'none'} fontSize={'18px'}>About</Button></Link>
         </Tooltip>
       </div>
 
       <div>
-        <Tooltip label={'Existing User'} placement='bottom'>
+        <Tooltip label={'Contact'} placement='bottom'>
           <Link to={'/login'}><Button variant={'none'} fontSize={'18px'}>Contact</Button></Link>
         </Tooltip>
       </div>
