@@ -147,7 +147,7 @@ export const CartPage = () => {
             </Heading>
           </div>
 
-          <div style={{ display: "flex" }}>
+          <div className='cartSection'>
 
             {/* cart item */}
             <div style={{ width: '50%' }}>
@@ -160,7 +160,7 @@ export const CartPage = () => {
 
                       {
                         el.productModel === 'men' ? (
-                          <div style={{ display: "flex" }}>
+                          <div className='productDetail'>
 
                             <div>
                               <Image style={{height: "200px", width: "160px"}}  src={el.mensProduct.images[0]} alt={el.mensProduct.title} />
@@ -195,7 +195,7 @@ export const CartPage = () => {
                         ) : el.productModel === 'women' ? (
                           // Render for 'women' case
 
-                          <div style={{ display: "flex" }}>
+                          <div className='productDetail'>
                             <div >
                               <Image style={{height: "200px", width: "160px"}} src={el.womensProduct.images[0]} alt={el.womensProduct.title} />
                             </div>
@@ -232,7 +232,7 @@ export const CartPage = () => {
                         ) : el.productModel === 'shoe' ? (
                           // Render for 'shoe' case
 
-                          <div style={{ display: "flex" }}>
+                          <div className='productDetail'>
                             <div>
                               <Image style={{height: "200px", width: "160px"}} boxSize={'200px'} src={el.shoesProduct.images[0]} alt={el.shoesProduct.title} />
                             </div>
@@ -362,5 +362,49 @@ const DIV = styled.div`
   margin: auto;
   padding: 10px;
 }
-  
+
+
+.cartSection{
+  display: flex;
+  /* border: 2px solid red; */
+}
+
+
+.productDetail{
+  display: flex;
+  /* border: 2px solid green; */
+}
+
+
+@media screen and (max-width: 1062px) {
+ 
+.cartSection{
+  flex-direction: column;
+}
+
+.productDetail{
+  flex-direction: column;
+}
+
+
+
+}
+
+
+
+
+@media screen and (max-width: 420px) {
+ 
+ 
+ .orderSumarryDiv{
+   width: 100%;
+ }
+
+ .orderSummary{
+  width: 100%;
+ }
+ 
+ 
+ }
+
 `

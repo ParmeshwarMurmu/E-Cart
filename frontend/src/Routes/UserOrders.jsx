@@ -8,6 +8,7 @@ import { SingleProductLoader } from '../Comp2/SingleProductLoader'
 import { UserOrderComponent } from '../Components/UserOrderComponent'
 import { CartPage } from '../Components/Home/CartPage'
 import { appContent } from '../Context/ContextApi'
+import { EmptyCart } from '../Components/Home/EmptyCart'
 
 
 
@@ -64,7 +65,7 @@ export const UserOrders = () => {
       {
         isLoading ? <SingleProductLoader /> : <div>
           {
-            userOrder.map((el)=>(
+            userOrder.length === 0 ? <EmptyCart /> : userOrder.map((el)=>(
               <UserOrderComponent {...el} />
             ))
           }

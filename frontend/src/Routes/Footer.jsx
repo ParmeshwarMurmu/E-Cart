@@ -19,6 +19,7 @@ import { FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 import { BiMailSend } from "react-icons/bi";
 
 import { Link } from "react-router-dom";
+import styled from "styled-components";
 
 
 const Logo = (props) => {
@@ -65,9 +66,10 @@ const ListHeader = ({ children }) => {
 
 export const Footer = () => {
   return (
+    <DIV>
     <Box
-      bg={useColorModeValue("gray.50", "gray.900")}
-      color={useColorModeValue("gray.700", "gray.200")}>
+      bg={ '#003399'}
+      color={'white'}>
       <Container as={Stack} maxW={"6xl"} py={10}>
         <SimpleGrid
           templateColumns={{ sm: "1fr 1fr", md: "2fr 1fr 1fr 2fr" }}
@@ -130,5 +132,12 @@ export const Footer = () => {
         </SimpleGrid>
       </Container>
     </Box>
+    </DIV>
   );
 }
+
+
+const DIV = styled.div`
+
+
+`

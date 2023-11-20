@@ -42,7 +42,7 @@ button {
 }
 
 button svg path{
-    fill: #181717;
+    fill: #faf7f7;
 }
 
 button {

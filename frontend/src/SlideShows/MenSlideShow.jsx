@@ -69,7 +69,6 @@ export const MenSlideShow = () => {
 
     return (
         <DIV className="slideshow-container">
-            {/* {isLoading ? <LoaderComp /> : <div> */}
             <Slider {...settings} className='slider'>
                 {
                   isData && track.map((product) => (
@@ -77,7 +76,7 @@ export const MenSlideShow = () => {
                             <div className='main'>
 
                                 {
-                                    isLoading ? <LoaderComp />   : product.map((el) => (
+                                     product.map((el) => (
                                         <Link to={`/singleProduct/men/${el._id}/${el.category}`}>
                                         <div className='imgDiv'  style={{ marginRight: "20px", height: "250px" }}>
                                             <img className='sliderImage' width="200px" src={el.images[0]} alt={el.title} />

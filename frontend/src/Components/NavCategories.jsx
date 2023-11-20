@@ -6,6 +6,8 @@ import { ChevronDownIcon, ChevronUpIcon, SearchIcon } from '@chakra-ui/icons'
 import styled from "styled-components"
 import { FilterComp } from '../Comp2/FilterComp'
 import axios from 'axios'
+import { shallowEqual, useDispatch, useSelector } from 'react-redux'
+import { searchTitleAction } from '../Redux/searchReducer/action'
 
 
 export const NavCategories = () => {
@@ -13,33 +15,36 @@ export const NavCategories = () => {
   const [icon, setIcon] = useState(1)
   const [search, setSearch] = useState("")
   const [searchParams, setSearchParams] = useSearchParams();
-  
   const navigate = useNavigate()
+  const dispatch = useDispatch();
+  const {category} = useSelector((store)=>{
+
+    return {
+      category: store.searchReducer.category
+    }
+
+  }, shallowEqual)
 
 
   const searchHandler = () => {
-    console.log("search", search);
-    // axios.get(`http://localhost:3000/product/men?category=${search}`)
-    // .then((res)=>{
-    //   console.log(res);
-    // })
-    // .then((err)=>{
-    //   console.log(err);
-    // })
+    
+    console.log("searchedCategory", category)
     console.log("navigating");
     navigate('/searchBar')
     
   }
 
+  
+
   useEffect(() => {
 
     const params = {
     }
-    search && (params.search = search)
+    category && (params.search = category)
 
-    search && setSearchParams(params)
+    category && setSearchParams(params)
 
-  }, [searchParams, search])
+  }, [searchParams])
 
   return (
     <DIV>
@@ -147,7 +152,7 @@ export const NavCategories = () => {
 
             <div style={{ display: "flex" }}>
               <Input placeholder='Search' size='sm' marginRight={4} border={'2px solid grey'}
-                onChange={(e) => { setSearch(e.target.value) }}
+                onChange={(e) => { dispatch(searchTitleAction(e.target.value)) }}
               />
 
               <div>
@@ -169,9 +174,7 @@ export const NavCategories = () => {
           </Stack>
         </div>
 
-        {/* <div className='filter'>
-          <FilterComp />
-        </div> */}
+     
 
 
       </div>

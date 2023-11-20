@@ -21,6 +21,7 @@ import { reducer as singleUserReducer } from '../singleUserReducer/reducer'
 import { reducer as relatedItemsReducer } from '../relatedItemsReducer/reducer'
 import { reducer as paymentReducer } from "../paymentReducer/reducer"
 import { reducer as userOrderReducer } from '../userOrderReducer/reducer'
+import { reducer as searchReducer } from '../searchReducer/reducer'
 
 
 
@@ -48,7 +49,8 @@ const rootReducer = combineReducers({
     singleUserReducer,
     relatedItemsReducer,
     paymentReducer,
-    userOrderReducer
+    userOrderReducer,
+    searchReducer
 
 })
 

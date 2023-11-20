@@ -28,33 +28,6 @@ export const ProductComp = ({ category, currentPage, onPageChange }) => {
 
   const [page, setPage] = useState(Math.ceil(Number(totalData) / 10))
 
-  // const initialPage = searchParams.get("page")
-  // const [currentPage, setCurrentPage] = useState(1);
-
-
-  // const handlePageChange = (page) => {
-  //   setCurrentPage(page);
-
-  // };
-
-  // console.log("CURR", currentPage);
-
-  // useEffect(() => {
-
-  //     const params = {
-  //       page: currentPage
-  //     }
-
-  //   setSearchParams(params)
-
-
-  // }, [currentPage])
-
-
-
-
-
-
 
   return (
     <DIV >
@@ -101,7 +74,7 @@ const DIV = styled.div`
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 20px;
-    row-gap: 50px
+    row-gap: 50px;
   
   }
 

@@ -22,15 +22,15 @@ export const Navbar = () => {
         </Wrap>
       </Link>
 
-      <div style={{marginLeft: '10px', marginRight: "10px"}}>
+      <div className='about' style={{marginLeft: '10px', marginRight: "10px"}}>
         <Tooltip label={'About'} placement='bottom'>
-          <Link to={'/login'}><Button variant={'none'} fontSize={'18px'}>About</Button></Link>
+          <Link to={'/login'}><Button variant={'none'} fontSize={'18px'} style={{color: 'white'}}>About</Button></Link>
         </Tooltip>
       </div>
 
-      <div>
+      <div className='contact'>
         <Tooltip label={'Contact'} placement='bottom'>
-          <Link to={'/login'}><Button variant={'none'} fontSize={'18px'}>Contact</Button></Link>
+          <Link to={'/login'}><Button variant={'none'} fontSize={'18px'} style={{color: 'white'}}>Contact</Button></Link>
         </Tooltip>
       </div>
 
@@ -44,6 +44,22 @@ display: flex;
 
 align-items: center;
 justify-content: space-between;
+
+
+@media screen and (max-width: 420px) {
+ 
+  .about{
+    display: none;
+  }
+
+  .contact{
+    display: none;
+  }
+
+}
+
+
+
 
 
 `

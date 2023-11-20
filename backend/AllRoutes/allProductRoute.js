@@ -197,6 +197,40 @@ allProductRoute.get('/order', async(req, res)=>{
     }
 })
 
+
+allProductRoute.get('/search/:searchTerm', async (req, res) => {
+    const { searchTerm } = req.params;
+    // console.log("searchTerm", searchTerm);
+
+    try {
+        const data = await MenModel.aggregate([
+            {
+                $match: { category: { $regex: searchTerm, $options: "i" } }
+            }
+        ]);
+
+        const womenData = await WomenModel.aggregate([
+            {
+                $match: { category: { $regex: searchTerm, $options: "i" } }
+            }
+        ]);
+
+        const shoeData = await ShoeModel.aggregate([
+            {
+                $match: { category: { $regex: searchTerm, $options: "i" } }
+            }
+        ]);
+
+        // Concatenate the results from different collections
+        const concatenatedData = data.concat(womenData, shoeData);
+
+        res.send({ "msg": "searched data for ", data: concatenatedData });
+
+    } catch (error) {
+        console.error(error);
+        res.status(500).send({ "error": "Internal Server Error" });
+    }
+});
 module.exports = {
     allProductRoute
 }

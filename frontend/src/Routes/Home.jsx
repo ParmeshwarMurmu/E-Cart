@@ -23,6 +23,7 @@ import { NavCategories } from '../Components/NavCategories'
 import { shallowEqual, useSelector } from 'react-redux'
 import { store } from '../Redux/Store/store'
 import { SingleProductLoader } from '../Comp2/SingleProductLoader'
+import { HomeOfferSlideShow } from '../Comp2/HomeOfferSlideShow'
 
 
 
@@ -48,9 +49,13 @@ export const Home = () => {
         <NavCategories />
       </div>
 
+      <HomeOfferSlideShow />
+
       {/* Mensection slideshow */}
       {/* {
         isLoading ? <SingleProductLoader /> : ( */}
+
+        
           <>
       
       <div className='mens'>

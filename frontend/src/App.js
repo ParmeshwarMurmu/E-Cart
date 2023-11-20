@@ -72,22 +72,22 @@ function App() {
             <div className='loginSection' >
 
               {
-                isAuth === true ? <div>
+                isAuth === true ? <div className='logout'>
                   <Tooltip label={'Logout'} placement='bottom'>
-                    <Button variant={'none'} fontSize={'18px'} onClick={logoutHandler}><BiLogOut fontSize={'25px'} color='black' /></Button>
+                    <Button variant={'none'} fontSize={'18px'} onClick={logoutHandler}><BiLogOut fontSize={'25px'} color='white' /></Button>
                   </Tooltip>
-                </div> : <div>
+                </div> : <div className='userSection'>
                   <Tooltip label={'Existing User'} placement='bottom'>
-                    <Link to={'/login'}><Button variant={'none'} fontSize={'18px'}><BiLogIn fontSize={'25px'} color='white' /> <span style={{ marginLeft: "5px" }}>Login</span></Button></Link>
+                    <Link to={'/login'}><Button variant={'none'} fontSize={'18px'}><BiLogIn fontSize={'25px'} color='white' /> <span style={{ marginLeft: "5px" , color: 'white'}}>Login</span></Button></Link>
                   </Tooltip>
                 </div>
               }
 
 
               {
-                isAuth === true ? "" : <div>
+                isAuth === true ? "" : <div className='signUp'>
                   <Tooltip label={'New User ?'} placement='bottom'>
-                    <Link to={'/signUp'}><Button variant={'none'} fontSize={'18px'}><BiSolidUser fontSize={'20px'} color='white' /><span style={{ marginLeft: "5px" }}>Sign Up</span></Button></Link>
+                    <Link to={'/signUp'}><Button variant={'none'} fontSize={'18px'}><BiSolidUser fontSize={'20px'} color='white' /><span style={{ marginLeft: "5px" , color: 'white'}}>Sign Up</span></Button></Link>
                   </Tooltip>
                 </div>
               }
@@ -98,7 +98,7 @@ function App() {
                 <Notification />
               </div> */}
 
-              <div>
+              <div className='cart'>
                 <Count />
               </div>
 
@@ -111,6 +111,10 @@ function App() {
                   <MenuItemProfile />
                 </div>
               }
+
+              <div className='hamberg'>
+              <Hamberg />
+              </div>
 
             </div>
 
@@ -156,7 +160,8 @@ font-family: Verdana, Geneva, Tahoma, sans-serif;
     position: fixed;
     width: 100%;
     top: 0px;
-    background-color: #1ac1fe;
+    background-color: #003399;
+    padding: 5px 0px 5px 0px;
     z-index: 3;
 
 }
@@ -209,6 +214,36 @@ font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 
+.hamberg{
+  display: none;
+}
+
+
+
+@media screen and (max-width: 770px) {
+
+  .hamberg{
+    display: block;
+  }
+
+  .cart{
+    display: none;
+  }
+
+  .userSection{
+    display: none;
+  }
+
+  .signUp{
+    display: none;
+  }
+
+  .logout{
+    display: none;
+  }
+
+      
+}
 
 
 
