@@ -1,7 +1,10 @@
-# E-Cart In Progres
+![image](https://github.com/ParmeshwarMurmu/E-Cart/assets/121368970/56b10624-fc1e-4f71-b745-6e31c0b52168)# E-Cart In Progres
 An ECommerce project where user can purchase differents items such as t-shirts , pants shoes and many more categories.
 # Home Page
 ![E-Cart Home Page](https://github.com/ParmeshwarMurmu/E-Cart/assets/121368970/224f24ff-c1a6-46b8-994c-9caf643db428)
+
+# Home Product Section
+![Product Section](https://github.com/ParmeshwarMurmu/E-Cart/assets/121368970/1cd3148d-c739-47b3-b916-853b1a17066e)
 
 
 # Product Page
