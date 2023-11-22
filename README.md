@@ -1,5 +1,32 @@
- E-Cart In Progres
-An ECommerce project where user can purchase differents items such as t-shirts , pants shoes and many more categories.
+# E-Cart In Progres
+E-Kart is a dynamic eCommerce web application created with a tech stack comprising HTML, CSS, JavaScript, React, Node.js, Express, and MongoDB. This is an application where users can purchase different products with different categories. E-Cart brings an immersive shopping experience, primarily centered around a diverse range of clothing products. It was an individual Project completed within 25 days.
+
+# Tech Stack Used:-
+## Frontend : 
+HTML | CSS | javascript | React | Redux | ChakraUI 
+
+## Backend : 
+Node.js | Express.js 
+
+## Database : 
+MongoDB 
+
+## Features:-
+```
+✅ CRUD Operations GET POST PUT PATCH DELETE
+✅ Authentication
+✅ Authorization
+✅ Slide Show 
+✅ Sorting
+✅ Filtering
+✅ Pagination
+✅ Deleting
+✅ Text Search
+✅ Responsive
+```
+
+
+
 # Home Page
 ![E-Cart Home Page](https://github.com/ParmeshwarMurmu/E-Cart/assets/121368970/224f24ff-c1a6-46b8-994c-9caf643db428)
 
