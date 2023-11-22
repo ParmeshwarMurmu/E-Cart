@@ -24,6 +24,11 @@ An ECommerce project where user can purchase differents items such as t-shirts ,
 # Login Page
 ![Login Page](https://github.com/ParmeshwarMurmu/E-Cart/assets/121368970/24c98ada-68ef-4516-a05a-2e820dd41230)
 
+# User Cart Section
+![user Cart section](https://github.com/ParmeshwarMurmu/E-Cart/assets/121368970/b319832e-2e2d-4b06-a1ce-ab9a1cdf95a0)
+
+
+
 # Footer Section
 ![Footer Section](https://github.com/ParmeshwarMurmu/E-Cart/assets/121368970/57921292-250e-4279-bd5e-a4fac464817b)
 
