@@ -29,7 +29,7 @@ export const allProductData = (category, obj, page)=>(dispatch)=>{
             //         // limit :10
             //     }
             // })
-    axios.get(`http://localhost:8080/allProducts/${category}?page=${page}&limit=10`, obj)
+    axios.get(`https://e-cart-5jh7.onrender.com/allProducts/${category}?page=${page}&limit=10`, obj)
     .then((res)=>{
         console.log("&&");
         console.log(res.data);

@@ -70,7 +70,7 @@ export const Payment = () => {
 
     console.log(data);
 
-    axios.post(`http://localhost:8080/user/order`, data, {
+    axios.post(`https://e-cart-5jh7.onrender.com/user/order`, data, {
       headers: {
         Authorization: `bearer ${token}`
       }

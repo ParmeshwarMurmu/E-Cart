@@ -53,7 +53,7 @@ export const Login = () => {
  
   const loginHandler = ()=>{
 
-    axios.post('http://localhost:8080/user/login', data)
+    axios.post('https://e-cart-5jh7.onrender.com/user/login', data)
     .then((res)=>{
        console.log(res.data);
 

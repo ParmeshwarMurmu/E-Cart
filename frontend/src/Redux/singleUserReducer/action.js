@@ -28,7 +28,7 @@ export const singleUserErrorAction = ()=>{
 export const singleUserData = (id)=>(dispatch)=>{
 
     dispatch(singleUserLoadingAction())
-    axios.get(`http://localhost:8080/user/singleUser/${id}`)
+    axios.get(`https://e-cart-5jh7.onrender.com/user/singleUser/${id}`)
     .then((res) => {
     dispatch(singleUserSuccessAction(res.data.user))
         

@@ -22,7 +22,7 @@ export const menFormalErrorAction = ()=>{
 export const menFormalData = ()=>(dispatch)=>{
     
     dispatch(menFormalLoadingAction())
-    axios.get('http://localhost:8080/home/men/category?category=formal shirts')
+    axios.get('https://e-cart-5jh7.onrender.com/home/men/category?category=formal shirts')
     .then((res) => {
         dispatch(menFormalSuccessAction(res.data.category))
     })

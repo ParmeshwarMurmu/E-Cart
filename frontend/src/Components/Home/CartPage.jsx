@@ -67,7 +67,7 @@ export const CartPage = () => {
   const checkoutHandler = ()=>{
     alert("order placed")
 
-    axios.post(`http://localhost:8080/user/order`,{}, {
+    axios.post(`https://e-cart-5jh7.onrender.com/user/order`,{}, {
       headers: {
         Authorization: `bearer ${token}`
       }
@@ -92,7 +92,7 @@ export const CartPage = () => {
       userId
     }
     
-    axios.delete(`http://localhost:8080/user/cartItems/${userId}`,{
+    axios.delete(`https://e-cart-5jh7.onrender.com/user/cartItems/${userId}`,{
       headers:{
         Authorization: `bearer ${token}`
       }
@@ -116,7 +116,7 @@ export const CartPage = () => {
 
 
     dispatch(cartLoadingAction())
-    axios.get(`http://localhost:8080/user/cart`, {
+    axios.get(`https://e-cart-5jh7.onrender.com/user/cart`, {
       headers: {
         Authorization: `bearer ${token}`
       }

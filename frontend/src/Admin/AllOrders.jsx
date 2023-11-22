@@ -11,7 +11,7 @@ export const AllOrders = () => {
     console.log("orderData", orderData)
 
     useEffect(() => {
-        axios.get(`http://localhost:8080/allProducts/order`,{
+        axios.get(`https://e-cart-5jh7.onrender.com/allProducts/order`,{
           })
           .then((res)=>{
             console.log(res);

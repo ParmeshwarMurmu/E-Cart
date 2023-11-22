@@ -14,7 +14,7 @@ export const DeleteBtn = ({ _id }) => {
 
     const delHandler = () => {
         // console.log('token', token)
-        axios.delete(`http://localhost:8080/user/cart/${_id}`, {
+        axios.delete(`https://e-cart-5jh7.onrender.com/user/cart/${_id}`, {
             headers: {
                 Authorization: `bearer ${token}`
             }

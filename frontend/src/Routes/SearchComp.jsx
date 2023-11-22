@@ -42,7 +42,7 @@ export const SearchComp = () => {
     // initialSearch && setSearchParams(params)
     console.log(category, "category");
     dispatch(searchDataLoadingAction())
-    axios.get(`http://localhost:8080/allProducts/search/${category}`)
+    axios.get(`https://e-cart-5jh7.onrender.com/allProducts/search/${category}`)
       .then((res) => {
         console.log(res)
         dispatch(searchDataSuccessAction(res.data.data))

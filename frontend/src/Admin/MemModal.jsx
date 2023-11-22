@@ -72,7 +72,7 @@ export const MemModal = () => {
     
 
       
-      axios.post('http://localhost:8080/adminMen/add/men', data)
+      axios.post('https://e-cart-5jh7.onrender.com/adminMen/add/men', data)
       .then((res)=>{
         if (res.data.msg === "Men Item Added Successfully") {
           toast({

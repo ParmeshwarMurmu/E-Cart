@@ -19,7 +19,7 @@ export const trackPantsFailureAction = () => {
 export const trackPantsData = ()=>(dispatch)=>{
 
     dispatch(trackPantsLoadingAction())
-    axios.get('http://localhost:8080/home/men/category?category=track pants')
+    axios.get('https://e-cart-5jh7.onrender.com/home/men/category?category=track pants')
     .then((res) => {
         dispatch(trackPantsSuccessAction(res.data.category))
     })

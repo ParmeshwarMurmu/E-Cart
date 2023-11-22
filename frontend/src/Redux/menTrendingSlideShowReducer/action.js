@@ -22,7 +22,7 @@ export const menTrendingErrorAction = ()=>{
 export const menTrendingData = ()=>(dispatch)=>{
     
     dispatch(menTrendingLoadingAction())
-    axios.get('http://localhost:8080/home/men/category?category=casual shirts')
+    axios.get('https://e-cart-5jh7.onrender.com/home/men/category?category=casual shirts')
     .then((res) => {
         dispatch(menTrendingSuccessAction(res.data.category))
     })

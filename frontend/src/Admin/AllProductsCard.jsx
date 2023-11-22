@@ -12,7 +12,7 @@ export const AllProductsCard = (data) => {
 
   useEffect(()=>{
 
-    axios.patch(`http://localhost:8080/user/order/${data.id}/${data._id}`, {deleiveredStatus: `${orderStatus}`})
+    axios.patch(`https://e-cart-5jh7.onrender.com/user/order/${data.id}/${data._id}`, {deleiveredStatus: `${orderStatus}`})
     .then((res)=>{
       console.log(res);
     })

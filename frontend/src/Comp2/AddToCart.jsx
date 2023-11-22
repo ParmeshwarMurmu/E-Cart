@@ -52,7 +52,7 @@ export const AddToCart = ({ price, id }) => {
       }
 
 
-      axios.post('http://localhost:8080/user/addToCart', data, {
+      axios.post('https://e-cart-5jh7.onrender.com/user/addToCart', data, {
         headers: {
           Authorization: `bearer ${token}`
         }

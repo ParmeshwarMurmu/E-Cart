@@ -20,7 +20,7 @@ export const menTrendingShoesErrorAction = ()=>{
 export const menTrendingShoesData = ()=>(dispatch)=>{
  
     dispatch(menTrendingShoesLoadingAction())
-    axios.get(`http://localhost:8080/shoes/male/casualShoes`)
+    axios.get(`https://e-cart-5jh7.onrender.com/shoes/male/casualShoes`)
     .then((res)=>{
      dispatch(menTrendingShoesSuccessAction(res.data.casualShoes))
     })

@@ -27,7 +27,7 @@ export const womenShoesHeelsTrendingErrorAction = ()=>{
 export const womenHeelsTrendingData = ()=>(dispatch)=>{
     
     dispatch(womenShoesHeelsTrendingLoadingAction())
-    axios.get(`http://localhost:8080/shoes/female/heels`)
+    axios.get(`https://e-cart-5jh7.onrender.com/shoes/female/heels`)
     .then((res)=>{
       dispatch(womenShoesHeelsTrendingSuccessAction(res.data.heels))
     })

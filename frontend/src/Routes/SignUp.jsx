@@ -56,7 +56,7 @@ export const SignUp = () => {
     const registerHandler = () => {
 
         console.log(data);
-        axios.post('http://localhost:8080/user/register', data)
+        axios.post('https://e-cart-5jh7.onrender.com/user/register', data)
             .then((res) => {
 
                 toast({

@@ -25,7 +25,7 @@ export const cartPageData = (token, userId)=>(dispatch)=>{
     // console.log(token);
     console.log("Data Loding......")
     dispatch(cartLoadingAction())
-    axios.get(`http://localhost:8080/user/cart`,{
+    axios.get(`https://e-cart-5jh7.onrender.com/user/cart`,{
         headers: {
             Authorization: `bearer ${token}`
           }

@@ -88,7 +88,7 @@ export const WomenModal = () => {
 
   const addWomenData = (data) => {
 
-    axios.post('http://localhost:8080/adminWomen/add/women', data)
+    axios.post('https://e-cart-5jh7.onrender.com/adminWomen/add/women', data)
       .then((res) => {
         console.log(res)
         if (res.data.msg === "Women Item Added Successfully") {

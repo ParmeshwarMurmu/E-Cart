@@ -25,7 +25,7 @@ export const womenFlatShoesErrorAction = ()=>{
 export const womenFlatShoesData = ()=>(dispatch)=>{
     
     dispatch(womenFlatShoesLoadingAction())
-    axios.get(`http://localhost:8080/shoes/female/flatShoes`)
+    axios.get(`https://e-cart-5jh7.onrender.com/shoes/female/flatShoes`)
     .then((res)=>{
     
         dispatch(womenFlatShoesSuccessAction(res.data.flatShoes))

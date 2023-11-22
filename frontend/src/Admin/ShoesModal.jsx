@@ -77,7 +77,7 @@ export const ShoesModal = () => {
       
   const shoesDataAdding = (data) => {
     console.log(data);
-    axios.post('http://localhost:8080/adminShoe/add/shoe', data)
+    axios.post('https://e-cart-5jh7.onrender.com/adminShoe/add/shoe', data)
     .then((res)=>{
       if (res.data.msg === "Shoe Item Added Successfully") {
         toast({

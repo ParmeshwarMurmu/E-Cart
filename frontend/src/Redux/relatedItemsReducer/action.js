@@ -25,7 +25,7 @@ export const relatedItemsErrorAction = ()=>{
 export const relatedItemsData = (category, type, id)=>(dispatch)=>{
     
     dispatch(relatedItemsLoadingAction())
-    axios.get(`http://localhost:8080/singleProduct/relatedItems/${category}/${type}/${id}`)
+    axios.get(`https://e-cart-5jh7.onrender.com/singleProduct/relatedItems/${category}/${type}/${id}`)
     .then((res)=>{
       console.log("%%",res.data)
       dispatch(relatedItemsSuccessAction(res.data.relatedItems))
