@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { SingleProductLoader } from '../Comp2/SingleProductLoader';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
-import { Button, Image, Text } from '@chakra-ui/react';
+import { Button, Heading, Image, Text } from '@chakra-ui/react';
 import { BiSolidOffer } from 'react-icons/bi';
 import { FaRupeeSign } from 'react-icons/fa';
 import { MdLocalOffer, MdLocalShipping } from 'react-icons/md';
@@ -312,8 +312,11 @@ export const SingleProductPage = () => {
                 isLoadingRelated ? null : isRelatedData ? (
 
                     <div>
-                        <div>
-                            <Text fontSize={'lg'}>Related Items</Text>
+                        <div style={{marginTop: "20px", marginBottom: "20px"}}>
+                            <Heading as='h2' size={{ base: "sm", md: "md", lg: "lg" }} >
+                                Related Items
+                            </Heading>
+                            {/* <Text fontSize={'lg'}>Related Items</Text> */}
                         </div>
 
                         <div>
@@ -372,7 +375,7 @@ export const SingleProductPage = () => {
                     </div>
 
                 )
-                : null
+                    : null
             }
 
 

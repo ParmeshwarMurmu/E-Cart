@@ -8,43 +8,13 @@ import { FilterComp } from '../Comp2/FilterComp'
 import axios from 'axios'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import { searchTitleAction } from '../Redux/searchReducer/action'
+import { Searching } from './Searching'
 
 
 export const NavCategories = () => {
 
   const [icon, setIcon] = useState(1)
-  const [search, setSearch] = useState("")
-  const [searchParams, setSearchParams] = useSearchParams();
-  const navigate = useNavigate()
-  const dispatch = useDispatch();
-  const {category} = useSelector((store)=>{
-
-    return {
-      category: store.searchReducer.category
-    }
-
-  }, shallowEqual)
-
-
-  const searchHandler = () => {
-    
-    console.log("searchedCategory", category)
-    console.log("navigating");
-    navigate('/searchBar')
-    
-  }
-
   
-
-  useEffect(() => {
-
-    const params = {
-    }
-    category && (params.search = category)
-
-    category && setSearchParams(params)
-
-  }, [searchParams])
 
   return (
     <DIV>
@@ -148,30 +118,7 @@ export const NavCategories = () => {
 
         <div className='searchBar'>
 
-          <Stack spacing={3} >
-
-            <div style={{ display: "flex" }}>
-              <Input placeholder='Search' size='sm' marginRight={4} border={'2px solid grey'}
-                onChange={(e) => { dispatch(searchTitleAction(e.target.value)) }}
-              />
-
-              <div>
-
-                <IconButton
-                  colorScheme='blue'
-                  aria-label='Search database'
-                  icon={<SearchIcon />}
-                  p={0}
-                  m={0}
-                  // h={2}
-                  size={'sm'}
-                  onClick={searchHandler}
-
-                />
-              </div>
-
-            </div>
-          </Stack>
+          <Searching />
         </div>
 
      
@@ -238,8 +185,17 @@ margin-bottom: 50px;
 
 }
   
-
   
+}
+
+
+
+@media screen and (max-width: 520px) {
+
+.searchBar{
+  display: none;
+}
+
 
   
 }

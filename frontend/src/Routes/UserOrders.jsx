@@ -31,13 +31,13 @@ export const UserOrders = () => {
 
   const userOrderData = () => {
     dispatch(userOrderLoadingAction())
-    axios.get('http://localhost:8080/user/userOrder', {
+    axios.get('https://e-cart-5jh7.onrender.com/user/userOrder', {
       headers: {
         Authorization: `bearer ${token}`
       }
     })
       .then((res) => {
-        console.log("@@@###$$$$");
+        // console.log("@@@###$$$$");
         console.log(res);
         dispatch(userOrderSuccessAction(res.data.userOrder))
 
@@ -57,8 +57,8 @@ export const UserOrders = () => {
 
   }, [])
 
-  console.log("UserCart isAuth", isAuth);
-  console.log("userOrder Data", userOrder)
+  // console.log("UserCart isAuth", isAuth);
+  // console.log("userOrder Data", userOrder)
 
 
   return (

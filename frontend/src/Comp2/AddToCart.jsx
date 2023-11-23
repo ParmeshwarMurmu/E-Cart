@@ -7,13 +7,24 @@ import { useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
 
 
-export const AddToCart = ({ price, id }) => {
+export const AddToCart = ({ price, id , cate}) => {
 
   const toast = useToast();
-  const { category } = useParams()
+  let { category } = useParams()
+  
   const { isAuth } = useContext(appContent)
   const token = localStorage.getItem('token')
   const navigate = useNavigate()
+
+  if(category === undefined){
+    category=cate
+
+  }
+
+  console.log("category In CART", category)
+  console.log("search In CART", cate)
+
+  
 
   const addToCartHandler = () => {
     let data;

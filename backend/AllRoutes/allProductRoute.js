@@ -206,18 +206,27 @@ allProductRoute.get('/search/:searchTerm', async (req, res) => {
         const data = await MenModel.aggregate([
             {
                 $match: { category: { $regex: searchTerm, $options: "i" } }
+            },
+            {
+                $addFields: { cate: "men" }
             }
         ]);
 
         const womenData = await WomenModel.aggregate([
             {
                 $match: { category: { $regex: searchTerm, $options: "i" } }
+            },
+            {
+                $addFields: { cate: "women" }
             }
         ]);
 
         const shoeData = await ShoeModel.aggregate([
             {
                 $match: { category: { $regex: searchTerm, $options: "i" } }
+            },
+            {
+                $addFields: { cate: "shoe" }
             }
         ]);
 

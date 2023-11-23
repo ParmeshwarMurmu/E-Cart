@@ -23,6 +23,7 @@ import { Footer } from './Routes/Footer';
 
 import { Hamberg } from './Comp2/Hamberg';
 import { Button, Tooltip, useToast } from '@chakra-ui/react';
+import { Searching } from './Components/Searching';
 
 function App() {
 
@@ -63,6 +64,10 @@ function App() {
 
             <div >
               <Navbar />
+            </div>
+
+            <div className='searching'>
+              <Searching />
             </div>
 
 
@@ -245,6 +250,24 @@ font-family: Verdana, Geneva, Tahoma, sans-serif;
       
 }
 
+
+.searching{
+  display: none;
+}
+
+
+@media screen and (max-width: 520px) {
+ 
+ .searching{
+  display: block;
+ }
+ .inputColor{
+  background-color: white;
+ }
+
+
+
+}
 
 
 

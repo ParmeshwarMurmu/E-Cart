@@ -62,7 +62,7 @@ export const ProductCard = ({ images, brand, title, size, cate, color, price, _i
 
           <div className='addToCart'>
             <div style={{marginBottom: "10px"}}>
-              <AddToCart price={price} id={_id} />
+              <AddToCart price={price} id={_id} cate={cate} />
             </div>
 
             <div>

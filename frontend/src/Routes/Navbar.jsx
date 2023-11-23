@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { Avatar, AvatarBadge, AvatarGroup, Button, Tooltip, Wrap, WrapItem } from '@chakra-ui/react'
 import styled from "styled-components"
 import ECart from '../Images/ECart.png'
+import { Searching } from '../Components/Searching'
 
 
 export const Navbar = () => {
@@ -34,6 +35,8 @@ export const Navbar = () => {
         </Tooltip>
       </div>
 
+    
+
     </DIV>
   )
 }
@@ -46,7 +49,7 @@ align-items: center;
 justify-content: space-between;
 
 
-@media screen and (max-width: 420px) {
+@media screen and (max-width: 520px) {
  
   .about{
     display: none;
@@ -56,7 +59,19 @@ justify-content: space-between;
     display: none;
   }
 
+
+
 }
+/* 
+@media screen and (max-width: 520px) {
+
+.searchBar{
+  display: none;
+}
+
+
+  
+} */
 
 
 
