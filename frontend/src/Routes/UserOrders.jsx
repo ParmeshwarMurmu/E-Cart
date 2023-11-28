@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import {userOrderErrorAction, userOrderLoadingAction, userOrderSuccessAction } from '../Redux/userOrderReducer/action'
+import { userOrderErrorAction, userOrderLoadingAction, userOrderSuccessAction } from '../Redux/userOrderReducer/action'
 import axios from 'axios'
 import { store } from '../Redux/Store/store'
 import styled from 'styled-components'
@@ -9,6 +9,7 @@ import { UserOrderComponent } from '../Components/UserOrderComponent'
 import { CartPage } from '../Components/Home/CartPage'
 import { appContent } from '../Context/ContextApi'
 import { EmptyCart } from '../Components/Home/EmptyCart'
+import { Heading, Stack } from '@chakra-ui/react'
 
 
 
@@ -17,7 +18,7 @@ export const UserOrders = () => {
   const dispatch = useDispatch()
   const token = localStorage.getItem('token')
   const userId = localStorage.getItem('E-Cart_userId')
-  const {isAuth} = useContext(appContent)
+  const { isAuth } = useContext(appContent)
 
   const { userOrder, isLoading, isError, isData } = useSelector((store) => {
 
@@ -64,10 +65,16 @@ export const UserOrders = () => {
   return (
     <DIV>
 
+      <Stack spacing={6} mb={'10px'}>
+        <Heading as='h2' size={{base: "md", md:"lg", lg:"xl"}} noOfLines={1}>
+          Your Orders
+        </Heading>
+      </Stack>
+
       {
-        isLoading ? <SingleProductLoader /> : <div>
+        isLoading ? <SingleProductLoader /> : <div className='userOrderContainer'>
           {
-            userOrder.length === 0 ? <EmptyCart /> : userOrder.map((el)=>(
+            userOrder.length === 0 ? <EmptyCart /> : userOrder.map((el) => (
               <UserOrderComponent {...el} />
             ))
           }
@@ -80,5 +87,12 @@ export const UserOrders = () => {
 
 
 const DIV = styled.div`
+
+/* border: 2px solid red; */
+
+.userOrderContainer{
+  /* display: grid;
+  grid-template-columns: repeat(2, 1fr); */
+}
 
 `

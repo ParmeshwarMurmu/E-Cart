@@ -113,7 +113,9 @@ export const UserOrderComponent = ({ orderDate, products }) => {
 
 
 const DIV = styled.div`
-height: 500px;
+
+/* border: 2px solid blue; */
+/* height: 500px; */
 
 .orderImages{
   width: 10%;

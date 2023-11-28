@@ -21,8 +21,8 @@ export const AddToCart = ({ price, id , cate}) => {
 
   }
 
-  console.log("category In CART", category)
-  console.log("search In CART", cate)
+  // console.log("category In CART", category)
+  // console.log("search In CART", cate)
 
   
 

@@ -1,4 +1,4 @@
-import { Button, Input, Tooltip, useDisclosure, useToast } from '@chakra-ui/react'
+import { Button, IconButton, Input, Menu, MenuButton, MenuGroup, MenuItem, MenuList, Text, Tooltip, useDisclosure, useToast } from '@chakra-ui/react'
 import React, { useContext } from 'react'
 import { BiLogOut, BiLogIn, BiSolidUser } from "react-icons/bi";
 import {
@@ -39,7 +39,7 @@ export const Hamberg = () => {
 
   return (
     <DIV>
-      <Button ref={btnRef} variant={'none'} p={0} m={0} colorScheme='teal' onClick={onOpen}>
+      {/* <Button ref={btnRef} variant={'none'} p={0} m={0} colorScheme='teal' onClick={onOpen}>
         <GiHamburgerMenu fontSize={'30px'} color='white'/>
       </Button>
       <Drawer
@@ -51,10 +51,10 @@ export const Hamberg = () => {
         <DrawerOverlay />
         <DrawerContent>
           <DrawerCloseButton />
-          {/* <DrawerHeader>Create your account</DrawerHeader> */}
+          
 
           <DrawerBody style={{ marginTop: '50px' }}>
-            {/* <Input placeholder='Type here...' /> */}
+        
             <div className='userLoginSection'>
               {
                 isAuth === true ? <div>
@@ -98,7 +98,50 @@ export const Hamberg = () => {
             <Button colorScheme='blue'>Save</Button>
           </DrawerFooter>
         </DrawerContent>
-      </Drawer>
+      </Drawer> */}
+
+      <Menu>
+        <MenuButton
+          as={IconButton}
+          aria-label='Options'
+          icon={<GiHamburgerMenu fontSize={'30px'} color='white' />}
+          variant='none'
+        />
+        <MenuList>
+          {
+            isAuth === true ? "" : <MenuItem >
+              <Link to={'/signUp'}><Button variant={'none'} fontSize={'18px'}><BiSolidUser fontSize={'20px'} color='black' /><span>Sign Up</span></Button></Link>
+            </MenuItem>
+          }
+
+          {
+            isAuth === true ? "" : <MenuItem >
+              <Link to={'/login'}><Button variant={'none'} fontSize={'18px'}><BiLogIn fontSize={'25px'} color='black' /> <span>Login</span></Button></Link>
+            </MenuItem>
+          }
+
+          <MenuItem>
+            <div style={{ paddingLeft: "22px" }}>
+              <Text>About</Text>
+            </div>
+          </MenuItem>
+          <MenuItem >
+            <div style={{ paddingLeft: "22px" }}>
+              <Text>Contact</Text>
+            </div>
+          </MenuItem>
+
+          <MenuGroup title='Help' style={{ paddingLeft: "22px" }}>
+            <MenuItem><div style={{ paddingLeft: "22px" }}>
+              <Text>Docs</Text>
+            </div></MenuItem>
+            <MenuItem>
+              <div style={{ paddingLeft: "22px" }}>
+                <Text>FAOs</Text>
+              </div></MenuItem>
+          </MenuGroup>
+        </MenuList>
+      </Menu>
     </DIV>
   )
 
