@@ -4,7 +4,6 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import styled from "styled-components"
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
-import { LoaderComp } from '../Comp2/LoaderComp';
 import { Link } from 'react-router-dom';
 import { menFormalData } from '../Redux/menFormalSlideShowReducer/action';
 

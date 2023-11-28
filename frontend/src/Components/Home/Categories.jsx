@@ -1,5 +1,5 @@
 import React from 'react'
-import { Avatar, AvatarBadge, AvatarGroup, WrapItem } from '@chakra-ui/react'
+import { Avatar, WrapItem } from '@chakra-ui/react'
 
 export const Categories = ({images, alt}) => {
   return (

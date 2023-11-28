@@ -24,7 +24,7 @@ export const MenShoweslideshow = () => {
 
   const dispatch = useDispatch();
   let formalShoes;
-  const { menFormalShoes, isLoading, isData, isError } = useSelector((store) => {
+  const { menFormalShoes, isData,  } = useSelector((store) => {
 
     return {
       menFormalShoes: store.menFormalShoesReducer.menFormalShoes,

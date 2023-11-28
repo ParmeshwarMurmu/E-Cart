@@ -4,11 +4,6 @@ import {
   MenuButton,
   MenuList,
   MenuItem,
-  MenuItemOption,
-  MenuGroup,
-  MenuOptionGroup,
-  MenuDivider,
-  Button,
   useToast,
 } from '@chakra-ui/react'
 
@@ -24,7 +19,7 @@ export const MenuItemProfile = () => {
   const { isAuth, setIsAuth } = useContext(appContent)
   const toast = useToast();
 
-  const { user, isLoading, isData } = useSelector((store) => {
+  const { user, } = useSelector((store) => {
 
     return {
       user: store.singleUserReducer.user,

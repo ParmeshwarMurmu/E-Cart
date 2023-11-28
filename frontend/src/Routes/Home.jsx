@@ -1,8 +1,6 @@
-import React, { useContext, } from 'react'
+import React from 'react'
 import styled from "styled-components"
 import { Box, Button, Image, Text, } from '@chakra-ui/react'
-import { useSearchParams } from 'react-router-dom'
-import { appContent } from '../Context/ContextApi'
 import { WomenOffers } from '../Comp2/WomenOffers'
 import { WomenSlideShow } from '../Comp2/WomenSlideShow'
 import { ShoesOffer } from '../Comp2/ShoesOffer'
@@ -22,7 +20,6 @@ import { MenShoesBootsSlideShow } from '../SlideShows/MenShoesBootsSlideShow'
 import { NavCategories } from '../Components/NavCategories'
 import { shallowEqual, useSelector } from 'react-redux'
 import { store } from '../Redux/Store/store'
-import { SingleProductLoader } from '../Comp2/SingleProductLoader'
 import { HomeOfferSlideShow } from '../Comp2/HomeOfferSlideShow'
 
 

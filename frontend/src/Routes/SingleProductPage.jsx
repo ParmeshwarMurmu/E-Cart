@@ -7,18 +7,14 @@ import { BiSolidOffer } from 'react-icons/bi';
 import { FaRupeeSign } from 'react-icons/fa';
 import { MdLocalOffer, MdLocalShipping } from 'react-icons/md';
 import styled from 'styled-components';
-import axios from 'axios';
 import { singlePageData } from '../Redux/SingleProductPage/action';
 import { SingleProductAddToCart } from '../Comp2/SingleProductAddToCart';
-import { RadioGroup } from '@headlessui/react'
 import { SingleProductWhilist } from '../Comp2/SingleProductWhilist';
 import { NavCategories } from '../Components/NavCategories';
 import { relatedItemsData } from '../Redux/relatedItemsReducer/action';
-
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { flexbox } from '@chakra-ui/react';
 
 
 export const SingleProductPage = () => {
@@ -94,9 +90,6 @@ export const SingleProductPage = () => {
         setUserSize(el)
     }
 
-    // console.log("category", category);
-    // console.log("id", id);
-    // console.log("type", type);
 
     console.log("relatedItems", relatedItems)
 
@@ -108,9 +101,6 @@ export const SingleProductPage = () => {
         dispatch(relatedItemsData(category, type, id))
     }, [id])
 
-    // useEffect(() => {
-    //     dispatch(relatedItemsData(category, type))
-    // }, [id])
 
 
 

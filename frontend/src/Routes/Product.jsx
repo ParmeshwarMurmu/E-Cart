@@ -1,5 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from 'react'
-import { appContent } from '../Context/ContextApi'
+import React, { useEffect, useRef, useState } from 'react'
 import { useParams, useSearchParams } from 'react-router-dom'
 import styled from "styled-components"
 import { SideBar } from '../Comp2/SideBar'
@@ -7,8 +6,6 @@ import { ProductComp } from '../Comp2/ProductComp'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import { allProductData } from '../Redux/allMenProductReducer/action'
 import { SingleProductLoader } from '../Comp2/SingleProductLoader'
-import Pagination from '../Comp2/Pagination'
-import { Ty } from '../try/Ty'
 import { NavCategories } from '../Components/NavCategories'
 
 export const Product = ({ type }) => {
@@ -16,7 +13,7 @@ export const Product = ({ type }) => {
   const { category } = useParams()
   const dispatch = useDispatch()
   const [searchParams, setSearchParams] = useSearchParams()
-  const prevCategory = useRef(category);
+  // const prevCategory = useRef(category);
   // const page = searchParams.get('page')
   const [currentPage, setCurrentPage] = useState(1);
 

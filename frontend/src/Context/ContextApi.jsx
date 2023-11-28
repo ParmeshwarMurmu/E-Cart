@@ -1,6 +1,6 @@
-import { useConst } from '@chakra-ui/react'
-import React, { createContext, useContext, useEffect, useState } from 'react'
-import { useSearchParams } from 'react-router-dom'
+
+import React, { createContext,  useEffect, useState } from 'react'
+
 
 
 export const appContent = createContext()

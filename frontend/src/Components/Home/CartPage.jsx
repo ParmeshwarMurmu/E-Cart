@@ -1,16 +1,14 @@
 import React, { useEffect } from 'react'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
-import { cartErrorAction, cartLoadingAction, cartPageData, cartSuccessAction } from '../../Redux/cartReducer/action';
+import { cartErrorAction, cartLoadingAction, cartSuccessAction } from '../../Redux/cartReducer/action';
 import axios from 'axios';
 
 import styled from 'styled-components';
 import { Button, Heading, Image, Text } from '@chakra-ui/react';
 import { FaRupeeSign } from "react-icons/fa";
-import { Delete } from '../../Comp2/Delete';
 import { DeleteBtn } from '../../Comp2/DeleteBtn';
 import { SingleProductLoader } from '../../Comp2/SingleProductLoader'
 import { EmptyCart } from './EmptyCart';
-import { CheckoutModel } from '../CheckoutModel';
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { appContent } from '../../Context/ContextApi';
@@ -61,11 +59,11 @@ export const CartPage = () => {
 
   }
 
-  console.log("SETtOTAL", totalAmount);
+  // console.log("SETtOTAL", totalAmount);
 
 
   const checkoutHandler = ()=>{
-    alert("order placed")
+    // alert("order placed")
 
     axios.post(`https://e-cart-5jh7.onrender.com/user/order`,{}, {
       headers: {
@@ -85,9 +83,9 @@ export const CartPage = () => {
 
   if(deleteCart){
 
-    console.log("########3")
-    console.log("userId", userId);
-    console.log("TOKKKEEN", token)
+    // console.log("########3")
+    // console.log("userId", userId);
+    // console.log("TOKKKEEN", token)
     let data = {
       userId
     }

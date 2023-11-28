@@ -3,10 +3,7 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import styled from "styled-components"
-import axios from 'axios';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
-import { trackPantsFailure, trackPantsLoading, trackPantsSuccess } from '../Redux/MenTrackPantsSlideShow/action';
-import { LoaderComp } from '../Comp2/LoaderComp';
 import { Link } from 'react-router-dom';
 import { menTrendingData } from '../Redux/menTrendingSlideShowReducer/action';
 

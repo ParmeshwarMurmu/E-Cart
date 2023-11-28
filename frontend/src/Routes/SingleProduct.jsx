@@ -2,15 +2,13 @@
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import styled from 'styled-components'
-import { singlePageData } from '../Redux/SingleProductPage/action'
 import { SingleProductLoader } from '../Comp2/SingleProductLoader'
-import { Box, Button, Image } from '@chakra-ui/react'
+import { Button, Image } from '@chakra-ui/react'
 import { Text } from '@chakra-ui/react'
 import { FaRupeeSign } from 'react-icons/fa';
 import { MdLocalOffer } from 'react-icons/md';
 import { BiSolidOffer } from 'react-icons/bi';
 import { MdLocalShipping } from 'react-icons/md';
-import axios from 'axios'
 import { useEffect, useState } from 'react'
 
 export const SingleProduct = () => {
@@ -32,14 +30,14 @@ export const SingleProduct = () => {
     }
   }, shallowEqual)
 
-  console.log(data);
+  // console.log(data);
 
-  console.log(id, category);
-  console.log("+++++")
+  // console.log(id, category);
+  // console.log("+++++")
   
 
   useEffect(()=>{
-    console.log("&&&&&&&&&&&");
+    // console.log("&&&&&&&&&&&");
   }, [])
 
 

@@ -3,13 +3,11 @@ import {
   Drawer,
   DrawerBody,
   DrawerFooter,
-  DrawerHeader,
   DrawerOverlay,
   DrawerContent,
   DrawerCloseButton,
   useDisclosure,
   Button,
-  Input,
 } from '@chakra-ui/react'
 
 import { FaFilter } from "react-icons/fa";

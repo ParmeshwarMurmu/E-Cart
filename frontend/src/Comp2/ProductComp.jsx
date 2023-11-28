@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { ProductCard } from './ProductCard'
-import { useParams, useSearchParams } from 'react-router-dom'
+import { useSearchParams } from 'react-router-dom'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import { store } from '../Redux/Store/store'
-import { allProductData } from '../Redux/allMenProductReducer/action'
 import styled from 'styled-components'
 import Pagination from './Pagination'
 import { FilterComp } from './FilterComp'
@@ -12,10 +11,10 @@ import { Text } from '@chakra-ui/react'
 export const ProductComp = ({ category, currentPage, onPageChange }) => {
 
 
-  const dispatch = useDispatch()
-  const [searchParams, setSearchParams] = useSearchParams()
+  // const dispatch = useDispatch()
 
-  const { data, isLoading, isError, isData, totalData } = useSelector((store) => {
+
+  const { data, totalData } = useSelector((store) => {
     return {
       data: store.allMenProductReducer.data,
       isLoading: store.allMenProductReducer.isLoading,

@@ -7,7 +7,7 @@ import { SearchIcon } from '@chakra-ui/icons';
 
 export const Searching = () => {
 
-    const [search, setSearch] = useState("")
+    // const [search, setSearch] = useState("")
     const [searchParams, setSearchParams] = useSearchParams();
     const navigate = useNavigate()
     const dispatch = useDispatch();

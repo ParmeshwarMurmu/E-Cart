@@ -26,13 +26,13 @@ export const ShoesOffer = () => {
         variableWidth: true,
     };
 
-    const {flatShoes, isLoading, isData, isError} = useSelector((store)=>{
+    const {flatShoes, isData, } = useSelector((store)=>{
 
         return {
             flatShoes: store.womenFlatShoeReducer.flatShoes,
-            isLoading: store.womenFlatShoeReducer.isLoading,
+
             isData: store.womenFlatShoeReducer.isData,
-            isError: store.womenFlatShoeReducer.isError
+          
         }
     }, shallowEqual)
 

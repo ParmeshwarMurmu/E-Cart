@@ -5,7 +5,6 @@ import 'slick-carousel/slick/slick-theme.css';
 import styled from "styled-components"
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { store } from '../Redux/Store/store';
-import { menFormalShoesData } from '../Redux/menFormalShoesReducer/action';
 import { Link } from 'react-router-dom';
 import { menShoesBootsData } from '../Redux/menShoeBootsReducer/action';
 

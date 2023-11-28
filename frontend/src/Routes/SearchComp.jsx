@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import styled from 'styled-components'
 import { NavCategories } from '../Components/NavCategories'
-import axios, { Axios } from 'axios'
+import axios from 'axios'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import { SingleProductLoader } from '../Comp2/SingleProductLoader'
 import { searchDataFailureAction, searchDataLoadingAction, searchDataSuccessAction, searchTitleAction } from '../Redux/searchReducer/action'
@@ -12,10 +12,7 @@ import { ProductCard } from '../Comp2/ProductCard'
 export const SearchComp = () => {
   const [searchParams, setSearchParams] = useSearchParams()
 
-  // const initialSearch = 'jeans'searchData: [],
-  // isLoading: false,
-  // isError: false,
-  // isData: false
+ 
   const initialSearch = searchParams.get("search")
   const dispatch = useDispatch()
   const { category, searchData, isLoading, isData, isError } = useSelector((store) => {
@@ -33,13 +30,7 @@ export const SearchComp = () => {
 
   useEffect(() => {
 
-    // const params = {
-    //     search: initialSearch 
-    // }
-
-    // // search && (params.order = order)
-
-    // initialSearch && setSearchParams(params)
+    
     console.log(category, "category");
     dispatch(searchDataLoadingAction())
     // axios.get(`http://localhost:8080/allProducts/search/${category}`)

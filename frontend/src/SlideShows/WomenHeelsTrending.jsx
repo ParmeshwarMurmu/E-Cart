@@ -3,10 +3,8 @@ import React, { useState } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { flexbox } from '@chakra-ui/react';
 import styled from "styled-components"
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
-
 import { Link } from 'react-router-dom';
 import { womenHeelsTrendingData } from '../Redux/shoeHeelsTrendingReducer/action';
 

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext,  useState } from 'react'
 import {
     Button,
     Flex,
@@ -55,7 +55,7 @@ export const SignUp = () => {
 
     const registerHandler = () => {
 
-        console.log(data);
+        // console.log(data);
         axios.post('https://e-cart-5jh7.onrender.com/user/register', data)
             .then((res) => {
 
@@ -84,13 +84,6 @@ export const SignUp = () => {
 
     }
 
-    // useEffect(() => {
-    //     const token = localStorage.getItem("token");
-    //     console.log("token", token)
-    //     if (token) {
-    //       setIsAuth(true);
-    //     }
-    //   }, [setIsAuth, isAuth]);
     
 
 

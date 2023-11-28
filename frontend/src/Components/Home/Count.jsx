@@ -1,10 +1,6 @@
-import React, { useContext, useEffect } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from "styled-components"
-import { appContent } from '../../Context/ContextApi'
-import { cartErrorAction, cartLoadingAction, cartSuccessAction } from '../../Redux/cartReducer/action'
-import { shallowEqual, useDispatch, useSelector } from 'react-redux'
-import axios from 'axios'
 
 export const Count = () => {
 

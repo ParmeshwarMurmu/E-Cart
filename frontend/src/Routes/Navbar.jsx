@@ -1,9 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Avatar, AvatarBadge, AvatarGroup, Button, Tooltip, Wrap, WrapItem } from '@chakra-ui/react'
+import { Avatar,Button, Tooltip, Wrap, WrapItem } from '@chakra-ui/react'
 import styled from "styled-components"
 import ECart from '../Images/ECart.png'
-import { Searching } from '../Components/Searching'
+
 
 
 export const Navbar = () => {
@@ -62,16 +62,7 @@ justify-content: space-between;
 
 
 }
-/* 
-@media screen and (max-width: 520px) {
 
-.searchBar{
-  display: none;
-}
-
-
-  
-} */
 
 
 

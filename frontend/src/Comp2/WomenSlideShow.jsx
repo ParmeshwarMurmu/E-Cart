@@ -4,7 +4,6 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import styled from "styled-components"
-import { useDragControls } from 'framer-motion';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { womenSareeData } from '../Redux/womenSareeReducer/action';
 import { Link } from 'react-router-dom';
@@ -16,7 +15,7 @@ export const WomenSlideShow = () => {
     let saree;
     const dispatch = useDispatch()
 
-    const { data, isLoading, isError, isData } = useSelector((store) => {
+    const { data,  isData } = useSelector((store) => {
 
         return {
             data: store.womenSareeReducer.data,

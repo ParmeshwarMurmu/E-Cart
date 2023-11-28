@@ -1,11 +1,8 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { Route, Routes } from "react-router-dom"
 import { Home } from './Home'
 import { Product } from './Product'
-import { appContent } from '../Context/ContextApi'
-import { SingleProduct } from './SingleProduct'
 import { AdminHome } from '../Admin/AdminHome'
-import { Si2 } from '../try/Si2'
 import { SingleProductPage } from './SingleProductPage'
 import { CartPage } from '../Components/Home/CartPage'
 import { PrivateRoute } from './PrivateRoute'

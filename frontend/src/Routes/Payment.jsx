@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, } from "react";
 import styled from "styled-components";
 import PaymentImage from '../Images/PaymentImage.png'
 import { Flex, Stack, Text } from "@chakra-ui/react";
 import { Button } from "@chakra-ui/react";
-import { useToast } from "@chakra-ui/react";
+// import { useToast } from "@chakra-ui/react";
 import { useNavigate } from "react-router";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { store } from "../Redux/Store/store";
@@ -15,12 +15,12 @@ import axios from "axios";
 
 
 export const Payment = () => {
-  const toast = useToast();
+  // const toast = useToast();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   
 
-  const { totalAmount, setTotalAmount, setUserCart, userCart, setDeleteCart, deleteCart } = useContext(appContent)
+  const { totalAmount,  userCart, setDeleteCart, deleteCart } = useContext(appContent)
 
 
   const token = localStorage.getItem('token')
@@ -44,7 +44,7 @@ export const Payment = () => {
 
   console.log("userCart",userCart);
 
-  console.log(totalAmount, "total")
+  // console.log(totalAmount, "total")
  
 
   const paymentHandler = () => {
@@ -68,7 +68,7 @@ export const Payment = () => {
       userDetail
     }
 
-    console.log(data);
+    // console.log(data);
 
     axios.post(`https://e-cart-5jh7.onrender.com/user/order`, data, {
       headers: {
@@ -90,7 +90,7 @@ export const Payment = () => {
     
   }
 
-  console.log("deleteCart", deleteCart);
+  // console.log("deleteCart", deleteCart);
 
 
   

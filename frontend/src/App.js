@@ -1,26 +1,15 @@
 
-
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 import styled from "styled-components"
-
 import { Main } from './Routes/Main';
 import { Navbar } from './Routes/Navbar';
-import { Notification } from './Components/Home/Notification';
 import { Count } from './Components/Home/Count';
-import { SignInLogo } from './Components/Home/SignInLogo';
-
 import { MenuItemProfile } from './Components/Home/MenuItemProfile';
 import { theme } from './DefaultTheme';
-
 import { appContent } from './Context/ContextApi';
 import { Link, useSearchParams } from 'react-router-dom';
-
 import { BiLogOut, BiLogIn, BiSolidUser } from "react-icons/bi";
-import { AiOutlineUser } from "react-icons/ai";
-
 import { Footer } from './Routes/Footer';
-
-
 import { Hamberg } from './Comp2/Hamberg';
 import { Button, Tooltip, useToast } from '@chakra-ui/react';
 import { Searching } from './Components/Searching';
@@ -46,7 +35,7 @@ function App() {
     })
   }
 
-  console.log("app isAuth", isAuth);
+  // console.log("app isAuth", isAuth);
 
 
 
@@ -185,23 +174,7 @@ font-family: Verdana, Geneva, Tahoma, sans-serif;
   /* margin-bottom: 100px; */
 }
 
-/* .categories{
-  width: 80%;
-  margin: auto;
-  position: fixed;
-  left: 150px;
-  top: 0px;
-}
 
-.categoriesParent{
-  position: fixed;
-  top: 60px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80%;
-  background-color: rgba(255, 0, 0, 1);
-  background-color: red;
-} */
 
 
 

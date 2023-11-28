@@ -25,7 +25,7 @@ export const SideBar = () => {
     const initialGender = searchParams.getAll("gender")
     const [gender, setGender] = useState(initialGender || [])
 
-    const { allColors, allCategory, allBrands, allGender, isLoading, isError, isData } = useSelector((store) => {
+    const { allColors, allCategory, allBrands, allGender,  isData } = useSelector((store) => {
         return {
 
             isLoading: store.allMenProductReducer.isLoading,

@@ -12,7 +12,7 @@ export const AfterLogin = () => {
 
   const dispatch = useDispatch()
 
-  const {user, isLoading, isData} = useSelector((store)=>{
+  const {user} = useSelector((store)=>{
 
     return {
       user: store.singleUserReducer.user,
@@ -28,7 +28,7 @@ export const AfterLogin = () => {
     dispatch(singleUserData(userId))
   }
 
-  console.log("user", user)
+  // console.log("user", user)
 
  
 

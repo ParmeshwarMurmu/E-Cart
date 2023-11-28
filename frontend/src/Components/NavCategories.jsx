@@ -1,13 +1,9 @@
-import { Button, IconButton, Input, Menu, MenuButton, MenuItem, MenuList, Stack, Text } from '@chakra-ui/react'
-import React, { useEffect, useState } from 'react'
-import { Link, Navigate, useNavigate, useSearchParams } from 'react-router-dom'
+import { Button,Menu, MenuButton, MenuItem, MenuList,  } from '@chakra-ui/react'
+import React, {  useState } from 'react'
+import { Link, } from 'react-router-dom'
 import { Categories } from './Home/Categories'
-import { ChevronDownIcon, ChevronUpIcon, SearchIcon } from '@chakra-ui/icons'
+import { ChevronDownIcon, ChevronUpIcon, } from '@chakra-ui/icons'
 import styled from "styled-components"
-import { FilterComp } from '../Comp2/FilterComp'
-import axios from 'axios'
-import { shallowEqual, useDispatch, useSelector } from 'react-redux'
-import { searchTitleAction } from '../Redux/searchReducer/action'
 import { Searching } from './Searching'
 
 

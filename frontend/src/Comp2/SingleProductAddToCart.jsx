@@ -55,7 +55,7 @@ export const SingleProductAddToCart = ({category, id, userSize, type}) => {
       //   size:userSize
       // }
 
-      console.log("addtocart", data);
+      // console.log("addtocart", data);
 
       axios.post('https://e-cart-5jh7.onrender.com/user/addToCart', data, {
         headers: {

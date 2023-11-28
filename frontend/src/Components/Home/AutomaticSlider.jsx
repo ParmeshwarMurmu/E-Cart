@@ -1,10 +1,8 @@
 
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { Alert, flexbox } from '@chakra-ui/react';
-// import './Slideshow.css'; // Add your own CSS for styling
 import styled from "styled-components"
 
 

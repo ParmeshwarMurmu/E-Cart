@@ -5,7 +5,7 @@ import { Image, } from '@chakra-ui/react';
 export const UserOrderComp = ({ orderDate, products }) => {
 
   console.log("products", products)
-  console.log("@@@@@@");
+  // console.log("@@@@@@");
 
   return (
     <DIV>
