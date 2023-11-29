@@ -10,6 +10,7 @@ import { CartPage } from '../Components/Home/CartPage'
 import { appContent } from '../Context/ContextApi'
 import { EmptyCart } from '../Components/Home/EmptyCart'
 import { Heading, Stack } from '@chakra-ui/react'
+import { CartPageLoader } from '../Comp2/CartPageLoader'
 
 
 
@@ -72,7 +73,7 @@ export const UserOrders = () => {
       </Stack>
 
       {
-        isLoading ? <SingleProductLoader /> : <div className='userOrderContainer'>
+        isLoading ? <CartPageLoader /> : <div className='userOrderContainer'>
           {
             userOrder.length === 0 ? <EmptyCart /> : userOrder.map((el) => (
               <UserOrderComponent {...el} />

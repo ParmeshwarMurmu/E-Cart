@@ -56,7 +56,7 @@ export const Home = () => {
 
       {/* <NavCategories /> */}
 
-      <div>
+      <div id='homeSection'>
         <NavCategories />
       </div>
 

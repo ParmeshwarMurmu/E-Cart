@@ -8,6 +8,7 @@ import { SingleProductLoader } from '../Comp2/SingleProductLoader'
 import { searchDataFailureAction, searchDataLoadingAction, searchDataSuccessAction, searchTitleAction } from '../Redux/searchReducer/action'
 import { ProductCard } from '../Comp2/ProductCard'
 import { AllProductLoader } from '../Comp2/AllProductLoader'
+import { NoItem } from '../Comp2/NoItem'
 
 
 export const SearchComp = () => {
@@ -57,11 +58,12 @@ export const SearchComp = () => {
     <DIV>
       <NavCategories />
       {
-        isLoading === true ? <AllProductLoader /> : <div className='serachBar'>
+        isLoading === true ? <AllProductLoader /> : <div>
           {
-            searchData.map((el) => (
+            searchData.length === 0 ? <NoItem /> : <div className='serachBar'> {searchData.map((el) => (
               <ProductCard key={el._id} {...el} />
-            ))
+            ))}
+            </div>
           }
         </div>
       }
@@ -73,7 +75,7 @@ export const SearchComp = () => {
 const DIV = styled.div`
 
 .serachBar{
-  display: grid;
+    display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 20px;
     row-gap: 50px;

@@ -66,7 +66,7 @@ const ListHeader = ({ children }) => {
 
 export const Footer = () => {
   return (
-    <DIV>
+    <DIV id="aboutSection">
     <Box
       bg={ '#003399'}
       color={'white'}>

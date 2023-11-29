@@ -45,7 +45,7 @@ export const Searching = () => {
             <Stack spacing={3} >
 
                 <div style={{ display: "flex" }}>
-                    <Input className='inputColor' placeholder='Search' size='sm' marginRight={4} marginLeft={4} border={'2px solid grey'}
+                    <Input className='inputColor' placeholder='Ex. jeans, Saree, T-shirts' size='sm' marginRight={4} marginLeft={4} border={'2px solid grey'}
                         onChange={(e) => { dispatch(searchTitleAction(e.target.value)) }}
                     />
 

@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import { Avatar,Button, Tooltip, Wrap, WrapItem } from '@chakra-ui/react'
 import styled from "styled-components"
 import ECart from '../Images/ECart.png'
+// import { Link } from 'react-scroll';
+import { AboutContactComp } from './AboutContactComp';
 
 
 
@@ -23,17 +25,7 @@ export const Navbar = () => {
         </Wrap>
       </Link>
 
-      <div className='about' style={{marginLeft: '10px', marginRight: "10px"}}>
-        <Tooltip label={'About'} placement='bottom'>
-          <Link to={'/login'}><Button variant={'none'} fontSize={'18px'} style={{color: 'white'}}>About</Button></Link>
-        </Tooltip>
-      </div>
-
-      <div className='contact'>
-        <Tooltip label={'Contact'} placement='bottom'>
-          <Link to={'/login'}><Button variant={'none'} fontSize={'18px'} style={{color: 'white'}}>Contact</Button></Link>
-        </Tooltip>
-      </div>
+      <AboutContactComp />
 
     
 
