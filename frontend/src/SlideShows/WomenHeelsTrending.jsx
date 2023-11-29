@@ -7,6 +7,7 @@ import styled from "styled-components"
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { womenHeelsTrendingData } from '../Redux/shoeHeelsTrendingReducer/action';
+import { FinalLoader } from '../Comp2/FinalLoader';
 
 
 export const WomenHeelsTrending = () => {
@@ -70,7 +71,7 @@ export const WomenHeelsTrending = () => {
   return (
     <DIV className="slideshow-container">
             <Slider {...settings} className='slider'>
-                {isData && womenHeels.map((product) => (
+                {isLoading === true ? <FinalLoader />  : isData && womenHeels.map((product) => (
                     <div key={product.id}>
                         <div className='main'>
 

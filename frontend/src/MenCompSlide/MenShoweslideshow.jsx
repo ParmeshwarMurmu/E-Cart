@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { store } from '../Redux/Store/store';
 import { menFormalShoesData } from '../Redux/menFormalShoesReducer/action';
 import { Link } from 'react-router-dom';
+import { FinalLoader } from '../Comp2/FinalLoader';
 
 export const MenShoweslideshow = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -24,7 +25,7 @@ export const MenShoweslideshow = () => {
 
   const dispatch = useDispatch();
   let formalShoes;
-  const { menFormalShoes, isData,  } = useSelector((store) => {
+  const { menFormalShoes, isData, isLoading } = useSelector((store) => {
 
     return {
       menFormalShoes: store.menFormalShoesReducer.menFormalShoes,
@@ -70,7 +71,7 @@ export const MenShoweslideshow = () => {
   return (
     <DIV className="slideshow-container">
       <Slider {...settings} className='slider'>
-        {isData && formalShoes.map((product) => (
+        {isLoading === true ? <FinalLoader />  : isData && formalShoes.map((product) => (
           <div key={product.id}>
             <div className='main'>
 

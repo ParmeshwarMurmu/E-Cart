@@ -8,6 +8,7 @@ import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { store } from '../Redux/Store/store';
 import { womenFlatShoesData } from '../Redux/womenFlatShoeReducer/action';
 import { Link } from 'react-router-dom';
+import { FinalLoader } from './FinalLoader';
 
 export const ShoesOffer = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -26,10 +27,11 @@ export const ShoesOffer = () => {
         variableWidth: true,
     };
 
-    const {flatShoes, isData, } = useSelector((store)=>{
+    const {flatShoes, isData, isLoading } = useSelector((store)=>{
 
         return {
             flatShoes: store.womenFlatShoeReducer.flatShoes,
+            isLoading: store.womenFlatShoeReducer.isLoading,
 
             isData: store.womenFlatShoeReducer.isData,
           
@@ -66,7 +68,7 @@ export const ShoesOffer = () => {
     return (
         <DIV className="slideshow-container">
             <Slider {...settings} className='slider'>
-                {isData && womenFlatShoes.map((product) => (
+                {isLoading === true ? <FinalLoader />  : isData && womenFlatShoes.map((product) => (
                     <div key={product.id}>
                         <div className='main'>
 

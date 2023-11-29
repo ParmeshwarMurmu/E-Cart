@@ -15,6 +15,8 @@ import { relatedItemsData } from '../Redux/relatedItemsReducer/action';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import { FinalLoader } from '../Comp2/FinalLoader';
+import { FinalSingleProductLoader } from '../Comp2/FinalSingleProductLoader';
 
 
 export const SingleProductPage = () => {
@@ -111,17 +113,18 @@ export const SingleProductPage = () => {
             <div>
                 <NavCategories />
             </div>
+            {/* <FinalSingleProductLoader /> */}
 
             <div className='loader'>
                 {
-                    isLoading ? <SingleProductLoader /> : isData ? (<div className='singleData'>
+                    isLoading ? <FinalSingleProductLoader /> : isData ? (<div className='singleData'>
                         <div className='singleProduct' >
 
-                            <div>
-                                <div>
+                            <div className='mainParentImage'>
+                                <div className='cardBoxImage'>
 
-                                    <Image className='card_box' h={'500px'} src={data.images[index]} alt={data.title} />
-
+                                    {/* <Image className='card_box'  src={data.images[index]} alt={data.title} /> */}
+                                     <img className='card_box'   src={data.images[index]} alt="" />
                                 </div>
 
 
@@ -135,12 +138,12 @@ export const SingleProductPage = () => {
                                                 className='smallImageDiv'
                                                 style={{
                                                     padding: "5px",
-                                                    marginRight: "10px",
+                                                    // marginRight: "10px",
                                                     border: ind === index ? '2px solid blue' : '',
                                                 }} >
                                                 <Image
                                                     onClick={() => { (setIndex(ind)) }}
-                                                    boxSize='70px'
+                                                    // boxSize='70px'
                                                     objectFit='cover'
                                                     src={el}
                                                     alt='Dan Abramov'
@@ -157,7 +160,7 @@ export const SingleProductPage = () => {
 
                             {/* Product Details */}
 
-                            <div style={{ padding: "20px" }}>
+                            <div className='productDetails' style={{ padding: "20px" }}>
 
                                 {/* brand and title */}
                                 <Text fontSize='xl' fontWeight={'bold'} colorScheme='gray'>{data.brand}</Text>
@@ -314,7 +317,7 @@ export const SingleProductPage = () => {
 
                                 <DIV className="slideshow-container">
                                     <Slider {...settings} className='slider'>
-                                        {isRelatedData && relatedData.map((product, inde) => (
+                                        { isRelatedData && relatedData.map((product, inde) => (
                                             <div key={inde}>
                                                 <div className='main'>
 
@@ -382,16 +385,22 @@ const DIV = styled.div`
 
 .singleProduct{
     display: flex;
-    justify-content: space-between;
+    /* border: 2px solid red; */
+    /* justify-content: space-between; */
+}
+
+.productDetails{
+    /* border: 2px solid green; */
 }
 
 .loader{
-  display: flex;
+  /* display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
 }
 
 .singleData{
+
 }
 
 
@@ -406,10 +415,23 @@ const DIV = styled.div`
 
 .smallImages{
     margin-top: 40px;
+    /* display: flex;
+    flex-wrap: wrap; */
+    width: 75%;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    /* border: 2px solid  #050505; */
 }
 
+.smallImageDiv{
+    /* width: 70%; */
+}
+
+.mainParentImage{
+    /* border: 5px solid black; */
+    width: 35%;
+
+}
 
 
 /* .smallImages{
@@ -425,6 +447,7 @@ const DIV = styled.div`
   box-shadow: 0 25px 50px rgba(0,0,0,0.55);
   cursor: pointer;
   transition: all .3s;
+  /* height: 500px; */
 }
 
 .card_box:hover {
@@ -439,6 +462,7 @@ const DIV = styled.div`
     }
 
     .smallImages{
+        width: 100%;
         grid-template-columns: repeat(3, 1fr);
         gap: 0px;
     }
@@ -458,7 +482,7 @@ const DIV = styled.div`
     }
 
     .card_box{
-        height: 400px;
+        /* height: 400px; */
     }
 
       
@@ -503,6 +527,9 @@ const DIV = styled.div`
   transform: scale(0.9);
 }
 
+.smallImageDiv{
+    /* border: 2px solid red; */
+}
   
 @media screen and (max-width: 768px) {
       /* Your styles for large devices go here */
@@ -518,6 +545,41 @@ const DIV = styled.div`
       .slider{
 
       }
+
+      .singleProduct{
+        flex-direction: column;
+      }
+
+      .smallImageDiv{
+        width: 50%;
+      }
+
+      .smallImages{
+        width: 100%;
+        grid-template-columns: repeat(3, 1fr);
+        margin-top: 80px;
+        gap: 5px;
+      }
+
+      .mainParentImage{
+        width: 100%;
+      }
+
+      .cardBoxImag{
+        /* border: 4px solid yellow; */
+        /* height: 500px; */
+    }
+    
+    
+    
+    .cad_box{
+        width: 100%;
+        /* height: 700px; */
+        /* border: 5px solid red; */
+      }
+
+     
+      
    
       
     }

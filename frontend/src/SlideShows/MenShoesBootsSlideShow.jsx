@@ -7,6 +7,7 @@ import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { store } from '../Redux/Store/store';
 import { Link } from 'react-router-dom';
 import { menShoesBootsData } from '../Redux/menShoeBootsReducer/action';
+import { FinalLoader } from '../Comp2/FinalLoader';
 
 export const MenShoesBootsSlideShow = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -66,7 +67,7 @@ export const MenShoesBootsSlideShow = () => {
     return (
         <DIV className="slideshow-container">
             <Slider {...settings} className='slider'>
-                {isData && boots.map((product, index) => (
+                {isLoading === true ? <FinalLoader />  : isData && boots.map((product, index) => (
                     <div key={index+1}>
                         <div className='main'>
 
