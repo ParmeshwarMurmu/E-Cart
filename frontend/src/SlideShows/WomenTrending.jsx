@@ -6,6 +6,7 @@ import styled from "styled-components"
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { womenTrendingBackend } from '../Redux/womenTrendingReducer/action';
 import { Link } from 'react-router-dom';
+import { FinalLoader } from '../Comp2/FinalLoader';
 
 export const WomenTrending = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -66,7 +67,7 @@ export const WomenTrending = () => {
   return (
     <DIV className="slideshow-container">
             <Slider {...settings} className='slider'>
-                { isData && womenTrending.map((product, inde) => (
+                { isLoading === true ? <FinalLoader />  : isData && womenTrending.map((product, inde) => (
                     <div key={inde}>
                         <div className='main'>
 

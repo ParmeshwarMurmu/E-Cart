@@ -11,7 +11,7 @@ import { MenShoweslideshow } from '../MenCompSlide/MenShoweslideshow'
 import { MenTrending } from '../SlideShows/MenTrending'
 import { WomenTrending } from '../SlideShows/WomenTrending'
 import { WomenShoesTrending } from '../SlideShows/WomenShoesTrending'
-import {MenShoesTrending} from '../SlideShows/MenShoesTrending'
+import { MenShoesTrending } from '../SlideShows/MenShoesTrending'
 import { MenSlideShow } from '../SlideShows/MenSlideShow'
 import { MenFormalSlideShow } from '../SlideShows/MenFormalSlideShow'
 import { WomenKuttasKutis } from '../SlideShows/WomenKuttasKutis'
@@ -21,20 +21,34 @@ import { NavCategories } from '../Components/NavCategories'
 import { shallowEqual, useSelector } from 'react-redux'
 import { store } from '../Redux/Store/store'
 import { HomeOfferSlideShow } from '../Comp2/HomeOfferSlideShow'
+import { FinalLoader } from '../Comp2/FinalLoader'
 
 
 
 
 export const Home = () => {
 
-  const {isLoading} = useSelector((store)=>{
+  // const {isLoading} = useSelector((store)=>{
+
+  //   return {
+  //     isLoading: store.menShoeTrendingReducer.isLoading
+  //   }
+  // }, shallowEqual)
+
+  // Men slide show 
+
+  const { isLoading } = useSelector((store) => {
 
     return {
-      isLoading: store.menShoeTrendingReducer.isLoading
+      isLoading: store.menTrackPants.isLoading,
+      // isError: store.menTrackPants.isError,
+      // isData: store.menTrackPants.isData,
+      // trackPants: store.menTrackPants.trackPants
     }
+
   }, shallowEqual)
 
-  console.log("isLoading", isLoading)
+  console.log("isLoading HoME pAGE", isLoading)
 
 
   return (
@@ -52,156 +66,159 @@ export const Home = () => {
       {/* {
         isLoading ? <SingleProductLoader /> : ( */}
 
-        
-          <>
-      
-      <div className='mens'>
-        <div className='menOffer' style={{}}>
-          <Box >
-            <Image className='menImage' src={mensNewArrivial} alt='Mens' />
-          </Box>
-        </div>
 
-        <div style={{ width: "75%" }}>
-          <MenSlideShow />
+      <>
 
-          <MenFormalSlideShow />
-        </div>
+        <div className='mens'>
+          <div className='menOffer' style={{}}>
+            <Box >
+              <Image className='menImage' src={mensNewArrivial} alt='Mens' />
+            </Box>
+          </div>
 
-        
-      </div>
+          {/* Men Slide Show */}
 
-     
+          <div style={{ width: "75%" }}>
+            <MenSlideShow />
 
-      <div className='menTrending'>
-      
-      <div className='viewAll'>
-        <div>
-        <Text fontSize={'2xl'}>Trending</Text>
-        <Button colorScheme='blue'>View All</Button>
-        </div>
-      </div>
-
-      <div className='trending' >
-      <MenTrending />
-      </div>
-
-      </div>
-
-      
-
-      {/* women offers and slidedjow */}
-
-      <div className='womensOffers'>
-        <div style={{ width: "50%" }}>
-          <WomenOffers />
-
-        </div>
-
-        <div style={{ width: "50%" }}>
-
-          <WomenSlideShow />
-       
-          <WomenKuttasKutis />
-        </div>
-      </div>
-
-      {/* Women Trendings */}
-
-      <div className='menTrending'>
-      
-      <div className='viewAll' >
-        <div>
-        <Text fontSize={'2xl'}>Trending</Text>
-        <Button colorScheme='blue'>View All</Button>
-        </div>
-      </div>
-
-      <div className='trending' >
-      <WomenTrending />
-      </div>
-
-      </div>
+            <MenFormalSlideShow />
+          </div>
 
 
-      {/* Women Shoes Offers */}
-
-      <div className='shoesOffers'>
-
-        <div style={{ width: "50%" }}>
-          <ShoesOffer />
-
-          <WomenHeelsTrending />
         </div>
 
 
 
-        <div style={{ width: "50%" }}>
-          <ShoesOfferSlideShow />
+        <div className='menTrending'>
 
-          
-        </div>
+          <div className='viewAll'>
+            <div>
+              <Text fontSize={'2xl'}>Trending</Text>
+              <Button colorScheme='blue'>View All</Button>
+            </div>
+          </div>
 
-      </div>
+          {/* Men Trending slide show */}
+          <div className='trending' >
+            <MenTrending />
+          </div>
 
-      {/* Women Shoes Trending */}
-
-      <div className='menTrending'>
-      
-      <div className='viewAll'>
-        <div>
-        <Text fontSize={'2xl'}>Trending</Text>
-        <Button colorScheme='blue'>View All</Button>
-        </div>
-      </div>
-
-      <div className='trending' >
-      <WomenShoesTrending />
-      </div>
-
-      </div>
-
-
-      {/* Men Shoes Offer */}
-
-
-
-      <div className='menShoesOffers'>
-
-        <div style={{ width: "50%" }}>
-          <MenShoesOffer />
         </div>
 
 
 
-        <div style={{ width: "50%" }}>
-          <MenShoweslideshow />
+        {/* women offers and slidedjow */}
 
-          <MenShoesBootsSlideShow />
+        <div className='womensOffers'>
+          <div style={{ width: "50%" }}>
+            <WomenOffers />
+
+          </div>
+
+          <div style={{ width: "50%" }}>
+
+            <WomenSlideShow />
+
+            <WomenKuttasKutis />
+          </div>
         </div>
 
-      </div>
+        {/* Women Trendings */}
 
-      {/* Men Shoes Trending */}
+        <div className='menTrending'>
 
-      <div className='menTrending'>
-      
-      <div className='viewAll'>
-        <div>
-        <Text fontSize={'2xl'}>Trending</Text>
-        <Button colorScheme='blue'>View All</Button>
+          <div className='viewAll' >
+            <div>
+              <Text fontSize={'2xl'}>Trending</Text>
+              <Button colorScheme='blue'>View All</Button>
+            </div>
+          </div>
+
+          <div className='trending' >
+            <WomenTrending />
+          </div>
+
         </div>
-      </div>
 
-      <div className='trending' >
-      <MenShoesTrending />
-      </div>
 
-      </div>
+        {/* Women Shoes Offers */}
+
+        <div className='shoesOffers'>
+
+          <div style={{ width: "50%" }}>
+            <ShoesOffer />
+
+            <WomenHeelsTrending />
+          </div>
+
+
+
+          <div style={{ width: "50%" }}>
+            <ShoesOfferSlideShow />
+
+
+          </div>
+
+        </div>
+
+        {/* Women Shoes Trending */}
+
+        <div className='menTrending'>
+
+          <div className='viewAll'>
+            <div>
+              <Text fontSize={'2xl'}>Trending</Text>
+              <Button colorScheme='blue'>View All</Button>
+            </div>
+          </div>
+
+          <div className='trending' >
+            <WomenShoesTrending />
+          </div>
+
+        </div>
+
+
+        {/* Men Shoes Offer */}
+
+
+
+        <div className='menShoesOffers'>
+
+          <div style={{ width: "50%" }}>
+            <MenShoesOffer />
+          </div>
+
+
+
+          <div style={{ width: "50%" }}>
+            <MenShoweslideshow />
+
+            <MenShoesBootsSlideShow />
+          </div>
+
+        </div>
+
+        {/* Men Shoes Trending */}
+
+        <div className='menTrending'>
+
+          <div className='viewAll'>
+            <div>
+              <Text fontSize={'2xl'}>Trending</Text>
+              <Button colorScheme='blue'>View All</Button>
+            </div>
+          </div>
+
+          <div className='trending' >
+            <MenShoesTrending />
+          </div>
+
+        </div>
 
       </>
 
-        {/* )
+      {/* )
 } */}
 
 

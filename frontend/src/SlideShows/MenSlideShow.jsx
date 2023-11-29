@@ -6,6 +6,7 @@ import styled from "styled-components"
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { trackPantsData } from '../Redux/MenTrackPantsSlideShow/action';
+import { FinalLoader } from '../Comp2/FinalLoader';
 
 export const MenSlideShow = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -68,7 +69,7 @@ export const MenSlideShow = () => {
         <DIV className="slideshow-container">
             <Slider {...settings} className='slider'>
                 {
-                  isData && track.map((product) => (
+                  isLoading === true ? <FinalLoader />  : isData && track.map((product) => (
                         <div key={product.id}>
                             <div className='main'>
 

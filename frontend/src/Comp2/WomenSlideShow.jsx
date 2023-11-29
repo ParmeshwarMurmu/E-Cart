@@ -7,6 +7,7 @@ import styled from "styled-components"
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { womenSareeData } from '../Redux/womenSareeReducer/action';
 import { Link } from 'react-router-dom';
+import { FinalLoader } from './FinalLoader';
 
 export const WomenSlideShow = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -15,7 +16,7 @@ export const WomenSlideShow = () => {
     let saree;
     const dispatch = useDispatch()
 
-    const { data,  isData } = useSelector((store) => {
+    const { data,  isData, isLoading } = useSelector((store) => {
 
         return {
             data: store.womenSareeReducer.data,
@@ -86,7 +87,7 @@ export const WomenSlideShow = () => {
     return (
         <DIV className="slideshow-container">
             <Slider {...settings} className='slider'>
-                {isData &&
+                {isLoading === true ? <FinalLoader />  : isData &&
                 
                     saree.map((product) => (
                         <div key={product.id}>

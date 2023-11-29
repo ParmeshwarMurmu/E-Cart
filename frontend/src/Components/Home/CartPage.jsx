@@ -12,6 +12,7 @@ import { EmptyCart } from './EmptyCart';
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { appContent } from '../../Context/ContextApi';
+import { FinalLoader } from '../../Comp2/FinalLoader';
 
 
 
@@ -136,7 +137,7 @@ export const CartPage = () => {
 
   return (
     <DIV>
-
+  <FinalLoader />
       {
         isLoading === true ? <SingleProductLoader /> : ( isData && cartData.length >0 ) ? <div>
           <div>

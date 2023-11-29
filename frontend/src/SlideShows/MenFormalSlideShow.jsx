@@ -6,6 +6,7 @@ import styled from "styled-components"
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { menFormalData } from '../Redux/menFormalSlideShowReducer/action';
+import { FinalLoader } from '../Comp2/FinalLoader';
 
 export const MenFormalSlideShow = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -67,7 +68,7 @@ export const MenFormalSlideShow = () => {
             {/* {isLoading ? <LoaderComp /> : <div> */}
             <Slider {...settings} className='slider'>
                 {
-                    isData && formalShirts.map((product) => (
+                    isLoading === true ? <FinalLoader />  : isData && formalShirts.map((product) => (
                         <div key={product.id}>
                             <div className='main'>
 

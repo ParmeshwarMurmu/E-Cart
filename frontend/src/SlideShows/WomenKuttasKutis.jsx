@@ -6,6 +6,7 @@ import styled from "styled-components"
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { womenKurtasKurtisBackend } from '../Redux/womenKurtasKurtisReducer/action';
+import { FinalLoader } from '../Comp2/FinalLoader';
 
 export const WomenKuttasKutis = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -72,7 +73,7 @@ export const WomenKuttasKutis = () => {
   return (
     <DIV className="slideshow-container">
             <Slider {...settings} className='slider'>
-                { isData && kurtasKurtis.map((product) => (
+                { isLoading === true ? <FinalLoader />  : isData && kurtasKurtis.map((product) => (
                     <div key={product.id}>
                         <div className='main'>
 

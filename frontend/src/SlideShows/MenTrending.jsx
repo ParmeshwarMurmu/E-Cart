@@ -6,6 +6,7 @@ import styled from "styled-components"
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { menTrendingData } from '../Redux/menTrendingSlideShowReducer/action';
+import { FinalLoader } from '../Comp2/FinalLoader';
 
 
 export const MenTrending = () => {
@@ -74,7 +75,7 @@ export const MenTrending = () => {
             {/* {isLoading ? <LoaderComp /> : <div> */}
             <Slider {...settings} className='slider'>
                 {
-                    isData && trending.map((product) => (
+                    isLoading === true ? <FinalLoader />  : isData && trending.map((product) => (
                         <div key={product.id}>
                             <div className='main'>
 
