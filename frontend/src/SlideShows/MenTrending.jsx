@@ -188,7 +188,7 @@ const DIV = styled.div`
 
       .slider{
         height: 180px;
-        width: 77%;
+        width: 102%;
       }
 
       .sliderImage{
@@ -242,7 +242,7 @@ const DIV = styled.div`
 
       .slider{
         height: 120px;
-        width: 89%;
+        width: 102%;
       }
 
       .sliderImage{
@@ -257,7 +257,7 @@ const DIV = styled.div`
      
       .slider{
   height: 140px;
-  width: 100%;
+  width: 102%;
 }
 
 .sliderImage{

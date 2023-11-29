@@ -128,7 +128,7 @@ const DIV = styled.div`
   }
 
 .slider{
-  width: 90%; /* Adjust the width as needed */
+  width: 102%; /* Adjust the width as needed */
   margin: 0 auto; /* Center the slider */
 
  
@@ -180,7 +180,7 @@ const DIV = styled.div`
 
       .slider{
         height: 180px;
-        width: 77%;
+        width: 102%;
       }
 
       .sliderImage{
@@ -212,7 +212,7 @@ const DIV = styled.div`
    
       .slider{
         height: 150px;
-        width: 89%;
+        width: 102%;
       }
 
       .sliderImage{
@@ -229,7 +229,7 @@ const DIV = styled.div`
 
       .slider{
         height: 120px;
-        width: 89%;
+        width: 102%;
       }
 
       .sliderImage{
@@ -244,7 +244,7 @@ const DIV = styled.div`
     @media screen and (max-width: 425px) {
       .slider{
   height: 140px;
-  width: 190%;
+  width: 102%;
 }
 
 .sliderImage{
