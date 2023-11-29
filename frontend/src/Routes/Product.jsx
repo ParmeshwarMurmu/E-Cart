@@ -7,6 +7,7 @@ import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import { allProductData } from '../Redux/allMenProductReducer/action'
 import { SingleProductLoader } from '../Comp2/SingleProductLoader'
 import { NavCategories } from '../Components/NavCategories'
+import { AllProductLoader } from '../Comp2/AllProductLoader'
 
 export const Product = ({ type }) => {
 
@@ -61,8 +62,10 @@ export const Product = ({ type }) => {
         <NavCategories />
       </div>
 
+      {/* <AllProductLoader /> */}
+
       {
-        isLoading ? <SingleProductLoader /> : <DIV>
+        isLoading ? <AllProductLoader /> : <DIV>
           <div className='sideBar'>
             <SideBar />
           </div>

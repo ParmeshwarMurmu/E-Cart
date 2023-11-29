@@ -59,8 +59,8 @@ export const Login = () => {
 
                 if (res.data.msg === "LogIn successfull") {
 
-                    //     localStorage.setItem("token", res.data.token)
-                    //    localStorage.setItem("E-Cart_userId", res.data.userId)
+                        localStorage.setItem("token", res.data.token)
+                       localStorage.setItem("E-Cart_userId", res.data.userId)
                     toast({
                         title: 'Login',
                         description: `${res.data.msg}`,

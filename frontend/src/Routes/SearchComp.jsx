@@ -7,6 +7,7 @@ import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import { SingleProductLoader } from '../Comp2/SingleProductLoader'
 import { searchDataFailureAction, searchDataLoadingAction, searchDataSuccessAction, searchTitleAction } from '../Redux/searchReducer/action'
 import { ProductCard } from '../Comp2/ProductCard'
+import { AllProductLoader } from '../Comp2/AllProductLoader'
 
 
 export const SearchComp = () => {
@@ -56,7 +57,7 @@ export const SearchComp = () => {
     <DIV>
       <NavCategories />
       {
-        isLoading === true ? <SingleProductLoader /> : <div className='serachBar'>
+        isLoading === true ? <AllProductLoader /> : <div className='serachBar'>
           {
             searchData.map((el) => (
               <ProductCard key={el._id} {...el} />
