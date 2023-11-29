@@ -91,12 +91,12 @@ export const Home = () => {
 
         <div className='menTrending'>
 
-          <div className='viewAll'>
+          {/* <div className='viewAll'>
             <div>
               <Text fontSize={'2xl'}>Trending</Text>
               <Button colorScheme='blue'>View All</Button>
             </div>
-          </div>
+          </div> */}
 
           {/* Men Trending slide show */}
           <div className='trending' >
@@ -127,12 +127,12 @@ export const Home = () => {
 
         <div className='menTrending'>
 
-          <div className='viewAll' >
+          {/* <div className='viewAll' >
             <div>
               <Text fontSize={'2xl'}>Trending</Text>
               <Button colorScheme='blue'>View All</Button>
             </div>
-          </div>
+          </div> */}
 
           <div className='trending' >
             <WomenTrending />
@@ -165,12 +165,12 @@ export const Home = () => {
 
         <div className='menTrending'>
 
-          <div className='viewAll'>
+          {/* <div className='viewAll'>
             <div>
               <Text fontSize={'2xl'}>Trending</Text>
               <Button colorScheme='blue'>View All</Button>
             </div>
-          </div>
+          </div> */}
 
           <div className='trending' >
             <WomenShoesTrending />
@@ -203,12 +203,12 @@ export const Home = () => {
 
         <div className='menTrending'>
 
-          <div className='viewAll'>
+          {/* <div className='viewAll'>
             <div>
               <Text fontSize={'2xl'}>Trending</Text>
               <Button colorScheme='blue'>View All</Button>
             </div>
-          </div>
+          </div> */}
 
           <div className='trending' >
             <MenShoesTrending />

@@ -123,7 +123,7 @@ const DIV = styled.div`
   }
 
 .slider{
-  width: 90%; /* Adjust the width as needed */
+  width: 102%; /* Adjust the width as needed */
   margin: 0 auto; /* Center the slider */
  
 }
