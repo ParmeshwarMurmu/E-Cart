@@ -1,4 +1,4 @@
-# E-Cart In Progres
+# E-Cart
 E-Kart is a dynamic eCommerce web application created with a tech stack comprising HTML, CSS, JavaScript, React, Node.js, Express, and MongoDB. This is an application where users can purchase different products with different categories. E-Cart brings an immersive shopping experience, primarily centered around a diverse range of clothing products. It was an individual Project completed within 25 days.
 
 # Tech Stack Used:-
