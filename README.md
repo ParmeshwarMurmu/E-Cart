@@ -63,6 +63,16 @@ npm run server
 
 ```
 
+## SignUp 
+
+To Register for this application you have to use your email ID and Fill in the required credentials. After successful signup, you will see a success toast.
+
+
+![SignUp Page](https://github.com/ParmeshwarMurmu/E-Cart/assets/121368970/fa4e882c-34be-4dda-b663-9c08167c6c6e)
+
+
+# Login Page
+![Login Page](https://github.com/ParmeshwarMurmu/E-Cart/assets/121368970/24c98ada-68ef-4516-a05a-2e820dd41230)
 
 # Home Page
 ![E-Cart Home Page](https://github.com/ParmeshwarMurmu/E-Cart/assets/121368970/224f24ff-c1a6-46b8-994c-9caf643db428)
@@ -81,12 +91,7 @@ npm run server
 # Search Category
 ![Search Categories](https://github.com/ParmeshwarMurmu/E-Cart/assets/121368970/3ca383d6-cf46-4518-90bc-b9f5cb2d20ee)
 
-# Signup Page
-![SignUp Page](https://github.com/ParmeshwarMurmu/E-Cart/assets/121368970/fa4e882c-34be-4dda-b663-9c08167c6c6e)
 
-
-# Login Page
-![Login Page](https://github.com/ParmeshwarMurmu/E-Cart/assets/121368970/24c98ada-68ef-4516-a05a-2e820dd41230)
 
 # User Cart Section
 ![user Cart section](https://github.com/ParmeshwarMurmu/E-Cart/assets/121368970/b319832e-2e2d-4b06-a1ce-ab9a1cdf95a0)
