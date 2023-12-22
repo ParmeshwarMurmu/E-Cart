@@ -42,7 +42,26 @@ npm install
 ```
 this will install all the necessary dependencies on your frontend
 
+backend
+```bash
+cd backend
+npm install
+```
+this will install all the necessary dependencies on your backend
 
+Step 3. Create .env flie inside your backend folder and add below informations
+```bash
+mongoUrl = "mongodb+srv://YOUR EMAIL AND PASSWORD OF MONGO ATLAS@cluster0.nnesbwa.mongodb.net/?retryWrites=true&w=majority"
+PORT = 8000
+SECRET_KEY = 'ACCORDING TO YOU'
+
+```
+Step 4. Start your backend server. Open terminal and write the below commands
+```bash
+cd backend
+npm run server
+
+```
 
 
 # Home Page
