@@ -25,6 +25,24 @@ MongoDB
 ✅ Responsive
 ```
 
+## Installation & Getting started
+Detailed instructions on how to install, configure, and get the project running.
+
+Step 1. Clone this Repository using Command
+```bash
+git clone Repository Url
+```
+
+Step 2. Install all the necessary dependencies
+
+frontend
+```bash
+cd frontend
+npm install
+```
+this will install all the necessary dependencies on your frontend
+
+
 
 
 # Home Page
