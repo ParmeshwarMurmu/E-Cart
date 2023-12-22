@@ -35,14 +35,14 @@ git clone Repository Url
 
 Step 2. Install all the necessary dependencies
 
-frontend
+## frontend
 ```bash
 cd frontend
 npm install
 ```
 this will install all the necessary dependencies on your frontend
 
-backend
+## backend
 ```bash
 cd backend
 npm install
