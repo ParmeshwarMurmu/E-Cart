@@ -3,15 +3,22 @@
 
 E-Kart is a dynamic eCommerce web application created with a tech stack comprising HTML, CSS, JavaScript, React, Node.js, Express, and MongoDB. This is an application where users can purchase different products with different categories. E-Cart brings an immersive shopping experience, primarily centered around a diverse range of clothing products. It was an individual Project completed within 25 days.
 
-# Tech Stack Used:-
-## Frontend : 
-HTML | CSS | javascript | React | Redux | ChakraUI 
+## Project Type
+Full Stack
 
-## Backend : 
-Node.js | Express.js 
 
-## Database : 
-MongoDB 
+## Deployed App
+Frontend: https://e-cart-blue.vercel.app
+
+Backend: https://e-cart-5jh7.onrender.com
+
+## Table of Contents
+
+- [Installation & Getting Started](#installation--getting-started)
+- [Usage](#usage)
+- [Authenticated Pages](#authenticated-pages)
+- [API Endpoints](#api-endpoints)
+- [Technology Used](#technology-used)
 
 ## Directory Structure
 
@@ -154,5 +161,27 @@ To Register for this application you have to use your email ID and Fill in the r
 # Footer Section
 ![Footer Section](https://github.com/ParmeshwarMurmu/E-Cart/assets/121368970/57921292-250e-4279-bd5e-a4fac464817b)
 
+
+
+
+## Technology Used
+
+List and overview of the technologies used in the project.
+
+**frontend**
+- HTML
+- CSS
+- javaScript
+- React
+- chakraUi
+- Redux
+
+**backend**
+- Node.js
+- Express.js
+
+
+**Database**
+- MongoDB
 
 
