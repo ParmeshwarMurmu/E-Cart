@@ -26,8 +26,6 @@ MongoDB
      - categoryRoute.js
      - singleProductRoute.js
      - shoeCategoryRoute.js
-   - **Config/**
-      - db.js
    - **middlewares/**
       - auth.js
       - menDataCheck.js
@@ -46,13 +44,25 @@ MongoDB
 - **frontend/**
    - **public/**
    - **src/**
-      - **Assets/**
+      - **Admin/**
+          - AddItem.jsx
+          - AdminHome.jsx
+          - AdminLogin.jsx
+          - AllOrderComp.jsx
+          - AllOrder.jsx
+          - AllProductsCard.jsx
+          - MenModal.jsx
+          - ShoeModal.jsx
+          - WomenModal.jsx
       - **Components/**
-      - **ContextApi/**
-      - **CSS/**
+      - **Context/**
+      - **Images/**
+      - **MenCompSlide/**
       - **Redux/**
       - **Routes/**
-      - **Variables/**
+      - **SlideShows/**
+      - App.js
+      - index.js
 
 ## Features:-
 ```
