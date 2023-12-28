@@ -15,16 +15,25 @@ MongoDB
 
 ## Directory Structure
 
--**Artists/**
+-**E-Cart/**
 - **backend/**
-   - **Arts/**
-      - Folder to store user uploaded Arts
+   - **AllRoutes/**
+      -allProductRoute.js
+      -userRoute.js
+     -womenRoute.js
+     -womenCategoryRoute.js
+     -shoesRoutes.js
+     -categoryRoute.js
+     -singleProductRoute.js
+     -shoeCategoryRoute.js
    - **Config/**
       - db.js
-   - **middleware/**
+   - **middlewares/**
       - auth.js
-   - **Models/**
-      - commentSchema.js 
+      - menDataCheck.js
+      - womenDataCheck.js
+   - **Model/**
+     - 
       - favouriteSchema.js
       - postSchema.js
       - userSchema.js
