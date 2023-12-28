@@ -123,25 +123,49 @@ npm run server
 
 ```
 
-## SignUp 
 
-To Register for this application you have to use your email ID and Fill in the required credentials. After successful signup, you will see a success toast.
+## Usage
+Below are some instructions and examples on how to use this project.
 
+## Sign Up
+
+Step 1. If you are a new user and you have not registered then in order to purchase any product you need to create your account first and then login to your account.
 
 ![SignUp Page](https://github.com/ParmeshwarMurmu/E-Cart/assets/121368970/fa4e882c-34be-4dda-b663-9c08167c6c6e)
 
+**Note** *** After successfull registration  you will see a successfull toast with User Register message.
 
-# Login Page
+
+
+## Login
+
+Step 2. After successfull Registration log in to Your account and use the same credential used at the time of registration.
+
 ![Login Page](https://github.com/ParmeshwarMurmu/E-Cart/assets/121368970/24c98ada-68ef-4516-a05a-2e820dd41230)
 
-# Home Page
+
+**Note** *** After successfull Login  User is going to see its profile at top right corner of the application.
+
+
+
+
+
+
+## Home Page
+This is the home page and user can see latest offers going on, latest trends, new Arrivals in all categories etc.
+
 ![E-Cart Home Page](https://github.com/ParmeshwarMurmu/E-Cart/assets/121368970/224f24ff-c1a6-46b8-994c-9caf643db428)
 
-# Home Product Section
+## Home Product Section
 ![Product Section](https://github.com/ParmeshwarMurmu/E-Cart/assets/121368970/1cd3148d-c739-47b3-b916-853b1a17066e)
 
 
 # Product Page
+
+This is the product page where user can see all product and sort the product according to user choice. User can sort the product according to their categories, brand, color and price.
+
+Also user can see product details and Add to cart Button where user can add product to thier cart.
+
 ![E-Cart Product Page](https://github.com/ParmeshwarMurmu/E-Cart/assets/121368970/34b1effe-9a6a-4309-85e9-43c538417fa4)
 
 
