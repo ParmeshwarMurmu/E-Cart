@@ -18,14 +18,14 @@ MongoDB
 -**E-Cart/**
 - **backend/**
    - **AllRoutes/**
-      -allProductRoute.js
-      -userRoute.js
-     -womenRoute.js
-     -womenCategoryRoute.js
-     -shoesRoutes.js
-     -categoryRoute.js
-     -singleProductRoute.js
-     -shoeCategoryRoute.js
+      - allProductRoute.js
+      - userRoute.js
+     - womenRoute.js
+     - womenCategoryRoute.js
+     - shoesRoutes.js
+     - categoryRoute.js
+     - singleProductRoute.js
+     - shoeCategoryRoute.js
    - **Config/**
       - db.js
    - **middlewares/**
