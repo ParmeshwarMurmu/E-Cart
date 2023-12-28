@@ -1,4 +1,6 @@
 # E-Cart
+
+
 E-Kart is a dynamic eCommerce web application created with a tech stack comprising HTML, CSS, JavaScript, React, Node.js, Express, and MongoDB. This is an application where users can purchase different products with different categories. E-Cart brings an immersive shopping experience, primarily centered around a diverse range of clothing products. It was an individual Project completed within 25 days.
 
 # Tech Stack Used:-
@@ -10,6 +12,39 @@ Node.js | Express.js
 
 ## Database : 
 MongoDB 
+
+## Directory Structure
+
+-**Artists/**
+- **backend/**
+   - **Arts/**
+      - Folder to store user uploaded Arts
+   - **Config/**
+      - db.js
+   - **middleware/**
+      - auth.js
+   - **Models/**
+      - commentSchema.js 
+      - favouriteSchema.js
+      - postSchema.js
+      - userSchema.js
+   - **Routes/**
+      - postRoute.js
+      - userRoute.js
+   - **userProfile/**
+      - Folder to store all user profile Images uploaded Arts
+   - index.js
+
+- **frontend/**
+   - **public/**
+   - **src/**
+      - **Assets/**
+      - **Components/**
+      - **ContextApi/**
+      - **CSS/**
+      - **Redux/**
+      - **Routes/**
+      - **Variables/**
 
 ## Features:-
 ```
