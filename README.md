@@ -33,16 +33,15 @@ MongoDB
       - menDataCheck.js
       - womenDataCheck.js
    - **Model/**
-     - 
-      - favouriteSchema.js
-      - postSchema.js
-      - userSchema.js
-   - **Routes/**
-      - postRoute.js
-      - userRoute.js
-   - **userProfile/**
-      - Folder to store all user profile Images uploaded Arts
+     - BaseScherma.js
+     - CartSchema.js
+     - MenSchema.js
+     - OrderSchema.js
+     - ShoeSchema.js
+     - UserSchema.js
+     - WomenSchema.js
    - index.js
+   - db.js
 
 - **frontend/**
    - **public/**
