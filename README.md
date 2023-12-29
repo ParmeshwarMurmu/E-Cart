@@ -160,7 +160,7 @@ This is the home page and user can see latest offers going on, latest trends, ne
 ![Product Section](https://github.com/ParmeshwarMurmu/E-Cart/assets/121368970/1cd3148d-c739-47b3-b916-853b1a17066e)
 
 
-# Product Page
+## Product Page
 
 This is the product page where user can see all product and sort the product according to user choice. User can sort the product according to their categories, brand, color and price.
 
@@ -169,10 +169,18 @@ Also user can see product details and Add to cart Button where user can add prod
 ![E-Cart Product Page](https://github.com/ParmeshwarMurmu/E-Cart/assets/121368970/34b1effe-9a6a-4309-85e9-43c538417fa4)
 
 
-# Single Product Page
+## Single Product Page
+
+This is the Single product page where users can see the product details in a detailed way. Users can see different pictures of the product and user can select product sizes,  and the user can also find some Similar product Recommendations.
+
+
 ![Single Product Page](https://github.com/ParmeshwarMurmu/E-Cart/assets/121368970/bf9c0f76-beec-4aa5-a21f-2b0e39a96f28)
 
-# Search Category
+##  Search Bar
+
+If a user wants to browse or wants to search any products then the user can find a search bar below the navbar and user can enter the query and get the results.
+Also users can add products to thier cart .
+
 ![Search Categories](https://github.com/ParmeshwarMurmu/E-Cart/assets/121368970/3ca383d6-cf46-4518-90bc-b9f5cb2d20ee)
 
 
