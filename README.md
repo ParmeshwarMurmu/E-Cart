@@ -187,6 +187,15 @@ Also user can see product details and Add to cart Button where user can add prod
 
 
 
+## Authenticated Pages
+
+- Upload Art Page
+- User Post Page
+- User Profile Page
+- User Favourite Page
+
+**Note** *** In order to access these pages you need to login first. Without authentication you cannot access this page.
+
 
 ## Technology Used
 
