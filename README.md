@@ -185,8 +185,14 @@ Also users can add products to thier cart .
 
 
 
-# User Cart Section
-![user Cart section](https://github.com/ParmeshwarMurmu/E-Cart/assets/121368970/b319832e-2e2d-4b06-a1ce-ab9a1cdf95a0)
+## User Cart Section
+
+In the User Cart Page user can see all the products that the user has added and the user can see the billing details with the total amount and user can also remove any product if the user wants to remove it.
+Users will find a checkout button where user can make their payment easily
+
+.
+![Ecart- Cart page](https://github.com/ParmeshwarMurmu/E-Cart/assets/121368970/73cdebd1-d946-43f4-9049-2da2122cb776)
+
 
 
 
