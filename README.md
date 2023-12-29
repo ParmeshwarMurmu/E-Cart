@@ -210,6 +210,204 @@ Users will find a checkout button where user can make their payment easily
 **Note** *** In order to access these pages you need to login first. Without authentication you cannot access this page.
 
 
+## API Endpoints
+
+ list of API endpoints, methods, brief descriptions, and examples of request/response.
+
+- POST /user/register - To Register User
+
+Example : - 
+
+Request
+
+```bash
+/user/register
+
+```
+
+Response
+```bash
+{ 
+   "msg": "Registered Successfully" 
+}
+
+```
+
+- POST /user/login - To Login User
+
+Example : - 
+
+Request
+
+```bash
+/user/login
+
+```
+
+Response
+```bash
+{ 
+   "msg": "LogIn successful",
+    "token": token,
+    "userId": existingUser._id 
+}
+
+```
+
+- POST /user/login - To Login User
+
+Example : - 
+
+Request
+
+```bash
+/user/login
+
+```
+
+Response
+```bash
+{ 
+   "msg": "LogIn successful",
+    "token": token,
+    "userId": existingUser._id 
+}
+
+```
+
+- GET /home/men/category - To get men's data of category formal shirts
+
+Example : - 
+
+Request
+
+```bash
+/home/men/category?category=formal shirts 
+
+```
+
+Response
+```bash
+{ 
+   "category" : [
+   {
+    title: "",
+    images: "",
+    brand: "Nike",
+    color: "green",
+    price: 435,
+    category: "formal shirts",
+    size: "xl"
+   },
+
+   {
+    title: "",
+    images: "",
+    brand: "Nike",
+    color: "green",
+    price: 435,
+    category: "formal shirts",
+    size: "xl"
+   }
+
+   
+]
+
+}
+
+```
+
+
+- GET /home/women/category - To get all women data of category kurta kurtis
+
+Example : - 
+
+Request
+
+```bash
+/home/women/category?category=kurtas kurtis
+
+```
+
+Response
+```bash
+
+{ 
+   "data" : [
+   {
+    title: "",
+    images: "",
+    brand: "Nike",
+    color: "green",
+    price: 435,
+    category: "kurtas kurtis",
+    size: "xl"
+   },
+
+   {
+    title: "",
+    images: "",
+    brand: "Nike",
+    color: "green",
+    price: 435,
+    category: "kurtas kurtis",
+    size: "xl"
+   }
+   
+]
+
+}
+
+
+```
+
+- POST /shoes/male/casualShoes - To get all Mens shoes data
+
+Example : - 
+
+Request
+
+```bash
+/shoes/male/casualShoes
+```
+
+Response
+```bash
+{ 
+   "casualShoes": [
+
+     {
+    title: "",
+    images: "",
+    brand: "Nike",
+    color: "green",
+    price: 435,
+    category: "kurtas kurtis",
+    "gender": "male",
+    size: "xl"
+   },
+
+   {
+    title: "",
+    images: "",
+    brand: "Nike",
+    color: "green",
+    price: 435,
+    category: "kurtas kurtis",
+    "gender": "male",
+    size: "xl"
+   }
+   
+]
+}
+
+```
+
+
+
+
+
+
 ## Technology Used
 
 List and overview of the technologies used in the project.
