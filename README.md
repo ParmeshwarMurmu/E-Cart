@@ -404,6 +404,67 @@ Response
 ```
 
 
+- POST /user/addToCart - To add product in user cart
+
+Example : - 
+
+Request
+
+```bash
+/user/addToCart
+
+```
+
+Response
+```bash
+{ 
+   "msg": "Product added to your cart"
+}
+
+```
+
+
+- GET /user/cart - To get all products that user have added.
+
+Example : - 
+
+Request
+
+```bash
+/user/cart
+
+```
+
+Response
+```bash
+{ 
+   "cart": [
+   {
+    title: "",
+    images: "",
+    brand: "Nike",
+    color: "green",
+    price: 435,
+    category: "kurtas kurtis",
+    "gender": "male",
+    size: "xl"
+   },
+
+   {
+    title: "",
+    images: "",
+    brand: "Nike",
+    color: "green",
+    price: 435,
+    category: "kurtas kurtis",
+    "gender": "male",
+    size: "xl"
+   }
+]
+}
+
+```
+
 
 
 
