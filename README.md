@@ -467,6 +467,75 @@ Response
 
 
 
+- DELETE /user/cart/:id - To Login User
+
+Example : - 
+
+Request
+
+```bash
+/user/cart/BJJD989WHJEBN7SDFOSDF
+
+```
+
+Response
+```bash
+{ 
+   "msg": "Item Removed Successfully"
+}
+
+```
+
+
+- POST /user/order - To orders items.
+
+Example : - 
+
+Request
+
+```bash
+/user/order 
+
+```
+
+Response
+```bash
+{ 
+  "msg": "Ordered Succesfully"
+}
+
+```
+
+
+
+- POST /user/userOrder - To get all the ordered items that user has made
+
+Example : - 
+
+Request
+
+```bash
+/user/userOrder
+
+```
+
+Response
+```bash
+{ 
+  {
+    title: "",
+    images: "",
+    brand: "Nike",
+    color: "green",
+    price: 435,
+    category: "kurtas kurtis",
+    "gender": "male",
+    size: "xl"
+   }
+}
+
+```
+
 
 
 ## Technology Used
