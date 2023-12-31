@@ -563,7 +563,46 @@ Response
 
 ```
 
+- POST /allProducts/search/${category} - To search a particular products
 
+Example : - 
+
+Request
+
+```bash
+/allProducts/search/kurtas kurtis
+
+```
+
+Response
+```bash
+{ 
+   "cart": [
+   {
+    title: "",
+    images: "",
+    brand: "Nike",
+    color: "green",
+    price: 435,
+    category: "kurtas kurtis",
+    "gender": "male",
+    size: "xl"
+   },
+
+   {
+    title: "",
+    images: "",
+    brand: "Nike",
+    color: "green",
+    price: 435,
+    category: "kurtas kurtis",
+    "gender": "male",
+    size: "xl"
+   }
+]
+}
+
+```
 
 ## Technology Used
 
