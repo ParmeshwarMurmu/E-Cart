@@ -536,6 +536,33 @@ Response
 
 ```
 
+- GET /singleProduct/${category}/${id} - To get Single Product Data
+
+Example : - 
+
+Request
+
+```bash
+/singleProduct/men/jdjbd98f232930943fhh
+
+```
+
+Response
+```bash
+{ 
+  {
+    title: "",
+    images: "",
+    brand: "Nike",
+    color: "green",
+    price: 435,
+    category: "t-shirts",
+    size: "xl"
+   }
+}
+
+```
+
 
 
 ## Technology Used
