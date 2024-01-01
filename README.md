@@ -606,7 +606,7 @@ Response
 
 ## Technology Used
 
-List and overview of the technologies used in the project.
+Overview of the technologies used in the project.
 
 **frontend**
 - HTML
