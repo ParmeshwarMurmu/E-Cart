@@ -44,10 +44,11 @@ allProductRoute.get('/men', async (req, res) => {
         } else {
             data = await MenModel.find(query);
         }
-
+        if(page && limit){
         const startIndex = (page - 1) * limit;
         const endIndex = page * limit;
-        const results = data.slice(startIndex, endIndex);
+        data = data.slice(startIndex, endIndex);
+        }
 
         // console.log(startIndex, "start");
         // console.log(endIndex, "end");
@@ -61,7 +62,7 @@ allProductRoute.get('/men', async (req, res) => {
         const allCategory = await MenModel.distinct('category');
         const totalData =  data.length;
 
-        res.status(200).send({ "data": results, "allBrands": allBrands, "allColors": allColors, "allCategory": allCategory, "allGender": [], "totalData": totalData });
+        res.status(200).send({ "data": data, "allBrands": allBrands, "allColors": allColors, "allCategory": allCategory, "allGender": [], "totalData": totalData });
 
 
     } catch (error) {
@@ -105,14 +106,12 @@ allProductRoute.get('/women', async (req, res) => {
         } else {
             data = await WomenModel.find(query);
         }
-
+        if(page && limit){
         const startIndex = (page - 1) * limit;
         const endIndex = page * limit;
-        const results = data.slice(startIndex, endIndex);
+        data = data.slice(startIndex, endIndex);
+        }
 
-        // console.log(startIndex, "start");
-        // console.log(endIndex, "end");
-        // console.log(results);
 
         const brandsQuery = { ...query };
         const colorsQuery = { ...query };
@@ -122,7 +121,7 @@ allProductRoute.get('/women', async (req, res) => {
         const allCategory = await WomenModel.distinct('category');
         const totalData =  data.length;
 
-        res.status(200).send({ "data": results, "allBrands": allBrands, "allColors": allColors, "allCategory": allCategory, "allGender": [], "totalData": totalData });
+        res.status(200).send({ "data": data, "allBrands": allBrands, "allColors": allColors, "allCategory": allCategory, "allGender": [], "totalData": totalData });
 
 
     } catch (error) {
@@ -161,10 +160,11 @@ allProductRoute.get('/shoe', async (req, res) => {
         } else {
             data = await ShoeModel.find(query);
         }
-
+        if(page && limit){
         const startIndex = (page - 1) * limit;
         const endIndex = page * limit;
-        const results = data.slice(startIndex, endIndex);
+        data = data.slice(startIndex, endIndex);
+        }
 
         const brandsQuery = { ...query };
         const colorsQuery = { ...query };
@@ -175,7 +175,7 @@ allProductRoute.get('/shoe', async (req, res) => {
         const allGender = await ShoeModel.distinct('gender');
         const totalData =  data.length;
 
-        res.status(200).send({ "data": results, "allBrands": allBrands, "allColors": allColors, "allCategory": allCategory, "allGender": allGender, "totalData": totalData });
+        res.status(200).send({ "data": data, "allBrands": allBrands, "allColors": allColors, "allCategory": allCategory, "allGender": allGender, "totalData": totalData });
 
 
     } catch (error) {
